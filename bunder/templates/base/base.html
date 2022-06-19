@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block blockname %}Bunder{% endblock blockname %}</title>
+    <!-- favicon -->
+    <!-- fonts -->
+    <!-- js -->
+    <!-- style -->
+    <link rel="stylesheet" href="../../static/styles/base/style.css">
+
+</head>
+
+<body>
+    <!-- nav -->
+    {% block navbar %}
+    <div class="navigation">
+        <div class="userBx">
+            <div class="imgBx">
+                <img src="">
+            </div>
+            <p class="username">Profile name</p>
+        </div>
+        <div class="menuToggle"></div>
+        <ul class="menu">
+            <li><a href="#">
+                    <ion-icon name="person-outline"></ion-icon>My Bunder
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="chatbubble-outline"></ion-icon>Report
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="notifications-outline"></ion-icon>Club
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="settings-outline"></ion-icon>Debate
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="help-circle-outline"></ion-icon>Mail
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="log-in-outline"></ion-icon>Login
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-buffer"></ion-icon>Signup
+                </a></li>
+        </ul>
+    </div>
+    {% endblock navbar %}
+
+</body>
+
+</html>

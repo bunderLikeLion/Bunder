@@ -1,4 +1,3 @@
-{% extends "base/base.html" %}
 {% load static %}
 
 <head>
@@ -6,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
-    <link rel="stylesheet" href="../../static/css/login/sign_in.css">
+    <link rel="stylesheet" href="../../static/styles/login/sign_in.css">
 </head>
 
 <body>
-    {% block content %}
     <div class="container">
-        <h2>Hi, Bunder</h2>
+        <h2>Ready to Bunder</h2>
         <form method="post">
             <div class="inputBox">
-                <input type="text" required="'required" name='email' id='username'>
-                <span>E-mail</span>
+                <input type="text" required="'required" name='username' id='username'>
+                <span>User Name</span>
             </div>
             <div class="inputBox">
                 <input type="password" required="'required" name='password' id='password'>
@@ -31,8 +29,6 @@
             </div>
         </form>
     </div>
-    {% endblock content %}
-
 </body>
 
 </html>

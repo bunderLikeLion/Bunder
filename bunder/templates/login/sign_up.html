@@ -1,0 +1,55 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../../static/css/login/sign_up.css">
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <h2>Ready to Bunder</h2>
+        <form method="post">
+            <div class="inputBox">
+                <input type="email" required="required" name='email' id='username'>
+                <span>E-mail</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name='password' id='password'>
+                <span>PassWord</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" required="required" name='password' id='password'>
+                <span>Re-Enter PassWord</span>
+            </div>
+            <div class="inputBox">
+                <input type="number" required="required" name='age' id='age' min="8" max="100">
+                <span>Age</span>
+            </div>
+            <div class="inputBox">
+                <input type="radio" required="required" name='book_taste' id='book_taste' value="해당 책 분야">
+                <span>해</span>
+                <input type="radio" required="required" name='book_taste' id='book_taste' value="해당 책 분야">
+                <span>당</span>
+                <input type="radio" required="required" name='book_taste' id='book_taste' value="해당 책 분야">
+                <span>책</span>
+                <input type="radio" required="required" name='book_taste' id='book_taste' value="해당 책 분야">
+                <span>분</span>
+                <input type="radio" required="required" name='book_taste' id='book_taste' value="해당 책 분야">
+                <span>야</span>
+            </div>
+            {{error}}
+            <div class="inputBox">
+                <input type="submit" value="Sign up">
+            </div>
+        </form>
+    </div>
+    {% endblock content %}
+
+</body>
+
+</html>

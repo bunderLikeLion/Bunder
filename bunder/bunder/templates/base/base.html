@@ -6,13 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunder</title>
+    <title>{% block blockname %}Bunder{% endblock blockname %}</title>
     <!-- favicon -->
     <!-- fonts -->
     <!-- js -->
     <!-- style -->
-    <link rel="stylesheet" href="../../static/css/base/style.css">
-    <link rel="stylesheet" href="../../static/css/login/sign_in.css">
+    <link rel="stylesheet" href="../../static/styles/base/style.css">
+
 </head>
 
 <body>
@@ -51,19 +51,7 @@
         </ul>
     </div>
     {% endblock navbar %}
-    {% block content %}
 
-    {% endblock content %}
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script module src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-        const menuToggle = document.querySelector('.menuToggle');
-        const navigation = document.querySelector('.navigation');
-        menuToggle.onclick = function () {
-            navigation.classList.toggle('active')
-        }
-    </script>
 </body>
 
 </html>

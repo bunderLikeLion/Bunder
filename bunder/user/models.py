@@ -9,7 +9,7 @@ class User(AbstractUser):
     userid = models.CharField(max_length = 32, unique = True, verbose_name = "아이디")
     password = models.CharField(max_length = 32, verbose_name = "비밀번호")
     nickname = models.CharField(max_length = 32, unique = True, verbose_name = "닉네임")
-    age = models.IntegerField(max_length = 3, verbose_name = "나이")
+    age = models.IntegerField(verbose_name = "나이")
 
     CATEGORIES_OF_BOOKS = [
         ('ANTIQUES & COLLECTIBLES', '엔틱 & 수집서적'),
@@ -26,7 +26,7 @@ class User(AbstractUser):
         ('COOKING', '요리'),
         ('CRAFTS & HOBBIES', '공예 / 취미'),
         ('EDUCATION', '교육'),
-        ('FOREIGN LANGUAGE STUDY', '외국어')
+        ('FOREIGN LANGUAGE STUDY', '외국어'),
         ('LANGUAGE ARTS & DISCIPLINES', '언어예술 및 규율'),
         ('LITERARY COLLECTIONS', '문학선집'),
         ('LITERARY CRITICISM', '문학비판'),
@@ -35,7 +35,7 @@ class User(AbstractUser):
         ('ARCHITECTURE', '건축'),
         ('TECHNOLOGY & ENGINEERING', '기술 / 공학'),
         ('DRAMA', '드라마'),
-        ('PERFORMING ARTS', '공연예술')
+        ('PERFORMING ARTS', '공연예술'),
         ('FAMILY & RELATIONSHIPS', '가족 / 관계'),
         ('GAMES & ACTIVITIES', '게임 / 활동'),
         ('FICTION', '소설'),
@@ -64,5 +64,5 @@ class User(AbstractUser):
         ('YOUNG ADULT FICTION', '청장년 문학소설'),
         ('YOUNG ADULT NONFICTION', '청장년 산문문학'),
     ]
-    categories = models.CharField(max_length = 3, choices = CATEGORIES_OF_BOOKS) # 디폴트값 설정은 어떻게 할가요?
+    categories = models.CharField(max_length = 64, choices = CATEGORIES_OF_BOOKS) # 디폴트값 설정은 어떻게 할가요?
     

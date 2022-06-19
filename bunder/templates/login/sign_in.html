@@ -11,15 +11,16 @@
 <body>
     <div class="container">
         <h2>Ready to Bunder</h2>
-        <form>
+        <form method="post">
             <div class="inputBox">
-                <input type="text" required="'required">
+                <input type="text" required="'required" name='username' id='username'>
                 <span>User Name</span>
             </div>
             <div class="inputBox">
-                <input type="password" required="'required">
+                <input type="password" required="'required" name='password' id='password'>
                 <span>PassWord</span>
             </div>
+            {{error}}
             <div class="inputBox">
                 <input type="submit" value="Login">
             </div>

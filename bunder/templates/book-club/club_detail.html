@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <title>Club Detail</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="profile_container">
+            <div class="img_container">
+                <img class="club_img" src="">
+            </div>
+            <div class="club-informatioon">
+                <h1>소모임 명</h1>
+                <p>소모임 소개</p>
+                <div class="kakao_link">
+                    <p>카톡 링크</p>
+                </div>
+            </div>
+        </div>
+        <div class="club_detail_containaer">
+            <!--profile hover effect : 이름, 나이, 선호장르-->
+            <img class="profile_img" src="">
+            <img class="profile_img" src="">
+            <img class="profile_img" src="">
+            <img class="profile_img" src="">
+            <img class="profile_img" src="">
+        </div>
+        <div class="club_detail_containaer">
+            <div>누적 토론 횟수</div>
+            <div>현재 진행중인 토론 줌링크</div>
+        </div>
+        <div class="club_detail_containaer">
+            진행중인 이벤트
+            <!--기간 정해서 다음책 투표 정하는 두가지 기능 파트-->
+            <div class="event_function">투표</div>
+            <div class="event_function">룰렛</div>
+        </div>
+        <div class="club_detail_containaer">
+            <div class="book_container">
+                현재 읽는 중인 책
+                <div class="book_cover">
+                    <img class="book_cover" src="">
+                </div>
+            </div>
+            <div class="club_bookshelf">
+                <!--현재 읽는 중인 책이 끝나면 여기에 기록-->
+                우리 소모임의 책장
+                <div class="book_cover">
+                    <img class="book_cover" src="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+</body>
+
+</html>

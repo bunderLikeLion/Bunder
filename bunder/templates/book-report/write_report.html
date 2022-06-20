@@ -1,0 +1,30 @@
+<div class="container_write_report">
+    
+    <input type="submit" value="독후감 발행">
+
+    <div class="title">
+        제목 : 
+        <input type="text" name="title">
+    </div>
+
+    <div class="book">
+        <div class="book_search">
+            <form action="">
+                책 제목 검색 :
+                <input type="search" name="book_search_input">
+                <input type="submit" value="검색">
+            </form>
+        </div>
+        <div class="book_information">
+             <!--책 검색했을 때 있으면 자동으로 여기에 채워짐. 없으면 직접 입력-->
+            책 제목 : <input type="text" name="title"> <br>
+            글쓴이 : <input type="text" name="writer"> <br>
+            장르 : <input type="text" name="category"> <br>
+        </div>
+    </div>
+
+    <div class="content">
+        <h4>본문</h4>
+        <textarea name="본문" id="" cols="30" rows="10"></textarea>
+    </div>
+</div>

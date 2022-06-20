@@ -18,6 +18,7 @@
 <body>
     <!-- nav -->
     {% block navbar %}
+
     <div class="navigation">
         <div class="userBx">
             <div class="imgBx">
@@ -42,11 +43,17 @@
             <li><a href="#">
                     <ion-icon name="help-circle-outline"></ion-icon>메일함
                 </a></li>
+            {% if %}
+            <!--{% if user.is_authenticated %}-->
             <li><a href="#">
                     <ion-icon name="log-in-outline"></ion-icon>로그인
                 </a></li>
             <li><a href="#">
                     <ion-icon name="logo-buffer"></ion-icon>회원가입
+                </a></li>
+            {% endif %}
+            <li><a href="#">
+                    <ion-icon name="log-in-outline"></ion-icon>로그아웃
                 </a></li>
         </ul>
     </div>

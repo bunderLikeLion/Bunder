@@ -88,4 +88,6 @@ def password_revise(request):
     return render(request, "user/password_revise.html", error)
 
 
-# def profile(request):
+def profile(request):
+    user = request.user
+    return render(request, 'user/profile.html', {'user' : user})

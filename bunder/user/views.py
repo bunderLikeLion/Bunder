@@ -2,12 +2,44 @@ from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
+import requests
 
 # Create your views here.
 
+# 회원가입
+@csrf_exempt 
 def register(request):
-    return 0
 
+    if request.method == "GET":
+        return render(request, 'login/sign_up.html')
+    elif request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        re_password = request.POST["re_password"]
+        age = request.POST["age"]
+        book_taste = request.POST["book_taste"]
+        random_profile_pic = "https://avatars.dicebear.com/api/male/{}.svg".format(username)
+        profile_pic = requests.get(random_profile_pic)
+
+        res_data = {}
+
+        if not (username and password and re_password and age and book_taste):
+            res_data["error"] = "입력되지 않은 값이 있습니다"
+        elif password != re_password:
+            res_data["error"] = "비밀번호가 일치하지 않습니다"
+        else:
+            user = User.objects.create_user(
+                username = username,
+                password = password,
+                age = age,
+                categories = book_taste,
+                profile_pic = profile_pic
+            )
+            user.save()
+            return render(request, 'login/sign_up.html', res_data)
+    return render(request, 'login/sign_up.html', res_data)
+
+# 로그인
 @csrf_exempt 
 def login(request):
     if request.method == "POST":

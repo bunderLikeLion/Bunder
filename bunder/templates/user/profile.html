@@ -1,46 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base/base.html" %}
+{% load static %}
 
 <head>
-
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title>
+    <title>Profile</title>
 </head>
 
 <body>
-    <div class="profile_container">
-        <div class="img_container">
-            <img class="profile_img" src="">
+    {% block content %}
+    <div class="container">
+        <div class="profile-container">
+            <img src="" alt="">
+            <p>User ID : User ID Template</p>
+            <p>User Nickname : User Nickname Template</p>
         </div>
-    </div>
-    <div class="profile_container">
-        <div class="nickname">
-            <div>닉네임</div>
-        </div>
-    </div>
-    <div class="profile_container">
-        <div class="category">
-            취향 도서 카테고리
-            <div>
-                <!--select 수정?-->
-                <input type="checkbox" name="category">문학
-                <input type="checkbox" name="category">경제/경영
-                <input type="checkbox" name="category">자기계발
-                <input type="checkbox" name="category">인문
-                <input type="checkbox" name="category">정치/사회
-                <input type="checkbox" name="category">예술
-                <input type="checkbox" name="category">과학
-                <input type="checkbox" name="category">기술/IT
+        <form method="post">
+            <div class="inputBox">
+                <select name="book-category" id="book-category">
+                    <option value="">-- 선호 책 장르 --</option>
+                    <option value="문학">문학</option>
+                    <option value="경제/경영">경제/경영</option>
+                    <option value="예술">예술</option>
+                    <option value="자기계발">자기계발</option>
+                    <option value="정치/사회">정치/사회</option>
+                    <option value="과학">과학</option>
+                    <option value="기술IT">기술/IT</option>
+                </select>
             </div>
-        </div>
+            <div class="inputBox">
+                <input type="submit" value="선호 책 장르 수정">
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="비밀번호 수정">
+            </div>
+        </form>
     </div>
-    <div class="profile_container">
-        <input type="button" value="아이디/비밀번호 수정">
-    </div>
-
+    {% endblock content %}
 </body>
-
-</html>

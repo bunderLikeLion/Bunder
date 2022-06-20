@@ -6,10 +6,10 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    userid = models.CharField(max_length = 32, unique = True, verbose_name = "아이디")
-    password = models.CharField(max_length = 32, verbose_name = "비밀번호")
-    nickname = models.CharField(max_length = 32, unique = True, verbose_name = "닉네임")
-    age = models.IntegerField(verbose_name = "나이", null = True)
+    userid = models.CharField(max_length = 32, unique = True, verbose_name = "아이디", blank = False)
+    password = models.CharField(max_length = 32, verbose_name = "비밀번호", blank = False)
+    nickname = models.CharField(max_length = 32, unique = True, verbose_name = "닉네임", blank = False)
+    age = models.IntegerField(verbose_name = "나이", blank = False, default = 0)
 
     CATEGORIES_OF_BOOKS = [
         ('ANTIQUES & COLLECTIBLES', '엔틱 & 수집서적'),

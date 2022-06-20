@@ -1,7 +1,9 @@
+from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 import requests
 
 # Create your views here.
@@ -9,7 +11,6 @@ import requests
 # 회원가입
 @csrf_exempt 
 def register(request):
-
     if request.method == "GET":
         return render(request, 'login/sign_up.html')
     elif request.method == "POST":
@@ -52,3 +53,8 @@ def login(request):
             return render(request, 'login/sign_in.html', {'error' : "아이디 혹은 비밀번호가 다릅니다."})
     else:
         return render(request, 'login/sign_in.html')
+
+# 로그아웃
+def logout(request):
+    auth.logout(request)
+    return HttpResponse("로그아웃")

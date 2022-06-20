@@ -1,7 +1,8 @@
 # https://blog.lulu.com/bisac-what-it-is-and-why-it-matters/
 # 독서 카테고리 해석 입니다. 직접 해석한거라 오역이 있을 수 있으니 수정해 주셔도 됩니다!
 # 수정 시 다른 파일에도 수정이 필요하므로 언제 마지막 수정했는지 적어주시면 감사하겠습니다.
-# 마지막 수정 : 06.20 03:53 by 금장
+# 마지막 수정 : 06.20 22:59 by 금장
+# 수정 내용 : new_category 추가 및 category_converter 함수 추가
 
 CATEGORIES_OF_BOOKS = [
         ('ANTIQUES & COLLECTIBLES', '엔틱 & 수집서적'),
@@ -11,7 +12,7 @@ CATEGORIES_OF_BOOKS = [
         ('BIOGRAPHY & AUTOBIOGRAPHY', '자서전'),
         ('BUSINESS & ECONOMICS', '경제 / 경영'),
         ('JUVENILE FICTION', '청소년 문학소설'),
-        ('JUVENILE NONFICTION', '청소년 산문문학'), # 다른 해석이 있을가요,,
+        ('JUVENILE NONFICTION', '청소년 산문문학'),
         ('COMICS & GRAPHIC NOVELS', '만화 / 그래픽노블'),
         ('COMPUTERS', '컴퓨터'),
         ('TRANSPORTATION', '교통'),
@@ -43,7 +44,7 @@ CATEGORIES_OF_BOOKS = [
         ('SELF-HELP', '자기계발'),
         ('PETS', '애완동물'),
         ('POETRY', '시'),
-        ('REFERENCE', '참조문헌'), # 다른 해석,,?
+        ('REFERENCE', '참조문헌'), 
         ('BIBLES', '성경'),
         ('RELIGION', '종교'),
         ('MEDICAL', '의학'),
@@ -51,7 +52,7 @@ CATEGORIES_OF_BOOKS = [
         ('PHILOSOPHY', '철학'),
         ('SOCIAL SCIENCE', '사회과학'),
         ('SPORTS & RECREATION', '스포츠'),
-        ('NATURE', '자연과학'), # 다른 해석,,?
+        ('NATURE', '자연과학'),
         ('TRAVEL', '여행'),
         ('YOUNG ADULT FICTION', '청장년 문학소설'),
         ('YOUNG ADULT NONFICTION', '청장년 산문문학'),
@@ -65,3 +66,88 @@ CATEGORIES_OF_BOOKS = [
 # 예술 --> 예술 디자인 사진 공연예술 음악
 # 과학 --> 수학 의학 과학 자연과학
 # 기술/IT --> 컴퓨터 교통 건축 기술/공학
+
+new_category = {"문학" :
+    ['ANTIQUES & COLLECTIBLES',
+    'JUVENILE FICTION',
+    'JUVENILE NONFICTION',
+    'COMICS & GRAPHIC NOVELS',
+    'LITERARY COLLECTIONS',
+    'LITERARY CRITICISM',
+    'DRAMA',
+    'FICTION',
+    'POETRY',
+    'YOUNG ADULT FICTION',
+    'YOUNG ADULT NONFICTION'
+    ],
+    "경제/경영" : [
+        'BUSINESS & ECONOMICS'
+    ],
+    "자기계발" : [
+        'COOKING',
+        'CRAFTS & HOBBIES',
+        'FOREIGN LANGUAGE STUDY',
+        'STUDY AIDS',
+        'HEALTH & FITNESS',
+        'GARDENING',
+        'GAMES & ACTIVITIES',
+        'BODY, MIND & SPIRIT',
+        'SELF-HELP',
+        'TRAVEL'
+    ],
+    "인문" : [
+        'BIOGRAPHY & AUTOBIOGRAPHY',
+        'EDUCATION',
+        'LANGUAGE ARTS & DISCIPLINES',
+        'FAMILY & RELATIONSHIPS',
+        'HISTORY',
+        'HOUSE & HOME',
+        'HUMOR',
+        'PETS',
+        'REFERENCE',
+        'PHILOSOPHY',
+        'SPORTS & RECREATION'
+    ],
+    "정치/사회" : [
+        'TRUE CRIME',
+        'LAW',
+        'BIBLES',
+        'RELIGION',
+        'SOCIAL SCIENCE'
+    ],
+    "예술" : [
+        'ART',
+        'DESIGN',
+        'PHOTOGRAPHY',
+        'PERFORMING ARTS',
+        'MUSIC',
+    ],
+    "과학" : [
+        'MATHEMATICS',
+        'MEDICAL',
+        'NATURE'
+    ],
+    "기술/IT" : [
+        'COMPUTERS',
+        'TRANSPORTATION',
+        'ARCHITECTURE',
+        'TECHNOLOGY & ENGINEERING'
+    ]
+    }
+
+def category_converter(category):
+    if category in new_category['문학']:
+        return '문학'
+    elif category in new_category['경제/경영']:
+        return '경제/경영'
+    elif category in new_category['예술']:
+        return '예술'
+    elif category in new_category['자기계발']:
+        return '자기계발'
+    elif category in new_category['정치/사회']:
+        return '정치/사회'
+    elif category in new_category['과학']:
+        return '과학'
+    elif category in new_category['기술/IT']:
+        return '기술/IT'
+    

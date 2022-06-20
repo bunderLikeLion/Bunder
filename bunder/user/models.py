@@ -5,7 +5,6 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    userid = models.CharField(max_length = 32, verbose_name = "아이디", blank = False)
     password = models.CharField(max_length = 32, verbose_name = "비밀번호", blank = False)
     nickname = models.CharField(max_length = 32, verbose_name = "닉네임", unique= True, blank = False)
     age = models.IntegerField(verbose_name = "나이", blank = False, default = 0)

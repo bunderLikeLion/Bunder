@@ -10,14 +10,15 @@
     <div class="container">
         <div class="profile_container">
             <img src="" alt="">
-            <p>User ID : User ID Template</p>
-            <p>User Nickname : User Nickname Template</p>
-            <p>User Age : User Age Template</p>
+            <p>User ID : {{user.username}}</p>
+            <p>User Nickname : {{user.nickname}}</p>
+            <p>User Age : {{user.age}}</p>
         </div>
         <form method="post">
             <div class="inputBox">
                 <select name="book_category" id="book_category">
                     <option value="">-- 선호 책 장르 --</option>
+                    <option value="default" selected>{{user.categories}}</option>
                     <option value="문학">문학</option>
                     <option value="경제/경영">경제/경영</option>
                     <option value="예술">예술</option>

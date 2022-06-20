@@ -1,9 +1,11 @@
+from cmath import log
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.contrib.auth.hashers import check_password
 import requests
 
 # Create your views here.
@@ -58,5 +60,32 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return HttpResponse("로그아웃")
+
+# 비밀번호 수정
+@csrf_exempt
+def password_revise(request):
+    error = {}
+    if request.method == "POST":
+        current_password = request.POST.get("old_password")
+        user = request.user
+        if check_password(current_password,user.password):
+            new_password = request.POST.get("new_password1")
+            password_confirm = request.POST.get("new_password2")
+            if new_password == password_confirm:
+                user.set_password(new_password)
+                user.save()
+                auth.login(request,user)
+                error = {'error' : "비밀번호 변경 성공"}
+                return render(request, "user/password_revise.html", error)
+            else:
+                error = {'error':"새로운 비밀번호를 다시 확인해주세요."}
+        else:
+            error = {'error':"현재 비밀번호가 일치하지 않습니다."}
+    else:
+        if not request.user.is_authenticated:
+            return HttpResponse("로그인 후 이용해주세요")
+
+    return render(request, "user/password_revise.html", error)
+
 
 # def profile(request):

@@ -18,8 +18,6 @@ def register(request):
         re_password = request.POST["re_password"]
         age = request.POST["age"]
         book_taste = request.POST["book_taste"]
-        random_profile_pic = "https://avatars.dicebear.com/api/male/{}.svg".format(username)
-        profile_pic = requests.get(random_profile_pic)
 
         res_data = {}
 
@@ -33,7 +31,6 @@ def register(request):
                 password = password,
                 age = age,
                 categories = book_taste,
-                profile_pic = profile_pic
             )
             user.save()
             return render(request, 'login/sign_up.html', res_data)

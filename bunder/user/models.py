@@ -8,9 +8,8 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     userid = models.CharField(max_length = 32, verbose_name = "아이디", blank = False)
     password = models.CharField(max_length = 32, verbose_name = "비밀번호", blank = False)
-    nickname = models.CharField(max_length = 32, verbose_name = "닉네임", default = "Hi", blank = False)
+    nickname = models.CharField(max_length = 32, verbose_name = "닉네임", unique= True, blank = False)
     age = models.IntegerField(verbose_name = "나이", blank = False, default = 0)
-    profile_pic = models.FileField(verbose_name = "프로필 사진", blank = True)
 
     CATEGORIES_OF_BOOKS = [
         ('ANTIQUES & COLLECTIBLES', '엔틱 & 수집서적'),

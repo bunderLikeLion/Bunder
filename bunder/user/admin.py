@@ -3,6 +3,6 @@ from .models import User
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
-    fields = ['userid', 'password', 'age', 'profile_pic']
+    fields = ['username', 'password', 'age', 'nickname', 'categories']
 
 admin.site.register(User, UserAdmin)

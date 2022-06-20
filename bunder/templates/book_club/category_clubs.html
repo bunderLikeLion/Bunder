@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <title>Template Category Clubs</title>
+    <link rel="stylesheet" href="../../static/css/book_club/book_club.css">
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <span>인문 북클럽</span>
+        <span>총 N개</span>
+        <div class="category_club_container">
+            <div class="clubs" onclick="clubToggle()">&times;
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+</body>

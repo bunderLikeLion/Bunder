@@ -3,6 +3,7 @@
 
 <head>
     <title>Book clubs</title>
+    <link rel="stylesheet" href="../../static/css/book_club/book_club.css">
 </head>
 
 <body>
@@ -12,7 +13,7 @@
             <button class="add_Club" type="button">
                 Add My Club!
             </button>
-            <div class="my_clubs" onclick="">
+            <div class="my_clubs" onclick="clubToggle()">&times;
                 <span>소모임명</span>
                 <span>인원</span>
                 <img src="" alt="">
@@ -24,7 +25,7 @@
             <a href="">전체 페이지</a>
         </div>
         <div class="club_container">
-            <div class="my_clubs" onclick="">
+            <div class="clubs" onclick="clubToggle()">&times;
                 <span>소모임명</span>
                 <span>인원</span>
                 <img src="" alt="">
@@ -36,7 +37,7 @@
             <a href="">전체 페이지</a>
         </div>
         <div class="club_container">
-            <div class="my_clubs" onclick="">
+            <div class="clubs" onclick="clubToggle()">&times;
                 <span>소모임명</span>
                 <span>인원</span>
                 <img src="" alt="">
@@ -48,7 +49,7 @@
             <a href="">전체 페이지</a>
         </div>
         <div class="club_container">
-            <div class="my_clubs" onclick="">
+            <div class="clubs" onclick="clubToggle()">&times;
                 <span>소모임명</span>
                 <span>인원</span>
                 <img src="" alt="">
@@ -60,7 +61,7 @@
             <a href="">전체 페이지</a>
         </div>
         <div class="club_container">
-            <div class="my_clubs" onclick="">
+            <div class="clubs" onclick="clubToggle()">&times;
                 <span>소모임명</span>
                 <span>인원</span>
                 <img src="" alt="">
@@ -72,7 +73,7 @@
             <a href="">전체 페이지</a>
         </div>
         <div class="club_container">
-            <div class="my_clubs" onclick="">
+            <div class="clubs" onclick="clubToggle()">&times;
                 <span>소모임명</span>
                 <span>인원</span>
                 <img src="" alt="">
@@ -80,10 +81,21 @@
         </div>
         <div class="recommend_profile_container">
             <div class="profile_container">
-                <img src="" alt="">
+                <img src="" onclick="moveBunder()">
                 <span>이름</span>
             </div>
         </div>
     </div>
+    <script>
+        function clubToggle() {
+            const clubContainer = document.querySelector('.club_container');
+            logContainer.classList.toggle('active');
+            const popup = document.querySelector('.club_detail');
+            popup.classList.toggle('active');
+        }
+        function moveBunder() {
+            location.href = "해당 Bunder Template.html";
+        }
+    </script>
     {% endblock content %}
 </body>

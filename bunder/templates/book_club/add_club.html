@@ -1,0 +1,54 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <title>Add Club</title>
+    <!-- <link rel="stylesheet" href="../../static/css/login/sign_up.css"> -->
+</head>
+
+{% block content %}
+<div class="container">
+    <h2>Add My Club!</h2>
+    <form method="post">
+        <div class="inputBox">
+            <input type="text" required="required" name='clubname' id='clubname'>
+            <span>Club Name</span>
+        </div>
+        <div class="inputBox">
+            <input type="password" required="required" name='password' id='password'>
+            <span>PassWord</span>
+        </div>
+        <div class="inputBox">
+            <input type="password" required="required" name='re_password' id='re_password'>
+            <span>Re-Enter PassWord</span>
+        </div>
+        <div class="inputBox">
+            <input type="text" required="required" name='nickname' id='nickname'>
+            <span>Nickname</span>
+        </div>
+        <div class="inputBox">
+            <input type="number" required="required" name='age' id='age' min="8" max="100">
+            <span>Age</span>
+        </div>
+        <div class="inputBox">
+            <select name="book_category" id="book_category">
+                <option value="">-- 선호 책 장르 --</option>
+                <option value="문학">문학</option>
+                <option value="경제/경영">경제/경영</option>
+                <option value="예술">예술</option>
+                <option value="자기계발">자기계발</option>
+                <option value="정치/사회">정치/사회</option>
+                <option value="과학">과학</option>
+                <option value="기술IT">기술/IT</option>
+            </select>
+        </div>
+        {{error}}
+        <div class="inputBox">
+            <input type="submit" value="Sign up">
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+
+</html>

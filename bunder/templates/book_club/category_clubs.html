@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <title>Template Category Clubs</title>
+    <link rel="stylesheet" href="../../static/css/book_club/book_club.css">
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="club_info">
+            <span>인문 북클럽</span>
+            <span>총 N개</span>
+        </div>
+        <div class="club_container">
+            <div class="clubs" onclick="clubToggle()">&times;
+                <span>소모임명</span>
+                <span>인원</span>
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>

@@ -18,10 +18,11 @@ def register(request):
         re_password = request.POST["re_password"]
         age = request.POST["age"]
         book_taste = request.POST["book_taste"]
+        nickname = request.POST["nickname"]
 
         res_data = {}
 
-        if not (username and password and re_password and age and book_taste):
+        if not (username and password and re_password and age and book_taste and nickname):
             res_data["error"] = "입력되지 않은 값이 있습니다"
         elif password != re_password:
             res_data["error"] = "비밀번호가 일치하지 않습니다"
@@ -30,6 +31,7 @@ def register(request):
                 username = username,
                 password = password,
                 age = age,
+                nickname = nickname,
                 categories = book_taste,
             )
             user.save()

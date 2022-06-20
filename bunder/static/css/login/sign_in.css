@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,6 +12,10 @@ body {
     min-height: 100vh;
 }
 
+body .color {
+    position: absolute;
+    filter: blur(150px);
+}
 .container {
     position: relative;
     padding: 70px 40px;
@@ -39,7 +43,6 @@ body {
 
 .container .inputBox:last-child {
     margin-bottom: 0;
-    margin-left: 6600px;
 }
 
 .container .inputBox input {
@@ -85,4 +88,4 @@ body {
 
 .container .inputBox input[type='submit']:hover {
     background: #e91e63;
-}
+} */

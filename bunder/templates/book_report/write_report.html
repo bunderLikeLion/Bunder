@@ -1,30 +1,52 @@
-<div class="container_write_report">
-    
-    <input type="submit" value="독후감 발행">
+{% extends "base/base.html" %}
+{% load static %}
 
-    <div class="title">
-        제목 : 
-        <input type="text" name="title">
-    </div>
+<head>
+    <title>Write Report</title>
+</head>
 
-    <div class="book">
-        <div class="book_search">
-            <form action="">
-                책 제목 검색 :
-                <input type="search" name="book_search_input">
-                <input type="submit" value="검색">
-            </form>
+{% block content %}
+<div class="container">
+    <div class="report_container">
+        <div class="inputBox">
+            <input type="text" required="required" name='report_name' id='report_name'>
+            <span>독후감 제목</span>
         </div>
-        <div class="book_information">
-             <!--책 검색했을 때 있으면 자동으로 여기에 채워짐. 없으면 직접 입력-->
-            책 제목 : <input type="text" name="title"> <br>
-            글쓴이 : <input type="text" name="writer"> <br>
-            장르 : <input type="text" name="category"> <br>
+        <div class="inputBox book_search">
+            <div class="search_bar">
+                <input type="text" required="required" name='book_name' id='book_name'>
+                <span>책 제목</span>
+            </div>
+            <div class="inputBox">
+                {{error}} <input type="submit" value="검색">
+            </div>
+        </div>
+        <div class="book_result">
+            <div class="book_img">
+                <img src="" class="book_cover">
+            </div>
+            <div class="book_info">
+                <p class="book_name">책 제목 : book_name</p>
+                <p class="author">글쓴이 : author</p>
+                <p class="category">
+                    카테고리 : <select name="book_category" id="book_category">
+                        <option value="문학">문학</option>
+                        <option value="경제/경영">경제/경영</option>
+                        <option value="예술">예술</option>
+                        <option value="자기계발">자기계발</option>
+                        <option value="정치/사회">정치/사회</option>
+                        <option value="과학">과학</option>
+                        <option value="기술IT">기술/IT</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+        <div class="report_content">
+            <!--https://codepen.io/magnificode/pen/rQpaBO-->
+            <div class="holes"></div>
+            <textarea name="content" id="content" placeholder="독후감 본문"></textarea>
+        </div>
+        <div class="inputBox">
+            {{error}} <input type="submit" value="독후감 발행">
         </div>
     </div>
-
-    <div class="content">
-        <h4>본문</h4>
-        <textarea name="본문" id="" cols="30" rows="10"></textarea>
-    </div>
-</div>

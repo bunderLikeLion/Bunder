@@ -40,25 +40,10 @@
             <input type="radio" name="club_img" value="club_img">
             <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
         </label>
+
         <div class="inputBox">
-            <input type="password" required="required" name='password' id='password'>
-            <span>PassWord</span>
-        </div>
-        <div class="inputBox">
-            <input type="password" required="required" name='re_password' id='re_password'>
-            <span>Re-Enter PassWord</span>
-        </div>
-        <div class="inputBox">
-            <input type="text" required="required" name='nickname' id='nickname'>
-            <span>Nickname</span>
-        </div>
-        <div class="inputBox">
-            <input type="number" required="required" name='age' id='age' min="8" max="100">
-            <span>Age</span>
-        </div>
-        <div class="inputBox">
-            <select name="book_category" id="book_category">
-                <option value="">-- 선호 책 장르 --</option>
+            <select name="book_club_category" id="book_club_category">
+                <option value="">-- 북클럽 카테고리 --</option>
                 <option value="문학">문학</option>
                 <option value="경제/경영">경제/경영</option>
                 <option value="예술">예술</option>
@@ -68,9 +53,20 @@
                 <option value="기술IT">기술/IT</option>
             </select>
         </div>
+
+        <div class="inputBox">
+            <span>소모임 최대 인원</span>
+            <input type="number" required="required" name='number_of_member' id='number_of_member' min="2" max="30">
+        </div>
+
+        <div class="inputBox">
+            <span>소모임 전용 ZOOM 링크</span>
+            <input type="url" name="zoom_url" id="zoom_url">
+        </div>
+
         {{error}}
         <div class="inputBox">
-            <input type="submit" value="Sign up">
+            <input type="submit" value="소모임 발행">
         </div>
     </form>
 </div>

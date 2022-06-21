@@ -68,7 +68,7 @@ def password_revise(request):
     if request.method == "POST":
         current_password = request.POST.get("old_password")
         user = request.user
-        if check_password(current_password,user.password):
+        if check_password(current_password, user.password):
             new_password = request.POST.get("new_password1")
             password_confirm = request.POST.get("new_password2")
             if new_password == password_confirm:
@@ -87,7 +87,19 @@ def password_revise(request):
 
     return render(request, "user/password_revise.html", error)
 
-
+# profile 정보
 def profile(request):
     user = request.user
     return render(request, 'user/profile.html', {'user' : user})
+
+# 카테고리 수정
+@csrf_exempt
+def category_revise(request):
+    user = request.user
+    if request.method == "POST":
+        category = request.POST.get("book_category")
+        user.categories = category
+        user.save()
+        return render(request, "user/category_revise.html", {'user' : user})
+    else:
+        return render(request, "user/category_revise.html", {'user' : user})

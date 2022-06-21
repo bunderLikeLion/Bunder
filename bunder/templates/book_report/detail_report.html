@@ -3,22 +3,22 @@
         <h2>제목 : {{book.report_name}}</h2>
         작성날짜 : {{book.created_at}}
     </div>
-    
+
     <div class="profile">
         <img class="profile_img" src="">
         닉네임 : {{user.nickname}}
     </div>
-    
+
     <div class="book">
         <h3>책 제목 : {{book.book_name}}</h3>
         글쓴이 : {{book.book_author}}
         장르 : {{book.book_category}}
     </div>
-    
+
     <div class="book_report_content">
         본문 내용 : {{book.content}}
     </div>
-    
+
     <div class="button">
         <div class="button_like">
             <input type="submit" value="좋아요">
@@ -29,12 +29,15 @@
             15
         </div>
     </div>
-    
+
     <div class="CRUD_button">
-        <input type="button" value="편집" onClick="">
-        <input type="button" value="삭제" onClick="">
+        <input type="submit" value="편집" onClick="">
+        <form action="{% url 'book_report:delete' book.id %}" method = "post">
+            {% csrf_token %}
+            <input type="submit" value="삭제" onClick="">
+        </form>
     </div>
-    
+
 </div>
 
 <div class="container_comment">

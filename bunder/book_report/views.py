@@ -1,8 +1,12 @@
+from webbrowser import get
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import Book
 
 # Create your views here.
+
+def main(request):
+    return render(request, "book_report/book_report.html")
 
 def write_report(request):
     return render(request, "book_report/write_report.html")
@@ -37,3 +41,8 @@ def update(request, id):
     update_book.content = request.POST.get('content')
     update_book.save()
     return redirect('book_report:detail', update_book.id)
+
+def delete(request, id):
+    delete_blog = get_object_or_404(Book, pk = id)
+    delete_blog.delete()
+    return redirect('book_report:main')

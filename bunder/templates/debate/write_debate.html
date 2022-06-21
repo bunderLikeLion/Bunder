@@ -13,7 +13,7 @@
         <div class="report_container">
             <div class="inputBox">
                 <input type="text" required="required" name='report_name' id='report_name'>
-                <span>토론글 제목</span>
+                <span>토론 주제</span>
             </div>
             <div class="inputBox book_search">
                 <div class="search_bar">
@@ -47,10 +47,15 @@
             <div class="report_content">
                 <!--https://codepen.io/magnificode/pen/rQpaBO-->
                 <div class="holes"></div>
-                <textarea name="content" id="content" placeholder="독후감 본문"></textarea>
+                <textarea name="content" id="agree_content" placeholder="찬성의견"></textarea>
+            </div>
+            <div class="report_content">
+                <!--https://codepen.io/magnificode/pen/rQpaBO-->
+                <div class="holes"></div>
+                <textarea name="content" id="disagree_content" placeholder="반대의견"></textarea>
             </div>
             <div class="inputBox">
-                {{error}} <input type="submit" value="독후감 발행">
+                {{error}} <input type="submit" value="토론 올리기">
             </div>
         </div>
 </form>

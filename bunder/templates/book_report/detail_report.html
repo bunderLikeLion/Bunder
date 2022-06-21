@@ -1,51 +1,81 @@
-<div class="container_book_report">
-    <div class="title">
-        <h2>제목 : {{book.report_name}}</h2>
-        작성날짜 : {{book.created_at}}
-    </div>
-    
-    <div class="profile">
-        <img class="profile_img" src="">
-        닉네임 : {{user.nickname}}
-    </div>
-    
-    <div class="book">
-        <h3>책 제목 : {{book.book_name}}</h3>
-        글쓴이 : {{book.book_author}}
-        장르 : {{book.book_category}}
-    </div>
-    
-    <div class="book_report_content">
-        본문 내용 : {{book.content}}
-    </div>
-    
-    <div class="button">
-        <div class="button_like">
-            <input type="submit" value="좋아요">
-            100
-        </div>
-        <div class="button_save">
-            <input type="submit" value="스크랩">
-            15
-        </div>
-    </div>
-    
-    <div class="CRUD_button">
-        <input type="button" value="편집" onClick="">
-        <input type="button" value="삭제" onClick="">
-    </div>
-    
-</div>
+{% extends "base/base.html" %}
+{% load static %}
 
-<div class="container_comment">
-    <div class="comment">
-        <h2>댓글 20개</h2>
-        <div class="write_comment">
-            <img class="profile_img" src="">
-            <textarea name="댓글 작성" id="" cols="30" rows="2" placeholder="댓글을 작성하세요."></textarea>
+<head>
+    <title>Report Detail</title>
+</head>
+
+{% block content %}
+<div class="container">
+    <div class="report_detail_container">
+        <div class="report_title">
+            <h2>제목 : {{book.report_name}}</h2>
+            <span class="date">작성날짜 : {{book.created_at}} </span>
         </div>
-        <div>
-            댓글 보여지는 부분
+        <div class="CRUD_button">
+            <input type="button" value="편집" onClick="">
+            <input type="button" value="삭제" onClick="">
+        </div>
+        <div class="profile_container">
+            <img class="profile_img" src="">
+            <span class="nickname">닉네임 : {{user.nickname}}</span>
+        </div>
+        <div class="book_info_container">
+            <div class="book_img">
+                <img src="" class="book_cover">
+            </div>
+            <div class="book_info">
+                <p class="book_name">책 제목 : book_name</p>
+                <p class="author">글쓴이 : author</p>
+                <p class="category">
+                    카테고리 : <select name="book_category" id="book_category">
+                        <option value="문학">문학</option>
+                        <option value="경제/경영">경제/경영</option>
+                        <option value="예술">예술</option>
+                        <option value="자기계발">자기계발</option>
+                        <option value="정치/사회">정치/사회</option>
+                        <option value="과학">과학</option>
+                        <option value="기술IT">기술/IT</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+        <h2>독후감 본문</h2>
+        <div class="report_content">
+            {{book.content}}
+            <!--wirte report에서 쓴 노트 형식 css 가져올 예정-->
+        </div>
+        <div class="button">
+            <div class="like_button">
+                <input type="submit" value="좋아요">
+                <span class="submit_num">100</span>
+            </div>
+            <div class="scrap_button">
+                <input type="submit" value="스크랩">
+                <span class="scrap">15</span>
+            </div>
+        </div>
+    </div>
+    <h3>댓글 N개</h3>
+    <div class="comment_container">
+        <div class="comment_navbar">
+            <img class="profile_img" src="">
+            <div class="write_comment">
+                <img class="profile_img" src="">
+                <textarea name="comment" id="comment" cols="30" rows="2" placeholder="댓글 작성"></textarea>
+            </div>
+            <div class="comment_button">
+                <input type="submit" value='작성'>
+            </div>
+        </div>
+        <div class="comment_content_container">
+            <div class="comment_conetent">
+                <p>댓글 본문</p>
+            </div>
+            <div class="comment_conetent">
+                <p>댓글 본문</p>
+            </div>
         </div>
     </div>
 </div>
+{% endblock content %}

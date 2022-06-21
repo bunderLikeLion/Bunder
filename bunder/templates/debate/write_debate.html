@@ -1,0 +1,57 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <title>Write debate</title>
+</head>
+
+<!-- 독후감과 형식이 같다는 전제하에 write_report.html 복사해서 가져옴. -->
+
+{% block content %}
+<form action = "" method="post">
+    <div class="container">
+        <div class="report_container">
+            <div class="inputBox">
+                <input type="text" required="required" name='report_name' id='report_name'>
+                <span>토론글 제목</span>
+            </div>
+            <div class="inputBox book_search">
+                <div class="search_bar">
+                    <input type="text" required="required" name='book_name' id='book_name'>
+                    <span>책 제목</span>
+                </div>
+                <div class="inputBox">
+                    {{error}} <input type="submit" value="검색">
+                </div>
+            </div>
+            <div class="book_result">
+                <div class="book_img">
+                    <img src="" class="book_cover">
+                </div>
+                <div class="book_info">
+                    <p class="book_name">책 제목 : book_name</p>
+                    <p class="author">글쓴이 : author</p>
+                    <p class="category">
+                        카테고리 : <select name="book_category" id="book_category">
+                            <option value="문학">문학</option>
+                            <option value="경제/경영">경제/경영</option>
+                            <option value="예술">예술</option>
+                            <option value="자기계발">자기계발</option>
+                            <option value="정치/사회">정치/사회</option>
+                            <option value="과학">과학</option>
+                            <option value="기술IT">기술/IT</option>
+                        </select>
+                    </p>
+                </div>
+            </div>
+            <div class="report_content">
+                <!--https://codepen.io/magnificode/pen/rQpaBO-->
+                <div class="holes"></div>
+                <textarea name="content" id="content" placeholder="독후감 본문"></textarea>
+            </div>
+            <div class="inputBox">
+                {{error}} <input type="submit" value="독후감 발행">
+            </div>
+        </div>
+</form>
+{% endblock content %}

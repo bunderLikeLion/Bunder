@@ -1,22 +1,22 @@
 <div class="container_book_report">
     <div class="title">
-        <h2>제목</h2>
-        작성날짜
+        <h2>제목 : {{book.report_name}}</h2>
+        작성날짜 : {{book.created_at}}
     </div>
     
     <div class="profile">
         <img class="profile_img" src="">
-        닉네임
+        닉네임 : {{user.nickname}}
     </div>
     
     <div class="book">
-        <h3>책 제목</h3>
-        글쓴이
-        장르
+        <h3>책 제목 : {{book.book_name}}</h3>
+        글쓴이 : {{book.book_author}}
+        장르 : {{book.book_category}}
     </div>
     
     <div class="book_report_content">
-        본문 내용
+        본문 내용 : {{book.content}}
     </div>
     
     <div class="button">

@@ -1,22 +1,23 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Ubuntu', sans-serif;
     box-sizing: border-box;
 }
 
 body {
     min-height: 100vh;
-    background: #191a1e;
+    background: linear-gradient(-45deg #fff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
 
 /* sidebar navigation */
 .navigation {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 120px;
-    height: 60px;
+    top: 2%;
+    right: 2%;
+    width: 7.5rem;
+    height: 3.5rem;
     background: #e1e6ec;
     box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -27,8 +28,8 @@ body {
 }
 
 .navigation.active {
-    width: 300px;
-    height: 430px;
+    width: 18rem;
+    height: 30rem;
     transition: width 0.5s, height 0.5s;
     transition-delay: 0s, 0.5s;
 
@@ -36,8 +37,8 @@ body {
 
 .navigation .userBx {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 3.3rem;
+    height: 3.9rem;
     display: flex;
     align-items: center;
     background: #e1e6ec;
@@ -54,13 +55,13 @@ body {
 .navigation .userBx .username {
     white-space: nowrap;
     color: #555;
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 .navigation .userBx .imgBx {
     position: relative;
-    min-width: 60px;
-    height: 60px;
+    min-width: 4rem;
+    height: 4rem;
     overflow: hidden;
     background: #000;
     border-radius: 50%;
@@ -78,8 +79,8 @@ body {
 
 .navigation .menuToggle {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 4rem;
+    height: 3.5rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -88,8 +89,8 @@ body {
 .navigation .menuToggle::before {
     content: '';
     position: absolute;
-    width: 32px;
-    height: 2px;
+    width: 2rem;
+    height: 0.1rem;
     background: #555;
     transform: translateY(-10px);
     box-shadow: 0 10px #555;
@@ -99,8 +100,8 @@ body {
 .navigation .menuToggle::after {
     content: '';
     position: absolute;
-    width: 32px;
-    height: 2px;
+    width: 2rem;
+    height: 0.1rem;
     background: #555;
     transform: translateY(10px);
     transition: 0.5s;
@@ -120,8 +121,8 @@ body {
     position: absolute;
     width: 100%;
     height: calc(100% - 60px);
-    margin-top: 60px;
-    padding: 20px;
+    margin-top: 3.5rem;
+    padding: 1.3rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     overflow: auto;
 }
@@ -133,8 +134,8 @@ body {
 .menu li a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 20px 0;
+    gap: 0.7rem;
+    margin: 1.3rem 0;
     font-size: 1em;
     text-decoration: none;
     color: #555;
@@ -172,66 +173,4 @@ body {
 .signup-form .form input submit:hover,
 .login-form .form input submit:hover {
     background: red;
-}
-
-.form {
-    width: 500px;
-    padding: 20px 50px;
-}
-
-.form .close {
-    text-align: right;
-    cursor: pointer;
-}
-
-.form .text h1 {
-    text-align: center;
-    margin: 30px 0;
-}
-
-.form form {
-    display: block;
-    margin: auto;
-}
-
-.form .row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.form .row input {
-    margin-bottom: 0;
-}
-
-.form .row input:first-child{
-    margin-right: 10px;
-}
-
-.form .row input:last-child {
-    margin-left: 10px;
-}
-
-.form form input {
-    width: 100%;
-    display: block;
-    border: 1px solid #000;
-    border-radius: 50px;
-    padding: 20px 16px;
-    margin: 20px auto;
-    outline: none;
-}
-
-.signup-form.activate,
-.login-form.activate {
-    top: 50%;
-    transition-delay: .5s;
-    transition: 1s;
-    visibility: visible;
-    opacity: 1;
-}
-
-.navigation.activate {
-    filter: blur(20px);
-    transition: .5s;
-    pointer-events: none;
 }

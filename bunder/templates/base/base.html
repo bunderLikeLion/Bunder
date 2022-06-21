@@ -5,20 +5,21 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
     <!-- favicon -->
     <!-- fonts -->
     <!-- js -->
     <!-- style -->
-    <!-- <link rel="stylesheet" href="../../static/css/base/style.css">
-    <link rel="stylesheet" href="../../static/css/login/sign_in.css"> -->
+    <link rel="stylesheet" href="../../static/css/base/style.css">
 </head>
 
 <body>
     <!-- nav -->
     {% block navbar %}
-
     <div class="navigation">
         <div class="userBx">
             <div class="imgBx">
@@ -29,39 +30,38 @@
         <div class="menuToggle"></div>
         <ul class="menu">
             <li><a href="#">
-                    <ion-icon name="person_outline"></ion-icon>개인 번더
+                    <ion-icon name="person-outline"></ion-icon>개인 번더
                 </a></li>
             <li><a href="#">
-                    <ion-icon name="chatbubble_outline"></ion-icon>독후감
+                    <ion-icon name="book-outline"></ion-icon>독후감
                 </a></li>
             <li><a href="#">
-                    <ion-icon name="notifications_outline"></ion-icon>소모임
+                    <ion-icon name="people-outline"></ion-icon>소모임
                 </a></li>
             <li><a href="#">
-                    <ion-icon name="settings_outline"></ion-icon>찬/반 토론장
+                    <ion-icon name="earth-outline"></ion-icon>찬/반 토론장
                 </a></li>
             <li><a href="#">
-                    <ion-icon name="help_circle_outline"></ion-icon>메일함
+                    <ion-icon name="mail-outline"></ion-icon>메일함
                 </a></li>
 
             <!--{% if user.is_authenticated %}-->
             <li><a href="#">
-                    <ion_icon name="log_in_outline"></ion_icon>로그인
+                    <ion-icon name="log-in-outline"></ion-icon>로그인
                 </a></li>
             <li><a href="#">
-                    <ion-icon name="logo_buffer"></ion-icon>회원가입
+                    <ion-icon name="person-add-outline"></ion-icon>회원가입
                 </a></li>
             <!-- {% endif %} -->
             <li><a href="#">
-                    <ion-icon name="log_in_outline"></ion-icon>로그아웃
+                    <ion-icon name="log-out-outline"></ion-icon>로그아웃
                 </a></li>
         </ul>
     </div>
     {% endblock navbar %}
+
     {% block content %}
-
     {% endblock content %}
-
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script module src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
@@ -71,6 +71,7 @@
             navigation.classList.toggle('active')
         }
     </script>
+
 </body>
 
 </html>

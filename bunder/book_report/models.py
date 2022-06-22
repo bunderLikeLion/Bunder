@@ -4,7 +4,7 @@ from tabnanny import verbose
 
 class Book(models.Model):
     class Meta:
-        db_table = "Book"
+        db_table = "book"
 
     report_name = models.CharField(max_length = 200, verbose_name = "독후감 제목", blank = False)
     book_name = models.CharField(max_length = 200, verbose_name = "책 제목", blank = False)

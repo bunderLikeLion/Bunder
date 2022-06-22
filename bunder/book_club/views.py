@@ -1,9 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from django.forms.models import model_to_dict
 from django.views import View
 import json
-
-from .models import BookClub, BookClubVote, VoteDetail
+from .models import BookClub, BookClubVote, VoteDetail, BookClubMember
 
 
 @csrf_exempt
@@ -30,8 +31,19 @@ def new(request):
 
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
+    bookclub_id_json = json.dumps(book_club.id)
+    return render(request, 'book_club/club_detail.html', {'book_club': book_club, 'bookclub_id': bookclub_id_json})
 
-    return render(request, 'book_club/club_detail.html', {'book_club': book_club})
+@csrf_exempt
+def request_member(request):
+    req = json.loads(request.body)
+    bookclub_id = req['id']
+    if request.method == "POST":
+        member = BookClubMember()
+        member.club = get_object_or_404(BookClub, id=bookclub_id)
+        member.user = request.user
+        member.save()
+        return JsonResponse({'member': model_to_dict(member)})
 
 
 class AddVote(View):

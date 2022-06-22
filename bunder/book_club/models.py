@@ -39,7 +39,7 @@ class BookClubMember(models.Model):
         ('OWNER', 'OWNER'),
         ('INVITE', 'INVITE')
     ]
-    type = models.CharField(max_length=20, choices=type_enum)
+    type = models.CharField(max_length=20, choices=type_enum, default=type_enum[1][0])
 
 
 class BookClubVote(models.Model):

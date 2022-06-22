@@ -4,7 +4,7 @@ from .models import BookReport
 
 
 # Register your models here.
-class BookReportAdmin(admin.ModelAdmin):
+class BookAdmin(admin.ModelAdmin):
     fields = ['book_name', 'book_author', 'category', 'content']
 
-admin.site.register(BookReport, BookReportAdmin)
+admin.site.register(BookReport, BookAdmin)

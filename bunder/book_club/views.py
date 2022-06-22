@@ -69,3 +69,18 @@ class AddVote(View):
             vote_detail.save()
 
         return render(request, 'book_club/add_vote.html')
+
+
+class Vote(View):
+
+    def get(self, request):
+        clubId = request.GET.get('clubId', None)
+        voteId = request.GET.get('voteId', None)
+        club = BookClub.objects.get(id=clubId)
+        vote = BookClubVote.objects.get(id=voteId)
+
+        if club.owner_id != request.user:
+            # TODO: 권한 없음 에러페이지 헨들링
+            return redirect("/")
+
+        return render(request, 'book_club/add_vote.html')

@@ -5,7 +5,7 @@ app_name = 'book_report'
 
 urlpatterns = [
     path('<int:id>', views.detail_report, name = "detail"),
-    path('write_report/', views.write_report, name = "new"),
+    path('write/', views.write_report, name = "new"),
     path('create/', views.create, name = "create"),
     path('update/<int:id>', views.update, name = 'update'),
     path('edit/<int:id>', views.edit, name = "edit"),

@@ -1,25 +1,22 @@
-from django.http import HttpResponse
+from django.forms import model_to_dict
+from django.http import HttpResponse, JsonResponse
 from django.contrib import auth
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-import os
+from .models import BookReport,Scrap
 import json
-from .models import BookReport
-
-
 # Create your views here.
 
 def main(request):
     return render(request, "book_report/book_report.html")
 
 def write_report(request):
-    book_secret = os.environ.get('GOOGLE_BOOK_KEY')
-    book_secret_json = json.dumps(book_secret)
-    return render(request, "book_report/write_report.html", {'bookSecret': book_secret_json})
+    return render(request, "book_report/write_report.html")
 
 def detail_report(request, id):
-    book = get_object_or_404(BookReport, pk = id)
-    return render(request, 'book_report/detail_report.html', {'book' : book}) 
+    book_report = get_object_or_404(BookReport, pk = id)
+    book_report_id_json = json.dumps(id)
+    return render(request, 'book_report/detail_report.html', {'book_report' : book_report, "book_report_id": book_report_id_json})
 
 @csrf_exempt
 def create(request):
@@ -64,3 +61,15 @@ def search(request):
         if search_name:
             books = books.filter(book_name__contains = search_name)
     return render(request, 'book_report/search_report.html', {'books' : books})
+
+@csrf_exempt
+def make_scrap(request):
+    req = json.loads(request.body)
+    book_report_id = req['id']
+    if request.method == "POST":
+        scrap, created = Scrap.objects.get_or_create(
+            book_report=get_object_or_404(BookReport, id=book_report_id),
+            user=request.user,
+        )
+
+    return JsonResponse({'scrap': model_to_dict(scrap)})

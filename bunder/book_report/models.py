@@ -19,5 +19,7 @@ class BookReport(models.Model):
         return self.report_name
 
 class Scrap(models.Model):
+    class Meta:
+        db_table = "scrap"
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     book_report = models.ForeignKey(BookReport, on_delete = models.CASCADE, default='')

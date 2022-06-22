@@ -27,6 +27,21 @@ class BookClub(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
 
+class BookClubMember(models.Model):
+    class Meta:
+        db_table = "club_member"
+
+    user = models.ForeignKey("user.User", on_delete=models.CASCADE, verbose_name="유저 ID")
+    club = models.ForeignKey("book_club.BookClub", on_delete=models.CASCADE, verbose_name="소모임 ID", blank=False)
+    type_enum = [
+        ('MEMBER', 'MEMBER'),
+        ('CANDIDATE', 'CANDIDATE'),
+        ('OWNER', 'OWNER'),
+        ('INVITE', 'INVITE')
+    ]
+    type = models.CharField(max_length=20, choices=type_enum, default=type_enum[1][0])
+
+
 class BookClubVote(models.Model):
     class Meta:
         db_table = "vote"

@@ -13,6 +13,7 @@
             <div class="img_container">
                 <img class="club_img" src="">
             </div>
+			<button id="_request">소모임 참여 요청</button>
             <div class="club-informatioon">
                 <h1>소모임 명</h1>
                 <p>소모임 소개</p>
@@ -55,8 +56,22 @@
             </div>
         </div>
     </div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+		const requestButton = document.querySelector("#_request");
+        const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
+        requestButton.addEventListener('click', ()=> {
+            requestMember(bookClubId)
+		})
 
+		const requestMember = async (id) => {
+			const url = "member/";
+			await axios.post(url,{ id });
+		}
+	</script>
     {% endblock content %}
+
+
 
 </body>
 

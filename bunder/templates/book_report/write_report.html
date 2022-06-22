@@ -29,7 +29,7 @@
             <div class="inputBox">
                 <input type="text" id="book_search_input">
                 <span>책 검색</span>
-                {{error}} <button type="button" value="검색">버튼</button>
+                {{error}} <button type="button" id="book_search_btn" value="검색">버튼</button>
             </div>
         </div>
         <div class="book_result">
@@ -67,7 +67,7 @@
         <div id="modal" class="modal-overlay">
         <div class="modal-window">
             <div class="title">
-                <h2>모달</h2>
+                <h2>책 검색 결과</h2>
             </div>
             <div class="close-area">X</div>
             <div class="content">
@@ -100,33 +100,118 @@
     }
     })
 
+    {#category converter#}
+        const categoryConverter = (category) => {
+        const typedCategory = category.toUpperCase();
+            const new_category = {"문학" :
+    ['ANTIQUES & COLLECTIBLES',
+    'JUVENILE FICTION',
+    'JUVENILE NONFICTION',
+    'COMICS & GRAPHIC NOVELS',
+    'LITERARY COLLECTIONS',
+    'LITERARY CRITICISM',
+    'DRAMA',
+    'FICTION',
+    'POETRY',
+    'YOUNG ADULT FICTION',
+    'YOUNG ADULT NONFICTION'
+    ],
+    "경제/경영" : [
+        'BUSINESS & ECONOMICS'
+    ],
+    "자기계발" : [
+        'COOKING',
+        'CRAFTS & HOBBIES',
+        'FOREIGN LANGUAGE STUDY',
+        'STUDY AIDS',
+        'HEALTH & FITNESS',
+        'GARDENING',
+        'GAMES & ACTIVITIES',
+        'BODY, MIND & SPIRIT',
+        'SELF-HELP',
+        'TRAVEL'
+    ],
+    "인문" : [
+        'BIOGRAPHY & AUTOBIOGRAPHY',
+        'EDUCATION',
+        'LANGUAGE ARTS & DISCIPLINES',
+        'FAMILY & RELATIONSHIPS',
+        'HISTORY',
+        'HOUSE & HOME',
+        'HUMOR',
+        'PETS',
+        'REFERENCE',
+        'PHILOSOPHY',
+        'SPORTS & RECREATION'
+    ],
+    "정치/사회" : [
+        'TRUE CRIME',
+        'LAW',
+        'BIBLES',
+        'RELIGION',
+        'SOCIAL SCIENCE'
+    ],
+    "예술" : [
+        'ART',
+        'DESIGN',
+        'PHOTOGRAPHY',
+        'PERFORMING ARTS',
+        'MUSIC',
+    ],
+    "과학" : [
+        'MATHEMATICS',
+        'MEDICAL',
+        'NATURE'
+    ],
+    "기술/IT" : [
+        'COMPUTERS',
+        'TRANSPORTATION',
+        'ARCHITECTURE',
+        'TECHNOLOGY & ENGINEERING'
+    ]
+    }
+        for (let cat in new_category) {
+            if (new_category[cat].includes(typedCategory)) {
+            return cat;
+            break;
+        }
+    }}
+
+
+
 
     {#getting data from api#}
+
+    const searchInputVal = document.querySelector('#book_search_input');
+    const searchBtn = document.querySelector('#book_search_btn');
     const key = JSON.parse("{{ bookSecret|escapejs }}");
     const bookInfo = [];
 
-    const fetchFunc = () => {
-        return fetch (`https://www.googleapis.com/books/v1/volumes?q=서촌의기억&key=${key}`)
+    const fetchFunc = (bookName) => {
+        return fetch (`https://www.googleapis.com/books/v1/volumes?q=${bookName}&key=${key}`)
         .then(res => res.json())
         .then(res => {
             for (let book of res.items) {
+                if (bookInfo.length >= 6) break;
                 const singleBook = book?.volumeInfo;
                 const tmp = {};
-                if (singleBook?.authors) {
+                if (singleBook?.authors && singleBook?.categories) {
                     tmp.title = singleBook.title;
                     tmp.author = singleBook.authors[0];
                     tmp.imageLink = singleBook?.imageLinks;
+                    tmp.category = categoryConverter(singleBook?.categories[0]);
                     bookInfo.push(tmp)
                 }
             }
         })
     }
 
-    const init = async () => {
-        await fetchFunc();
-        console.log(bookInfo);
-    }
 
-    init();
+    searchBtn.addEventListener('click', async () => {
+        await fetchFunc(searchInputVal.value);
+        console.log(bookInfo);
+    })
+
+
     </script>
 {% endblock content %}

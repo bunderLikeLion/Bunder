@@ -20,5 +20,7 @@ class BookClub(models.Model):
     ]
     category = models.CharField(max_length = 64, choices = category_tuple)
     member_cnt = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(30)])
-    link = models.CharField(max_length = 200, verbose_name = "줌 링크", blank = False)
+    link = models.CharField(max_length = 200, verbose_name = "줌 링크", blank = True)
     created_at = models.DateTimeField(auto_now_add = True, null = True)
+
+

@@ -1,7 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from book_report.models import Book
+from book_report.models import BookReport
 
 # Create your models here.
 
@@ -26,4 +26,4 @@ class Scrap(models.Model):
         db_table = "scrap"
 
     userid = models.ForeignKey(User, on_delete= models.CASCADE)
-    bookid = models.ForeignKey(Book, on_delete=models.CASCADE)
+    bookid = models.ForeignKey(BookReport, on_delete=models.CASCADE)

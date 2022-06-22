@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Book
+from .models import BookReport
 # Register your models here.
 
 
 # Register your models here.
-class BookAdmin(admin.ModelAdmin):
+class BookReportAdmin(admin.ModelAdmin):
     fields = ['book_name', 'book_author', 'category', 'content']
 
-admin.site.register(Book, BookAdmin)
+admin.site.register(BookReport, BookReportAdmin)

@@ -32,6 +32,12 @@ Sign up
             <input type="number" required="required" name='age' id='age' min="8" max="100">
             <span>Age</span>
         </div>
+		<div class="inputBox">
+			<select name="sex" id="sex">
+				<option value="male">남자</option>
+				<option value="female">여자</option>
+			</select>
+		</div>
         <div class="inputBox">
             <select name="book_category" id="book_category">
                 <option value="">-- 선호 책 장르 --</option>
@@ -43,7 +49,8 @@ Sign up
                 <option value="과학">과학</option>
                 <option value="기술IT">기술/IT</option>
             </select>
-            {{error}} <input type="submit" value="Sign up">
+            {{error}}
+			<input type="submit" value="Sign up">
         </div>
     </form>
 </div>

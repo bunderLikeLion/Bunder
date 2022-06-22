@@ -19,5 +19,3 @@ class User(AbstractUser):
         ('기술/IT', '기술/IT'),
     ]
     categories = models.CharField(max_length = 64, choices = new_category_tuple)
-
-# class Profile(models.Model):

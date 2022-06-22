@@ -31,7 +31,26 @@ class BookClubVote(models.Model):
     class Meta:
         db_table = "vote"
 
-    club = models.ForeignKey("book_club.BookClub", on_delete=models.CASCADE, verbose_name="투표")
-    title = models.CharField(max_length=50, verbose_name="투표 제목", blank=False)
+    club = models.ForeignKey("book_club.BookClub", on_delete=models.CASCADE, verbose_name="소모임 ID")
+    topic = models.CharField(max_length=50, verbose_name="투표 주제", blank=False)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
+
+
+class VoteDetail(models.Model):
+    class Meta:
+        db_table = "vote_detail"
+
+    vote = models.ForeignKey("book_club.BookClubVote", on_delete=models.CASCADE, verbose_name="투표")
+    description = models.TextField(help_text="투표 상세 내용을 적어주세요.", verbose_name="투표 상세 내용")
+    vote_cnt = models.IntegerField(default=0)
+
+
+class BookClubBooks(models.Model):
+    class Meta:
+        db_table = "club_book"
+
+    club = models.ForeignKey("book_club.BookClub", on_delete=models.CASCADE, verbose_name="소모임 ID")
+    book_name = models.CharField(max_length=200, verbose_name="책 제목", blank=False)
+    book_author = models.CharField(max_length=200, verbose_name="책 글쓴이", blank=False)
+    image = models.CharField(max_length=200, verbose_name="책 이미지", blank=True)

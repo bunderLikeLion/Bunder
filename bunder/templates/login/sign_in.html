@@ -1,34 +1,30 @@
 {% extends "base/base.html" %}
 {% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login/sign_in.css' %}" />
+{% endblock extrahead %}
 
 {% block title %}
 Sign in
 {% endblock title %}
 
-<body>
-    {% block content %}
-    <div class="container">
-        <h2>Hi, Bunder</h2>
-        <form method="post">
-            <div class="inputBox">
-                <input type="text" required="required" name='username' id='username'>
-                <span>ID</span>
-            </div>
-            <div class="inputBox">
-                <input type="password" required="required" name='password' id='password'>
-                <span>PassWord</span>
-            </div>
-            {{error}}
-            <div class="inputBox">
-                <input type="submit" value="Login">
-            </div>
-            <div class="inputBox">
-                <input type="submit" value="Forgot Password">
-            </div>
-        </form>
-    </div>
-    {% endblock content %}
-
-</body>
-
-</html>
+{% block content %}
+<div class="container">
+    <h2>Hi, Bunder</h2>
+    <form method="post">
+        <div class="inputBox">
+            <input type="text" required="required" name='username' id='username'>
+            <span>ID</span>
+        </div>
+        <div class="inputBox">
+            <input type="password" required="required" name='password' id='password'>
+            <span>PassWord</span>
+        </div>
+        {{error}}
+        <div class="inputBox">
+            <input type="submit" value="Forgot Password">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
+{% endblock content %}

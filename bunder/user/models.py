@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from book_report.models import Book
 
 # Create your models here.
 
@@ -20,4 +21,9 @@ class User(AbstractUser):
     ]
     categories = models.CharField(max_length = 64, choices = new_category_tuple)
 
-# class Profile(models.Model):
+class Scrap(models.Model):
+    class Meta:
+        db_table = "scrap"
+
+    userid = models.ForeignKey(User, on_delete= models.CASCADE)
+    bookid = models.ForeignKey(Book, on_delete=models.CASCADE)

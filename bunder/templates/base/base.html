@@ -3,18 +3,18 @@
 
 <head>
     {% load static %}
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>
-        {% block title %}
-        {% endblock title %}
-    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bunder{% endblock title %}</title>
     <!-- favicon -->
     <!-- fonts -->
     <!-- js -->
     <!-- style -->
-    <link rel="stylesheet" href="../../static/css/base/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base/style.css' %}" />
+    {% block extrahead %}
+    {% endblock extrahead %}
 </head>
 
 <body>
@@ -44,7 +44,6 @@
             <li><a href="#">
                     <ion-icon name="mail-outline"></ion-icon>메일함
                 </a></li>
-
             <!--{% if user.is_authenticated %}-->
             <li><a href="#">
                     <ion-icon name="log-in-outline"></ion-icon>로그인

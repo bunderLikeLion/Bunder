@@ -1,0 +1,25 @@
+<head>
+    <title>My bunder</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="all_my_scrap_container">
+        <div class="my_scrap_navbar">
+            <h3>스크랩한 독후감</h3>
+            <h3>스크랩한 찬/반 토론</h3>
+            <div class="inputBox">
+                <select name="debate_view" id="debate_view">
+                    <option value="report">독후감</option>
+                    <option value="debate">찬/반 토론</option>
+                </select>
+            </div>
+        </div>
+        <div class="all_scraps_container">
+            <div class="my_scrap_container">
+                <div class="my_scrap">독후감1</div>
+                <div class="my_scrap">독후감2</div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

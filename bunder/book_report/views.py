@@ -23,6 +23,7 @@ def write_report(request):
 def create(request):
     new_book = Book()
     new_book.report_name = request.POST['report_name']
+    new_book.report_author = request.POST['report_author']
     new_book.book_name = request.POST['book_name']
     # new_book.book_author = request.POST.get('book_author')
     new_book.book_category = request.POST['book_category']
@@ -40,6 +41,7 @@ def edit(request, id):
 def update(request, id):
     update_book = get_object_or_404(Book, pk = id)
     update_book.report_name = request.POST.get('report_name')
+    update_book.report_author = request.POST.get('report_author')
     update_book.book_name = request.POST.get('book_name')
     # update_book.book_author = request.POST.get('book_author')
     update_book.book_category = request.POST.get('book_category')

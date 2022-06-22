@@ -2,6 +2,8 @@ from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from bunder.book_report.models import BookReport
+
 # Create your models here.
 
 class User(AbstractUser):
@@ -19,3 +21,7 @@ class User(AbstractUser):
         ('기술/IT', '기술/IT'),
     ]
     categories = models.CharField(max_length = 64, choices = new_category_tuple, null=False)
+
+class Scrap(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    book_report = models.ForeignKey(BookReport, on_delete = models.CASCADE, default='')

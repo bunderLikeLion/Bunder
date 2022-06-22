@@ -5,7 +5,7 @@
 {% block title %}
 Sign in
 {% endblock title %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/login/sign_in.css' %}" />
 
 {% block content %}
 <div class="container">
@@ -21,10 +21,8 @@ Sign in
         </div>
         {{error}}
         <div class="inputBox">
-            <input type="submit" value="Login">
-        </div>
-        <div class="inputBox">
             <input type="submit" value="Forgot Password">
+            <input type="submit" value="Login">
         </div>
     </form>
 </div>

@@ -12,10 +12,6 @@ body {
     min-height: 100vh;
 }
 
-body .color {
-    position: absolute;
-    filter: blur(150px);
-}
 .container {
     position: relative;
     padding: 70px 40px;
@@ -36,9 +32,9 @@ body .color {
 .container .inputBox {
     display: flex;
     position: relative;
-    width: 300px;
-    height: 46px;
-    margin-bottom: 35px;
+    width: 19rem;
+    height: 3rem;
+    margin-bottom: 1.8rem;
 }
 
 .container .inputBox:last-child {
@@ -55,7 +51,7 @@ body .color {
     padding: 10px;
     border-radius: 4px;
     outline: none;
-    font-size: 16px;
+    font-size: 1rem;
     color: #111;
     font-weight: 300;
 }
@@ -72,18 +68,26 @@ body .color {
 
 .container .inputBox input:focus ~ span,
 .container .inputBox input:valid ~ span {
-    transform: translateX(-10px);
-    transform: translateY(-32px);
-    font-size: 12px;
+    transform: translateX(-0.7rem);
+    transform: translateY(-2rem);
+    font-size: 0.85rem;
 }
 
 .container .inputBox input[type='submit'] {
     background: #2196f3;
     color: #fff;
     border: none;
-    max-width: 130px;
     cursor: pointer;
     font-weight: 500;
+}
+
+.container .inputBox input[type='submit']:first-child {
+    width: 10rem;
+}
+
+.container .inputBox input[type='submit']:last-child {
+    margin-left: 14rem;
+    width: 5rem;
 }
 
 .container .inputBox input[type='submit']:hover {

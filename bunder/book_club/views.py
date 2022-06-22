@@ -16,6 +16,7 @@ def new(request):
         book_club.member_cnt = request.POST["number_of_member"]
         book_club.image = request.POST["club_img"]
         book_club.category = request.POST["book_club_category"]
+        book_club.description = request.POST["description"]
 
         if request.POST.get('zoom_url', True):
             book_club.link = request.POST["zoom_url"]

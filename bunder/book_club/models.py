@@ -20,9 +20,9 @@ class BookClub(models.Model):
         ('기술/IT', '기술/IT'),
     ]
     category = models.CharField(max_length=64, choices=category_tuple)
-    member_total = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(30)])
+    member_total = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(30)], default=2)
     member_cnt = models.IntegerField(default=1)
-    description = models.TextField(help_text="소모임 소개글을 적어주세요.", verbose_name="소모임 소개", blank=False)
+    description = models.TextField(help_text="소모임 소개글을 적어주세요.", verbose_name="소모임 소개", null=True)
     link = models.CharField(max_length=200, verbose_name="줌 링크", blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 

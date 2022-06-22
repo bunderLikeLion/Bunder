@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 from .models import BookClub
 
@@ -17,6 +18,7 @@ def new(request):
         book_club.image = request.POST["club_img"]
         book_club.category = request.POST["book_club_category"]
         book_club.description = request.POST["description"]
+        # print("request.data: ",request.POST)
 
         if request.POST.get('zoom_url', True):
             book_club.link = request.POST["zoom_url"]

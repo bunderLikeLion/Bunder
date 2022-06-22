@@ -1,9 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+div, p, span, input{
+    color: #BABECC;
+}
+
 .container {
     position: relative;
+    width: 24rem;
     padding: 70px 40px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    background-color: #EBECF0;
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
 }
 
 .container h2 {
@@ -18,21 +37,24 @@
 .container .inputBox {
     display: flex;
     position: relative;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 19rem;
     height: 3rem;
     margin-bottom: 1.8rem;
 }
 
-.container .inputBox:last-child {
-    margin-bottom: 0;
+.container .inputBox:nth-child(1), .inputBox:nth-child(2), button {    
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+    background-color: #ebecf0;
 }
 
 .container .inputBox input {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 9%;
+    left: 4%;
     width: 100%;
-    border: 1px solid #111;
     background: transparent;
     padding: 10px;
     border-radius: 4px;
@@ -40,13 +62,15 @@
     font-size: 1rem;
     color: #111;
     font-weight: 300;
+    border: none;
 }
+
 
 .container .inputBox span {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    padding: 10px;
+    top: 0.4rem;
+    left: 0.4rem;
+    padding: 3%;
     display: inline-block;
     transition: 0.5s;
     pointer-events: none;
@@ -59,23 +83,55 @@
     font-size: 0.85rem;
 }
 
-.container .inputBox input[type='submit'] {
-    background: #2196f3;
-    color: #fff;
-    border: none;
+button {
+    color: #61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.container .inputBox input[type='submit']:first-child {
-    width: 10rem;
+button:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
 
-.container .inputBox input[type='submit']:last-child {
-    margin-left: 14rem;
-    width: 5rem;
+button:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }
 
-.container .inputBox input[type='submit']:hover {
-    background: #e91e63;
+button .icon {
+    margin-right: 8px;
 }
+
+button.unit {
+    border-radius: 8px;
+    line-height: 0;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+    font-size: 19.2px;
+}
+
+button.unit .icon {
+    margin-right: 0;
+}
+
+button.login{
+    text-align: center;
+    display: inline;
+    margin-left: 15%;
+    width: 30%;
+    height: 3rem;
+    color: #AE1100;
+}
+
+button.password{
+    width: 50%;
+    height: 3rem;
+    color: #AE1100;
+}
+

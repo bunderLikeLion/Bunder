@@ -25,7 +25,7 @@ def new(request):
         member, created = BookClubMember.objects.get_or_create(
             club=get_object_or_404(BookClub, id=book_club.id),
             user=request.user,
-            type=BookClubMember.type_enum[2][0] # 소모임장
+            type=BookClubMember.type_enum[2][0]  # 소모임장
         )
 
         if request.POST.get('zoom_url', True):
@@ -38,6 +38,15 @@ def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
     bookclub_id_json = json.dumps(book_club.id)
     return render(request, 'book_club/club_detail.html', {'book_club': book_club, 'bookclub_id': bookclub_id_json})
+
+
+class club_admit(View):
+    def get(self, request):
+        clubId = request.GET.get('clubId', None)
+        members = BookClubMember.objects.filter(club_id=clubId)
+        book_club = get_object_or_404(BookClub, id=clubId)
+        return render(request, 'book_club/club_admit.html',
+                      {'members': members, 'book_club': book_club})
 
 
 @csrf_exempt

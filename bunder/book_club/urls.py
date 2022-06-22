@@ -8,5 +8,6 @@ urlpatterns = [
     path('<int:bookclub_id>', views.book_club_detail, name='book_club_detail'),
     path('vote', views.AddVote.as_view()),
     path('member/', views.request_member, name='request_member'),
-    # path('vote/clubId=<int:clubId>', views.add_vote, name='add_vote'),
+    path('book/', views.request_member, name='request_member'),
+    path('admit', views.club_admit.as_view()),
 ]

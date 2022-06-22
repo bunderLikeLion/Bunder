@@ -18,12 +18,12 @@
                     <input type="text" required="required" name='book_name' id='book_name'>
                     <span>책 제목</span>
                 </div>
-                <div class="inputBox">
-                    {{error}} <input type="submit" value="검색">
-                </div>
+{#                <div class="inputBox">#}
+{#                    {{error}} <input type="submit" value="검색">#}
+{#                </div>#}
             </div>
             <div class="inputBox">
-                {{error}} <input type="submit" value="검색">
+                {{error}} <button type="button" value="검색">버튼</button>
             </div>
         </div>
         <div class="book_result">
@@ -57,4 +57,33 @@
         </div>
 </form>
 </div>
+
+    <script>
+    const key = JSON.parse("{{ bookSecret|escapejs }}");
+    const bookInfo = [];
+
+    const fetchFunc = () => {
+        return fetch (`https://www.googleapis.com/books/v1/volumes?q=서촌의기억&key=${key}`)
+        .then(res => res.json())
+        .then(res => {
+            for (let book of res.items) {
+                const singleBook = book?.volumeInfo;
+                const tmp = {};
+                if (singleBook?.authors) {
+                    tmp.title = singleBook.title;
+                    tmp.author = singleBook.authors[0];
+                    tmp.imageLink = singleBook?.imageLinks;
+                    bookInfo.push(tmp)
+                }
+            }
+        })
+    }
+
+    const init = async () => {
+        await fetchFunc();
+        console.log(bookInfo);
+    }
+
+    init();
+    </script>
 {% endblock content %}

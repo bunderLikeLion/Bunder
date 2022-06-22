@@ -2,6 +2,8 @@ from webbrowser import get
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import Book
+import os
+import json
 
 # Create your views here.
 
@@ -16,7 +18,9 @@ def detail_report(request, id):
 
 # 독후감 작성 창
 def write_report(request):
-    return render(request, "book_report/write_report.html")
+    book_secret = os.environ.get('GOOGLE_BOOK_KEY')
+    book_secret_json = json.dumps(book_secret)
+    return render(request, "book_report/write_report.html", {'bookSecret': book_secret_json})
 
 # 독후감 작성 함수
 @csrf_exempt

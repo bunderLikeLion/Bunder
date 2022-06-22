@@ -5,6 +5,10 @@
     <title>Write Report</title>
 </head>
 
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_report/write_report.css' %}" />
+{% endblock extrahead %}
+
 {% block content %}
 <form action="{% url 'book_report:create' %}" method="post">
     <div class="container">
@@ -59,8 +63,45 @@
         </div>
 </form>
 </div>
+    <button id="btn-modal">모달 버튼</button>
+        <div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>모달</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+                <p>가나다라마바사 아자차카타파하</p>
+                <p>가나다라마바사 아자차카타파하</p>
+                <p>가나다라마바사 아자차카타파하</p>
+                <p>가나다라마바사 아자차카타파하</p>
+
+            </div>
+        </div>
+    </div>
 
     <script>
+    {#modal-related code#}
+    const modal = document.getElementById("modal")
+    const btnModal = document.getElementById("btn-modal")
+    btnModal.addEventListener("click", e => {
+        modal.style.display = "flex"
+    })
+
+    const closeBtn = modal.querySelector(".close-area")
+    closeBtn.addEventListener("click", e => {
+    modal.style.display = "none"
+    })
+
+    modal.addEventListener("click", e => {
+    const evTarget = e.target
+    if(evTarget.classList.contains("modal-overlay")) {
+        modal.style.display = "none"
+    }
+    })
+
+
+    {#getting data from api#}
     const key = JSON.parse("{{ bookSecret|escapejs }}");
     const bookInfo = [];
 

@@ -13,8 +13,12 @@
             <span class="date">작성날짜 : {{book.created_at}} </span>
         </div>
         <div class="CRUD_button">
-            <input type="button" value="편집" onClick="">
-            <input type="button" value="삭제" onClick="">
+            <form action="{% url 'book_report:edit' book.id %}">
+                <input type="submit" value="편집" onClick="">
+            </form>
+            <form action="{% url 'book_report:delete' book.id %}">
+                <input type="submit" value="삭제" onClick="">
+            </form>
         </div>
         <div class="profile_container">
             <img class="profile_img" src="">

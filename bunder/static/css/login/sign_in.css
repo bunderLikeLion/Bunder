@@ -1,4 +1,4 @@
-/* * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -88,4 +88,4 @@ body .color {
 
 .container .inputBox input[type='submit']:hover {
     background: #e91e63;
-} */
+}

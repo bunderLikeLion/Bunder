@@ -103,3 +103,8 @@ def category_revise(request):
         return render(request, "user/category_revise.html", {'user' : user})
     else:
         return render(request, "user/category_revise.html", {'user' : user})
+
+# 내 독후감 확인
+def my_reports(request):
+    user = request.user
+    

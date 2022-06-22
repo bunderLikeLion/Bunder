@@ -7,6 +7,7 @@ class Book(models.Model):
         db_table = "book"
 
     report_name = models.CharField(max_length = 200, verbose_name = "독후감 제목", blank = False)
+    report_author = models.CharField(max_length = 200, verbose_name = "독후감 작성자", blank = False)
     book_name = models.CharField(max_length = 200, verbose_name = "책 제목", blank = False)
     book_author = models.CharField(max_length = 200, verbose_name = "책 글쓴이", blank = False)
     category = models.CharField(max_length = 200, verbose_name = "책 검색", blank = False)

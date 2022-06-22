@@ -14,6 +14,7 @@ body {
 
 .container {
     position: relative;
+    width: 22.5rem;
     padding: 70px 40px;
     background: #fff;
     border-radius: 20px;
@@ -32,7 +33,7 @@ body {
 .container .inputBox {
     display: flex;
     position: relative;
-    width: 19rem;
+    width: 17rem;
     height: 3rem;
     margin-bottom: 1.8rem;
 }
@@ -66,6 +67,14 @@ body {
     pointer-events: none;
 }
 
+.container .inputBox #book_category {
+    width: 8.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
 .container .inputBox input:focus ~ span,
 .container .inputBox input:valid ~ span {
     transform: translateX(-0.7rem);
@@ -81,13 +90,9 @@ body {
     font-weight: 500;
 }
 
-.container .inputBox input[type='submit']:first-child {
-    width: 10rem;
-}
-
 .container .inputBox input[type='submit']:last-child {
-    margin-left: 14rem;
-    width: 5rem;
+    margin-left: 11rem;
+    width: 6rem;
 }
 
 .container .inputBox input[type='submit']:hover {

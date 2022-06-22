@@ -1,7 +1,11 @@
-from webbrowser import get
+from django.http import HttpResponse
+from django.contrib import auth
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+import os
+import json
 from .models import BookReport
+
 
 # Create your views here.
 
@@ -9,7 +13,9 @@ def main(request):
     return render(request, "book_report/book_report.html")
 
 def write_report(request):
-    return render(request, "book_report/write_report.html")
+    book_secret = os.environ.get('GOOGLE_BOOK_KEY')
+    book_secret_json = json.dumps(book_secret)
+    return render(request, "book_report/write_report.html", {'bookSecret': book_secret_json})
 
 def detail_report(request, id):
     book = get_object_or_404(BookReport, pk = id)
@@ -18,6 +24,7 @@ def detail_report(request, id):
 @csrf_exempt
 def create(request):
     new_book = BookReport()
+    new_book.user = request.user
     new_book.report_name = request.POST['report_name']
     new_book.book_name = request.POST['book_name']
     new_book.category = request.POST['book_category']
@@ -45,6 +52,7 @@ def delete(request, id):
     delete_blog.delete()
     return redirect('book_report:main')
 
+# 책 이름을 통한 독후감 검색
 def search(request):
     books = BookReport.objects.all()
     if request.method == "GET":
@@ -55,4 +63,4 @@ def search(request):
         search_name = request.POST.get('search_name')
         if search_name:
             books = books.filter(book_name__contains = search_name)
-    return render(request, 'book_report/search_report.html', {'books' : books}) 
+    return render(request, 'book_report/search_report.html', {'books' : books})

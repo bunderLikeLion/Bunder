@@ -24,6 +24,7 @@ def new(request):
         book_club.save()
         return redirect('/bookclub/' + str(book_club.id))
 
+
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
 

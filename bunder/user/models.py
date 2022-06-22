@@ -19,3 +19,9 @@ class User(AbstractUser):
         ('기술/IT', '기술/IT'),
     ]
     categories = models.CharField(max_length = 64, choices = new_category_tuple)
+    avatar = models.CharField(max_length=50, verbose_name = "유저 프로필", blank = False)
+    sex_tuple = [
+        ('mail','mail'),
+        ('femail','femail'),
+    ]
+    sex = models.CharField(max_length=10, choices = sex_tuple, verbose_name = "유저 프로필", blank = False)

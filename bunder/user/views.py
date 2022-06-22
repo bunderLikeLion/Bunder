@@ -6,7 +6,7 @@ from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
-import requests
+from book_report.models import BookReport
 
 # Create your views here.
 
@@ -105,6 +105,9 @@ def category_revise(request):
         return render(request, "user/category_revise.html", {'user' : user})
 
 # 내 독후감 확인
-def my_reports(request):
+def search_my_reports(request):
+    my_reports = BookReport.objects.all()
     user = request.user
-    
+    if user:
+        my_reports = my_reports.filter(user_id = user.id)
+    return render(request, 'user/all_my_reports.html', {'my_reports' : my_reports})

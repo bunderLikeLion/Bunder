@@ -19,6 +19,9 @@
             <div class="my_text_container">
                 <div class="my_text">독후감1</div>
                 <div class="my_text">독후감2</div>
+                {% for my_report in my_reports %}
+                {{my_report.report_name}}
+                {% endfor %}
             </div>
         </div>
     </div>

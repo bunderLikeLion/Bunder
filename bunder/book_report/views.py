@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import BookReport,Scrap
+from django.views import View
 import json
 # Create your views here.
 
@@ -73,3 +74,11 @@ def make_scrap(request):
         )
 
     return JsonResponse({'scrap': model_to_dict(scrap)})
+
+# class all_my_scraps(View):
+#     def get(self, request):
+#         clubId = request.GET.get('clubId', None)
+#         members = BookClubMember.objects.filter(club_id=clubId)
+#         book_club = get_object_or_404(BookClub, id=clubId)
+#         return render(request, 'user/all_my_scraps.html',
+#                       {'members': members, 'book_club': book_club})

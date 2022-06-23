@@ -6,6 +6,8 @@ from django.views import View
 import json
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember
 
+def main(request):
+    return render(request, "book_club/book_club.html")
 
 @csrf_exempt
 def new(request):
@@ -37,7 +39,18 @@ def new(request):
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
     bookclub_id_json = json.dumps(book_club.id)
-    return render(request, 'book_club/club_detail.html', {'book_club': book_club, 'bookclub_id': bookclub_id_json})
+
+    try:
+        vote = BookClubVote.objects.get(club=bookclub_id)
+        vote_id_json = json.dumps(vote.id)
+        return render(request, 'book_club/club_detail.html',
+                      {'book_club': book_club,
+                       'bookclub_id': bookclub_id_json,
+                       'vote': vote,
+                       'vote_id': vote_id_json})
+    except BookClubVote.DoesNotExist:
+        return render(request, 'book_club/club_detail.html',
+                      {'book_club': book_club, 'bookclub_id': bookclub_id_json})
 
 
 class club_admit(View):
@@ -66,8 +79,8 @@ class AddVote(View):
     def get(self, request):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
-
-        if club.owner_id != request.user:
+        print(f'{club.owner_id}, {request.user}')
+        if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
         return render(request, 'book_club/add_vote.html')
@@ -76,7 +89,7 @@ class AddVote(View):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
 
-        if club.owner_id != request.user:
+        if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
 
@@ -89,14 +102,30 @@ class AddVote(View):
         vote.end_date = request.POST['endvote']
 
         vote.save()
-
+        voteList = []
         for each_vote in vote_list:
             vote_detail = VoteDetail()
             vote_detail.description = each_vote
             vote_detail.vote = vote
             vote_detail.save()
+            voteList += vote_detail
 
-        return render(request, 'book_club/add_vote.html')
+        return redirect('/bookclub/vote/list?clubId=' +
+                        str(clubId) + "&voteId=" + str(vote.id),
+                        {'vote': vote, 'voteLiist': voteList})
+
+    def delete(self, request):
+        clubId = request.GET.get('clubId', None)
+
+        try:
+            vote = BookClubVote.objects.get(club_id=clubId)
+            vote.delete()
+            return JsonResponse({"description": "투표가 삭제 되었습니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=200)
+        except BookClubVote.DoesNotExist:
+            return JsonResponse({"description": "현재 진행중인 투표가 없습니다."}
+                                , json_dumps_params={'ensure_ascii': False},
+                                status=404)
 
 
 class Vote(View):
@@ -106,9 +135,13 @@ class Vote(View):
         voteId = request.GET.get('voteId', None)
         club = BookClub.objects.get(id=clubId)
         vote = BookClubVote.objects.get(id=voteId)
+        voteList = VoteDetail.objects.filter(vote_id=8)
 
-        if club.owner_id != request.user:
+        for i in voteList:
+            print("asd" + i.description)
+
+        if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
 
-        return render(request, 'book_club/add_vote.html')
+        return render(request, 'book_club/vote.html', {'vote': vote, 'voteList': voteList})

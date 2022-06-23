@@ -55,7 +55,7 @@
 					<span class="submit_num">100</span>
 				</div>
 				<div class="scrap_button">
-					<button id="_scrap">스크랩</button>
+					<button id="scrap">스크랩</button>
 					<span class="scrap">15</span>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
-		const requestButton = document.querySelector("#_scrap");
+		const requestButton = document.querySelector("#scrap");
 		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
 		requestButton.addEventListener('click', ()=> {
 			requestMember(bookReportId);

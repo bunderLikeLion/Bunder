@@ -48,14 +48,17 @@ def register(request):
 @csrf_exempt 
 def login(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = auth.authenticate(request, username = username, password = password)
-        if user is not None:
-            auth.login(request, user)
-            return render(request, 'login/sign_in.html', {'error' : '로그인 성공'})
-        else:
-            return render(request, 'login/sign_in.html', {'error' : "아이디 혹은 비밀번호가 다릅니다."})
+        if 'login' in request.POST:
+            username = request.POST["username"]
+            password = request.POST["password"]
+            user = auth.authenticate(request, username = username, password = password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('user:bunder')
+            else:
+                return render(request, 'login/sign_in.html', {'error' : "아이디 혹은 비밀번호가 다릅니다."})
+        elif 'forgotpassword' in request.POST:
+            pass
     else:
         return render(request, 'login/sign_in.html')
 
@@ -95,6 +98,12 @@ def profile(request):
     user = request.user
     return render(request, 'user/profile.html', {'user' : user})
 
+# bunder 정보
+def bunder(request):
+    user = request.user
+    my_reports = check_my_reports(request)
+    return render(request, 'user/bunder.html', {'user' : user, 'my_reports' : my_reports})
+
 # 카테고리 수정
 @csrf_exempt
 def category_revise(request):
@@ -105,12 +114,18 @@ def category_revise(request):
         user.save()
         return render(request, "user/category_revise.html", {'user' : user})
     else:
-        return render(request, "user/category_revise.html", {'user' : user})
+        if not request.user.is_authenticated:
+            return HttpResponse("로그인 후 이용해주세요")
 
-# 내 독후감 확인
+# 내 독후감 확인 (all_my_reports)
 def search_my_reports(request):
+    my_reports = check_my_reports(request)
+    return render(request, 'user/all_my_reports.html', {'my_reports' : my_reports})
+
+# 내 독후감 확인하는 함수
+def check_my_reports(request):
     my_reports = BookReport.objects.all()
     user = request.user
     if user:
         my_reports = my_reports.filter(user_id = user.id)
-    return render(request, 'user/all_my_reports.html', {'my_reports' : my_reports})
+    return my_reports

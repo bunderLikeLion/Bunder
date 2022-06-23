@@ -17,6 +17,9 @@
         </div>
         <div class="all_scraps_container">
             <div class="my_scrap_container">
+                {% for scraps in book_report %}
+                {{scraps.book_report.report_name}}
+                {% endfor %}
                 <div class="my_scrap">독후감1</div>
                 <div class="my_scrap">독후감2</div>
             </div>

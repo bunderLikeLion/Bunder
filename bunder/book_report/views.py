@@ -4,14 +4,17 @@ from django.contrib import auth
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import BookReport,Scrap
+from django.views import View
 import json
+import os
 # Create your views here.
 
 def main(request):
     return render(request, "book_report/book_report.html")
 
 def write_report(request):
-    return render(request, "book_report/write_report.html")
+    key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'));
+    return render(request, "book_report/write_report.html", {'bookSecret': key})
 
 def detail_report(request, id):
     book_report = get_object_or_404(BookReport, pk = id)
@@ -73,3 +76,11 @@ def make_scrap(request):
         )
 
     return JsonResponse({'scrap': model_to_dict(scrap)})
+
+class all_my_scraps(View):
+    def get(self, request):
+        reportId = request.GET.get('reportId', None)
+        user = BookReport.objects.filter(user_id = reportId)
+        book_report = get_object_or_404(BookReport, id=reportId)
+        return render(request, 'user/all_my_scraps.html',
+                      {'user': user, 'book_report': book_report})

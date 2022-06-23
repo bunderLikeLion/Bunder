@@ -11,4 +11,5 @@ urlpatterns = [
     path('member/', views.request_member, name='request_member'),
     path('book/', views.request_member, name='request_member'),
     path('admit', views.club_admit.as_view()),
+    path('', views.main, name = 'main'),
 ]

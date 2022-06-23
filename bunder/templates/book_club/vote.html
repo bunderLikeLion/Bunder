@@ -18,16 +18,14 @@
 
 			</div>
 			기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-			{# TODO: JS로 동적 생성가능하게 만들어야 함 #}
-			<div style="display:flex;flex-direction:column;width:300px">
-				{% for vote in voteList %}
-					<div class="inputBox" style="display:flex">
-						<span>{{ vote.description }}</span>
-					</div>
-				{% endfor %}
+			{% for vote in voteList %}
+				<div style="display:flex;align-items:center">
+					<label for="vote{{ forloop.counter }}">{{ vote.description }}</label><br>
+					<input type="radio" name="vote" id="vote{{ forloop.counter }}" value="{{ vote.id }}">
+				</div>
+			{% endfor %}
+			<input type="submit" value="Vote">
 
-			</div>
-			<button>제출</button>
 		</form>
 	</div>
 {% endblock content %}

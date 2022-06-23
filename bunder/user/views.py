@@ -1,4 +1,5 @@
 from cmath import log
+from contextlib import redirect_stdout
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from .models import User
@@ -42,7 +43,8 @@ def register(request):
             )
             user.save()
             return render(request, 'login/sign_up.html', res_data)
-    return render(request, 'login/sign_up.html', res_data)
+    return redirect('main:home')
+
 
 # 로그인
 @csrf_exempt 

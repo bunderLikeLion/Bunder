@@ -64,7 +64,6 @@ Club Detail
                     책 제목
                     글쓴이
                 </div>
-                
             </div>
             <div class="club_bookshelf">
                 <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
@@ -76,10 +75,7 @@ Club Detail
                 </div>
             </div>
         </div>
-
         <input type="button" value="북클럽 수정">
-
-
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
@@ -89,7 +85,27 @@ Club Detail
         const voteListButton = document.querySelector(".vote_btn");
 
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
-        const voteId = JSON.parse("{{ vote_id|escapejs }}");
+		let voteId;
+        try {
+            voteId = JSON.parse("{{ vote_id|escapejs }}");
+            voteListButton.addEventListener('click', ()=> {
+                voteList(bookClubId, voteId)
+            })
+            const deleteVote = async (id) => {
+                const url = "vote?clubId=" + id;
+                await axios.delete(url,{ id });
+            }
+            voteDeleteButton.addEventListener('click', ()=> {
+                deleteVote(bookClubId)
+            })
+
+            const voteList = async (clubid, voteId) => {
+                window.location.href = "vote/list?clubId=" + clubid + "&voteId=" + voteId;
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
 
         axios.defaults.xsrfCookieName = 'csrftoken'
         axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
@@ -102,13 +118,6 @@ Club Detail
             createVote(bookClubId)
 		})
 
-        voteListButton.addEventListener('click', ()=> {
-            voteList(bookClubId, voteId)
-		})
-
-		voteDeleteButton.addEventListener('click', ()=> {
-            deleteVote(bookClubId)
-		})
 
 		const requestMember = async (id) => {
 			const url = "member/";
@@ -119,21 +128,9 @@ Club Detail
             window.location.href = "vote?clubId=" + id;
 		}
 
-        const voteList = async (clubid, voteId) => {
-            window.location.href = "vote/list?clubId=" + clubid + "&voteId=" + voteId;
-		}
-
-        const deleteVote = async (id) => {
-			const url = "vote?clubId=" + id;
-
-            await axios.delete(url,{ id });
-		}
-
 
 	</script>
     {% endblock content %}
-
-
 
 </body>
 

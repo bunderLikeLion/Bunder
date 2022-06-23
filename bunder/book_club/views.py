@@ -94,7 +94,6 @@ class AddVote(View):
             return redirect("/")
 
         vote_list = request.POST.getlist('input[]')
-
         vote = BookClubVote()
         vote.club = club
         vote.topic = request.POST['topic']
@@ -108,11 +107,11 @@ class AddVote(View):
             vote_detail.description = each_vote
             vote_detail.vote = vote
             vote_detail.save()
-            voteList += vote_detail
+            voteList.append(vote_detail)
 
         return redirect('/bookclub/vote/list?clubId=' +
                         str(clubId) + "&voteId=" + str(vote.id),
-                        {'vote': vote, 'voteLiist': voteList})
+                        {'vote': vote, 'voteList': voteList})
 
     def delete(self, request):
         clubId = request.GET.get('clubId', None)
@@ -135,13 +134,21 @@ class Vote(View):
         voteId = request.GET.get('voteId', None)
         club = BookClub.objects.get(id=clubId)
         vote = BookClubVote.objects.get(id=voteId)
-        voteList = VoteDetail.objects.filter(vote_id=8)
+        voteList = VoteDetail.objects.filter(vote_id=voteId)
 
-        for i in voteList:
-            print("asd" + i.description)
 
         if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
 
         return render(request, 'book_club/vote.html', {'vote': vote, 'voteList': voteList})
+
+    def post(self, request):
+        vote_detail_id = request.POST['vote']
+        vote_detail = VoteDetail.objects.get(id=vote_detail_id)
+        vote_detail.vote_cnt += 1
+        vote_detail.save()
+
+        vote = BookClubVote.objects.get(id=vote_detail.vote_id)
+
+        return redirect("/bookclub/" + str(vote.club.id))

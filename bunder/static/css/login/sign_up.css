@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 body {
@@ -97,4 +96,10 @@ body {
 
 .container .inputBox input[type='submit']:hover {
     background: #e91e63;
+}
+
+.password_error {
+    text-align: center; 
+    color : red;
+    font-weight: bold;
 }

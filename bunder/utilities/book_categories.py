@@ -152,4 +152,6 @@ def category_converter(category):
         return '기술/IT'
     elif category in new_category['인문']:
         return '인문'
+    else:
+        return '기타'
     

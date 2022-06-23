@@ -48,14 +48,17 @@ def register(request):
 @csrf_exempt 
 def login(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = auth.authenticate(request, username = username, password = password)
-        if user is not None:
-            auth.login(request, user)
-            return render(request, 'login/sign_in.html', {'error' : '로그인 성공'})
-        else:
-            return render(request, 'login/sign_in.html', {'error' : "아이디 혹은 비밀번호가 다릅니다."})
+        if 'login' in request.POST:
+            username = request.POST["username"]
+            password = request.POST["password"]
+            user = auth.authenticate(request, username = username, password = password)
+            if user is not None:
+                auth.login(request, user)
+                return render(request, 'login/sign_in.html', {'error' : '로그인 성공'})
+            else:
+                return render(request, 'login/sign_in.html', {'error' : "아이디 혹은 비밀번호가 다릅니다."})
+        elif 'forgotpassword' in request.POST:
+            pass
     else:
         return render(request, 'login/sign_in.html')
 

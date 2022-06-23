@@ -114,7 +114,9 @@ button:active {
 button.login{
     text-align: center;
     display: inline;
-    margin-left: 15%;
+    position: relative;
+    top: 1.3rem;
+    left: 70%;
     width: 30%;
     height: 3rem;
     color: #AE1100;

@@ -80,9 +80,6 @@ new_category = {"문학" :
     'YOUNG ADULT FICTION',
     'YOUNG ADULT NONFICTION'
     ],
-    "경제/경영" : [
-        'BUSINESS & ECONOMICS'
-    ],
     "자기계발" : [
         'COOKING',
         'CRAFTS & HOBBIES',
@@ -94,6 +91,7 @@ new_category = {"문학" :
         'BODY, MIND & SPIRIT',
         'SELF-HELP',
         'TRAVEL'
+        'BUSINESS & ECONOMICS'
     ],
     "인문" : [
         'BIOGRAPHY & AUTOBIOGRAPHY',
@@ -132,14 +130,13 @@ new_category = {"문학" :
         'TRANSPORTATION',
         'ARCHITECTURE',
         'TECHNOLOGY & ENGINEERING'
-    ]
+    ],
+    "기타" : []
     }
 
 def category_converter(category):
     if category in new_category['문학']:
         return '문학'
-    elif category in new_category['경제/경영']:
-        return '경제/경영'
     elif category in new_category['예술']:
         return '예술'
     elif category in new_category['자기계발']:
@@ -152,4 +149,6 @@ def category_converter(category):
         return '기술/IT'
     elif category in new_category['인문']:
         return '인문'
+    elif category in new_category['기타']:
+        return '기타'
     

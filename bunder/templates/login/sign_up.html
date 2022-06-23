@@ -30,28 +30,81 @@ Sign up
         </div>
         <div class="inputBox">
             <input type="number" required="required" name='age' id='age' min="8" max="100">
-            <span>Age</span>
+            <span class="age">Age</span>
         </div>
-		<div class="inputBox">
-			<select name="sex" id="sex">
-				<option value="male">남자</option>
-				<option value="female">여자</option>
-			</select>
-		</div>
-        <div class="inputBox">
-            <select name="book_category" id="book_category">
-                <option value="">-- 선호 책 장르 --</option>
-                <option value="문학">문학</option>
-                <option value="경제/경영">경제/경영</option>
-                <option value="예술">예술</option>
-                <option value="자기계발">자기계발</option>
-                <option value="정치/사회">정치/사회</option>
-                <option value="과학">과학</option>
-                <option value="기술IT">기술/IT</option>
+        <div class="segmented-control">
+            <input type="radio" name="radio2" value="male" id="tab-1" checked />
+            <label for="tab-1" class="segmented-control__1">
+                <p>Male</p>
+            </label>
+            <input type="radio" name="radio2" value="female" id="tab-2" />
+            <label for="tab-2" class="segmented-control__2">
+                <p>Female</p>
+            </label>
+            <div class="segmented-control__color"></div>
+        </div>
+        <!-- <div class="inputBox">
+            <select name="sex" id="sex">
+                <option value="male">남자</option>
+                <option value="female">여자</option>
             </select>
-            {{error}}
-			<input type="submit" value="Sign up">
-        </div>
+        </div> -->
+        <!-- <select name="book_category" id="book_category">
+            <option value="">-- 선호 책 장르 --</option>
+            <option value="문학">문학</option>
+            <option value="예술">예술</option>
+            <option value="자기계발">자기계발</option>
+            <option value="정치/사회">정치/사회</option>
+            <option value="과학">과학</option>
+            <option value="기술IT">기술/IT</option>
+            <option value="기타">기타</option>
+        </select> -->
+        <h3 class="decorator decorator_indent-b_l">선호 책 장르</h3>
+        <section class="genre_container">
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">문학</span>
+            </label>
+            <label class="genre">
+                <input type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">예술</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">자기계발</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">정치/사회</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">과학</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">기술/IT</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">인문</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" name="test" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">기타</span>
+            </label>
+
+        </section>
+        {{error}}
+        <button class="login" type="button" value="Sign up">Sign Up</button>
     </form>
 </div>
 {% endblock content %}

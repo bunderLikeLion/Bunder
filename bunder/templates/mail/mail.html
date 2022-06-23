@@ -1,6 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login/mail.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Mail
+{% endblock title %}
+
+{% block content %}
 <div class="container">
     <div class="write_report">
-        <input type="button" value="쪽지 작성하기" onClick = "location.href = 'mail_to'" >
+        <input type="button" value="쪽지 작성하기" onClick="location.href = 'mail_to'">
     </div>
 
     <div class="navbar_container">
@@ -56,10 +67,13 @@
                 <p class="in_out_text">보낸 쪽지</p>
             </div>
         </div>
+<<<<<<< HEAD
         
     </div>
-
-
-
-
 </div>
+{% endblock content %}
+=======
+
+    </div>
+</div>
+>>>>>>> 0c975126e4b24512d36c20d1b51a47c9949f183f

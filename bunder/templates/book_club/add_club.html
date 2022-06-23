@@ -1,10 +1,13 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-<head>
-    <title>Add Club</title>
-    <!-- <link rel="stylesheet" href="../../static/css/login/sign_up.css"> -->
-</head>
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/add_club.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Add Club
+{% endblock title %}
 
 {% block content %}
 <div class="container">
@@ -77,6 +80,3 @@
     </form>
 </div>
 {% endblock content %}
-
-
-</html>

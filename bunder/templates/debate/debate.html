@@ -1,9 +1,13 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-<head>
-    <title>Debate</title>
-</head>
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/debate/debate.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Debate
+{% endblock title %}
 
 {% block content %}
 <div class="container">

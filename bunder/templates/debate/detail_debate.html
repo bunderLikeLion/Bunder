@@ -1,3 +1,14 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/debate/detail_debate.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Detail Debate
+{% endblock title %}
+
+{% block content %}
 <div class="container">
     <div class="debate_container">
         <div class="agree_disagree_percent">
@@ -116,6 +127,5 @@
             
         </div> -->
     </div>
-
-
 </div>
+{% endblock content %}

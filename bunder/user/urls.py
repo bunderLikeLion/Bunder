@@ -11,4 +11,5 @@ urlpatterns = [
     path('updatepassword', views.password_revise),
     path('updatecategory', views.category_revise),
     path('myreport', views.search_my_reports, name = "search_my_reports"),
+    path('bunder', views.bunder, name = "bunder"),
 ]

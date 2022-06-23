@@ -6,6 +6,8 @@ from django.views import View
 import json
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember
 
+def main(request):
+    return render(request, "book_club/book_club.html")
 
 @csrf_exempt
 def new(request):

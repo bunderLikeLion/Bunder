@@ -1,46 +1,30 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>book</title>
+{% extends "base/base.html" %}
+{% load static %}
 
-<body>
-	<div class="container">
-		북클럽 참여 희망 명단
-		북클럽 현재 인원 {{book_club.member_cnt}}/{{book_club.member_total}}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/club_admit.css' %}" />
+{% endblock extrahead %}
 
-		<div class="container_all_requesters">
-			{% for member in members %}
-				<div class="container_single_requester" style="display: flex;">
-					<div class="requester_profile">
-						<img class="profile_img" src="{{ member.user.avatar }}">
-						{{ member.user.nickname }}
-					</div>
-					<input type="submit" value="수락">
-					<input type="submit" value="거절">
+{% block title %}
+Club Admit
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    북클럽 참여 희망 명단
+    북클럽 현재 인원 {{book_club.member_cnt}}/{{book_club.member_total}}
+
+    <div class="container_all_requesters">
+		{% for member in members %}
+			<div class="container_single_requester" style="display: flex;">
+				<div class="requester_profile">
+					<img class="profile_img" src="{{ member.user.avatar }}">
+					{{ member.user.nickname }}
 				</div>
-			{% endfor %}
-		</div>
-		<div id="count">0</div>
-		<button id="up">+1</button>
-		<button id="down">-1</button>
-	</div>
-	<script>
-        const count = {
-            get number() {
-                return this._num || 0;
-            },
-            set number(num) {
-                this._num = num;
-                document.querySelector('#count').textContent = this._num;
-            }
-        };
-        document.querySelector('#up').addEventListener('click', () => {
-            count.number++;
-        });
-        document.querySelector('#down').addEventListener('click', () => {
-            count.number--;
-        });
-	</script>
-</body>
-</html>
+				<input type="submit" value="수락">
+				<input type="submit" value="거절">
+			</div>
+		{% endfor %}
+
+    </div>
+</div>

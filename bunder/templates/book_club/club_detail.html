@@ -1,10 +1,13 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-<head>
-    <title>Club Detail</title>
-    <!-- <link rel="stylesheet" href="../../static/css/"> -->
-</head>
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/club_detail.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Club Detail
+{% endblock title %}
 
 <body>
     {% block content %}
@@ -36,36 +39,43 @@
         </div>
         <div class="club_detail_containaer">
             진행중인 이벤트
-            <!--기간 정해서 다음책 투표 정하는 두가지 기능 파트-->
-			<button class="vote-create_btn">투표 생성</button>
-			<button class="vote-delete_btn">투표 삭제</button>
-            <div class="event_function">
-				<h4>투표</h4>
-				{% if vote %}
-				투표 제목: {{ vote.topic }}
-				기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-				<button class="vote_btn">투표 하러 가기</button>
-				{% endif %}
-			</div>
-            <div class="event_function">룰렛</div>
+            <div class="button">
+                <button class="vote-create_btn">투표 생성</button>
+                <button class="vote-delete_btn">투표 삭제</button>
+                <div class="vote_function">
+                    <h4>투표</h4>
+                    {% if vote %}
+                    투표 제목: {{ vote.topic }}
+                    기간: {{ vote.start_date }} ~ {{ vote.end_date }}
+                    <button class="vote_btn">투표 하러 가기</button>
+                    {% endif %}
+                </div>
+            </div>
         </div>
         <div class="club_detail_containaer">
             <div class="book_container">
                 현재 읽는 중인 책
-                <div class="book_cover">
-                    <img class="book_cover" src="">
+                <input type="button" value="책 수정">
+                <input type="button" value="책장으로">
+                <div class="book">
+                    <div class="book_cover">
+                        <img class="book_cover" src="">
+                    </div>
+                    책 제목
+                    글쓴이
                 </div>
             </div>
             <div class="club_bookshelf">
-                <!--현재 읽는 중인 책이 끝나면 여기에 기록-->
+                <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
                 우리 소모임의 책장
-                <div class="book_cover">
-                    <img class="book_cover" src="">
+                <div class="book">
+                    <div class="book_cover">
+                        <img class="book_cover" src="">
+                    </div>
                 </div>
             </div>
         </div>
-
-
+        <input type="button" value="북클럽 수정">
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>

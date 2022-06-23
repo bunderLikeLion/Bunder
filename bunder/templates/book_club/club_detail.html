@@ -36,18 +36,18 @@
         </div>
         <div class="club_detail_containaer">
             진행중인 이벤트
-            <!--기간 정해서 다음책 투표 정하는 두가지 기능 파트-->
-			<button class="vote-create_btn">투표 생성</button>
-			<button class="vote-delete_btn">투표 삭제</button>
-            <div class="event_function">
-				<h4>투표</h4>
-				{% if vote %}
-				투표 제목: {{ vote.topic }}
-				기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-				<button class="vote_btn">투표 하러 가기</button>
-				{% endif %}
-			</div>
-            <div class="event_function">룰렛</div>
+            <div class="button">
+                <button class="vote-create_btn">투표 생성</button>
+                <button class="vote-delete_btn">투표 삭제</button>
+                <div class="vote_function">
+                    <h4>투표</h4>
+                    {% if vote %}
+                    투표 제목: {{ vote.topic }}
+                    기간: {{ vote.start_date }} ~ {{ vote.end_date }}
+                    <button class="vote_btn">투표 하러 가기</button>
+                    {% endif %}
+                </div>
+            </div>
         </div>
         <div class="club_detail_containaer">
             <div class="book_container">

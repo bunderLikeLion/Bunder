@@ -15,20 +15,23 @@ body {
     position: fixed;
     top: 2%;
     right: 2%;
-    width: 7.5rem;
-    height: 3.5rem;
-    background: #e1e6ec;
+    width: 9rem;
+    height: 4rem;
     box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     transition: height 0.5s, width 0.5s;
     transition-delay: 0s, 0.5s;
     overflow: hidden;
+    background-color: #EBECF0;
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
 }
 
 .navigation.active {
     width: 18rem;
-    height: 30rem;
+    height: 32rem;
     transition: width 0.5s, height 0.5s;
     transition-delay: 0s, 0.5s;
 
@@ -36,14 +39,17 @@ body {
 
 .navigation .userBx {
     position: relative;
-    width: 3.3rem;
+    width: 4.5rem;
     height: 3.9rem;
     display: flex;
     align-items: center;
-    background: #e1e6ec;
     overflow: hidden;
     transition: 0.5s;
     transition-delay: 0.5s;
+    background-color: #EBECF0;
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
 }
 
 .navigation.active .userBx {
@@ -55,24 +61,25 @@ body {
     white-space: nowrap;
     color: #555;
     font-size: 1.1rem;
+    position: relative;
+    top: 4%;
+    left: 3%;
 }
 
 .navigation .userBx .imgBx {
     position: relative;
-    min-width: 4rem;
-    height: 4rem;
+    min-width: 4.5rem;
+    height: 3.9rem;
     overflow: hidden;
-    background: #000;
     border-radius: 50%;
-    border: 10px solid #e1e6ec;
 }
 
 .navigation .userBx .imgBx img {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 14%;
+    left: 9%;
+    width: 80%;
+    height: 90%;
     object-fit: cover;
 }
 
@@ -90,9 +97,9 @@ body {
     position: absolute;
     width: 2rem;
     height: 0.1rem;
-    background: #555;
+    background: lightcoral;
     transform: translateY(-10px);
-    box-shadow: 0 10px #555;
+    box-shadow: 0 10px lightcoral;
     transition: 0.5s;
 }
 
@@ -101,7 +108,7 @@ body {
     position: absolute;
     width: 2rem;
     height: 0.1rem;
-    background: #555;
+    background: lightcoral;
     transform: translateY(10px);
     transition: 0.5s;
 }
@@ -115,13 +122,14 @@ body {
     transform: translateY(0) rotate(-45deg);
 }
 
-/* acrtive sidebar */
+/* active sidebar */
 .menu {
     position: absolute;
     width: 100%;
-    height: calc(100% - 60px);
-    margin-top: 3.5rem;
+    height: 32rem;
+    margin-top: 4rem;
     padding: 1.3rem;
+    padding-top: 0.3rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     overflow: auto;
 }
@@ -133,16 +141,20 @@ body {
 .menu li a {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    margin: 1.3rem 0;
+    height: 2.5rem;
+    gap: 1.3rem;
+    margin: 1.3rem 1.3rem;
     font-size: 1em;
     text-decoration: none;
     color: #555;
     border-radius: 50px;
     padding: 5px;
-    background: #e1e6ec;
-    box-shadow: 3px 3px 10px 1px rgba(0,0,0, .2),
-                -3px -3px 10px 1px rgba(255,255,255,1); 
+    background: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+}
+
+.menu li a:nth-child(1) {
+    margin-top: 5%;
 }
 
 .menu li a:hover {
@@ -152,4 +164,5 @@ body {
 
 .menu li a ion-icon {
     font-size: 1.5em;
+    margin-left: 0.7rem;
 }

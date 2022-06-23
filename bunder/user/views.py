@@ -65,7 +65,7 @@ def login(request):
 # 로그아웃
 def logout(request):
     auth.logout(request)
-    return render(request, "base/index.html")
+    return redirect('main:home')
 
 # 비밀번호 수정
 @csrf_exempt

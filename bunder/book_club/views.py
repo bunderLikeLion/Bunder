@@ -66,8 +66,8 @@ class AddVote(View):
     def get(self, request):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
-
-        if club.owner_id != request.user:
+        print(f'{club.owner_id}, {request.user}')
+        if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
         return render(request, 'book_club/add_vote.html')
@@ -76,7 +76,7 @@ class AddVote(View):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
 
-        if club.owner_id != request.user:
+        if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
 
@@ -107,7 +107,7 @@ class Vote(View):
         club = BookClub.objects.get(id=clubId)
         vote = BookClubVote.objects.get(id=voteId)
 
-        if club.owner_id != request.user:
+        if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
 

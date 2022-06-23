@@ -13,6 +13,7 @@
     <!-- js -->
     <!-- style -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/base/style.css' %}" />
+    <link rel="stylesheet" href="">
     {% block extrahead %}
     {% endblock extrahead %}
 </head>
@@ -44,17 +45,18 @@
             <li><a href="#">
                     <ion-icon name="mail-outline"></ion-icon>메일함
                 </a></li>
-            <!--{% if user.is_authenticated %}-->
+            {% if user.is_authenticated %}
+            <li><a href="../user/logout">
+                    <ion-icon name="log-out-outline"></ion-icon>로그아웃
+                </a></li>
+            {% else %}
             <li><a href="../user/login">
                     <ion-icon name="log-in-outline"></ion-icon>로그인
                 </a></li>
             <li><a href="../user/signup">
                     <ion-icon name="person-add-outline"></ion-icon>회원가입
                 </a></li>
-            <!-- {% endif %} -->
-            <li><a href="#">
-                    <ion-icon name="log-out-outline"></ion-icon>로그아웃
-                </a></li>
+            {% endif %}
         </ul>
     </div>
     {% endblock navbar %}

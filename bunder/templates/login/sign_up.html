@@ -11,7 +11,7 @@ Sign up
 {% block content %}
 <div class="container">
     <h2>Ready to Bunder</h2>
-    <form method="post">
+    <form method="post" action="{% url 'user:register' %}">
         <div class="inputBox">
             <input type="text" required="required" name='username' id='username'>
             <span>User ID</span>
@@ -88,7 +88,7 @@ Sign up
 
         </section>
         {{error}}
-        <button class="login" type="button" value="Sign up">Sign Up</button>
+        <button class="login" type="submit" value="Sign up">Sign Up</button>
     </form>
 </div>
 {% endblock content %}

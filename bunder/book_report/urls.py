@@ -13,4 +13,5 @@ urlpatterns = [
     path('', views.main, name = "main"),
     path('search', views.search, name = "search"),
     path('scrap/', views.make_scrap, name='make_scrap'),
+    path('myscrap', views.all_my_scraps.as_view(), name = 'all_my_scrap'),
 ]

@@ -75,10 +75,10 @@ def make_scrap(request):
 
     return JsonResponse({'scrap': model_to_dict(scrap)})
 
-# class all_my_scraps(View):
-#     def get(self, request):
-#         clubId = request.GET.get('clubId', None)
-#         members = BookClubMember.objects.filter(club_id=clubId)
-#         book_club = get_object_or_404(BookClub, id=clubId)
-#         return render(request, 'user/all_my_scraps.html',
-#                       {'members': members, 'book_club': book_club})
+class all_my_scraps(View):
+    def get(self, request):
+        reportId = request.GET.get('reportId', None)
+        user = BookReport.objects.filter(user_id = reportId)
+        book_report = get_object_or_404(BookReport, id=reportId)
+        return render(request, 'user/all_my_scraps.html',
+                      {'user': user, 'book_report': book_report})

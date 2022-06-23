@@ -11,7 +11,7 @@ Sign up
 {% block content %}
 <div class="container">
     <h2>Ready to Bunder</h2>
-    <form method="post" action="{% url 'user:register' %}">
+    <form method="post">
         <div class="inputBox">
             <input type="text" required="required" name='username' id='username'>
             <span>User ID</span>
@@ -33,11 +33,11 @@ Sign up
             <span class="age">Age</span>
         </div>
         <div class="segmented-control">
-            <input type="radio" name="radio2" value="male" id="tab-1" checked />
+            <input type="radio" name="sex" value="male" id="tab-1" checked />
             <label for="tab-1" class="segmented-control__1">
                 <p>Male</p>
             </label>
-            <input type="radio" name="radio2" value="female" id="tab-2" />
+            <input type="radio" name="sex" value="female" id="tab-2" />
             <label for="tab-2" class="segmented-control__2">
                 <p>Female</p>
             </label>
@@ -46,42 +46,42 @@ Sign up
         <h3 class="decorator decorator_indent-b_l">선호 책 장르</h3>
         <section class="genre_container">
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">문학</span>
             </label>
             <label class="genre">
-                <input type="radio" name="test" class="radio__input">
+                <input type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">예술</span>
             </label>
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">자기계발</span>
             </label>
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">정치/사회</span>
             </label>
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">과학</span>
             </label>
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">기술/IT</span>
             </label>
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">인문</span>
             </label>
             <label class="genre">
-                <input checked type="radio" name="test" class="radio__input">
+                <input checked type="radio" name="book_category" class="radio__input">
                 <div class="radio__box"></div>
                 <span class="radio__text">기타</span>
             </label>

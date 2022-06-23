@@ -108,7 +108,8 @@ def category_revise(request):
         user.save()
         return render(request, "user/category_revise.html", {'user' : user})
     else:
-        return render(request, "user/category_revise.html", {'user' : user})
+        if not request.user.is_authenticated:
+            return HttpResponse("로그인 후 이용해주세요")
 
 # 내 독후감 확인
 def search_my_reports(request):

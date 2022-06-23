@@ -11,6 +11,7 @@ urlpatterns = [
     path('user/', include("user.urls")),
     path('bookreport/', include("book_report.urls")),
     path('bookclub/', include("book_club.urls")),
+    path('', include("main.urls")),
 ]
 
 if settings.DEBUG:

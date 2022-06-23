@@ -66,11 +66,14 @@ div, p, span, input{
 }
 
 
-input:-webkit-autofill {  /* 자동완성할 때 배경색 문제 미해결*/
-    -webkit-box-shadow: 0 0 0 1000px transparent inset;
-    box-shadow: 0 0 0 1000px transparent inset;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+     -webkit-transition: background-color 9999s ease-out;
+     -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
 }
-
 
 .container .inputBox span {
     position: absolute;

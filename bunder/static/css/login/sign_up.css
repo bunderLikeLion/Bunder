@@ -97,3 +97,9 @@ body {
 .container .inputBox input[type='submit']:hover {
     background: #e91e63;
 }
+
+.password_error {
+    text-align: center; 
+    color : red;
+    font-weight: bold;
+}

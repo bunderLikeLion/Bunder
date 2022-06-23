@@ -36,25 +36,46 @@
         </div>
         <div class="club_detail_containaer">
             진행중인 이벤트
-            <!--기간 정해서 다음책 투표 정하는 두가지 기능 파트-->
-            <div class="event_function">투표</div>
-            <div class="event_function">룰렛</div>
+            <div class="vote_container">
+                <input type="button" value="투표 생성">
+                <input type="button" value="투표 삭제">
+
+                <div class="vote">
+                    투표 제목
+                    기간
+                    <input type="button" value="투표하러 가기">
+                    투표 결과
+                </div>
+            </div>
         </div>
         <div class="club_detail_containaer">
             <div class="book_container">
                 현재 읽는 중인 책
-                <div class="book_cover">
-                    <img class="book_cover" src="">
+                <input type="button" value="책 수정">
+                <input type="button" value="책장으로">
+                <div class="book">
+                    <div class="book_cover">
+                        <img class="book_cover" src="">
+                    </div>
+                    책 제목
+                    글쓴이
                 </div>
+                
             </div>
             <div class="club_bookshelf">
-                <!--현재 읽는 중인 책이 끝나면 여기에 기록-->
+                <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
                 우리 소모임의 책장
-                <div class="book_cover">
-                    <img class="book_cover" src="">
+                <div class="book">
+                    <div class="book_cover">
+                        <img class="book_cover" src="">
+                    </div>
                 </div>
             </div>
         </div>
+
+        <input type="button" value="북클럽 수정">
+
+
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>

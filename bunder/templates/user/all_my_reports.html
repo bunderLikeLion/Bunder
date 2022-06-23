@@ -1,6 +1,12 @@
-<head>
-    <title>My bunder</title>
-</head>
+{% extends "base/base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user/all_my_reports.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+All My Reports
+{% endblock title %}
 
 <body>
     {% block content %}

@@ -1,9 +1,12 @@
 {% extends "base/base.html" %}
 {% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user/categories_revise.css' %}" />
+{% endblock extrahead %}
 
-<head>
-    <title>Profile</title>
-</head>
+{% block title %}
+Categories Revise
+{% endblock title %}
 
 <body>
     {% block content %}

@@ -1,3 +1,15 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/club_admit.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Club Admit
+{% endblock title %}
+
+{% block content %}
 <div class="container">
     북클럽 참여 희망 명단
     북클럽 현재 인원 {{book_club.member_cnt}}/{{book_club.member_total}}
@@ -16,3 +28,4 @@
 
     </div>
 </div>
+{% endblock content %}

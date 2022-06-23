@@ -1,3 +1,14 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login/mail.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Mail
+{% endblock title %}
+
+{% block content %}
 <div class="container">
     <div class="write_report">
         <input type="button" value="쪽지 작성하기" onClick = "location.href = 'mail_to'" >
@@ -58,8 +69,5 @@
         </div>
         
     </div>
-
-
-
-
 </div>
+{% endblock content %}

@@ -1,10 +1,13 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-<head>
-    <title>Club Detail</title>
-    <!-- <link rel="stylesheet" href="../../static/css/"> -->
-</head>
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/club_detail.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Club Detail
+{% endblock title %}
 
 <body>
     {% block content %}

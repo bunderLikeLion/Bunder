@@ -16,26 +16,14 @@
 				<span>투표 주제 : {{vote.topic}}</span>
 
 			</div>
-			<input type="date" name="startvote" id="startvote">
-			<input type="date" name="endvote" id="endvote">
+			기간: {{ vote.start_date }} ~ {{ vote.end_date }}
 			{# TODO: JS로 동적 생성가능하게 만들어야 함 #}
 			<div style="display:flex;flex-direction:column;width:300px">
-				<div class="inputBox" style="display:flex">
-					<span>항목1</span>
-					<input type="text" name="input[]">
-				</div>
-				<div class="inputBox" style="display:flex">
-					<span>항목2</span>
-					<input type="text" name="input[]">
-				</div>
-				<div class="inputBox" style="display:flex">
-					<span>항목3</span>
-					<input type="text" name="input[]">
-				</div>
-				<div class="inputBox" style="display:flex">
-					<span>항목4</span>
-					<input type="text" name="input[]">
-				</div>
+				{% for vote in voteList %}
+					<div class="inputBox" style="display:flex">
+						<span>{{ vote.description }}</span>
+					</div>
+				{% endfor %}
 
 			</div>
 			<button>제출</button>

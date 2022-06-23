@@ -6,8 +6,9 @@
 {% endblock extrahead %}
 
 <head>
-    <title>Report Detail</title>
+	<title>Report Detail</title>
 </head>
+
 <body>
 	{% block content %}
 	<div class="container">
@@ -17,12 +18,12 @@
 				<span class="date">작성날짜 : {{book.created_at}} </span>
 			</div>
 			<div class="CRUD_button">
-	            <form action="{% url 'book_report:edit' book_report.id %}">
-	                <input type="submit" value="편집" onClick="">
-	            </form>
-	            <form action="{% url 'book_report:delete' book_report.id %}">
-	                <input type="submit" value="삭제" onClick="">
-	            </form>
+				<form action="{% url 'book_report:edit' book_report.id %}">
+					<input type="submit" value="편집" onClick="">
+				</form>
+				<form action="{% url 'book_report:delete' book_report.id %}">
+					<input type="submit" value="삭제" onClick="">
+				</form>
 			</div>
 			<div class="profile_container">
 				<img class="profile_img" src="">
@@ -90,15 +91,15 @@
 	<script>
 		const requestButton = document.querySelector("#scrap");
 		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
-		requestButton.addEventListener('click', ()=> {
+		requestButton.addEventListener('click', () => {
 			requestMember(bookReportId);
 		})
 
 		const requestMember = async (id) => {
 			const url = "scrap/";
-			await axios.post(url,{ id });
+			await axios.post(url, { id });
 		}
 	</script>
 
-{% endblock content %}
+	{% endblock content %}
 </body>

@@ -1,0 +1,41 @@
+/* submit button */
+
+.container button {    
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+    background-color: #ebecf0;
+}
+
+button {
+    color: #61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+button:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+button.edit, button.delete{
+    text-align: center;
+    display: inline;
+    position: relative;
+    top: -1rem;
+    left: 82%;
+    width: 8%;
+    height: 3rem;
+    color: hsla(220, 100%, 54%, 1);
+}
+
+button.delete {
+    margin-left: 2rem;
+    color: #e71616;
+}

@@ -10,8 +10,20 @@ body {
     min-height: 100vh;
 }
 
+.logo_container {
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+}
+
+.logo_container, .logo {
+    width: 8rem;
+    height: 4rem;
+}
+
 /* sidebar navigation */
 .navigation {
+    z-index: 2; 
     position: fixed;
     top: 2%;
     right: 2%;

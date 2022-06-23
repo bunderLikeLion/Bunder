@@ -9,100 +9,103 @@ My Bunder
 {% endblock title %}
 
 
-<body>
-    {% block content %}
-    <div class="container">
-        <div class="container_profile">
-            <div class="container_profile_img">
-                <img class="profile_img" src="">
-            </div>
-            <div class="container_name">
-                <h3>이름 : {{user.username}}</h3>
-            </div>
+{% block content %}
+<div class="container">
+    <div class="profile_container">
+        <div class="img_container">
+            <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
         </div>
-
-        <div class="container_profile_book">
-            <h3>프로필 북</h3>
-            <div class="profile_book_cover">
-                <img class="book_cover" src="">
-            </div>
-        </div>
-
-        <div class="container_my_book_club">
-            <h3>참여중인 소모임</h3>
-            <div class="all_my_book_club">
-                <div class="my_book_club">소모임1</div>
-                <div class="my_book_club">소모임2</div>
-                <div class="my_book_club">소모임3</div>
-            </div>
-        </div>
-
-        <div class="container_mybookshelf">
-            <h3>나의 책장</h3>
-            <input type="button" value="책 추가하기">
-            <div class="all_my_books">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-                <img class="book_cover" src="">
-            </div>
-        </div>
-
-        <div class="container_mytext">
-            <h3>내가 쓴 글</h3>
-            <div class="button">
-                <input type="button" value="전체보기">
-            </div>
-            <div class="all_my_texts">
-                <div class="container_my_book_report">
-                    <h4>독후감</h4>
-                    {% for my_report in my_reports %}
-                    {{my_report.report_name}}
-                    <br>
-                    {% endfor %}
-                </div>
-                <div class="container_mydebate">
-                    <h4>찬/반 토론</h4>
-                    <div class="my_debate"></div>
-                    <div class="my_debate"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container_my_save">
-            <h3>내가 스크랩한 글</h3>
-            <div class="button">
-                <input type="button" value="전체보기">
-            </div>
-            <div class="all_my_save">
-                <div class="container_book_report">
-                    <h4>독후감</h4>
-                    <div class="book_report">독후감1</div>
-                    <div class="book_report">독후감2</div>
-                </div>
-                <div class="container_debate">
-                    <h4>찬/반 토론</h4>
-                    <div class="debate"></div>
-                    <div class="debate"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container_bunder_recommend_book">
-            <h3>bunder 추천 도서</h3>
-            <div class="all_bunder_recommend_books">
-                <div class="bunder_recommend_books">추천도서1</div>
-                <div class="bunder_recommend_books">추천도서2</div>
-                <div class="bunder_recommend_books">추천도서3</div>
-                <div class="bunder_recommend_books">추천도서4</div>
-            </div>
-
+        <div class="name_container">
+            <h3 class="name">이름 : {{user.username}}</h3>
+            <h3 class="book_category">선호하는 책 장르 : 카테고리 책</h3>
         </div>
     </div>
-    {% endblock content %}
 
-</body>
+    <div class="profile_book_container">
+        <h3>프로필 북</h3>
+    </div>
+    <div class="profile_book_cover">
+        <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+    </div>
+    <div class="profile_club">
+        <h3>참여중인 소모임</h3>
+    </div>
+    <div class="book_club_container">
+        <div class="my_book_club">
+            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+        </div>
+        <div class="my_book_club">
+            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+        </div>
+        <div class="my_book_club">
+            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+        </div>
+    </div>
+
+    <div class="container_mybookshelf">
+        <h3>나의 책장</h3>
+        <input type="button" value="책 추가하기">
+        <div class="all_my_books">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+            <img class="book_cover" src="">
+        </div>
+    </div>
+
+    <div class="container_mytext">
+        <h3>내가 쓴 글</h3>
+        <div class="button">
+            <input type="button" value="전체보기">
+        </div>
+        <div class="all_my_texts">
+            <div class="container_my_book_report">
+                <h4>독후감</h4>
+                {% for my_report in my_reports %}
+                {{my_report.report_name}}
+                <br>
+                {% endfor %}
+            </div>
+            <div class="container_mydebate">
+                <h4>찬/반 토론</h4>
+                <div class="my_debate"></div>
+                <div class="my_debate"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container_my_save">
+        <h3>내가 스크랩한 글</h3>
+        <div class="button">
+            <input type="button" value="전체보기">
+        </div>
+        <div class="all_my_save">
+            <div class="container_book_report">
+                <h4>독후감</h4>
+                <div class="book_report">독후감1</div>
+                <div class="book_report">독후감2</div>
+            </div>
+            <div class="container_debate">
+                <h4>찬/반 토론</h4>
+                <div class="debate"></div>
+                <div class="debate"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container_bunder_recommend_book">
+        <h3>bunder 추천 도서</h3>
+        <div class="all_bunder_recommend_books">
+            <div class="bunder_recommend_books">추천도서1</div>
+            <div class="bunder_recommend_books">추천도서2</div>
+            <div class="bunder_recommend_books">추천도서3</div>
+            <div class="bunder_recommend_books">추천도서4</div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

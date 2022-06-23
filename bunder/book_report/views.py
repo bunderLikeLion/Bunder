@@ -25,10 +25,12 @@ def detail_report(request, id):
 def create(request):
     new_book = BookReport()
     new_book.user = request.user
-    new_book.report_name = request.POST['report_name']
-    new_book.book_name = request.POST['book_name']
-    new_book.category = request.POST['book_category']
-    new_book.content = request.POST['content']
+    new_book.report_name = request.POST.get('report_name')
+    new_book.book_name = request.POST.get('book_name')
+    new_book.book_author = request.POST.get('book_author')
+    new_book.book_img = request.POST.get('book_img')
+    new_book.book_category = request.POST.get('book_category')
+    new_book.content = request.POST.get('content')
     new_book.save()
     return redirect('book_report:detail', new_book.id)
 
@@ -42,7 +44,7 @@ def update(request, id):
     update_book.report_name = request.POST.get('report_name')
     print(update_book.report_name)
     update_book.book_name = request.POST.get('book_name')
-    update_book.book_category = request.POST.get('book_category')
+    update_book.category = request.POST.get('category')
     update_book.content = request.POST.get('content')
     update_book.save()
     return redirect('book_report:detail', update_book.id)

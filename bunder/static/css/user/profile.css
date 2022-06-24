@@ -92,8 +92,12 @@ body {
     box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
     position: absolute;
 }
+
+.pagination li:first-child {
+    left: 35%;
+}
 .pagination li:last-child {
-    left: 50%;
+    left: 70%;
 }
 .pagination li a {
     font-size: 1rem;
@@ -101,7 +105,7 @@ body {
     text-decoration: none;
     color: #dc143c;
     height: 3rem;
-    width: 11rem;
+    width: 9rem;
     display: block;
     line-height: 3.4rem;
 }

@@ -8,27 +8,107 @@
 All My Reports
 {% endblock title %}
 
-<body>
-    {% block content %}
-    <div class="all_my_text_container">
-        <div class="my_text_navbar">
-            <h3>나의 독후감</h3>
-            <h3>찬/반 토론</h3>
-            <div class="inputBox">
-                <select name="debate_view" id="debate_view">
-                    <option value="report">독후감</option>
-                    <option value="debate">찬/반 토론</option>
-                </select>
+{% block content %}
+<div class="container">
+    <div class="profile_reports">
+        <h3>내가 쓴 글</h3>
+    </div>
+    <div class="reports_container">
+        <div class="first_container">
+            <div class="report_name_container">
+                <div class="report_name">
+                    <h3>독후감</h3>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목 아마 이정도 길겠죠?</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">{% for my_report in my_reports %}
+                        {{my_report.report_name}}
+                        {% endfor %}</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">독후감 제목</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="report_name_container">
+            <div class="report_name">
+                <h3>찬/반 토론</h3>
             </div>
         </div>
-        <div class="all_texts_container">
-            <div class="my_text_container">
-                <div class="my_text">독후감1</div>
-                <div class="my_text">독후감2</div>
-                {% for my_report in my_reports %}
-                {{my_report.report_name}}
-                {% endfor %}
+        <div class="report_container">
+            <div class="inner_report_container">
+                <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
+            </div>
+        </div>
+        <div class="report_container">
+            <div class="inner_report_container">
+                <a href="" class="reports_name">찬/반토론 제목</a>
+            </div>
+        </div>
+        <div class="report_container">
+            <div class="inner_report_container">
+                <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
+            </div>
+        </div>
+        <div class="report_container">
+            <div class="inner_report_container">
+                <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
+            </div>
+        </div>
+        <div class="report_container">
+            <div class="inner_report_container">
+                <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
+            </div>
+        </div>
+        <div class="report_container">
+            <div class="inner_report_container">
+                <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
             </div>
         </div>
     </div>
-    {% endblock content %}
+</div>
+{% endblock content %}

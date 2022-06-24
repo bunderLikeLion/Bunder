@@ -23,7 +23,6 @@ body {
     position: relative;
     width: 7rem;
     height: 7rem;
-    overflow: hidden;
     border-radius: 50%;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -42,7 +41,6 @@ body {
     position: relative;
     width: 50%;
     height: 7rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -68,7 +66,6 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -172,7 +169,6 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -187,7 +183,6 @@ body {
     position: relative;
     width: 90%;
     height: 19rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -213,7 +208,6 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -229,7 +223,6 @@ body {
     position: relative;
     width: 90%;
     height: 25rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -271,7 +264,6 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -292,7 +284,6 @@ body {
     position: relative;
     width: 90%;
     height:28rem;
-    overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;

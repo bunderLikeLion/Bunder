@@ -130,9 +130,20 @@ body {
 }
 
 .margin {
-    margin-top: 5rem;
+    margin-top: 7rem;
 }
 
 .margin .profile_club {
     top: -0.1rem;
+}
+
+.container .my_book_club {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    width: 20%;
+    height: 80%;
 }

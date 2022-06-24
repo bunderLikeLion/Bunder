@@ -27,6 +27,7 @@ body {
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     left: 5%;
+    top: 2rem;
 }
 
 .container .book_club_container {

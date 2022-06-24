@@ -16,7 +16,7 @@ Profile
         <h2>My Profile</h2>
         <div class="profile_container">
             <div class="img_container">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/{{ user.nickname }}.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
             </div>
             <div class="name_container">
                 <h3 class="name">User ID : {{user.username}}</h3>
@@ -33,5 +33,6 @@ Profile
                 </ul>
             </div>
         </div>
+
     </div>
     {% endblock content %}

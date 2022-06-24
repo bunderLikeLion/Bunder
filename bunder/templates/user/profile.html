@@ -25,14 +25,15 @@ Profile
                 <h3 class="book_category">Favorite Category : {{user.categories}}</h3>
             </div>
         </div>
-        <div class="container_body">
-            <div class="pagination_container">
-                <ul class="pagination">
-                    <li><a href="" class="updatecategory">선호 책 장르 수정</a></li>
-                    <li><a href="updatepassword" class="next">비밀번호 수정</a></li>
-                </ul>
+        <form method="post">
+            <div class="inputBox">
+                <div class="button">
+                    <button class="category" type="submit" value="updatecategory" name="updatecategory">책
+                        카테고리수정</button>
+                    <button class="password" type="submit" value="updatepassword" name="updatepassword">비밀번호
+                        수정</button>
+                </div>
             </div>
-        </div>
-
+        </form>
     </div>
     {% endblock content %}

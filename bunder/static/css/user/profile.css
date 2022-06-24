@@ -71,68 +71,48 @@ body {
     margin-bottom: 5%;
 }
 
-.container_body {
-    display: grid;
-    height: 5%;
-    width: 5%;
-    position: relative;
-    left: 67%;
-    top: 3%;
-    place-items: center;
-    text-align: center;
+.container .inputBox, button {    
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+    background-color: #ebecf0;
 }
 
-.pagination_container {
-    border-radius: 1rem;
-}
-.pagination {
-    display: flex;
-    list-style: none;
-    position: relative;
-    left: -50%;
-    top: 1.5rem;
-}
-.pagination li {
-    flex: 1;
-    border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
-}
-.pagination li a {
-    font-size: 1rem;
-    font-weight: 700;
-    text-decoration: none;
-    color: #dc143c;
-    height: 3rem;
-    width: 2rem;
-    display: block;
-    line-height: 3.4rem;
+button {
+    color: #61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-.pagination li:last-child {
-    margin-left: 10%;
-}
-
-.pagination li:first-child a {
-    width: 10rem;
-}
-
-.pagination li:last-child a {
-    width: 8rem;
-}
-
-.pagination li.active {
-    box-shadow: inset -3px -3px 7px #ffffff73,
-    inset 3px 3px 5px rgba(94, 104, 121, 0.288);
-}
-
-.pagination a {
-    border-radius: 1rem;
-}
-
-.pagination a:hover {
+button:hover {
     box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
 
-.pagination a:active {
+button:active {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+button.category{
+    text-align: center;
+    display: inline;
+    position: absolute;
+    left: 50%;
+    top: 88%;
+    width: 20%;
+    height: 2rem;
+    color: hsla(220, 100%, 54%, 1);
+}
+
+button.password{
+    text-align: center;
+    display: inline;
+    position: absolute;
+    left: 75%;
+    top: 88%;
+    width: 15%;
+    height: 2rem;
+    color: hsla(220, 100%, 54%, 1);
 }

@@ -97,7 +97,6 @@ class all_my_scraps(View):
 #댓글 작성
 @csrf_exempt
 def comment_create(request, book_report_id):
-    print('addd')
     if request.user.is_authenticated:
         book_report = get_object_or_404(BookReport, pk = book_report_id)
         comment = Comment()
@@ -106,8 +105,12 @@ def comment_create(request, book_report_id):
             comment.content = request.POST.get('comment_content')
             comment.book_report = book_report
             comment.save()
-            return redirect('book_report:detail', book_report_id)
-    return HttpResponse("로그인 후 이용")
+
+            commentList = Comment.objects.filter(book_report_id=book_report_id)
+            return render(request, 'book_report/detail_report.html', {'comment' : commentList, 'book_report': book_report, 'book_report_id': book_report.id})
+        return redirect('book_report:detail', book_report_id)
+    else:
+        return HttpResponse("로그인 후 이용")
         
 
 

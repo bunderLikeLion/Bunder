@@ -15,7 +15,7 @@
             border: 1px solid rgba(255, 255, 255, 0.18);
         }
         #modal .modal-window {
-            background: rgba( 69, 139, 197, 0.70 );
+            background: BABECC;
             box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
             backdrop-filter: blur( 13.5px );
             -webkit-backdrop-filter: blur( 13.5px );
@@ -93,10 +93,22 @@
         }
 
         #modal .book-select-btn {
-            width: 10%;
+            width: 20%;
             height: 8%;
-            margin-top: 2.5%;
-            margin-left: 80%;
+
+            font-weight: bold;
+            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            font-size: x-large;
+            font-weight: 600;
+            margin-left: 75%;
+            height: 3.5rem;
+            color: #AE1100;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            border-radius: 320px;
         }
 
         #img_input {
@@ -147,10 +159,6 @@
             background: transparent;
         }
 
-        #book_author{   /*책 글쓴이 입력창 길이 조금 늘림*/
-            width: 110%;
-        }
-
         input:-webkit-autofill,
         input:-webkit-autofill:hover,
         input:-webkit-autofill:focus,
@@ -161,14 +169,21 @@
             -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
         }
 
-        .container .inputBox {  
+        .report_container > .inputBox {
+            width: 55rem;
+            margin-left: 10%;
+        }
+
+        
+
+        .inputBox {  
             color: #686868;
             clear: both;
             border: 0;
             outline: 0;
             border-radius: 100px;
-            margin: 1rem 4rem;
-            padding : 1rem 2rem;
+            /* margin: 1rem 4rem; */
+            /* padding : 1rem 2rem; */
             text-shadow: 1px 1px 0 #FFF;
             background-color: #ebecf0;
             /* background-color: pink; */
@@ -214,9 +229,18 @@
             border-radius: 50px;
         }
 
-        #book_search_bar{
+        /* #book_search_bar{
             width: 90%;
             margin: 0 auto;
+        } */
+
+        .book_search_bar{
+            justify-content: center;
+            display : flex;
+            width: 80%;
+            margin: 0 auto;
+            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+            border-radius: 50px;
         }
 
         #book_info > * {   /* 글쓴이, 카테고리 묶음 */
@@ -224,19 +248,48 @@
             
         }
 
-        #book_search {
-            margin : 0 auto;
-            padding : 0 1rem;
-            
-            justify-content: center;
-            align-items: center;
+        .book_search_bar > * {
+            margin : 2rem;
         }
+
+        #book_info_container {
+            width: 25em;
+        }
+
         .book_search_result {
             display: flex;
         }
 
         .book_search_result > * {
             padding : 1rem 2rem;
+        }
+
+        #book_category {
+            cursor: pointer;
+            width: 300px;
+            min-height: 60px;
+            max-height: 300px;
+            border-radius: 15px;
+            background-color: rgb(250, 250, 250);
+            box-shadow: 2px 4px 8px #c5c5c5;
+            transition: all 300ms;
+            
+            border: none;
+        }
+
+        #book_category > option:hover {
+            background-color: red;
+            color: white;
+        }
+
+        option {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            transition: all 300ms;
         }
 
         img {
@@ -271,9 +324,11 @@
         }
         
         #make_report{/* */
-            margin: 1rem;
+            margin: 2rem 5rem;
             padding: 0 2rem;
-            float: right;
+            width: 10rem;
+            display: flex;
+            margin-left: auto;
         }
 
         select {

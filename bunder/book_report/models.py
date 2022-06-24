@@ -1,6 +1,7 @@
 from django.db import models
 from tabnanny import verbose
 from django.conf import settings
+from django.utils import timezone
 
 User = settings.AUTH_USER_MODEL
 
@@ -37,4 +38,4 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default ='')
     book_report = models.ForeignKey(BookReport, on_delete=models.CASCADE, default = "")
     content = models.CharField(max_length=500, verbose_name='content')
-    created_at = models.DateTimeField(verbose_name='created at')
+    created_at = models.DateTimeField(verbose_name='created at', default=timezone.now)

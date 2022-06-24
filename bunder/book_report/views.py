@@ -106,8 +106,10 @@ def comment_create(request, book_report_id):
             comment.content = request.POST.get('comment_content')
             comment.book_report = book_report
             comment.save()
-            return redirect('book_report:detail', book_report_id)
-    return HttpResponse("로그인 후 이용")
+            return render(request, 'book_report/detail_report.html', {'comment' : comment})
+        return redirect('book_report:detail', book_report_id)  
+    else:  
+        return HttpResponse("로그인 후 이용")
         
 
 

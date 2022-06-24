@@ -4,7 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from django.views import View
 import json
-from .models import BookClub, BookClubVote, VoteDetail, BookClubMember
+import os
+from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
 
 def main(request):
     return render(request, "book_club/book_club.html")
@@ -178,6 +179,29 @@ class Vote(View):
         vote = BookClubVote.objects.get(id=vote_detail.vote_id)
 
         return redirect("/bookclub/" + str(vote.club.id))
+
+
+class ClubBook(View):
+    def get(self, request):
+        key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
+        clubId = request.GET.get('clubId', None)
+        json_clubId = json.dumps(clubId)
+        return render(request, 'user/add_book.html', {'bookSecret': key, 'clubId': json_clubId})
+
+    @csrf_exempt
+    def post(self, request):
+        book = Book()
+        # book.user = request.user
+        clubId = request.POST.get('clubId')
+        book.club = BookClub.objects.get(pk=clubId)
+        book.book_name = request.POST.get('book_name')
+        book.book_author = request.POST.get('book_author')
+        book.book_img = request.POST.get('book_img')
+        book.category = request.POST.get('book_category')
+
+        book.save()
+
+        return redirect('book_club:book_club_detail', clubId)
 
 
 class Book(View):

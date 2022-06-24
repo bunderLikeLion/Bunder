@@ -114,7 +114,7 @@ def profile(request):
 # bunder 정보
 def bunder(request):
     user = request.user
-    my_reports = check_my_reports(request)
+    my_reports = check_my_two_reports(request)
     return render(request, 'user/bunder.html', {'user' : user, 'my_reports' : my_reports})
 
 # 카테고리 수정
@@ -141,6 +141,13 @@ def check_my_reports(request):
     user = request.user
     if user:
         my_reports = my_reports.filter(user_id = user.id)
+    return my_reports
+
+def check_my_two_reports(request):
+    my_reports = BookReport.objects.all()
+    user = request.user
+    if user:
+        my_reports = my_reports.filter(user_id = user.id).order_by('created_at')[:2]
     return my_reports
 
 # 개인 번더 책 추가

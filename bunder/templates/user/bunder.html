@@ -13,11 +13,11 @@ My Bunder
 <div class="container">
     <div class="profile_container">
         <div class="img_container">
-            <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+            <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
         </div>
         <div class="name_container">
-            <h3 class="name">이름 : {{user.username}}</h3>
-            <h3 class="book_category">선호하는 책 장르 : 카테고리 책</h3>
+            <h3 class="name">이름 : {{user.nickname}}</h3>
+            <h3 class="book_category">선호하는 책 장르 : {{ user.categories }}</h3>
         </div>
     </div>
 
@@ -25,7 +25,7 @@ My Bunder
         <h3>프로필 북</h3>
     </div>
     <div class="profile_book_cover">
-        <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+        <img class="book_cover" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
     </div>
     <div class="profile_club">
         <h3>참여중인 소모임</h3>
@@ -92,7 +92,7 @@ My Bunder
     <div class="container_body_reports">
         <div class="pagination_container">
             <ul class="pagination ">
-                <li><a href='#' class="all_my_reports">전체보기</a></li>
+                <li><a href={% url 'user:search_my_reports' %} class="all_my_reports">전체보기</a></li>
             </ul>
         </div>
     </div>
@@ -102,16 +102,13 @@ My Bunder
                 <h3>독후감</h3>
             </div>
         </div>
+        {% for single_report in my_reports %}
         <div class="report_container">
             <div class="inner_report_container">
-                <a href="" class="reports_name">독후감 제목 아마 이정도 길겠죠?</a>
+                <a href="../bookreport/{{ single_report.id }}" class="reports_name">{{ single_report.report_name }}</a>
             </div>
         </div>
-        <div class="report_container">
-            <div class="inner_report_container">
-                <a href="" class="reports_name">독후감 제목</a>
-            </div>
-        </div>
+        {% endfor %}
         <div class="report_name_container">
             <div class="report_name">
                 <h3>찬/반 토론</h3>

@@ -21,7 +21,7 @@
 				<form action="{% url 'book_report:edit' book_report.id %}">
 					<input type="submit" value="편집" onClick="">
 				</form>
-				<form action="{% url 'book_report:delete' book_report.id %}">
+				<form action="{% url 'book_report:delete' book_report_id %}">
 					<input type="submit" value="삭제" onClick="">
 				</form>
 			</div>
@@ -82,11 +82,12 @@
 				</form>
 			</div>
 			<div class="comment_content_container">
-				<div class="comment_conetent">
-					<p>댓글 본문</p>
-				</div>
-				<div class="comment_conetent">
-					<p>댓글 본문</p>
+				<div class="comment_content">
+					{% for c in comment %}
+					<p>댓글 작성 : {{c.user.nickname}}</p>
+					<p>댓글 내용 : {{c.content}}</p>
+					<p>댓글 작성날짜 : {{c.created_at}}</p>
+					{% endfor %}
 				</div>
 			</div>
 		</div>

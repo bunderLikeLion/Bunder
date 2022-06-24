@@ -1,101 +1,98 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-<head>
-    <title>Book clubs</title>
-    <link rel="stylesheet" href="css/book_club/book_club.css">
-</head>
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/book_club.css' %}" />
+{% endblock extrahead %}
 
-<body>
-    {% block content %}
-    <div class="container">
-        <div class="club_container">
-            <button class="add_Club" type="button" onclick="location.href='new/'">
-                Add My Club!
-            </button>
-            <div class="my_clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
-        <div class="club_info">
-            <span>인기 북클럽</span>
-            <span>1 / 50</span>
-            <a href="">전체 페이지</a>
-        </div>
-        <div class="club_container">
-            <div class="clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
-        <div class="club_info">
-            <span>인문 북클럽</span>
-            <span>1 / 50</span>
-            <a href="">전체 페이지</a>
-        </div>
-        <div class="club_container">
-            <div class="clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
-        <div class="club_info">
-            <span>철학 북클럽</span>
-            <span>1 / 50</span>
-            <a href="">전체 페이지</a>
-        </div>
-        <div class="club_container">
-            <div class="clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
-        <div class="club_info">
-            <span>과학 북클럽</span>
-            <span>1 / 50</span>
-            <a href="">전체 페이지</a>
-        </div>
-        <div class="club_container">
-            <div class="clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
-        <div class="club_info">
-            <span>자율 북클럽</span>
-            <span>1 / 50</span>
-            <a href="">전체 페이지</a>
-        </div>
-        <div class="club_container">
-            <div class="clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
-        <div class="recommend_profile_container">
-            <div class="profile_container">
-                <img src="" onclick="moveBunder()">
-                <span>이름</span>
-            </div>
+{% block content %}
+<div class="container">
+    <div class="club_container">
+        <button class="add_Club" type="button" onclick="location.href='new/'">
+            Add My Club!
+        </button>
+        <div class="my_clubs" onclick="clubToggle()">&times;
+            <span>소모임명</span>
+            <span>인원</span>
+            <img src="" alt="">
         </div>
     </div>
-    <script>
-        function clubToggle() {
-            const clubContainer = document.querySelector('.club_container');
-            logContainer.classList.toggle('active');
-            const popup = document.querySelector('.club_detail');
-            popup.classList.toggle('active');
-        }
-        function moveBunder() {
-            location.href = "해당 Bunder Template.html";
-        }
-    </script>
-    {% endblock content %}
-</body>
+    <div class="club_info">
+        <span>인기 북클럽</span>
+        <span>1 / 50</span>
+        <a href="">전체 페이지</a>
+    </div>
+    <div class="club_container">
+        <div class="clubs" onclick="clubToggle()">&times;
+            <span>소모임명</span>
+            <span>인원</span>
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="club_info">
+        <span>인문 북클럽</span>
+        <span>1 / 50</span>
+        <a href="">전체 페이지</a>
+    </div>
+    <div class="club_container">
+        <div class="clubs" onclick="clubToggle()">&times;
+            <span>소모임명</span>
+            <span>인원</span>
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="club_info">
+        <span>철학 북클럽</span>
+        <span>1 / 50</span>
+        <a href="">전체 페이지</a>
+    </div>
+    <div class="club_container">
+        <div class="clubs" onclick="clubToggle()">&times;
+            <span>소모임명</span>
+            <span>인원</span>
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="club_info">
+        <span>과학 북클럽</span>
+        <span>1 / 50</span>
+        <a href="">전체 페이지</a>
+    </div>
+    <div class="club_container">
+        <div class="clubs" onclick="clubToggle()">&times;
+            <span>소모임명</span>
+            <span>인원</span>
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="club_info">
+        <span>자율 북클럽</span>
+        <span>1 / 50</span>
+        <a href="">전체 페이지</a>
+    </div>
+    <div class="club_container">
+        <div class="clubs" onclick="clubToggle()">&times;
+            <span>소모임명</span>
+            <span>인원</span>
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="recommend_profile_container">
+        <div class="profile_container">
+            <img src="" onclick="moveBunder()">
+            <span>이름</span>
+        </div>
+    </div>
+</div>
+<script>
+    function clubToggle() {
+        const clubContainer = document.querySelector('.club_container');
+        logContainer.classList.toggle('active');
+        const popup = document.querySelector('.club_detail');
+        popup.classList.toggle('active');
+    }
+    function moveBunder() {
+        location.href = "해당 Bunder Template.html";
+    }
+</script>
+{% endblock content %}

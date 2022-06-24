@@ -16,11 +16,11 @@ Profile
         <h2>My Profile</h2>
         <div class="profile_container">
             <div class="img_container">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/{{ user.nickname }}.svg">
             </div>
             <div class="name_container">
                 <h3 class="name">User ID : {{user.username}}</h3>
-                <h3 class="nickname">User Nickname : {{user.username}}</h3>
+                <h3 class="nickname">User Nickname : {{user.nickname}}</h3>
                 <h3 class="age">User Age : {{user.age}}세</h3>
                 <h3 class="book_category">Favorite Category : {{user.categories}}</h3>
             </div>
@@ -33,6 +33,5 @@ Profile
                 </ul>
             </div>
         </div>
-
     </div>
     {% endblock content %}

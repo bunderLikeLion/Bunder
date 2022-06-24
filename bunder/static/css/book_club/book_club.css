@@ -128,3 +128,11 @@ body {
     width: 90%;
     height: 90%;
 }
+
+.margin {
+    margin-top: 5rem;
+}
+
+.margin .profile_club {
+    top: -0.1rem;
+}

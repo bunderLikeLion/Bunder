@@ -1,4 +1,3 @@
-
 {% extends "base/base.html" %}
 {% load static %}
 
@@ -20,9 +19,9 @@
             </div>
             <div class="inputBox" id="book_search">
                 <div id="book_search_bar">
-                    <div class="text"><span>책 검색</span></div> 
+                    <div class="text"><span>책 검색</span></div>
                     <input type="text" class="input_bar" id="book_search_input">
-                    {{error}} <button type="button" class="button" id="book_search_btn" value="검색">버튼</button>
+                    {{error}} <button type="button" class="button" id="book_search_btn" value="검색">검색</button>
                 </div>
             </div>
         </div>
@@ -40,20 +39,22 @@
                     </div>
                 </div>
                 <div class="book_search_reault" id="book_info">
-                    <div class="text"><p class="author">글쓴이</p></div>
+                    <div class="text">
+                        <p class="author">글쓴이</p>
+                    </div>
                     <input type="text" class="input_bar" id="book_author" name='book_author'>
                     <p class="category">
-                        <div class="text">카테고리</div> 
-                        <select name="book_category" id="book_category">
-                            <option value="문학">문학</option>
-                            <option value="경제/경영">경제/경영</option>
-                            <option value="예술">예술</option>
-                            <option value="자기계발">자기계발</option>
-                            <option value="정치/사회">정치/사회</option>
-                            <option value="과학">과학</option>
-                            <option value="기술IT">기술/IT</option>
-                            <option value="기타">기타</option>
-                        </select>
+                    <div class="text">카테고리</div>
+                    <select name="book_category" id="book_category">
+                        <option value="문학">문학</option>
+                        <option value="경제/경영">경제/경영</option>
+                        <option value="예술">예술</option>
+                        <option value="자기계발">자기계발</option>
+                        <option value="정치/사회">정치/사회</option>
+                        <option value="과학">과학</option>
+                        <option value="기술IT">기술/IT</option>
+                        <option value="기타">기타</option>
+                    </select>
                     </p>
                 </div>
             </div>

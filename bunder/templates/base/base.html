@@ -22,7 +22,9 @@
     <!-- nav -->
     {% block navbar %}
     <div class="logo_container">
-        <img src="../../static/img/bunder_logo.png" class="logo">
+        <a href={% url 'main:home' %}>
+            <img src="../../static/img/bunder_logo.png" class="logo">
+        </a>
     </div>
     <div class="navigation">
         <div class="userBx" onclick="location.href='../user/profile'" style="cursor:pointer;">

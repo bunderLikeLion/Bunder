@@ -10,7 +10,7 @@ from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
-from book_report.models import BookReport
+from book_report.models import BookReport, Scrap
 import json
 import os
 
@@ -114,21 +114,22 @@ def profile(request):
 # bunder 정보
 def bunder(request):
     user = request.user
+    book = Book.objects.get.all()
+    book = book.filter(user_id = user.id ,club = '')
+    scrap = check_my_two_scraps(request)
     my_reports = check_my_two_reports(request)
-    return render(request, 'user/bunder.html', {'user' : user, 'my_reports' : my_reports})
+    return render(request, 'user/bunder.html', {'user' : user, 'my_reports' : my_reports, 'book' : book, 'scrap' : scrap})
 
 # 카테고리 수정
 @csrf_exempt
 def category_revise(request):
     user = request.user
     if request.method == "POST":
-        category = request.POST.get("book_category")
-        user.categories = category
+        user.categories = request.POST.get('book_category')
         user.save()
         return render(request, "user/category_revise.html", {'user' : user})
     else:
-        if not request.user.is_authenticated:
-            return HttpResponse("로그인 후 이용해주세요")
+        return render(request, "user/category_revise.html", {'user' : user})
 
 # 내 독후감 확인 (all_my_reports)
 def search_my_reports(request):
@@ -147,14 +148,22 @@ def check_my_two_reports(request):
     my_reports = BookReport.objects.all()
     user = request.user
     if user:
-        my_reports = my_reports.filter(user_id = user.id).order_by('created_at')[:2]
+        my_reports = my_reports.filter(user_id = user.id).order_by('created_at')[-2:-1]
     return my_reports
+
+# scrap 2개 뽑아서 번더 전달
+def check_my_two_scraps(request):
+    scrap = Scrap.objects.all()
+    user = request.user
+    if user:
+        scrap = scrap.filter(user_id = user.id).order_by('created_at')[-2:-1]
+    return scrap
+
 
 # 개인 번더 책 추가
 class Book(View):
     def get(self, request):
         key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
-
         return render(request, 'user/add_book.html', {'bookSecret': key})
 
     @csrf_exempt

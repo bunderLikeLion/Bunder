@@ -91,3 +91,15 @@ class Book(models.Model):
     ]
     category = models.CharField(max_length=64, choices=category_tuple)
 
+    category_tuple = [
+        ('문학', '문학'),
+        ('경제/경영', '경제/경영'),
+        ('자기계발', '자기계발'),
+        ('인문', '인문'),
+        ('정치/사회', '정치/사회'),
+        ('예술', '예술'),
+        ('과학', '과학'),
+        ('기술/IT', '기술/IT'),
+    ]
+    category = models.CharField(max_length=64, choices=category_tuple)
+

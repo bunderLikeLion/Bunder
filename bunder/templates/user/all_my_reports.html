@@ -25,13 +25,13 @@ All My Reports
                     <a href="" class="reports_name">독후감 제목 아마 이정도 길겠죠?</a>
                 </div>
             </div>
+            {% for my_report in my_reports %}
             <div class="report_container">
                 <div class="inner_report_container">
-                    <a href="" class="reports_name">{% for my_report in my_reports %}
-                        {{my_report.report_name}}
-                        {% endfor %}</a>
+                    <a href="" class="reports_name">{{my_report.report_name}}</a>
                 </div>
             </div>
+            {% endfor %}
             <div class="report_container">
                 <div class="inner_report_container">
                     <a href="" class="reports_name">독후감 제목</a>

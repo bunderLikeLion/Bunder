@@ -45,9 +45,9 @@ Add Vote
             itemList = itemList.filter((item) => item.id !== parseInt(div.id));
         }
 
-        function renderItem(newTodo) {
+        function renderItem(item) {
             const div = document.createElement('div');
-            div.id = newTodo.id;
+            div.id = item.id;
             const input = document.createElement('input');
             const button = document.createElement('button');
 

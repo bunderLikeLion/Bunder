@@ -23,6 +23,8 @@ div, p, span, input{
     border-radius: 30px;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     text-shadow: 1px 1px 0 #FFF;
+    color: red;
+    font-weight: 300;
 }
 
 .container h2 {

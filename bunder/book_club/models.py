@@ -23,8 +23,12 @@ class BookClub(models.Model):
     member_total = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(30)], default=2)
     member_cnt = models.IntegerField(default=1)
     description = models.TextField(help_text="소모임 소개글을 적어주세요.", verbose_name="소모임 소개", null=True)
-    link = models.CharField(max_length=200, verbose_name="줌 링크", blank=True)
+    zoom_link = models.CharField(max_length=200, verbose_name="줌 링크", blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    kakao_link = models.CharField(max_length=200, verbose_name="카카오톡 링크", blank=True)
+
+    def add_member_cnt(self):
+        self.member_cnt += 1
 
 
 class BookClubMember(models.Model):
@@ -37,9 +41,14 @@ class BookClubMember(models.Model):
         ('MEMBER', 'MEMBER'),
         ('CANDIDATE', 'CANDIDATE'),
         ('OWNER', 'OWNER'),
-        ('INVITE', 'INVITE')
+        ('INVITE', 'INVITE'),
+        ('REJECT', 'REJECT'),
     ]
     type = models.CharField(max_length=20, choices=type_enum, default=type_enum[1][0])
+
+    def get_club_cnt(self):
+        return self.club.member_total, self.club.member_cnt
+
 
 
 class BookClubVote(models.Model):
@@ -61,11 +70,24 @@ class VoteDetail(models.Model):
     vote_cnt = models.IntegerField(default=0)
 
 
-class BookClubBooks(models.Model):
+class Book(models.Model):
     class Meta:
-        db_table = "club_book"
+        db_table = "book"
 
-    club = models.ForeignKey("book_club.BookClub", on_delete=models.CASCADE, verbose_name="소모임 ID")
+    club = models.ForeignKey("book_club.BookClub", on_delete=models.CASCADE, verbose_name="소모임 ID", null=True)
+    user = models.ForeignKey("user.User", on_delete=models.CASCADE, verbose_name="유저 ID", null=True)
     book_name = models.CharField(max_length=200, verbose_name="책 제목", blank=False)
     book_author = models.CharField(max_length=200, verbose_name="책 글쓴이", blank=False)
     image = models.CharField(max_length=200, verbose_name="책 이미지", blank=True)
+    category_tuple = [
+        ('문학', '문학'),
+        ('경제/경영', '경제/경영'),
+        ('자기계발', '자기계발'),
+        ('인문', '인문'),
+        ('정치/사회', '정치/사회'),
+        ('예술', '예술'),
+        ('과학', '과학'),
+        ('기술/IT', '기술/IT'),
+    ]
+    category = models.CharField(max_length=64, choices=category_tuple)
+

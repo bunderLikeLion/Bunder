@@ -56,17 +56,45 @@ def book_club_detail(request, bookclub_id):
 class club_admit(View):
     def get(self, request):
         clubId = request.GET.get('clubId', None)
-        members = BookClubMember.objects.filter(club_id=clubId)
+        members = BookClubMember.objects.prefetch_related('club').filter(club_id=clubId, type="CANDIDATE")
         book_club = get_object_or_404(BookClub, id=clubId)
         return render(request, 'book_club/club_admit.html',
                       {'members': members, 'book_club': book_club})
 
 
+    def patch(self, request):
+        req = json.loads(request.body)
+        memberId = req['memberId']
+        type = req['type']
+        member = BookClubMember.objects.get(pk=memberId)
+        club = member.club
+
+        if member.type == "MEMBER":
+            return JsonResponse({"message": "이미 멤버로 추가된 유저입니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=400)
+
+        member.type = type
+        member.save()
+
+        total, curr_cnt = member.get_club_cnt()
+
+        if curr_cnt < total and type == "MEMBER":
+            club.add_member_cnt()
+            club.save()
+            return JsonResponse({'member': model_to_dict(member), 'club': model_to_dict(club)})
+        elif type == "REJECT":
+            return JsonResponse({'message': "멤버를 거절하였습니다.",
+                                 'member': model_to_dict(member)
+                                 }, json_dumps_params={'ensure_ascii': False}, status=200)
+        else:
+            return JsonResponse({'message': "인원수 초과 입니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=400)
 @csrf_exempt
 def request_member(request):
-    req = json.loads(request.body)
-    bookclub_id = req['id']
+
     if request.method == "POST":
+        req = json.loads(request.body)
+        bookclub_id = req['id']
         member, created = BookClubMember.objects.get_or_create(
             club=get_object_or_404(BookClub, id=bookclub_id),
             user=request.user,
@@ -79,7 +107,6 @@ class AddVote(View):
     def get(self, request):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
-        print(f'{club.owner_id}, {request.user}')
         if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
@@ -109,9 +136,8 @@ class AddVote(View):
             vote_detail.save()
             voteList.append(vote_detail)
 
-        return redirect('/bookclub/vote/list?clubId=' +
-                        str(clubId) + "&voteId=" + str(vote.id),
-                        {'vote': vote, 'voteList': voteList})
+        return redirect('/bookclub/' +
+                        str(clubId))
 
     def delete(self, request):
         clubId = request.GET.get('clubId', None)
@@ -152,3 +178,9 @@ class Vote(View):
         vote = BookClubVote.objects.get(id=vote_detail.vote_id)
 
         return redirect("/bookclub/" + str(vote.club.id))
+
+
+class Book(View):
+
+    def get(self, request):
+        return render(request, 'user/add_book.html')

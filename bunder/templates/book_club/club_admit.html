@@ -10,21 +10,55 @@ Club Admit
 {% endblock title %}
 
 {% block content %}
-<div class="container">
-    북클럽 참여 희망 명단
-    북클럽 현재 인원 {{book_club.member_cnt}}/{{book_club.member_total}}
+<head>
+	<style>
+		.active {
+			color: red;
+		}
+		.container_single_requester {
+			display: flex;
+		}
+		.request-done {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		북클럽 참여 희망 명단
+		북클럽 현재 인원 {{book_club.member_cnt}}/{{book_club.member_total}}
 
-    <div class="container_all_requesters">
-		{% for member in members %}
-			<div class="container_single_requester" style="display: flex;">
-				<div class="requester_profile">
-					<img class="profile_img" src="{{ member.user.avatar }}">
-					{{ member.user.nickname }}
+		<div class="container_all_requesters">
+			{% for member in members %}
+				<div class="container_single_requester">
+					<div class="requester_profile">
+						<img class="profile_img" src="{{ member.user.avatar }}">
+						{{ member.user.nickname }}
+					</div>
+					<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'MEMBER')">수락</button>
+					<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'REJECT')">거절</button>
 				</div>
-				<input type="submit" value="수락">
-				<input type="submit" value="거절">
-			</div>
-		{% endfor %}
+			{% endfor %}
 
-    </div>
-</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+
+        axios.defaults.xsrfCookieName = 'csrftoken'
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+        const requestButton = document.querySelector(".request_btn");
+
+        const changeMember = async (event, memberId, clubId, type) => {
+            const url = "admit";
+            const container = event.target.parentElement;
+            container.classList.add("request-done");
+
+            await axios.patch(url, { memberId, clubId, type });
+		}
+
+	</script>
+	{% endblock content %}
+
+
+</body>

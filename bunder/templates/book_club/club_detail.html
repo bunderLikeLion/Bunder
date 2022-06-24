@@ -19,9 +19,11 @@ Club Detail
 			<button class="request_btn">소모임 참여 요청</button>
             <div class="club-informatioon">
                 <h1>소모임 명</h1>
+				{{ book_club.club_name }}
                 <p>소모임 소개</p>
+				{{ book_club.description }}
                 <div class="kakao_link">
-                    <p>카톡 링크</p>
+                    <p>카톡 링크: {{ book_club.kako_link }}</p>
                 </div>
             </div>
         </div>
@@ -36,20 +38,30 @@ Club Detail
         <div class="club_detail_containaer">
             <div>누적 토론 횟수</div>
             <div>현재 진행중인 토론 줌링크</div>
+			{{ book_club.zoom_link }}
         </div>
         <div class="club_detail_containaer">
             진행중인 이벤트
-            <div class="button">
-                <button class="vote-create_btn">투표 생성</button>
-                <button class="vote-delete_btn">투표 삭제</button>
-                <div class="vote_function">
-                    <h4>투표</h4>
-                    {% if vote %}
-                    투표 제목: {{ vote.topic }}
-                    기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-                    <button class="vote_btn">투표 하러 가기</button>
-                    {% endif %}
-                </div>
+            <div class="vote_container">
+				{% if not vote %}
+				<button class="vote-create_btn">투표 생성</button>
+				<div class="empty-vote">
+				<p>현재 진행중인 투표가 없습니다.</p>
+				</div>
+				{% else %}
+					<button class="vote-create_btn deactivate">투표 생성</button>
+					<button class="vote-delete_btn">투표 삭제</button>
+					<div class="deactivate empty-vote">
+						<p>현재 진행중인 투표가 없습니다.</p>
+					</div>
+					<div class="vote_function">
+						<h4>투표</h4>
+						투표 제목: {{ vote.topic }}
+						기간: {{ vote.start_date }} ~ {{ vote.end_date }}
+						<button class="vote_btn">투표 하러 가기</button>
+					</div>
+				{% endif %}
+
             </div>
         </div>
         <div class="club_detail_containaer">
@@ -95,7 +107,16 @@ Club Detail
                 const url = "vote?clubId=" + id;
                 await axios.delete(url,{ id });
             }
-            voteDeleteButton.addEventListener('click', ()=> {
+
+            voteDeleteButton.addEventListener('click', (event)=> {
+                const voteDiv = event.target.parentElement;
+                voteDiv.lastElementChild.classList.add("deactivate");
+                event.target.classList.add("deactivate");
+                voteCreateButton.classList.remove("deactivate");
+
+				const emptyDiv = document.querySelector(".empty-vote")
+                emptyDiv.classList.remove("deactivate");
+
                 deleteVote(bookClubId)
             })
 

@@ -4,6 +4,7 @@ body {
 }
 .container {
     position: relative;
+    height: 100%;
     top: 8rem;
     width: 80%;
     padding: 3rem;
@@ -50,6 +51,7 @@ body {
 
 .container .profile_container .name_container h3 {
     position: relative;
+    width: 80%;
     left: 10%;
     top: 23%;
     letter-spacing: 0.1rem;
@@ -72,6 +74,62 @@ body {
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     left: 40%;
     top: 3%;
+    margin-top: 3rem;
+}
+
+.container_body {
+    display: grid;
+    height: 5%;
+    width: 5%;
+    position: relative;
+    left: 67%;
+    top: 3%;
+    place-items: center;
+    text-align: center;
+}
+
+.pagination_container {
+    border-radius: 1rem;
+}
+.pagination {
+    display: flex;
+    list-style: none;
+}
+
+.pagination li {
+    flex: 1;
+    border-radius: 1rem;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+}
+
+.pagination li a {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #4d3252;
+    height: 2rem;
+    width: 2rem;
+    display: block;
+    line-height: 2.4rem;
+}
+.pagination li:first-child a {
+    width: 6rem;
+}
+
+.pagination li:last-child a {
+    width: 6rem;
+}
+
+.pagination li:first-child {
+    margin: 0 15px 0 0;
+}
+
+.pagination li:last-child {
+    margin: 0 0 0 15px;
+}
+
+.pagination li:hover {
+    box-shadow: -2px -2px 5px #191919, 2px 2px 5px #BABECC;
 }
 
 .container .profile_book_cover {
@@ -80,8 +138,8 @@ body {
     justify-content: center;
     position: relative;
     width: 40%;
-    height: 30%;
-    overflow: scroll;
+    height: 8%;
+    overflow: hidden;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
@@ -90,7 +148,21 @@ body {
 }
 
 .container .profile_book_cover .book_cover {
-    padding: 15%;
+    padding: 3%;
+    height: 100%;
+    width: 100%;
+}
+
+.container .book_club_container .book_cover {
+    padding: 3%;
+    height: 100%;
+    width: 100%;
+}
+
+.container .bunder_reco .book_club_container .book_cover {
+    padding: 3%;
+    height: 100%;
+    width: 100%;
 }
 
 .container .profile_club {
@@ -105,7 +177,7 @@ body {
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     left: 5%;
-    top: 6%;
+    top: 2rem;
 }
 
 .container .book_club_container {
@@ -114,13 +186,13 @@ body {
     justify-content: space-around;
     position: relative;
     width: 90%;
-    height: 30%;
+    height: 19rem;
     overflow: scroll;
     border-radius: 1rem;
     background-color: #EBECF0;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     left: 5%;
-    top: 6%;
+    top: 1%;
 }
 
 .container .my_book_club {
@@ -132,4 +204,160 @@ body {
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 25%;
     height: 80%;
+}
+
+.container .profile_bookshelf {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20%;
+    height: 3rem;
+    overflow: scroll;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: 2rem;
+}
+
+.container .bookshelf_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    width: 90%;
+    height: 25rem;
+    overflow: scroll;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: -4%;
+}
+
+.container_body_add{
+    height: 10%;
+    width: 5%;
+    position: relative;
+    left: 82%;
+    top: 5%;
+    place-items: center;
+    text-align: center;
+}
+
+.container .my_books {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    width: 22%;
+    height: 43%;
+}
+
+.container .bookshelf_container img{
+    padding: 2%;
+    width: 90%;
+    height: 90%;
+}
+
+.container .profile_reports {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20%;
+    height: 3rem;
+    overflow: scroll;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: 2rem;
+}
+.container_body_reports{
+    height: 10%;
+    width: 5%;
+    position: relative;
+    left: 82%;
+    top: -2%;
+    place-items: center;
+    text-align: center;
+}
+
+.container .reports_container {
+    position: relative;
+    width: 90%;
+    height:28rem;
+    overflow: scroll;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: -11%;
+}
+
+.container .reports_container .report_name_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 4%;
+    left: 2%;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1rem;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    margin-top: 1rem;
+}
+.container .reports_container .report_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 4%;
+    left: 2%;
+    width: 95%;
+    height: 4rem;
+    border-radius: 1rem;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+}
+
+.container .reports_container .report_container a {
+    text-decoration: none;
+    font-weight: 700;
+    color: #191919;
+    font-size: 1.25rem
+}
+
+.margin {
+    position: relative;
+    top: -10%;
+}
+
+.container .margin .profile_reports {
+    position: relative;
+    top: 2rem;
+}
+
+.container .margin .container_body_reports {
+    position: relative;
+    top: -1.5%;
+}
+
+.bunder_reco {
+    position: relative;
+    top: 3rem;
+}
+
+.bunder_reco .profile_club {
+    position: relative;
+    top: 0rem;
+}
+
+.bunder_reco .book_club_container .my_book_club {
+    width: 20%;
 }

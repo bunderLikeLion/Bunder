@@ -12,4 +12,6 @@ urlpatterns = [
     path('updatecategory', views.category_revise),
     path('myreport', views.search_my_reports, name = "search_my_reports"),
     path('bunder', views.bunder, name = "bunder"),
+    path('login', views.loginpage, name = "loginpage"),
+    path('book', views.Book.as_view(), name="book"),
 ]

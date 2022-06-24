@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib import auth
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from .models import BookReport,Scrap
+from .models import BookReport, Scrap, Comment
 from django.views import View
 import json
 import os
@@ -42,7 +42,6 @@ def edit(request, id):
 def update(request, id):
     update_book = get_object_or_404(BookReport, pk = id)
     update_book.report_name = request.POST.get('report_name')
-    print(update_book.report_name)
     update_book.book_name = request.POST.get('book_name')
     update_book.category = request.POST.get('category')
     update_book.content = request.POST.get('content')
@@ -67,10 +66,12 @@ def search(request):
             books = books.filter(book_name__contains = search_name)
     return render(request, 'book_report/search_report.html', {'books' : books})
 
+#스크랩 하기
 @csrf_exempt
 def make_scrap(request):
     req = json.loads(request.body)
     book_report_id = req['id']
+    print("독후감 아이디 " + str(book_report_id))
     if request.method == "POST":
         scrap, created = Scrap.objects.get_or_create(
             book_report=get_object_or_404(BookReport, id=book_report_id),
@@ -79,10 +80,38 @@ def make_scrap(request):
 
     return JsonResponse({'scrap': model_to_dict(scrap)})
 
+# 내 스크랩 확인
 class all_my_scraps(View):
     def get(self, request):
-        reportId = request.GET.get('reportId', None)
-        user = BookReport.objects.filter(user_id = reportId)
-        book_report = get_object_or_404(BookReport, id=reportId)
+        scraps = Scrap.objects.filter(user_id=request.user.id)
+        report = []
+        
+        for scrap in scraps:
+            book_report = BookReport.objects.get(pk=scrap.book_report_id)
+            report.append(book_report)
+            print(book_report.report_name)
+
         return render(request, 'user/all_my_scraps.html',
-                      {'user': user, 'book_report': book_report})
+                      {'user': request.user, 'book_report': report})
+
+#댓글 작성
+@csrf_exempt
+def comment_create(request, book_report_id):
+    print('addd')
+    if request.user.is_authenticated:
+        book_report = get_object_or_404(BookReport, pk = book_report_id)
+        comment = Comment()
+        if request.method == "POST":
+            comment.user = request.user
+            comment.content = request.POST.get('comment_content')
+            comment.book_report = book_report
+            comment.save()
+            return redirect('book_report:detail', book_report_id)
+    return HttpResponse("로그인 후 이용")
+        
+
+
+# 댓글 수정
+# 댓글 삭제
+# 댓글 좋아요기능
+# 댓글 좋아요취소

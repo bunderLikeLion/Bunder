@@ -69,14 +69,17 @@
 		<h3>댓글 N개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
-				<img class="profile_img" src="">
-				<div class="write_comment">
+				<form action="{% url 'book_report:comment_create' book_report_id %}" method="post">
+					{% csrf_token %}
 					<img class="profile_img" src="">
-					<textarea name="comment" id="comment" cols="30" rows="2" placeholder="댓글 작성"></textarea>
-				</div>
-				<div class="comment_button">
-					<input type="submit" value='작성'>
-				</div>
+					<div class="write_comment">
+						<img class="profile_img" src="">
+						<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="댓글 작성"></textarea>
+					</div>
+					<div class="comment_button">
+						<input type="submit" value='작성' name="comment_submit">
+					</div>
+				</form>
 			</div>
 			<div class="comment_content_container">
 				<div class="comment_conetent">
@@ -99,7 +102,7 @@
 		})
 
 		const requestMember = async (id) => {
-			const url = "scrap/";
+			const url = "scrap";
 			await axios.post(url, { id });
 		}
 	</script>

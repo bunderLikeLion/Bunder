@@ -213,35 +213,35 @@ button.login{
 }
 
 .radio__input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
 }
 
 .radio__box {
-  position: relative;
-  box-sizing: border-box;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background-color: rgba(238,240,245,1);
-  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
+    position: relative;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: rgba(238,240,245,1);
+    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
 }
 
 .radio__box::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 7px;
-  left: 7px;
-  box-sizing: border-box;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(238,240,245,1);
-  transition: background-color 0.4s 0.1s, box-shadow 0.4s;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 7px;
+    left: 7px;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(238,240,245,1);
+    transition: background-color 0.4s 0.1s, box-shadow 0.4s;
 }
 
 .radio__text {
@@ -255,8 +255,8 @@ button.login{
 }
 
 .radio__input:checked + .radio__box::before {
-  background-color: hsla(220, 100%, 54%, 1);
-  box-shadow: inset 0 0 0px 1px rgba(0,150,255, 0.3), inset 0 0 4px 1px rgba(0,150,255, 0.3), inset 0 0 8px 1px rgba(0,150,255, 0.3), inset -1px -1px 1px 0px rgba(255,255,255, 0.6), inset -2px -2px 2px 0px rgba(255,255,255, 0.3), inset 1px 1px 1px 0px rgba(12,13,18, 0.6), inset 2px 2px 2px 0px rgba(12,13,18, 0.4);
+    background-color: hsla(220, 100%, 54%, 1);
+    box-shadow: inset 0 0 0px 1px rgba(0,150,255, 0.3), inset 0 0 4px 1px rgba(0,150,255, 0.3), inset 0 0 8px 1px rgba(0,150,255, 0.3), inset -1px -1px 1px 0px rgba(255,255,255, 0.6), inset -2px -2px 2px 0px rgba(255,255,255, 0.3), inset 1px 1px 1px 0px rgba(12,13,18, 0.6), inset 2px 2px 2px 0px rgba(12,13,18, 0.4);
 }
 
 .password_error {

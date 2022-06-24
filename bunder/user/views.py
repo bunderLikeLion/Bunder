@@ -2,12 +2,17 @@ from cmath import log
 from contextlib import redirect_stdout
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
+from django.views import View
+
 from .models import User
+from book_club.models import Book
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
 from book_report.models import BookReport
+import json
+import os
 
 # Create your views here.
 
@@ -21,30 +26,36 @@ def register(request):
         password = request.POST["password"]
         re_password = request.POST["re_password"]
         age = request.POST["age"]
-        book_category = request.POST["book_category"]
+        categories = request.POST["book_category"]
         nickname = request.POST["nickname"]
         sex = request.POST["sex"]
+        res_data = {'username' : username, 'password' : password, 're_password' : re_password,
+                'age' : age, 'categories' : categories, 'nickname' : nickname, 'sex' : sex}
 
-        res_data = {}
-
-        if not (username and password and re_password and age and book_category and nickname):
+        if not (username and password and re_password and age and categories and nickname):
             res_data["error"] = "입력되지 않은 값이 있습니다"
         elif password != re_password:
             res_data["error"] = "비밀번호가 일치하지 않습니다"
+        elif User.objects.filter(nickname=nickname).exists():
+            res_data["error"] = "이미 존재하는 닉네임 입니다."
         else:
             user = User.objects.create_user(
                 username = username,
                 password = password,
                 age = age,
                 nickname = nickname,
-                categories = book_category,
+                categories = categories,
                 sex = sex,
                 avatar = f'https://avatars.dicebear.com/api/{sex}/{nickname}.svg'
             )
             user.save()
-            return render(request, 'login/sign_up.html', res_data)
-    return redirect('main:home')
+            return redirect('user:loginpage')
+        return render(request, 'login/sign_up.html', res_data)
 
+#로그인 페이지로 이동
+@csrf_exempt
+def loginpage(request):
+    return render(request, "login/sign_in.html")
 
 # 로그인
 @csrf_exempt 
@@ -131,3 +142,23 @@ def check_my_reports(request):
     if user:
         my_reports = my_reports.filter(user_id = user.id)
     return my_reports
+
+# 개인 번더 책 추가
+class Book(View):
+    def get(self, request):
+        key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
+
+        return render(request, 'user/add_book.html', {'bookSecret': key})
+
+    @csrf_exempt
+    def post(self, request):
+        book = Book()
+        book.user = request.user
+        book.book_name = request.POST.get('book_name')
+        book.book_author = request.POST.get('book_author')
+        book.book_img = request.POST.get('book_img')
+        book.category = request.POST.get('book_category')
+
+        book.save()
+
+        return redirect('user:bunder')

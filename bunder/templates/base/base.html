@@ -27,14 +27,14 @@
     <div class="navigation">
         <div class="userBx" onclick="location.href='../user/profile'" style="cursor:pointer;">
             <div class="imgBx">
-                <img src="https://avatars.dicebear.com/api/male/바.svg">
+                <img src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
             </div>
-            <p class="username">Profile name</p>
+            <p class="username">{{ user.nickname }}</p>
         </div>
         <div class="menuToggle">
         </div>
         <ul class="menu">
-            <li><a href="../user/bunder">
+            <li><a href={% url 'user:bunder' %}>
                     <ion-icon name="person-outline"></ion-icon>개인 번더
                 </a></li>
             <li><a href="../bookreport/">

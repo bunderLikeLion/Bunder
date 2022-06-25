@@ -14,71 +14,107 @@
 	<div class="container">
 		<div class="report_detail_container">
 			<div class="report_title">
-				<h2>제목 : {{book_report.report_name}}</h2>
-				<span class="date">작성날짜 : {{book_report.created_at}} </span>
+				<div class="report_title_text">
+					<div class="text">독후감 제목</div>
+					<span class="date">{{book_report.created_at}} </span>
+				</div>
+				<div class="title">{{book_report.report_name}}</div> 
+				
 			</div>
-			<div class="CRUD_button">
-				<form action="{% url 'book_report:edit' book_report.id %}">
-					<input type="submit" value="편집" onClick="">
-				</form>
-				<form action="{% url 'book_report:delete' book_report_id %}">
-					<input type="submit" value="삭제" onClick="">
-				</form>
-			</div>
+
 			<div class="profile_container">
-				<img class="profile_img" src="">
-				<span class="nickname">닉네임 : {{book_report.user.nickname}}</span>
+				<div class="profile_img">
+					<img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+				</div>
+
+				<div class="name"><span class="nickname">{{book_report.user.nickname}}</span></div>
 			</div>
+
 			<div class="book_info_container">
 				<div class="book_img">
 					<img src="{{book_report.book_img}}" class="book_cover">
 				</div>
 				<div class="book_info">
-					<p class="book_name">책 제목 : {{book_report.book_name}}</p>
-					<p class="author">글쓴이 : {{book_report.book_author}}</p>
-					<p class="category">
-						카테고리 : <select name="book_category" id="book_category">
-							<option value="default" selected>{{book_report.book_category}}</option>
-							<option value="문학">문학</option>
-							<option value="경제/경영">경제/경영</option>
-							<option value="예술">예술</option>
-							<option value="자기계발">자기계발</option>
-							<option value="정치/사회">정치/사회</option>
-							<option value="과학">과학</option>
-							<option value="기술IT">기술/IT</option>
-						</select>
-					</p>
+					<div class="book_name">
+						<p class="book_name">
+							<div class="text">책 제목</div>
+							<div class="book_info_bar">
+								{{book_report.book_name}}
+							</div>
+						</p>
+					</div>
+					
+					<div class="author">
+						<p class="author">
+							<div class="text">글쓴이</div>
+							<div class="book_info_bar">
+								{{book_report.book_author}}
+							</div>
+						</p>
+					</div>
+					
+					<div class="category">
+						<p class="category">
+							<div class="text">카테고리</div>
+							<select name="book_category" id="book_category">
+								<option value="default" selected>{{book_report.book_category}}</option>
+								<option value="문학">문학</option>
+								<option value="경제/경영">경제/경영</option>
+								<option value="예술">예술</option>
+								<option value="자기계발">자기계발</option>
+								<option value="정치/사회">정치/사회</option>
+								<option value="과학">과학</option>
+								<option value="기술IT">기술/IT</option>
+							</select>
+						</p>
+					</div>
+					
 				</div>
 			</div>
-			<h2>독후감 본문</h2>
-			<div class="report_content">
-				{{book_report.content}}
-				<!--wirte report에서 쓴 노트 형식 css 가져올 예정-->
-			</div>
+
+			<div class="content_container">
+				<div class="text">독후감 본문</div>
+				<div class="report_content_container">
+					<div class="report_content">{{book_report.content}}</div>
+				</div>
+			</div>			
 			{% if book_report.image_upload %}
 			<img src="{{book_report.image_upload.url}}" alt="">
 			{% endif %}
-			<div class="button">
+			
+			<div class="button_container">
 				<div class="like_button">
-					<button id="{{book_report.id}}" onclick="book_report_like(this.id)">
+					<button class="button" id="{{book_report.id}}" onclick="book_report_like(this.id)">
 						좋아요
 						<span class="submit_num" id="like_count">{{book_report.like.count}}</span>
 					</button>
 				</div>
 				<div class="scrap_button">
-					<button id="scrap">스크랩</button>
-					<span class="scrap">15</span>
+					<button class="button" id="scrap">스크랩</button>
+					<!-- <span class="scrap">15</span>   css 정렬 땜에 잠시 주석처리 -->
 				</div>
 			</div>
+
+			<div class="CRUD_button">
+				<form action="{% url 'book_report:edit' book_report.id %}">
+					<input class="button" type="submit" value="편집" onClick="">
+				</form>
+				<form action="{% url 'book_report:delete' book_report_id %}">
+					<input class="button" type="submit" value="삭제" onClick="">
+				</form>
+			</div>
 		</div>
+
+	
 		<h3>댓글 N개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
 				<form action="{% url 'book_report:CreateComment' book_report_id %}" method="post">
 					{% csrf_token %}
-					<img class="profile_img" src="">
+					<div class="profile_img">
+						<img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+					</div>
 					<div class="write_comment">
-						<img class="profile_img" src="">
 						<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="댓글 작성"></textarea>
 					</div>
 					<div class="comment_button">
@@ -86,6 +122,7 @@
 					</div>
 				</form>
 			</div>
+
 			<div class="comment_content_container">
 				<div class="comment_content">
 					{% for c in comment %}

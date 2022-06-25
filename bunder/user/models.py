@@ -25,3 +25,7 @@ class User(AbstractUser):
         ('femail','femail'),
     ]
     sex = models.CharField(max_length=10, choices = sex_tuple, verbose_name = "유저 프로필", blank = False)
+
+class ProfileBook(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    book = models.ForeignKey('book_club.Book', on_delete = models.CASCADE)

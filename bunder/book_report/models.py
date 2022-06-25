@@ -43,7 +43,3 @@ class Comment(models.Model):
     book_report = models.ForeignKey(BookReport, on_delete=models.CASCADE, default = "")
     content = models.CharField(max_length=500, verbose_name='content')
     created_at = models.DateTimeField(verbose_name='created at', default=timezone.now)
-
-class ProfileBook(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    book = models.ForeignKey('book_club.Book', on_delete = models.CASCADE)

@@ -78,7 +78,7 @@ class Book(models.Model):
     user = models.ForeignKey("user.User", on_delete=models.CASCADE, verbose_name="유저 ID", null=True)
     book_name = models.CharField(max_length=200, verbose_name="책 제목", blank=False)
     book_author = models.CharField(max_length=200, verbose_name="책 글쓴이", blank=False)
-    image = models.CharField(max_length=200, verbose_name="책 이미지", blank=True)
+    book_img = models.CharField(max_length=200, verbose_name="책 이미지", blank=True)
     category_tuple = [
         ('문학', '문학'),
         ('경제/경영', '경제/경영'),

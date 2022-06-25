@@ -117,9 +117,8 @@ def bunder(request):
     book = Book.objects.all()
     book = book.filter(user_id = user.id)
     my_recent_reports = check_my_two_reports(request)
-    populated_report = populated_reports(request)
     scrap = check_my_two_scraps(request)
-    return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports, 'populate_reports' : populated_report,  'scrap' : scrap, 'book' : book})
+    return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports, 'scrap' : scrap, 'book' : book})
 
 # 카테고리 수정
 @csrf_exempt
@@ -151,14 +150,6 @@ def check_my_two_reports(request):
     user = request.user
     if user:
         my_reports = my_reports.filter(user_id = user.id).order_by('-id')[:2]
-    return my_reports
-
-# 내 독후감 좋아요 순 3개 확인 함수
-def populated_reports(request):
-    my_reports = BookReport.objects.all()
-    user = request.user
-    if user:
-        my_reports = my_reports.filter(user_id = user.id).order_by('-likes')[:3]
     return my_reports
 
 # scrap 2개 뽑아서 번더 전달

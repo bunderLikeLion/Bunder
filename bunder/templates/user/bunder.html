@@ -61,12 +61,11 @@ My Bunder
         </div>
     </div>
     <div class="bookshelf_container">
-        <div class="my_books">
-            <img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-        </div>
-        <div class="my_books">
-            <img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-        </div>
+        {% for book in book %}
+            <div class="my_books">
+                <img class="bookshlef_cover" src={{ book.book_img }}>
+            </div>
+        {% endfor %}
         <div class="my_books">
             <img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg">
         </div>

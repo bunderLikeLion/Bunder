@@ -79,10 +79,21 @@ class club_admit(View):
 
         total, curr_cnt = member.get_club_cnt()
 
+
         if curr_cnt < total and type == "MEMBER":
             club.add_member_cnt()
             club.save()
-            return JsonResponse({'member': model_to_dict(member), 'club': model_to_dict(club)})
+
+            club_response = {'clubName': club.club_name,
+                             'memberCnt': club.member_cnt,
+                             'maxCnt': club.member_total
+                             }
+
+            member_response = {'nickname': member.user.nickname,
+                               'type': member.type}
+
+            return JsonResponse({'member': member_response,
+                                 'club': club_response})
         elif type == "REJECT":
             return JsonResponse({'message': "멤버를 거절하였습니다.",
                                  'member': model_to_dict(member)
@@ -191,7 +202,6 @@ class ClubBook(View):
     @csrf_exempt
     def post(self, request):
         book = Book()
-        # book.user = request.user
         clubId = request.POST.get('clubId')
         book.club = BookClub.objects.get(pk=clubId)
         book.book_name = request.POST.get('book_name')

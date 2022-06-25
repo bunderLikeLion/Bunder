@@ -186,7 +186,7 @@ class UserBook(View):
 
         return redirect('user:bunder')
 
-# 프로필 책 등록
+# 프로필 책 등록 - 작업중
 def profilebook(request, id):
     user = request.user
     book = get_object_or_404(Book, pk = id)

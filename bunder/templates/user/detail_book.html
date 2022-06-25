@@ -15,14 +15,14 @@
 		<div class="book_detail_container">
 			<div class="book_info_container">
 				<div class="book_img">
-					<img src="{{book_report.book_img}}" class="book_cover">
+					<img src="{{book.book_img}}" class="book_cover">
 				</div>
 				<div class="book_info">
 					<div class="book_name">
 						<p class="book_name">
 						<div class="text">책 제목</div>
 						<div class="book_info_bar">
-							{{book_report.book_name}}
+							{{book.book_name}}
 						</div>
 						</p>
 					</div>
@@ -31,7 +31,7 @@
 						<p class="author">
 						<div class="text">글쓴이</div>
 						<div class="book_info_bar">
-							{{book_report.book_author}}
+							{{book.book_author}}
 						</div>
 						</p>
 					</div>
@@ -40,7 +40,7 @@
 						<p class="category">
 						<div class="text">카테고리</div>
 						<select name="book_category" id="book_category">
-							<option value="default" selected>{{book_report.book_category}}</option>
+							<option value="default" selected>{{book.category}}</option>
 							<option value="문학">문학</option>
 							<option value="경제/경영">경제/경영</option>
 							<option value="예술">예술</option>

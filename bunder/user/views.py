@@ -114,11 +114,12 @@ def profile(request):
 # bunder 정보
 def bunder(request):
     user = request.user
-    book = Book.objects.get.all()
-    book = book.filter(user_id = user.id ,club = '')
-    scrap = check_my_two_scraps(request)
-    my_reports = check_my_two_reports(request)
-    return render(request, 'user/bunder.html', {'user' : user, 'my_reports' : my_reports, 'book' : book, 'scrap' : scrap})
+    # book = Book.objects.all()
+    # book = book.filter(user_id = user.id)
+    # scrap = check_my_two_scraps(request)
+    # my_reports = check_my_two_reports(request)
+    # , 'my_reports' : my_reports, 'book' : book, 'scrap' : scrap
+    return render(request, 'user/bunder.html', {'user' : user})
 
 # 카테고리 수정
 @csrf_exempt

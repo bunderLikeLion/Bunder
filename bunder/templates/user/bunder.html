@@ -63,7 +63,7 @@ My Bunder
     <div class="bookshelf_container">
         {% for b in book %}
         <div class="my_books">
-            <a href="{% url 'user:bookdetail book.id' %}">
+            <a href="{% url 'user:bookdetail' book.id %}">
                 <button type="button" class="btn_image"><img class="bookshlef_cover" src={{ b.book_img }}></button>
             </a>
         </div>

@@ -82,7 +82,7 @@ Club Detail
                 </div>
                 
                 <div class="text">현재 읽는 중인 책</div>
-                <div class="book_info_container">
+                <div class="book_info_container current-book_container">
                     {% if book_info %}
                     <div class="book_info_box current-book_container">
                         <div class="book_img">
@@ -135,14 +135,14 @@ Club Detail
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
-		const requestButton = document.querySelector(".request_btn");
-        const voteCreateButton = document.querySelector(".vote-create_btn");
-        const voteDeleteButton = document.querySelector(".vote-delete_btn");
+		const requestButton = document.querySelector("#request_btn");
+        const voteCreateButton = document.querySelector("#vote-create_btn");
+        const voteDeleteButton = document.querySelector("#vote-delete_btn");
         const voteListButton = document.querySelector(".vote_btn");
 
         const removeBookButton = document.querySelector(".book-remove_btn");
         const bookContainer = document.querySelector("#book_container");
-        const currentBook = document.querySelector(".current-book_container")
+        const currentBook = document.querySelector(".current-book_container");
 
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
         let bookId;
@@ -177,8 +177,8 @@ Club Detail
             console.log(error);
         }
 
-        axios.defaults.xsrfCookieName = 'csrftoken'
-        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
         requestButton.addEventListener('click', ()=> {
             requestMember(bookClubId)

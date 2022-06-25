@@ -26,7 +26,7 @@ Club Admit
 <body>
 	<div class="container">
 		북클럽 참여 희망 명단
-		북클럽 현재 인원 {{book_club.member_cnt}}/{{book_club.member_total}}
+		북클럽 현재 인원 <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
 
 		<div class="container_all_requesters">
 			{% for member in members %}
@@ -48,13 +48,17 @@ Club Admit
         axios.defaults.xsrfCookieName = 'csrftoken'
         axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
         const requestButton = document.querySelector(".request_btn");
+        const memberSpan = document.querySelector(".member-cnt_span");
 
         const changeMember = async (event, memberId, clubId, type) => {
             const url = "admit";
             const container = event.target.parentElement;
             container.classList.add("request-done");
 
-            await axios.patch(url, { memberId, clubId, type });
+            const response = await axios.patch(url, { memberId, clubId, type })
+            const club = response.data.club;
+            memberSpan.innerText = club.memberCnt + "/" + club.maxCnt;
+
 		}
 
 	</script>

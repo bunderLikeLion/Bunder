@@ -29,3 +29,4 @@ class User(AbstractUser):
 class ProfileBook(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     book = models.ForeignKey('book_club.Book', on_delete = models.CASCADE)
+    

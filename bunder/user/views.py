@@ -120,11 +120,11 @@ def bunder(request):
     book = Book.objects.filter(user_id = user.id)
     my_recent_reports = check_my_two_reports(request)
     scrap = check_my_two_scraps(request)
-
     book_club = getBookClub(user)
+    mainbook =  ProfileBook.objects.filter(user_id = user.id).last()
     return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports,
                                                 'scrap' : scrap, 'book' : book,
-                                                'book_club': book_club})
+                                                'book_club': book_club, 'mainbook' : mainbook})
 
 # 카테고리 수정
 @csrf_exempt
@@ -190,11 +190,18 @@ class UserBook(View):
 def profilebook(request, id):
     user = request.user
     book = get_object_or_404(Book, pk = id)
-    mainbook = ProfileBook()
-    mainbook.user = user
-    mainbook.book = book
-    mainbook.save()
-    return render (request, 'user/bunder.html', {'mainbook' : mainbook})
+    try:
+        mainbook = ProfileBook.objects.get(user_id=user.id)
+        mainbook = ProfileBook.objects.get(user_id=user.id)
+        mainbook.book = book
+        mainbook.save()
+    except ProfileBook.DoesNotExist:
+        mainbook = ProfileBook()
+        mainbook.user = user
+        mainbook.book = book
+        mainbook.save()
+        return redirect('user:bunder')
+    return redirect('user:bunder')
 
 # 책 디테일페이지로 가기
 def bookdetail(request, id):

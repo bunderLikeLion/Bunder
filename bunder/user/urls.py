@@ -14,6 +14,6 @@ urlpatterns = [
     path('bunder', views.bunder, name = "bunder"),
     path('login', views.loginpage, name = "loginpage"),
     path('book', views.UserBook.as_view(), name="book"),
-    path('profilebook', views.profilebook, name="profilebook"),
+    path('profilebook/<int:id>', views.profilebook, name="profilebook"),
     path('bookdetail/<int:id>', views.bookdetail, name="bookdetail"),
 ]

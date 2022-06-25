@@ -21,6 +21,7 @@ class BookReport(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='', verbose_name="유저")
     like = models.ManyToManyField(User, related_name = 'likes', blank = True)
+    likes = models.IntegerField(verbose_name='likes_counter', default=0)
 
     def __str__(self):
         return self.report_name

@@ -111,7 +111,10 @@ def likes(request):
         book_report.like.remove(user)
     else:
         book_report.like.add(user)
-    context = {'like_count' : book_report.like.count()}
+    like_count = book_report.like.count()
+    book_report.likes = like_count
+    book_report.save()
+    context = {'like_count' : like_count}
     return HttpResponse(json.dumps(context), content_type = 'application/json')
 
 #댓글 작성

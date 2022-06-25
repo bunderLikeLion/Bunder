@@ -5,7 +5,7 @@ from .models import BookReport, Scrap, Comment
 
 # Register your models here.
 class BookAdmin(admin.ModelAdmin):
-    fields = ['user', 'report_name', 'book_name', 'book_author', 'book_category','book_img', 'content']
+    fields = ['user', 'report_name', 'book_name', 'book_author', 'book_category','book_img', 'content', 'likes']
 
 admin.site.register(BookReport, BookAdmin)
 

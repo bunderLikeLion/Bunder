@@ -1,0 +1,69 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_report/detail_report.css' %}" />
+{% endblock extrahead %}
+
+<head>
+	<title>Report Detail</title>
+</head>
+
+<body>
+	{% block content %}
+	<div class="container">
+		<div class="book_detail_container">
+			<div class="book_info_container">
+				<div class="book_img">
+					<img src="{{book_report.book_img}}" class="book_cover">
+				</div>
+				<div class="book_info">
+					<div class="book_name">
+						<p class="book_name">
+						<div class="text">책 제목</div>
+						<div class="book_info_bar">
+							{{book_report.book_name}}
+						</div>
+						</p>
+					</div>
+
+					<div class="author">
+						<p class="author">
+						<div class="text">글쓴이</div>
+						<div class="book_info_bar">
+							{{book_report.book_author}}
+						</div>
+						</p>
+					</div>
+
+					<div class="category">
+						<p class="category">
+						<div class="text">카테고리</div>
+						<select name="book_category" id="book_category">
+							<option value="default" selected>{{book_report.book_category}}</option>
+							<option value="문학">문학</option>
+							<option value="경제/경영">경제/경영</option>
+							<option value="예술">예술</option>
+							<option value="자기계발">자기계발</option>
+							<option value="정치/사회">정치/사회</option>
+							<option value="과학">과학</option>
+							<option value="기술IT">기술/IT</option>
+						</select>
+						</p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="CRUD_button">
+				<form action="{% url 'book_report:edit' book_report.id %}">
+					<input class="button" type="submit" value="프로필북 설정" onClick="">
+				</form>
+				<form action="{% url 'book_report:delete' book_report_id %}">
+					<input class="button" type="submit" value="삭제" onClick="">
+				</form>
+			</div>
+		</div>
+
+	{% endblock content %}
+</body>

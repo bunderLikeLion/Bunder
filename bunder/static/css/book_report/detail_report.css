@@ -226,3 +226,28 @@ button.delete {
     background-color: transparent;
 
   }
+
+  .comment_navbar, .comment_content_container {
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .single_comment {
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 20px;
+    padding: 1rem;
+    display: flex;
+  }
+
+  .comment_info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #time {
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #c6c5c6;
+  }

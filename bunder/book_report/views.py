@@ -94,6 +94,24 @@ class all_my_scraps(View):
         return render(request, 'user/all_my_scraps.html',
                       {'user': request.user, 'book_report': report})
 
+
+# 독후감 좋아요 기능 및 좋아요 취소 (비동기식 ajax)
+def likes(request):
+    book_report_id = request.GET['book_report_id']
+    book_report = BookReport.objects.get(id = book_report_id)
+
+    if not request.user.is_authenticated:
+        context = {'like_count' : book_report.like.count()}
+        return HttpResponse(json.dumps(context), content_type = 'application/json') # context를 json 형태로 변환, http response 타입 지정(json형태)
+
+    user = request.user
+    if book_report.like.filter(id = user.id).exists():
+        book_report.like.remove(user)
+    else:
+        book_report.like.add(user)
+    context = {'like_count' : book_report.like.count()}
+    return HttpResponse(json.dumps(context), content_type = 'application/json')
+
 #댓글 작성
 @csrf_exempt
 def comment_create(request, book_report_id):

@@ -57,8 +57,10 @@
 			</div>
 			<div class="button">
 				<div class="like_button">
-					<input type="submit" value="좋아요">
-					<span class="submit_num">100</span>
+					<button id="{{book_report.id}}" onclick="book_report_like(this.id)">
+						좋아요
+						<span class="submit_num" id="like_count">{{book_report.like.count}}</span>
+					</button>
 				</div>
 				<div class="scrap_button">
 					<button id="scrap">스크랩</button>
@@ -105,6 +107,25 @@
 		const requestMember = async (id) => {
 			const url = "scrap";
 			await axios.post(url, { id });
+		}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function book_report_like(id) {
+			console.log("hi")
+			$.ajax({
+				url: "{%url 'book_report:likes'%}",
+				data: {
+					'book_report_id': id
+				},
+				dataType: "json",
+				contentType: "application/json; charset:UTF-8",
+				success: function (response) {
+					$('#like_count').html(response.like_count)
+				},
+			})
 		}
 	</script>
 

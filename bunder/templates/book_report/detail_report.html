@@ -126,15 +126,21 @@
 					{% for c in comment %}
 					<div class="single_comment">
 						<div class="profile_img">
-							<img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+							<img class="img"
+								src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
 						</div>
 						<div class="comment_info">
 							<div>
 								<p>닉네임 : {{c.user.nickname}}</p>
-								<p>내용 : {{c.content}}</p>	
+								<p>내용 : {{c.content}}</p>
 							</div>
 							<p id="time">{{c.created_at}}</p>
 						</div>
+						<form action="{% url 'book_report:comment_delete' book_report_id=book_report_id comments_id=c.id %}">
+							<div class="delete_btn">
+								<input type="submit" class="button" value="삭제">
+							</div>
+						</form>
 					</div>
 					{% endfor %}
 

@@ -73,6 +73,21 @@ button:active {
     justify-content: right;
 }
 
+.comment_btn {
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 0 1rem;
+    height: 3.5rem;
+    padding : 0 1rem;
+    color: #61677C;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+}
+
 button.edit, button.delete{
     text-align: center;
     display: inline;
@@ -227,6 +242,11 @@ button.delete {
 
   }
 
+  .comment_navbar {
+    display: flex;
+    justify-content: center;
+  }
+
   .comment_navbar, .comment_content_container {
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
     border-radius: 20px;
@@ -251,3 +271,27 @@ button.delete {
     line-height: 1rem;
     color: #c6c5c6;
   }
+
+  .write_comment {
+    width: 80%;
+  }
+
+  textarea {   /* 독후감 본문 입력란 */
+    padding : 1rem;
+    width: 100%;
+    
+    border: none;
+    resize: none;
+
+    border-radius: 10px;
+    box-shadow: 9px 9px 16px rgb(163 177 198 / 60%), -9px -9px 16px rgb(255 255 255 / 50%), inset 3px 3px 7px rgb(136 165 191 / 48%), inset -3px -3px 7px #ffffff;
+    background-color: transparent;
+
+    /* 기본 스타일 */
+    /* box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 10px;
+    background: transparent; */
+  }
+
+
+

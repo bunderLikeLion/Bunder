@@ -1,0 +1,29 @@
+
+* {
+    /* color : red; */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.container {
+    position: relative;
+    width: 80%;
+    margin: 6rem;
+    padding: 2rem;
+    background-color: #EBECF0;
+    /* background-color: blue; */
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    color: #111;
+    font-weight: 600;
+}

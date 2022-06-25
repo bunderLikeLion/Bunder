@@ -21,7 +21,7 @@
 				<div class="title">{{book_report.report_name}}</div> 
 				
 			</div>
-
+			
 			<div class="profile_container">
 				<div class="profile_img">
 					<img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
@@ -81,7 +81,7 @@
 			{% if book_report.image_upload %}
 			<img src="{{book_report.image_upload.url}}" alt="">
 			{% endif %}
-			
+
 			<div class="button_container">
 				<div class="like_button">
 					<button class="button" id="{{book_report.id}}" onclick="book_report_like(this.id)">
@@ -105,11 +105,11 @@
 			</div>
 		</div>
 
-	
+
 		<h3>댓글 N개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
-				<form action="{% url 'book_report:comment_create' book_report_id %}" method="post">
+{#				<form action="{% url 'book_report:comment_create' book_report_id %}" method="post">#}
 					{% csrf_token %}
 					<div class="profile_img">
 						<img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
@@ -120,7 +120,7 @@
 					<div class="comment_button">
 						<input class="comment_btn" type="submit" value='작성' name="comment_submit">
 					</div>
-				</form>
+{#				</form>#}
 			</div>
 
 			<div class="comment_content_container">
@@ -163,9 +163,16 @@
 			await axios.post(url, { id });
 		}
 
-        const reformatDate = (dateTime) => {
-            const date = dateTime.split("T")[0].split("-");
-            const time = dateTime.split("T")[1].split(":");
+        const sendComment = async (book_report_id, text) => {
+            const url = "comment"
+			const response = await axios.post(url, {book_report_id, text})
+            const div = document.createElement('div');
+            const comment = response.data.comment;
+            const nickname = document.createElement('p');
+            const content = document.createElement('p');
+            const created_at = document.createElement('p');
+            const date = comment.created_at.split("T")[0].split("-");
+            const time = comment.created_at.split("T")[1].split(":");
 
             const year = date[0];
             const month = date[1].replace(/(^0+)/, "");
@@ -178,36 +185,19 @@
             if (Number(hour) > 12) {
                 hour -= 12;
                 datetime = "오후";
-            }
-
-            const reformat_date =
-                year + "년 " + month + "월 " + day + "일 "
-                + hour + ":" + minute + " " + datetime;
-
-            return reformat_date;
-		}
-
-        const sendComment = async (book_report_id, text) => {
-            const url = "comment"
-			const response = await axios.post(url, {book_report_id, text})
-            const div = document.createElement('div');
-            const comment = response.data.comment;
-
-            const nickname = document.createElement('p');
-            const content = document.createElement('p');
-            const created_at = document.createElement('p');
-
-            const reformat_date = reformatDate(comment.created_at);
-
+			}
+			const reformat_date =
+				year + "년 " + month + "월 " + day + "일 "
+				+ hour + ":" + minute + " " + datetime;
             nickname.innerText = "댓글 작성 : " + comment.nickname;
             content.innerText = "댓글 내용 : " + comment.content;
             created_at.innerText = "댓글 작성날짜 : " + reformat_date;
-
-
-            div.appendChild(nickname);
+            
+			
+			div.appendChild(nickname);
             div.appendChild(content);
             div.appendChild(created_at);
-
+			
             commentDiv.appendChild(div);
 
             window.scrollTo(0, document.body.scrollHeight);

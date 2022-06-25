@@ -15,6 +15,6 @@ urlpatterns = [
     path('scrap', views.make_scrap, name='make_scrap'),
     path('myscrap', views.all_my_scraps.as_view(), name = 'all_my_scrap'),
     path('like/', views.likes, name = "likes"),
-    path('create/<int:book_report_id>', views.comment_create, name = 'comment_create'),
+    path('comment', views.CreateComment.as_view()),
     # path('<int:book_report_id>/comment/<int:comments_id>/delete', views.comment_delete, name = 'comment_delete'),
 ]

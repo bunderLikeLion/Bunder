@@ -11,40 +11,78 @@ Add Club
 
 {% block content %}
 <div class="container">
-    <h2>Add </h2>
+    <h2>Add Club</h2>
     <form method="post">
-        <div class="inputBox">
-            <input type="text" required="required" name='username' id='username' value={{username}}>
-            <span>User ID</span>
+        <div class="box_container">
+            <div class="inputBox">
+                <input type="text" required="required" name='clubname' id='clubname'>
+                <span class="first">소모임 명</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name='link' id='link'>
+                <span class="second">소모임 Zoom Link</span>
+            </div>
+            <div class="inputBox">
+                <input type="number" required="required" name='number_of_member' id='number_of_member' min="2" max="30">
+                <span class="third">소모임 최대 인원</span>
+            </div>
         </div>
-        <div class="inputBox">
-            <input type="password" required="required" name='password' id='password' value={{password}}>
-            <span>PassWord</span>
+        <div class="report_content" id="content">
+            <textarea name="content" id="content" placeholder="소모임 소개"></textarea>
         </div>
-        <div class="inputBox">
-            <input type="password" required="required" name='re_password' id='re_password' value={{re_password}}>
-            <span>Re-Enter PassWord</span>
+        <h3 class="body">소모임 이미지 선택</h3>
+        <div class="container_body">
+            <div class="pagination_container">
+                <ul class="pagination">
+                    <li><a href="#" class="previous">Previous</a></li>
+                    <li><a href="#none">1/5</a></li>
+                    <li><a href="#" class="next">Next</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="inputBox">
-            <input type="text" required="required" name='nickname' id='nickname' value={{nickname}}>
-            <span>Nickname</span>
-        </div>
-        <div class="inputBox">
-            <input type="number" required="required" name='age' id='age' min="8" max="100" value={{age}}>
-            <span class="age">Age</span>
-        </div>
-        <div class="segmented-control">
-            <input type="radio" name="sex" value="male" id="tab-1" checked />
-            <label for="tab-1" class="segmented-control__1">
-                <p>Male</p>
+        <section class="category_container">
+            <label class="category">
+                <input checked type="radio" value="1" name="club_img" checked class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
             </label>
-            <input type="radio" name="sex" value="female" id="tab-2" />
-            <label for="tab-2" class="segmented-control__2">
-                <p>Female</p>
+            <label class="category">
+                <input type="radio" value="2" name="club_img" class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
             </label>
-            <div class="segmented-control__color"></div>
-        </div>
-        <h3 class="decorator decorator_indent-b_l">선호 책 장르</h3>
+            <label class="category">
+                <input checked type="radio" value="3" name="club_img" class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
+            </label>
+            <label class="category">
+                <input checked type="radio" value="4" name="club_img" class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
+            </label>
+        </section>
+        <!-- <div class="book_club_container">
+            <label>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="1" checked>
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="2">
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="3">
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="3">
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+            </label>
+        </div> -->
+        <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
         <section class="genre_container">
             <label class="genre">
                 <input checked type="radio" value="문학" name="book_category" class="radio__input">
@@ -86,12 +124,12 @@ Add Club
                 <div class="radio__box"></div>
                 <span class="radio__text">기타</span>
             </label>
-
         </section>
         {{error}}
-        <button class="login" type="submit" value="Sign up">Sign Up</button>
+        <button class="login" type="submit" value="Sign up">소모임 발행</button>
     </form>
 </div>
+{% endblock content %}
 
 
 <!-- <h2>Add My Club!</h2>
@@ -159,4 +197,3 @@ Add Club
             <input type="submit" value="소모임 발행">
         </div>
     </form>  -->
-{% endblock content %}

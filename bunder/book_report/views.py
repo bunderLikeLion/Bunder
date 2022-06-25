@@ -19,7 +19,9 @@ def write_report(request):
 def detail_report(request, id):
     book_report = get_object_or_404(BookReport, pk = id)
     book_report_id_json = json.dumps(id)
-    return render(request, 'book_report/detail_report.html', {'book_report' : book_report, "book_report_id": book_report_id_json})
+    commentList = Comment.objects.filter(book_report_id=id)
+
+    return render(request, 'book_report/detail_report.html', {'book_report' : book_report, "book_report_id": book_report_id_json, "comment": commentList})
 
 @csrf_exempt
 def create(request):
@@ -113,23 +115,29 @@ def likes(request):
     return HttpResponse(json.dumps(context), content_type = 'application/json')
 
 #댓글 작성
-@csrf_exempt
-def comment_create(request, book_report_id):
-    if request.user.is_authenticated:
-        book_report = get_object_or_404(BookReport, pk = book_report_id)
-        comment = Comment()
-        if request.method == "POST":
+class CreateComment(View):
+
+    def post(self, request):
+        req = json.loads(request.body)
+        book_report_id = req['book_report_id']
+        content = req['text']
+        if request.user.is_authenticated:
+            book_report = get_object_or_404(BookReport, pk = book_report_id)
+            comment = Comment()
             comment.user = request.user
-            comment.content = request.POST.get('comment_content')
+            comment.content = content
             comment.book_report = book_report
             comment.save()
+            response = {'content' : content,
+                        'nickname': request.user.nickname,
+                        'created_at': comment.created_at}
+            return JsonResponse({'comment': response }
+                                , json_dumps_params={'ensure_ascii': False}
+                                , status=200)
 
-            commentList = Comment.objects.filter(book_report_id=book_report_id)
-            return render(request, 'book_report/detail_report.html', {'comment' : commentList, 'book_report': book_report, 'book_report_id': book_report.id})
-        return redirect('book_report:detail', book_report_id)
-    else:
-        return HttpResponse("로그인 후 이용")
-        
+        else:
+            return HttpResponse("로그인 후 이용")
+
 
 
 # 댓글 수정

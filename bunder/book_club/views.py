@@ -202,9 +202,3 @@ class ClubBook(View):
         book.save()
 
         return redirect('book_club:book_club_detail', clubId)
-
-
-class Book(View):
-
-    def get(self, request):
-        return render(request, 'user/add_book.html')

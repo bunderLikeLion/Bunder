@@ -21,8 +21,8 @@ def new(request):
         book_club.club_name = request.POST["clubname"]
         book_club.member_total = request.POST["number_of_member"]
         book_club.image = request.POST["club_img"]
-        book_club.category = request.POST["book_club_category"]
-        book_club.description = request.POST["description"]
+        book_club.category = request.POST["book_category"]
+        book_club.description = request.POST["content"]
         book_club.save()
 
         member, created = BookClubMember.objects.get_or_create(
@@ -31,8 +31,8 @@ def new(request):
             type=BookClubMember.type_enum[2][0]  # 소모임장
         )
 
-        if request.POST.get('zoom_url', True):
-            book_club.link = request.POST["zoom_url"]
+        if request.POST.get('link', True):
+            book_club.link = request.POST["link"]
 
         return redirect('/bookclub/' + str(book_club.id))
 

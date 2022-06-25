@@ -91,7 +91,6 @@ def search(request):
 def make_scrap(request):
     req = json.loads(request.body)
     book_report_id = req['id']
-    print("독후감 아이디 " + str(book_report_id))
     if request.method == "POST":
         scrap, created = Scrap.objects.get_or_create(
             book_report=get_object_or_404(BookReport, id=book_report_id),
@@ -159,10 +158,11 @@ class CreateComment(View):
         else:
             return HttpResponse("로그인 후 이용")
 
-
-
-# 댓글 수정
 # 댓글 삭제
+def comment_delete(request, book_report_id, comments_id):
+    comment_delete = get_object_or_404(Comment, pk = comments_id)    
+    comment_delete.delete()
+    return redirect('book_report:detail', id = book_report_id)
 
 # 내 독후감 좋아요 순 3개 확인 함수
 def populated_reports(request):
@@ -171,5 +171,3 @@ def populated_reports(request):
     if user:
         my_reports = my_reports.filter(user_id = user.id).order_by('-likes')[:3]
     return my_reports
-
-# 프로필 책 설정

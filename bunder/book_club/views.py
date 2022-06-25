@@ -32,8 +32,6 @@ def book_club_list(request):
                        'total': paginator.count})
 
 
-
-
 @csrf_exempt
 def new(request):
     if request.method == "GET":
@@ -66,16 +64,31 @@ def book_club_detail(request, bookclub_id):
     bookclub_id_json = json.dumps(book_club.id)
 
     try:
-        vote = BookClubVote.objects.get(club=bookclub_id)
+        book = Book.objects.filter(club_id=bookclub_id, active=True).first()
+        book_id_json = None
+        if book:
+            book_id_json = json.dumps(book.id)
+        book_list = get_book(bookclub_id)
+        vote = BookClubVote.objects.get(club=book_club)
         vote_id_json = json.dumps(vote.id)
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club,
                        'bookclub_id': bookclub_id_json,
                        'vote': vote,
-                       'vote_id': vote_id_json})
+                       'vote_id': vote_id_json,
+                       'book_info': book,
+                       'book_list': book_list,
+                       'book_id': book_id_json})
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
-                      {'book_club': book_club, 'bookclub_id': bookclub_id_json})
+                      {'book_club': book_club, 'bookclub_id': bookclub_id_json,
+                       'book_info': book,
+                       'book_list': book_list,
+                       'book_id': book_id_json})
+
+
+def get_book(bookclub_id):
+    return Book.objects.filter(club_id=bookclub_id, active=False).order_by('-created_at')[0:3]
 
 
 class club_admit(View):
@@ -224,16 +237,35 @@ class ClubBook(View):
     @csrf_exempt
     def post(self, request):
         book = Book()
-        clubId = request.POST.get('clubId')
+        clubId = request.GET.get('clubId')
+        try:
+            find_book = Book.objects.get(club_id=clubId, active=True)
+            find_book.delete()
+        except Book.DoesNotExist:
+            pass
         book.club = BookClub.objects.get(pk=clubId)
         book.book_name = request.POST.get('book_name')
         book.book_author = request.POST.get('book_author')
         book.book_img = request.POST.get('book_img')
         book.category = request.POST.get('book_category')
-
+        book.active = True
         book.save()
 
         return redirect('book_club:book_club_detail', clubId)
+
+    def patch(self, request):
+        req = json.loads(request.body)
+        book_id = req["bookId"]
+
+        find_book = Book.objects.get(id=book_id, active=True)
+        find_book.active = False
+        find_book.save()
+
+        response = {"img": find_book.book_img,
+                    "message": "현재 책이 책장으로 옮겨졌습니다."}
+
+        return JsonResponse(response, json_dumps_params={'ensure_ascii': False},
+                            status=200)
 
 
 def getBookClub():

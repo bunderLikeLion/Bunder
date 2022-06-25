@@ -1,10 +1,10 @@
 from cmath import log
 from contextlib import redirect_stdout
 from http.client import HTTPResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 
-from .models import User
+from .models import ProfileBook, User
 from book_club.models import Book
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
@@ -179,3 +179,18 @@ class UserBook(View):
         book.save()
 
         return redirect('user:bunder')
+
+# 프로필 책 등록
+def profilebook(request, id):
+    user = request.user
+    book = get_object_or_404(Book, pk = id)
+    mainbook = ProfileBook()
+    mainbook.user = user
+    mainbook.book = book
+    mainbook.save()
+    return render (request, 'user/bunder.html', {'mainbook' : mainbook})
+
+# 책 디테일페이지로 가기
+def bookdetail(request, id):
+    book = get_object_or_404(Book, pk = id)
+    return render(request, 'user/detail_book.html', {'book' : book})

@@ -61,30 +61,13 @@ My Bunder
         </div>
     </div>
     <div class="bookshelf_container">
-        {% for book in book %}
-            <div class="my_books">
-                <img class="bookshlef_cover" src={{ book.book_img }}>
-            </div>
+        {% for b in book %}
+        <div class="my_books">
+            <a href="{% url 'user:bookdetail book.id' %}">
+                <button type="button" class="btn_image"><img class="bookshlef_cover" src={{ b.book_img }}></button>
+            </a>
+        </div>
         {% endfor %}
-        <div class="my_books">
-            <button type="button" class="btn_image"><img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg"></button>
-            
-        </div>
-        <div class="my_books">
-            <button type="button" class="btn_image"><img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg"></button>
-        </div>
-        <div class="my_books">
-            <button type="button" class="btn_image"><img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg"></button>
-        </div>
-        <div class="my_books">
-            <button type="button" class="btn_image"><img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg"></button>
-        </div>
-        <div class="my_books">
-            <button type="button" class="btn_image"><img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg"></button>
-        </div>
-        <div class="my_books">
-            <button type="button" class="btn_image"><img class="bookshlef_cover" src="https://avatars.dicebear.com/api/male/바.svg"></button>
-        </div>
     </div>
     <div class="profile_reports">
         <h3>내가 쓴 글</h3>

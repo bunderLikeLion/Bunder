@@ -159,10 +159,11 @@ class CreateComment(View):
         else:
             return HttpResponse("로그인 후 이용")
 
-
-
-# 댓글 수정
 # 댓글 삭제
+def comment_delete(request, book_report_id, comments_id):
+    comment_delete = get_object_or_404(Comment, pk = comments_id)    
+    comment_delete.delete()
+    return redirect('book_report:detail', id = book_report_id)
 
 # 내 독후감 좋아요 순 3개 확인 함수
 def populated_reports(request):

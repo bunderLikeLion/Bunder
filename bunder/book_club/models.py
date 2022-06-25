@@ -18,6 +18,7 @@ class BookClub(models.Model):
         ('예술', '예술'),
         ('과학', '과학'),
         ('기술/IT', '기술/IT'),
+        ('자율', '자율')
     ]
     category = models.CharField(max_length=64, choices=category_tuple)
     member_total = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(30)], default=2)

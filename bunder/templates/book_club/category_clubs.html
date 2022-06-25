@@ -13,16 +13,18 @@ Category Clubs
     {% block content %}
     <div class="container">
         <div class="club_info">
-            <span>인문 북클럽</span>
-            <span>총 N개</span>
+            <span>{{ category }} 북클럽</span>
+            <span>총 {{ total }}개</span>
         </div>
-        <div class="club_container">
-            <div class="clubs" onclick="clubToggle()">&times;
-                <span>소모임명</span>
-                <span>인원</span>
-                <img src="" alt="">
-            </div>
-        </div>
+		{% for club in club_list %}
+			<div class="club_container">
+				<div class="clubs" onclick="clubToggle()">&times;
+					<span>소모임명: {{ club.club_name }}</span>
+					<span>인원 {{ club.member_cnt }}/{{ club.member_total }}</span>
+					<img src="" alt="">
+				</div>
+			</div>
+		{% endfor %}
     </div>
     {% endblock content %}
 </body>

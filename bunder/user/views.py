@@ -236,3 +236,4 @@ def getBookClub(user):
     club_list = [memberclub.club for memberclub in book_club_member]
 
     return club_list
+    

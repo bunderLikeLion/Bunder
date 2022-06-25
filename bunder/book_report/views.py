@@ -33,6 +33,7 @@ def create(request):
     new_book.book_img = request.POST.get('book_img')
     new_book.book_category = request.POST.get('book_category')
     new_book.content = request.POST.get('content')
+    new_book.image_upload = request.FILES.get('image_upload')
     new_book.save()
     return redirect('book_report:detail', new_book.id)
 

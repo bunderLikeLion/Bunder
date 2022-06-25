@@ -55,6 +55,9 @@
 				{{book_report.content}}
 				<!--wirte report에서 쓴 노트 형식 css 가져올 예정-->
 			</div>
+			{% if book_report.image_upload %}
+			<img src="{{book_report.image_upload.url}}" alt="">
+			{% endif %}
 			<div class="button">
 				<div class="like_button">
 					<button id="{{book_report.id}}" onclick="book_report_like(this.id)">

@@ -1,3 +1,5 @@
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -7,8 +9,30 @@ import json
 import os
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
 
+
 def main(request):
-    return render(request, "book_club/book_club.html")
+    book_club = getBookClub()
+    my_club = getMyBookClub(request.user)
+    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': my_club})
+
+
+def book_club_list(request):
+    if request.method == "GET":
+        category = request.GET.get("category")
+        page = request.GET.get('page')
+        if category == "인기":
+            club_list = BookClub.objects.all().order_by('-created_at')
+        else:
+            club_list = BookClub.objects.filter(category=category).order_by('-created_at')
+        paginator = Paginator(club_list, 10)
+        club_list = paginator.get_page(page)
+        return render(request, "book_club/category_clubs.html",
+                      {'club_list': club_list,
+                       'category': category,
+                       'total': paginator.count})
+
+
+
 
 @csrf_exempt
 def new(request):
@@ -62,7 +86,6 @@ class club_admit(View):
         return render(request, 'book_club/club_admit.html',
                       {'members': members, 'book_club': book_club})
 
-
     def patch(self, request):
         req = json.loads(request.body)
         memberId = req['memberId']
@@ -78,7 +101,6 @@ class club_admit(View):
         member.save()
 
         total, curr_cnt = member.get_club_cnt()
-
 
         if curr_cnt < total and type == "MEMBER":
             club.add_member_cnt()
@@ -101,9 +123,10 @@ class club_admit(View):
         else:
             return JsonResponse({'message': "인원수 초과 입니다.",
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
+
+
 @csrf_exempt
 def request_member(request):
-
     if request.method == "POST":
         req = json.loads(request.body)
         bookclub_id = req['id']
@@ -174,7 +197,6 @@ class Vote(View):
         vote = BookClubVote.objects.get(id=voteId)
         voteList = VoteDetail.objects.filter(vote_id=voteId)
 
-
         if club.owner_id != request.user.id:
             # TODO: 권한 없음 에러페이지 헨들링
             return redirect("/")
@@ -212,3 +234,40 @@ class ClubBook(View):
         book.save()
 
         return redirect('book_club:book_club_detail', clubId)
+
+
+def getBookClub():
+    literature = BookClub.objects.filter(category="문학").order_by('-created_at')[0:3]
+    humanities = BookClub.objects.filter(category="인문").order_by('-created_at')[0:3]
+    economy = BookClub.objects.filter(category="경제/경영").order_by('-created_at')[0:3]
+    self_development = BookClub.objects.filter(category="자기계발").order_by('-created_at')[0:3]
+    political_society = BookClub.objects.filter(category="정치/사회").order_by('-created_at')[0:3]
+    art = BookClub.objects.filter(category="예술").order_by('-created_at')[0:3]
+    science = BookClub.objects.filter(category="과학").order_by('-created_at')[0:3]
+    it = BookClub.objects.filter(category="기술/IT").order_by('-created_at')[0:3]
+    amity = BookClub.objects.filter(category="자율").order_by('-created_at')[0:3]
+
+    book_club = {
+        'literature': literature,
+        'humanities': humanities,
+        'economy': economy,
+        'self_development': self_development,
+        'political_society': political_society,
+        'art': art,
+        'science': science,
+        'it': it,
+        'amity': amity
+    }
+
+    return book_club
+
+
+def getMyBookClub(user):
+    query = Q()
+    query.add(Q(user_id=user.id), query.AND)
+    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+    book_club_member = BookClubMember.objects.prefetch_related('club').filter(query)
+    club_list = [memberclub.club for memberclub in book_club_member]
+
+    return club_list

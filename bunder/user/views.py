@@ -150,6 +150,19 @@ def check_my_reports(request):
         my_reports = my_reports.filter(user_id = user.id)
     return my_reports
 
+# 내 스크랩 확인 (all_my_scraps)
+def search_my_scraps(request):
+    my_scraps = check_my_scraps(request)
+    return render(request, 'user/all_my_scraps.html', {'my_scraps' : my_scraps})
+
+# 내 스크랩 확인하는 함수
+def check_my_scraps(request):
+    my_scraps = Scrap.objects.all()
+    user = request.user
+    if user:
+        my_scraps = my_scraps.filter(user_id = user.id)
+    return my_scraps
+
 # 내 독후감 최신순 2개 확인 함수
 def check_my_two_reports(request):
     my_reports = BookReport.objects.all()
@@ -186,12 +199,11 @@ class UserBook(View):
 
         return redirect('user:bunder')
 
-# 프로필 책 등록 - 작업중
+# 프로필 책 등록
 def profilebook(request, id):
     user = request.user
     book = get_object_or_404(Book, pk = id)
     try:
-        mainbook = ProfileBook.objects.get(user_id=user.id)
         mainbook = ProfileBook.objects.get(user_id=user.id)
         mainbook.book = book
         mainbook.save()
@@ -201,6 +213,13 @@ def profilebook(request, id):
         mainbook.book = book
         mainbook.save()
         return redirect('user:bunder')
+    return redirect('user:bunder')
+
+# 프로필 책 삭제
+def del_profilebook(request, id):
+    user = request.user
+    mainbook = ProfileBook.objects.get(user_id=user.id)
+    mainbook.delete()
     return redirect('user:bunder')
 
 # 책 디테일페이지로 가기

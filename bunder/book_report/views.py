@@ -91,7 +91,6 @@ def search(request):
 def make_scrap(request):
     req = json.loads(request.body)
     book_report_id = req['id']
-    print("독후감 아이디 " + str(book_report_id))
     if request.method == "POST":
         scrap, created = Scrap.objects.get_or_create(
             book_report=get_object_or_404(BookReport, id=book_report_id),
@@ -172,5 +171,3 @@ def populated_reports(request):
     if user:
         my_reports = my_reports.filter(user_id = user.id).order_by('-likes')[:3]
     return my_reports
-
-# 프로필 책 설정

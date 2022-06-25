@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'book_club',
     'book_report',
     'debug_toolbar',
-    'main'
+    'main',
+    'mail',
 ]
 
 MIDDLEWARE = [

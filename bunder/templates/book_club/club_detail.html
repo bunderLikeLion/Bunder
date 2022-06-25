@@ -12,82 +12,126 @@ Club Detail
 <body>
     {% block content %}
     <div class="container">
+        <button class="button" id="request_btn">소모임 참여 요청</button>
+        <h1>소모임 명 : {{ book_club.club_name }}</h1>
         <div class="profile_container">
-            <div class="img_container">
-                <img class="club_img" src="">
-            </div>
-			<button class="request_btn">소모임 참여 요청</button>
-            <div class="club-informatioon">
-                <h1>소모임 명</h1>
-				{{ book_club.club_name }}
-                <p>소모임 소개</p>
-				{{ book_club.description }}
-                <div class="kakao_link">
-                    <p>카톡 링크: {{ book_club.kako_link }}</p>
+            
+				
+            <div class="club_info">
+                <div class="img_container">
+                    <img class="club_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                </div>
+                <div class="club_description">
+                    <p>소모임 소개 : {{ book_club.description }}</p>
                 </div>
             </div>
         </div>
+
         <div class="club_detail_containaer">
-            <!--profile hover effect : 이름, 나이, 선호장르-->
-            <img class="profile_img" src="">
-            <img class="profile_img" src="">
-            <img class="profile_img" src="">
-            <img class="profile_img" src="">
-            <img class="profile_img" src="">
+            <div class="text">소모임 단원 리스트</div>
+            <div class="all_profile_img">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">    
+            </div>
+        </div>
+
+        <div class="club_detail_containaer" id="link_container">
+            <div class="kakao_link">
+                <p>카톡 링크: {{ book_club.kako_link }}</p>
+            </div>
+            <div class="zoom_link">
+                <p>현재 진행중인 토론 줌링크 : {{ book_club.zoom_link }}</p>
+            </div>
         </div>
         <div class="club_detail_containaer">
-            <div>누적 토론 횟수</div>
-            <div>현재 진행중인 토론 줌링크</div>
-			{{ book_club.zoom_link }}
-        </div>
-        <div class="club_detail_containaer">
-            진행중인 이벤트
+            <div class="text">진행중인 이벤트</div>
             <div class="vote_container">
 				{% if not vote %}
-				<button class="vote-create_btn">투표 생성</button>
+				<button class="button" id="vote-create_btn">투표 생성</button>
 				<div class="empty-vote">
-				<p>현재 진행중인 투표가 없습니다.</p>
+				    <p>현재 진행중인 투표가 없습니다.</p>
 				</div>
 				{% else %}
-					<button class="vote-create_btn deactivate">투표 생성</button>
-					<button class="vote-delete_btn">투표 삭제</button>
-					<div class="deactivate empty-vote">
-						<p>현재 진행중인 투표가 없습니다.</p>
-					</div>
-					<div class="vote_function">
-						<h4>투표</h4>
-						투표 제목: {{ vote.topic }}
-						기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-						<button class="vote_btn">투표 하러 가기</button>
-					</div>
+                <button type="button" class="button" id="vote-create_btn deactivate">투표 생성</button>
+                <button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
+                <div class="empty-vote deactivate">
+                    <p>현재 진행중인 투표가 없습니다.</p>
+                </div>
+                <div class="vote_function">
+                    <h4>투표</h4>
+                    투표 제목: {{ vote.topic }}
+                    기간: {{ vote.start_date }} ~ {{ vote.end_date }}
+                    <button class="vote_btn">투표 하러 가기</button>
+                </div>
 				{% endif %}
 
             </div>
         </div>
+
         <div class="club_detail_containaer">
-            <div class="book_container">
-                현재 읽는 중인 책
-                <input type="button" value="책 수정">
-                <input type="button" value="책장으로">
-                <div class="book">
-                    <div class="book_cover">
-                        <img class="book_cover" src="">
-                    </div>
-                    책 제목
-                    글쓴이
+            <div class="present_book_container">
+                
+                <div class="btn_container">
+                    <a href="book?clubId={{ book_club.id }}">
+                        <input type="button" class="button book-edit_btn" value="책 수정">
+                    </a>
+                    <input type="button" class="button book-remove_btn" value="책장으로">
                 </div>
+                
+                <div class="text">현재 읽는 중인 책</div>
+                <div class="book_info_container">
+                    {% if book_info %}
+                    <div class="book_info_box current-book_container">
+                        <div class="book_img">
+                            <!-- <img src="{{book_report.book_img}}" class="book_cover"> -->
+                            <img class="book_cover" src="{{ book_info.book_img }}">
+                        </div>
+                        <div class="book_info">
+                            <div class="book_name">
+                                <p class="book_name">
+                                <div class="text">책 제목</div>
+                                <div class="book_info_bar">
+                                    {{book_info.book_name}}
+                                </div>
+                                </p>
+                            </div>
+        
+                            <div class="author">
+                                <p class="author">
+                                <div class="text">글쓴이</div>
+                                <div class="book_info_bar">
+                                    {{book_info.book_author}}
+                                </div>
+                                </p>
+                            </div>
+        
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+				
             </div>
+
             <div class="club_bookshelf">
                 <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
-                우리 소모임의 책장
-                <div class="book">
-                    <div class="book_cover">
-                        <img class="book_cover" src="">
-                    </div>
+                <div class="text">우리 소모임의 책장</div>
+                <div class="all_book_cover book" id="book_container">
+                    {% for each_book in book_list %}
+						<div class="book_cover">
+							<img class="book_cover" src="{{ each_book.book_img }}">
+						</div>
+					{% endfor %}
+
                 </div>
             </div>
         </div>
-        <input type="button" value="북클럽 수정">
+        <div class="club_detail_containaer">
+            <input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
+        </div>
+        
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
@@ -96,8 +140,13 @@ Club Detail
         const voteDeleteButton = document.querySelector(".vote-delete_btn");
         const voteListButton = document.querySelector(".vote_btn");
 
+        const removeBookButton = document.querySelector(".book-remove_btn");
+        const bookContainer = document.querySelector("#book_container");
+        const currentBook = document.querySelector(".current-book_container")
+
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
-		let voteId;
+        let bookId;
+        let voteId;
         try {
             voteId = JSON.parse("{{ vote_id|escapejs }}");
             voteListButton.addEventListener('click', ()=> {
@@ -148,6 +197,33 @@ Club Detail
         const createVote = async (id) => {
             window.location.href = "vote?clubId=" + id;
 		}
+		try {
+            bookId = JSON.parse("{{ book_id|escapejs }}");
+            removeBookButton.addEventListener('click', ()=> {
+                removeBook(bookId)
+            })
+
+            const removeBook = async (bookId) => {
+                const url = "book"
+                const response = await axios.patch(url, {bookId});
+
+                const div = document.createElement('div')
+                const img = document.createElement('img')
+                div.classList.add("book_cover");
+                img.classList.add("book_cover");
+                div.appendChild(img);
+                bookContainer.insertBefore(div, bookContainer.firstChild);
+
+                bookContainer.removeChild(bookContainer.lastElementChild);
+                img.src = response.data.img;
+
+                currentBook.classList.add("deactivate")
+
+            }
+		} catch (error) {
+            console.log(error)
+		}
+
 
 
 	</script>

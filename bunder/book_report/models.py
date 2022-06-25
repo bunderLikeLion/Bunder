@@ -23,7 +23,7 @@ class BookReport(models.Model):
     like = models.ManyToManyField(User, related_name = 'likes', blank = True)
     likes = models.IntegerField(verbose_name='likes_counter', default=0)
     image_upload = models.ImageField(upload_to='book_report_images', blank = True, null = True)
-    profile_book = models.ForeignKey(User, on_delete = models.CASCADE, default = '', null = True)
+    profile_book = models.ForeignKey(User, on_delete = models.CASCADE, default = '', null = True, related_name='profile_book')
 
     def __str__(self):
         return self.report_name

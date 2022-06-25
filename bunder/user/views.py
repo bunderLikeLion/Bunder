@@ -186,12 +186,11 @@ class UserBook(View):
 
         return redirect('user:bunder')
 
-# 프로필 책 등록 - 작업중
+# 프로필 책 등록
 def profilebook(request, id):
     user = request.user
     book = get_object_or_404(Book, pk = id)
     try:
-        mainbook = ProfileBook.objects.get(user_id=user.id)
         mainbook = ProfileBook.objects.get(user_id=user.id)
         mainbook.book = book
         mainbook.save()
@@ -201,6 +200,13 @@ def profilebook(request, id):
         mainbook.book = book
         mainbook.save()
         return redirect('user:bunder')
+    return redirect('user:bunder')
+
+# 프로필 책 삭제
+def del_profilebook(request, id):
+    user = request.user
+    mainbook = ProfileBook.objects.get(user_id=user.id)
+    mainbook.delete()
     return redirect('user:bunder')
 
 # 책 디테일페이지로 가기

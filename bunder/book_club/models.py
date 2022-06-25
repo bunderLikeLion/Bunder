@@ -93,5 +93,6 @@ class Book(models.Model):
     ]
     category = models.CharField(max_length=64, choices=category_tuple)
     active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
 
 

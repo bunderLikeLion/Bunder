@@ -114,7 +114,7 @@ def profile(request):
     user = request.user
     return render(request, 'user/profile.html', {'user' : user})
 
-# bunder 정보
+# bunder 정보 - 모든 책, 최근 독후감 2개, 최근 스크랩 2개, 프로필 북, 북클럽
 def bunder(request):
     user = request.user
     book = Book.objects.filter(user_id = user.id)

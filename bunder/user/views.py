@@ -3,14 +3,17 @@ from contextlib import redirect_stdout
 from http.client import HTTPResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
+from django.db import connection
+
 
 from .models import ProfileBook, User
-from book_club.models import Book
+from book_club.models import Book, BookClubMember
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.contrib.auth.hashers import check_password
 from book_report.models import BookReport, Scrap
+from django.db.models import Q
 import json
 import os
 
@@ -117,7 +120,11 @@ def bunder(request):
     book = Book.objects.filter(user_id = user.id)
     my_recent_reports = check_my_two_reports(request)
     scrap = check_my_two_scraps(request)
-    return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports, 'scrap' : scrap, 'book' : book})
+
+    book_club = getBookClub(user)
+    return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports,
+                                                'scrap' : scrap, 'book' : book,
+                                                'book_club': book_club})
 
 # 카테고리 수정
 @csrf_exempt
@@ -193,3 +200,13 @@ def profilebook(request, id):
 def bookdetail(request, id):
     book = get_object_or_404(Book, pk = id)
     return render(request, 'user/detail_book.html', {'book' : book})
+
+def getBookClub(user):
+    query = Q()
+    query.add(Q(user_id=user.id), query.AND)
+    query.add(Q(type="OWNER")|Q(type="MEMBER"), query.AND)
+
+    book_club_member = BookClubMember.objects.prefetch_related('club').filter(query)
+    club_list = [memberclub.club for memberclub in book_club_member]
+
+    return club_list

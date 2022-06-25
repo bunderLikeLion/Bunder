@@ -66,16 +66,19 @@ def book_club_detail(request, bookclub_id):
     bookclub_id_json = json.dumps(book_club.id)
 
     try:
-        vote = BookClubVote.objects.get(club=bookclub_id)
+        book = Book.objects.filter(club_id=bookclub_id, active=True).first()
+        vote = BookClubVote.objects.get(club=book_club)
         vote_id_json = json.dumps(vote.id)
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club,
                        'bookclub_id': bookclub_id_json,
                        'vote': vote,
-                       'vote_id': vote_id_json})
+                       'vote_id': vote_id_json,
+                       'book_info': book})
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
-                      {'book_club': book_club, 'bookclub_id': bookclub_id_json})
+                      {'book_club': book_club, 'bookclub_id': bookclub_id_json,
+                       'book_info': book})
 
 
 class club_admit(View):
@@ -224,13 +227,18 @@ class ClubBook(View):
     @csrf_exempt
     def post(self, request):
         book = Book()
-        clubId = request.POST.get('clubId')
+        clubId = request.GET.get('clubId')
+        try:
+            find_book = Book.objects.get(club_id=clubId, active=True)
+            find_book.delete()
+        except Book.DoesNotExist:
+            pass
         book.club = BookClub.objects.get(pk=clubId)
         book.book_name = request.POST.get('book_name')
         book.book_author = request.POST.get('book_author')
         book.book_img = request.POST.get('book_img')
         book.category = request.POST.get('book_category')
-
+        book.active = True
         book.save()
 
         return redirect('book_club:book_club_detail', clubId)

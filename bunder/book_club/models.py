@@ -92,5 +92,6 @@ class Book(models.Model):
         ('기타/기타', '기타/기타')
     ]
     category = models.CharField(max_length=64, choices=category_tuple)
+    active = models.BooleanField(default=False)
 
 

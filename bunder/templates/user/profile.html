@@ -16,23 +16,23 @@ Profile
         <h2>My Profile</h2>
         <div class="profile_container">
             <div class="img_container">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
             </div>
             <div class="name_container">
                 <h3 class="name">User ID : {{user.username}}</h3>
-                <h3 class="nickname">User Nickname : {{user.username}}</h3>
+                <h3 class="nickname">User Nickname : {{user.nickname}}</h3>
                 <h3 class="age">User Age : {{user.age}}세</h3>
-                <h3 class="book_category">Favorite Category : {{user.categories}}h3>
+                <h3 class="book_category">Favorite Category : {{user.categories}}</h3>
             </div>
         </div>
         <div class="container_body">
             <div class="pagination_container">
                 <ul class="pagination">
-                    <li><a href="" class="updatecategory">선호 책 장르 수정</a></li>
+                    <li><a href="updatecategory" class="updatecategory">선호 책 장르 수정</a></li>
                     <li><a href="updatepassword" class="next">비밀번호 수정</a></li>
                 </ul>
             </div>
         </div>
-
+        
     </div>
     {% endblock content %}

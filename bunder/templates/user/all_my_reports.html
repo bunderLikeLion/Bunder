@@ -20,59 +20,13 @@ All My Reports
                     <h3>독후감</h3>
                 </div>
             </div>
+            {% for my_report in my_reports %}
             <div class="report_container">
                 <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목 아마 이정도 길겠죠?</a>
+                    <a href="../bookreport/{{ my_report.id }}" class="reports_name">{{my_report.report_name}}</a>
                 </div>
             </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">{% for my_report in my_reports %}
-                        {{my_report.report_name}}
-                        {% endfor %}</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
         <div class="report_name_container">
             <div class="report_name">

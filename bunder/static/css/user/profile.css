@@ -72,14 +72,11 @@ body {
 }
 
 .container_body {
-    display: grid;
-    height: 5%;
-    width: 5%;
-    position: relative;
-    left: 67%;
-    top: 3%;
+    height: 10%;
+    width: 50%;
     place-items: center;
     text-align: center;
+    margin-top: 1rem;
 }
 
 .pagination_container {
@@ -88,14 +85,19 @@ body {
 .pagination {
     display: flex;
     list-style: none;
-    position: relative;
-    left: -50%;
-    top: 1.5rem;
 }
 .pagination li {
     flex: 1;
     border-radius: 1rem;
     box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    position: absolute;
+}
+
+.pagination li:first-child {
+    left: 35%;
+}
+.pagination li:last-child {
+    left: 70%;
 }
 .pagination li a {
     font-size: 1rem;
@@ -103,36 +105,17 @@ body {
     text-decoration: none;
     color: #dc143c;
     height: 3rem;
-    width: 2rem;
+    width: 9rem;
     display: block;
     line-height: 3.4rem;
-}
-
-.pagination li:last-child {
-    margin-left: 10%;
-}
-
-.pagination li:first-child a {
-    width: 10rem;
-}
-
-.pagination li:last-child a {
-    width: 8rem;
-}
-
-.pagination li.active {
-    box-shadow: inset -3px -3px 7px #ffffff73,
-    inset 3px 3px 5px rgba(94, 104, 121, 0.288);
 }
 
 .pagination a {
     border-radius: 1rem;
 }
-
 .pagination a:hover {
     box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
-
 .pagination a:active {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }

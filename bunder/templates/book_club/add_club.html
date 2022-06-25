@@ -11,13 +11,134 @@ Add Club
 
 {% block content %}
 <div class="container">
-    <h2>Add My Club!</h2>
+    <h2>Add Club</h2>
+    <form method="post">
+        <div class="box_container">
+            <div class="inputBox">
+                <input type="text" required="required" name='clubname' id='clubname'>
+                <span class="first">소모임 명</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name='link' id='link'>
+                <span class="second">소모임 Zoom Link</span>
+            </div>
+            <div class="inputBox">
+                <input type="number" required="required" name='number_of_member' id='number_of_member' min="2" max="30">
+                <span class="third">소모임 최대 인원</span>
+            </div>
+        </div>
+        <div class="report_content" id="content">
+            <textarea name="content" id="content" placeholder="소모임 소개"></textarea>
+        </div>
+        <h3 class="body">소모임 이미지 선택</h3>
+        <div class="container_body">
+            <div class="pagination_container">
+                <ul class="pagination">
+                    <li><a href="#" class="previous">Previous</a></li>
+                    <li><a href="#none">1/5</a></li>
+                    <li><a href="#" class="next">Next</a></li>
+                </ul>
+            </div>
+        </div>
+        <section class="category_container">
+            <label class="category">
+                <input checked type="radio" value="1" name="club_img" checked class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
+            </label>
+            <label class="category">
+                <input type="radio" value="2" name="club_img" class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
+            </label>
+            <label class="category">
+                <input checked type="radio" value="3" name="club_img" class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
+            </label>
+            <label class="category">
+                <input checked type="radio" value="4" name="club_img" class="radio__input">
+                <div class="category__box"></div>
+                <span class="category__text"><img src="https://via.placeholder.com/40x60/0bf/fff&text=A"></span>
+            </label>
+        </section>
+        <!-- <div class="book_club_container">
+            <label>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="1" checked>
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="2">
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="3">
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+                <div class="my_book_club">
+                    <input type="radio" name="club_img" value="3">
+                    <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
+                </div>
+            </label>
+        </div> -->
+        <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
+        <section class="genre_container">
+            <label class="genre">
+                <input checked type="radio" value="문학" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">문학</span>
+            </label>
+            <label class="genre">
+                <input type="radio" value="예술" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">예술</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" value="자기계발" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">자기계발</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" value="정치/사회" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">정치/사회</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" value="과학" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">과학</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" value="기술/IT" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">기술/IT</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" value="인문" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">인문</span>
+            </label>
+            <label class="genre">
+                <input checked type="radio" value="기타" name="book_category" class="radio__input">
+                <div class="radio__box"></div>
+                <span class="radio__text">기타</span>
+            </label>
+        </section>
+        {{error}}
+        <button class="login" type="submit" value="Sign up">소모임 발행</button>
+    </form>
+</div>
+{% endblock content %}
+
+
+<!-- <h2>Add My Club!</h2>
     <form method="post">
         <div class="inputBox">
             <input type="text" required="required" name='clubname' id='clubname'>
             <span>Club Name</span>
-        </div>
-        <!--HIDE RADIO
+        </div>-->
+<!--HIDE RADIO
         [type=radio] { jhn  cfvGBHM           ASZSSS    XC VBCN
         position: absolute;
         opacity: 0;
@@ -35,7 +156,7 @@ Add Club
         outline: 2px solid #f00;
         https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons
         } -->
-        <label>
+<!-- <label>
             <input type="radio" name="club_img" value="1" checked>
             <img src="https://via.placeholder.com/40x60/0bf/fff&text=A">
             <input type="radio" name="club_img" value="2">
@@ -67,16 +188,12 @@ Add Club
             <input type="url" name="zoom_url" id="zoom_url">
         </div>
 
-		<div class="description_content">
-			<!--https://codepen.io/magnificode/pen/rQpaBO-->
-			<div class="holes"></div>
-			<textarea name="description" id="description" placeholder="소모임 소개"></textarea>
-		</div>
+        <div class="description_content">
+            <textarea name="description" id="description" placeholder="소모임 소개"></textarea>
+        </div>
 
         {{error}}
         <div class="inputBox">
             <input type="submit" value="소모임 발행">
         </div>
-    </form>
-</div>
-{% endblock content %}
+    </form>  -->

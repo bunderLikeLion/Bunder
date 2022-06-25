@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    top: 8rem;
+    width: 80%;
+    padding: 3rem;
+    background-color: #EBECF0;
+    border-radius: 2rem;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    color: #585858;
+}
+
+.container .profile_club {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20%;
+    height: 3rem;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: 2rem;
+}
+
+.container .book_club_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    width: 90%;
+    height: 19rem;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: 1%;
+}
+
+.container .book_club_container .book_cover {
+    padding: 3%;
+    height: 100%;
+    width: 100%;
+}
+
+.container_body_add{
+    height: 10%;
+    width: 5%;
+    position: relative;
+    left: 37.5%;
+    top: 1rem;
+    place-items: center;
+    text-align: center;
+}
+
+.pagination_container {
+    border-radius: 1rem;
+}
+.pagination {
+    display: flex;
+    list-style: none;
+}
+
+.pagination li {
+    flex: 1;
+    border-radius: 1rem;
+    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+}
+
+.pagination li a {
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #4d3252;
+    height: 2rem;
+    width: 2rem;
+    display: block;
+    line-height: 2.4rem;
+}
+.pagination li:first-child a {
+    width: 6rem;
+}
+
+.pagination li:last-child a {
+    width: 6rem;
+}
+
+.pagination li:first-child {
+    margin: 0 15px 0 0;
+}
+
+.pagination li:last-child {
+    margin: 0 0 0 15px;
+}
+
+.pagination li:hover {
+    box-shadow: -2px -2px 5px #191919, 2px 2px 5px #BABECC;
+}
+
+.container_body_reports{
+    height: 10%;
+    width: 5%;
+    position: relative;
+    left: 82%;
+    top: -2%;
+    place-items: center;
+    text-align: center;
+}
+
+.container .profile_container .img_container img {
+    position: absolute;
+    left: 0.7rem;
+    top: 0.6rem;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.container .bookshelf_container img{
+    padding: 2%;
+    width: 90%;
+    height: 90%;
+}
+
+.margin {
+    margin-top: 7rem;
+}
+
+.margin .profile_club {
+    top: -0.1rem;
+}
+
+.container .my_book_club {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    width: 20%;
+    height: 80%;
+}

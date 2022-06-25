@@ -1,6 +1,7 @@
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
 from django.contrib import auth
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from .models import BookReport, Scrap, Comment
@@ -9,8 +10,23 @@ import json
 import os
 # Create your views here.
 
+CONTENT_COUNT = 9
+
 def main(request):
-    return render(request, "book_report/book_report.html")
+    book_report_list = BookReport.objects.filter().order_by('-created_at')
+    page = request.GET.get('page')
+    paginator = Paginator(book_report_list, CONTENT_COUNT)
+    book_report = paginator.get_page(page)
+
+    return render(request, "book_report/book_report.html", {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page})
+
+def category_search(request, category):
+    book_report_list = BookReport.objects.filter(book_category=category).order_by('-created_at')
+    page = request.GET.get('page')
+    paginator = Paginator(book_report_list, CONTENT_COUNT)
+    book_report = paginator.get_page(page)
+
+    return render(request, "book_report/book_report.html", {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page})
 
 def write_report(request):
     key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'));

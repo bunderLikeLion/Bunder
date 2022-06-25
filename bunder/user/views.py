@@ -161,7 +161,7 @@ def check_my_two_scraps(request):
 
 
 # 개인 번더 책 추가
-class Book(View):
+class UserBook(View):
     def get(self, request):
         key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
         return render(request, 'user/add_book.html', {'bookSecret': key})

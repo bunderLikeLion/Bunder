@@ -74,7 +74,7 @@
 		<h3>댓글 N개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
-				<form action="{% url 'book_report:comment_create' book_report_id %}" method="post">
+				<form action="{% url 'book_report:CreateComment' book_report_id %}" method="post">
 					{% csrf_token %}
 					<img class="profile_img" src="">
 					<div class="write_comment">

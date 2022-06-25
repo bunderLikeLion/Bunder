@@ -163,8 +163,6 @@ class CreateComment(View):
 
 # 댓글 수정
 # 댓글 삭제
-# 댓글 좋아요기능
-# 댓글 좋아요취소
 
 # 내 독후감 좋아요 순 3개 확인 함수
 def populated_reports(request):
@@ -173,3 +171,5 @@ def populated_reports(request):
     if user:
         my_reports = my_reports.filter(user_id = user.id).order_by('-likes')[:3]
     return my_reports
+
+# 프로필 책 설정

@@ -20,6 +20,7 @@ class BookReport(models.Model):
     book_img = models.CharField(max_length=500, verbose_name="책 사진", default="")
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='', verbose_name="유저")
+    like = models.ManyToManyField(User, related_name = 'likes', blank = True)
 
     def __str__(self):
         return self.report_name

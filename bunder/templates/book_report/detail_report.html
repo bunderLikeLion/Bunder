@@ -57,8 +57,10 @@
 			</div>
 			<div class="button">
 				<div class="like_button">
-					<input type="submit" value="좋아요">
-					<span class="submit_num">100</span>
+					<button id="{{book_report.id}}" onclick="book_report_like(this.id)">
+						좋아요
+						<span class="submit_num" id="like_count">{{book_report.like.count}}</span>
+					</button>
 				</div>
 				<div class="scrap_button">
 					<button id="scrap">스크랩</button>
@@ -69,7 +71,7 @@
 		<h3>댓글 N개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
-				<form action="{% url 'book_report:comment_create' book_report_id %}" method="post">
+{#				<form action="{% url 'book_report:comment_create' book_report_id %}" method="post">#}
 					{% csrf_token %}
 					<img class="profile_img" src="">
 					<div class="write_comment">
@@ -77,27 +79,41 @@
 						<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="댓글 작성"></textarea>
 					</div>
 					<div class="comment_button">
-						<input type="submit" value='작성' name="comment_submit">
+						<input class="comment_btn" type="submit" value='작성' name="comment_submit">
 					</div>
-				</form>
+{#				</form>#}
 			</div>
 			<div class="comment_content_container">
 				<div class="comment_content">
 					{% for c in comment %}
-					<p>댓글 작성 : {{c.user.nickname}}</p>
-					<p>댓글 내용 : {{c.content}}</p>
-					<p>댓글 작성날짜 : {{c.created_at}}</p>
+					<div>
+						<p>댓글 작성 : {{c.user.nickname}}</p>
+						<p>댓글 내용 : {{c.content}}</p>
+						<p>댓글 작성날짜 : {{c.created_at}}</p>
+					</div>
 					{% endfor %}
+
 				</div>
 			</div>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
-		axios.defaults.xsrfCookieName = 'csrftoken'
+
+        axios.defaults.xsrfCookieName = 'csrftoken'
 		axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+
 		const requestButton = document.querySelector("#scrap");
+        const commentButton = document.querySelector(".comment_btn")
+        const content = document.querySelector("#comment")
+		const commentDiv = document.querySelector(".comment_content")
 		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
+
+		commentButton.addEventListener("click", () => {
+            sendComment(bookReportId, content.value);
+            content.value = "";
+		})
+
 		requestButton.addEventListener('click', () => {
 			requestMember(bookReportId);
 		})
@@ -105,6 +121,71 @@
 		const requestMember = async (id) => {
 			const url = "scrap";
 			await axios.post(url, { id });
+		}
+
+        const sendComment = async (book_report_id, text) => {
+            const url = "comment"
+			const response = await axios.post(url, {book_report_id, text})
+            const div = document.createElement('div');
+            const comment = response.data.comment;
+
+            const nickname = document.createElement('p');
+            const content = document.createElement('p');
+            const created_at = document.createElement('p');
+
+            const date = comment.created_at.split("T")[0].split("-");
+            const time = comment.created_at.split("T")[1].split(":");
+
+            const year = date[0];
+            const month = date[1].replace(/(^0+)/, "");
+            const day = date[2];
+
+            let hour = time[0];
+            let datetime = "오전";
+            const minute = time[1];
+
+            if (Number(hour) > 12) {
+                hour -= 12;
+                datetime = "오후";
+			}
+
+			const reformat_date =
+				year + "년 " + month + "월 " + day + "일 "
+				+ hour + ":" + minute + " " + datetime;
+
+            nickname.innerText = "댓글 작성 : " + comment.nickname;
+            content.innerText = "댓글 내용 : " + comment.content;
+            created_at.innerText = "댓글 작성날짜 : " + reformat_date;
+
+
+            div.appendChild(nickname);
+            div.appendChild(content);
+            div.appendChild(created_at);
+
+            commentDiv.appendChild(div);
+
+            window.scrollTo(0, document.body.scrollHeight);
+
+		}
+
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function book_report_like(id) {
+			console.log("hi")
+			$.ajax({
+				url: "{%url 'book_report:likes'%}",
+				data: {
+					'book_report_id': id
+				},
+				dataType: "json",
+				contentType: "application/json; charset:UTF-8",
+				success: function (response) {
+					$('#like_count').html(response.like_count)
+				},
+			})
 		}
 	</script>
 

@@ -114,8 +114,7 @@ def profile(request):
 # bunder 정보
 def bunder(request):
     user = request.user
-    book = Book.objects.all()
-    book = book.filter(user_id = user.id)
+    book = Book.objects.filter(user_id = user.id)
     my_recent_reports = check_my_two_reports(request)
     scrap = check_my_two_scraps(request)
     return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports, 'scrap' : scrap, 'book' : book})

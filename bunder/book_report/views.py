@@ -17,8 +17,9 @@ def main(request):
     page = request.GET.get('page')
     paginator = Paginator(book_report_list, CONTENT_COUNT)
     book_report = paginator.get_page(page)
+    populated_report = populated_reports(request)
 
-    return render(request, "book_report/book_report.html", {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page})
+    return render(request, "book_report/book_report.html", {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page, 'populate_reports' : populated_report,})
 
 def category_search(request, category):
     book_report_list = BookReport.objects.filter(book_category=category).order_by('-created_at')
@@ -164,3 +165,11 @@ class CreateComment(View):
 # 댓글 삭제
 # 댓글 좋아요기능
 # 댓글 좋아요취소
+
+# 내 독후감 좋아요 순 3개 확인 함수
+def populated_reports(request):
+    my_reports = BookReport.objects.all()
+    user = request.user
+    if user:
+        my_reports = my_reports.filter(user_id = user.id).order_by('-likes')[:3]
+    return my_reports

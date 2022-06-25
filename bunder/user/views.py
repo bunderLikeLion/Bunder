@@ -114,12 +114,12 @@ def profile(request):
 # bunder 정보
 def bunder(request):
     user = request.user
-    # book = Book.objects.all()
-    # book = book.filter(user_id = user.id)
-    # scrap = check_my_two_scraps(request)
-    # my_reports = check_my_two_reports(request)
-    # , 'my_reports' : my_reports, 'book' : book, 'scrap' : scrap
-    return render(request, 'user/bunder.html', {'user' : user})
+    book = Book.objects.all()
+    book = book.filter(user_id = user.id)
+    my_recent_reports = check_my_two_reports(request)
+    populated_report = populated_reports(request)
+    scrap = check_my_two_scraps(request)
+    return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports, 'populate_reports' : populated_report,  'scrap' : scrap, 'book' : book})
 
 # 카테고리 수정
 @csrf_exempt
@@ -145,11 +145,20 @@ def check_my_reports(request):
         my_reports = my_reports.filter(user_id = user.id)
     return my_reports
 
+# 내 독후감 최신순 2개 확인 함수
 def check_my_two_reports(request):
     my_reports = BookReport.objects.all()
     user = request.user
     if user:
-        my_reports = my_reports.filter(user_id = user.id).order_by('created_at')[-2:-1]
+        my_reports = my_reports.filter(user_id = user.id).order_by('-id')[:2]
+    return my_reports
+
+# 내 독후감 좋아요 순 3개 확인 함수
+def populated_reports(request):
+    my_reports = BookReport.objects.all()
+    user = request.user
+    if user:
+        my_reports = my_reports.filter(user_id = user.id).order_by('-likes')[:3]
     return my_reports
 
 # scrap 2개 뽑아서 번더 전달
@@ -157,12 +166,12 @@ def check_my_two_scraps(request):
     scrap = Scrap.objects.all()
     user = request.user
     if user:
-        scrap = scrap.filter(user_id = user.id).order_by('created_at')[-2:-1]
+        scrap = scrap.filter(user_id = user.id).order_by('-id')[:2]
     return scrap
 
 
 # 개인 번더 책 추가
-class Book(View):
+class UserBook(View):
     def get(self, request):
         key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
         return render(request, 'user/add_book.html', {'bookSecret': key})

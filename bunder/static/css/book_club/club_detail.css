@@ -68,6 +68,11 @@ img {
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     text-shadow: 1px 1px 0 #FFF;
     display: flex;
+    justify-content: center;
+}
+
+.club_info > * {
+    
 }
 
 .button {
@@ -202,4 +207,7 @@ button:active {
 .club_description {
     width: 70%;
     padding: 1rem;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 10px;
+    background: transparent;
 }

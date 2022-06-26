@@ -12,18 +12,18 @@ Club Detail
 <body>
     {% block content %}
     <div class="container">
-		{% if is_member %}
-        	<button class="button" id="exit_btn">소모임 나가기</button>
-		{% else %}
-        	<button class="button" id="request_btn">소모임 참여 요청</button>
-		{% endif %}
+        {% if is_member %}
+        <button class="button" id="exit_btn">소모임 나가기</button>
+        {% else %}
+        <button class="button" id="request_btn">소모임 참여 요청</button>
+        {% endif %}
         <h1>소모임 명 : {{ book_club.club_name }}</h1>
         <div class="profile_container">
-            
-				
+
+
             <div class="club_info">
                 <div class="img_container">
-                    <img class="club_img" src="../../static/img/club_img_5.jpg">
+                    <img class="club_img" src="../../static/img/club_img_{{ book_club.image }}.jpg">
                 </div>
                 <div class="club_description">
                     <p>소모임 소개 : {{ book_club.description }}</p>
@@ -34,12 +34,12 @@ Club Detail
         <div class="club_detail_containaer">
             <div class="text">소모임 단원 리스트</div>
             <div class="all_profile_container">
-				{% for member in user_list %}
-					<div class="member_box">
-						<img class="profile_img" src="{{ member.avatar }}">
-						<span>{{ member.nickname }}</span>
-					</div>
-				{% endfor %}
+                {% for member in user_list %}
+                <div class="member_box">
+                    <img class="profile_img" src="{{ member.avatar }}">
+                    <span>{{ member.nickname }}</span>
+                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -52,55 +52,55 @@ Club Detail
             </div>
         </div>
         <div class="club_detail_containaer">
-			<div class="club_detail_header">
-            	<div class="event_div">진행중인 이벤트</div>
-				{% if not vote %}
-				<div class="btn_container">
-					<button class="button" id="vote-create_btn">투표 생성</button>
-					<button type="button" class="button deactivate"id="vote-delete_btn">투표 삭제</button>
-				</div>
-				{% else %}
-				<div class="btn_container">
-					<button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
-					<button type="button" class="button deactivate" id="vote-create_btn">투표 생성</button>
-				</div>
-				{% endif %}
-			</div>
+            <div class="club_detail_header">
+                <div class="event_div">진행중인 이벤트</div>
+                {% if not vote %}
+                <div class="btn_container">
+                    <button class="button" id="vote-create_btn">투표 생성</button>
+                    <button type="button" class="button deactivate" id="vote-delete_btn">투표 삭제</button>
+                </div>
+                {% else %}
+                <div class="btn_container">
+                    <button type="button" class="button" id="vote-delete_btn">투표 삭제</button>
+                    <button type="button" class="button deactivate" id="vote-create_btn">투표 생성</button>
+                </div>
+                {% endif %}
+            </div>
             <div class="vote_container club_book_list">
-				{% if not vote %}
-				<div class="empty-vote">
-				    <p>현재 진행중인 투표가 없습니다.</p>
-				</div>
-				{% else %}
+                {% if not vote %}
+                <div class="empty-vote">
+                    <p>현재 진행중인 투표가 없습니다.</p>
+                </div>
+                {% else %}
                 <div class="empty-vote deactivate empty_list">
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 <div class="vote_function">
-					<div class="club_detail_header">
-						<div class="text">투표</div>
-						<button class="button vote_btn">투표 하러 가기</button>
-					</div>
+                    <div class="club_detail_header">
+                        <div class="text">투표</div>
+                        <button class="button vote_btn">투표 하러 가기</button>
+                    </div>
                     <div class="vote_info">
                         <div>투표 제목: {{ vote.topic }}</div>
                         <div>기간: {{ vote.start_date }} ~ {{ vote.end_date }}</div>
                     </div>
 
                 </div>
-				{% endif %}
+                {% endif %}
 
             </div>
         </div>
 
         <div class="club_detail_containaer">
             <div class="present_book_container">
-                
+
                 <div class="btn_container">
                     <a href="book?clubId={{ book_club.id }}">
                         <input type="button" class="button book-edit_btn" value="책 수정">
                     </a>
                     <input type="button" class="button book-remove_btn" value="책장으로">
                 </div>
-                
+
                 <div class="text">현재 읽는 중인 책</div>
                 <div class="book_info_container current-book_container club_book_list">
                     {% if not book_info %}
@@ -123,7 +123,7 @@ Club Detail
                                 </div>
                                 </p>
                             </div>
-        
+
                             <div class="author">
                                 <p class="author">
                                 <div class="text">글쓴이</div>
@@ -132,12 +132,12 @@ Club Detail
                                 </div>
                                 </p>
                             </div>
-        
+
                         </div>
                     </div>
                     {% endif %}
                 </div>
-				
+
             </div>
 
             <div class="club_bookshelf">
@@ -150,28 +150,28 @@ Club Detail
                     </div>
                     {% endif %}
                     {% for each_book in book_list %}
-						<div class="book_cover">
-							<img class="book_cover" src="{{ each_book.book_img }}">
-						</div>
-					{% endfor %}
+                    <div class="book_cover">
+                        <img class="book_cover" src="{{ each_book.book_img }}">
+                    </div>
+                    {% endfor %}
 
                 </div>
             </div>
         </div>
 
-		{% if is_owner %}
+        {% if is_owner %}
         <div class="club_detail_containaer">
-			<input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
+            <input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
         </div>
-		{% endif %}
+        {% endif %}
 
     </div>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
         const voteCreateButton = document.querySelector("#vote-create_btn");
         const voteDeleteButton = document.querySelector("#vote-delete_btn");
         const voteListButton = document.querySelector(".vote_btn");
-		const requestButton = document.querySelector("#request_btn");
+        const requestButton = document.querySelector("#request_btn");
 
         const exitButton = document.querySelector("#exit_btn");
 
@@ -189,20 +189,20 @@ Club Detail
 
         try {
             voteId = JSON.parse("{{ vote_id|escapejs }}");
-            voteListButton.addEventListener('click', ()=> {
+            voteListButton.addEventListener('click', () => {
                 voteList(bookClubId, voteId)
             })
             const deleteVote = async (id) => {
                 const url = "vote?clubId=" + id;
-                await axios.delete(url,{ id });
+                await axios.delete(url, { id });
             }
 
-            voteDeleteButton.addEventListener('click', ()=> {
+            voteDeleteButton.addEventListener('click', () => {
                 voteContainer.classList.add("deactivate");
                 voteDeleteButton.classList.add("deactivate");
                 voteCreateButton.classList.remove("deactivate");
 
-				const emptyDiv = document.querySelector(".empty-vote")
+                const emptyDiv = document.querySelector(".empty-vote")
                 emptyDiv.classList.remove("deactivate");
 
                 deleteVote(bookClubId)
@@ -221,46 +221,47 @@ Club Detail
 
         voteCreateButton.addEventListener('click', () => {
             createVote(bookClubId)
-		})
+        })
 
-		if (requestButton == null) {
+        if (requestButton == null) {
             exitButton.addEventListener('click', () => {
                 exitClub(bookClubId, userId);
             })
-		} else if (exitButton == null) {
+        } else if (exitButton == null) {
             requestButton.addEventListener('click', () => {
                 requestMember(bookClubId)
             })
-		}
+        }
 
-		const requestMember = async (id) => {
-			const url = "member/";
-			await axios.post(url,{ id });
-		}
+        const requestMember = async (id) => {
+            const url = "member/";
+            await axios.post(url, { id });
+        }
 
         const exitClub = async (bookClubId, userId) => {
             const url = "member/"
-			console.log(bookClubId, userId)
-			await axios.delete(url, {
-            	data:{
-            	    bookClubId: bookClubId,
-					userId: userId
-            	}})
-			window.location.reload();
-		}
+            console.log(bookClubId, userId)
+            await axios.delete(url, {
+                data: {
+                    bookClubId: bookClubId,
+                    userId: userId
+                }
+            })
+            window.location.reload();
+        }
 
         const createVote = async (id) => {
             window.location.href = "vote?clubId=" + id;
-		}
-		try {
+        }
+        try {
             bookId = JSON.parse("{{ book_id|escapejs }}");
-            removeBookButton.addEventListener('click', ()=> {
+            removeBookButton.addEventListener('click', () => {
                 removeBook(bookId)
             })
 
             const removeBook = async (bookId) => {
                 const url = "book"
-                const response = await axios.patch(url, {bookId});
+                const response = await axios.patch(url, { bookId });
 
                 const div = document.createElement('div')
                 const img = document.createElement('img')
@@ -275,13 +276,13 @@ Club Detail
                 currentBook.classList.add("deactivate")
 
             }
-		} catch (error) {
+        } catch (error) {
             console.log(error)
-		}
+        }
 
 
 
-	</script>
+    </script>
     {% endblock content %}
 
 </body>

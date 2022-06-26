@@ -10,21 +10,36 @@ Category Clubs
 {% endblock title %}
 
 <body>
-    {% block content %}
-    <div class="container">
-        <div class="club_info">
-            <span>{{ category }} 북클럽</span>
-            <span>총 {{ total }}개</span>
-        </div>
-		{% for club in club_list %}
-			<div class="club_container">
-				<div class="clubs" onclick="clubToggle()">&times;
-					<span>소모임명: {{ club.club_name }}</span>
-					<span>인원 {{ club.member_cnt }}/{{ club.member_total }}</span>
-					<img src="" alt="">
-				</div>
+	{% block content %}
+	<div class="container">
+		<div class="profile_club">
+			<span>{{ category }} 북클럽</span>
+		</div>
+		<div class="number_club">
+			<span>총 {{ total }}개</span>
+		</div>
+		<div class="book_club_container">
+			{% for club in club_list %}
+			<div class="my_book_club">
+				<img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
 			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- <div class="container">
+		<div class="club_info">
+			<span>{{ category }} 북클럽</span>
+			<span>총 {{ total }}개</span>
+		</div>
+		{% for club in club_list %}
+		<div class="club_container">
+			<div class="clubs" onclick="clubToggle()">&times;
+				<span>소모임명: {{ club.club_name }}</span>
+				<span>인원 {{ club.member_cnt }}/{{ club.member_total }}</span>
+				<img src="" alt="">
+			</div>
+		</div>
 		{% endfor %}
-    </div>
-    {% endblock content %}
+	</div> -->
+	{% endblock content %}
 </body>

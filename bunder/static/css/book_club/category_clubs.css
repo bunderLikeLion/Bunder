@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    top: 8rem;
+    width: 80%;
+    padding: 3rem;
+    background-color: #EBECF0;
+    border-radius: 2rem;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    color: #585858;
+}
+
+.container .profile_club {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 20%;
+    height: 3rem;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+}
+
+.container .book_club_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: relative;
+    width: 90%;
+    height: 100%;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 5%;
+    top: 1%;
+}
+
+.container .book_club_container .my_book_club {
+    width: 26%;
+    height: 15rem;
+    margin-top: 5rem;
+}
+
+.container .book_club_container .book_cover {
+    padding: 3%;
+    height: 100%;
+    width: 100%;
+}
+
+.container .number_club {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 10%;
+    height: 3rem;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    left: 80%;
+    top: 3rem;
+}
+
+
+.container .my_book_club {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: #EBECF0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    width: 20%;
+    height: 80%;
+}

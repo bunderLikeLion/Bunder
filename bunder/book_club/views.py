@@ -7,6 +7,7 @@ from django.forms.models import model_to_dict
 from django.views import View
 import json
 import os
+from django.db import connection
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
 
 
@@ -62,10 +63,23 @@ def new(request):
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
     bookclub_id_json = json.dumps(book_club.id)
+    user_id_json = json.dumps(request.user.id)
+    is_owner = True if request.user == book_club.owner else False
+
+    query = Q()
+    query.add(Q(club=book_club), query.AND)
+    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+    member_list = BookClubMember.objects.prefetch_related("user").filter(query)
+    user_list = [member.user for member in member_list]
+
+    is_member = True if request.user in user_list else False
 
     try:
         book = Book.objects.filter(club_id=bookclub_id, active=True).first()
         book_id_json = None
+
+
         if book:
             book_id_json = json.dumps(book.id)
         book_list = get_book(bookclub_id)
@@ -78,13 +92,25 @@ def book_club_detail(request, bookclub_id):
                        'vote_id': vote_id_json,
                        'book_info': book,
                        'book_list': book_list,
-                       'book_id': book_id_json})
+                       'book_id': book_id_json,
+                       'user_list': user_list,
+                       'is_owner': is_owner,
+                       'is_member': is_member,
+                       'user_id': user_id_json})
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club, 'bookclub_id': bookclub_id_json,
                        'book_info': book,
                        'book_list': book_list,
-                       'book_id': book_id_json})
+                       'book_id': book_id_json,
+                       'user_list': user_list,
+                       'is_owner': is_owner,
+                       'is_member': is_member,
+                       'user_id': user_id_json})
+
+
+def book_club_edit(request, bookclub_id):
+    return render(request, 'book_club/club_revise.html')
 
 
 def get_book(bookclub_id):
@@ -149,6 +175,21 @@ def request_member(request):
         )
 
         return JsonResponse({'member': model_to_dict(member)})
+    elif request.method == "DELETE":
+        req = json.loads(request.body)
+        bookclub_id = req['bookClubId']
+        user_id = req['userId']
+
+        try:
+            find_member = BookClubMember.objects.get(club_id=bookclub_id,user_id=user_id)
+            find_member.delete()
+            return JsonResponse({'message': "멤버 삭제 성공",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=200)
+        except:
+            print("존재하지 하지 않는 멤버입니다.")
+            return JsonResponse({'message': "존재하지 하지 않는 멤버입니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=400)
+
 
 
 class AddVote(View):

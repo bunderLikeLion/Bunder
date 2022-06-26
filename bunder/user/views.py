@@ -1,10 +1,5 @@
-from cmath import log
-from contextlib import redirect_stdout
-from http.client import HTTPResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
-from django.db import connection
-
 
 from .models import ProfileBook, User
 from book_club.models import Book, BookClubMember
@@ -17,10 +12,11 @@ from django.db.models import Q
 import json
 import os
 
+
 # Create your views here.
 
 # 회원가입
-@csrf_exempt 
+@csrf_exempt
 def register(request):
     if request.method == "GET":
         return render(request, 'login/sign_up.html')
@@ -32,8 +28,8 @@ def register(request):
         categories = request.POST["book_category"]
         nickname = request.POST["nickname"]
         sex = request.POST["sex"]
-        res_data = {'username' : username, 'password' : password, 're_password' : re_password,
-                'age' : age, 'categories' : categories, 'nickname' : nickname, 'sex' : sex}
+        res_data = {'username': username, 'password': password, 're_password': re_password,
+                    'age': age, 'categories': categories, 'nickname': nickname, 'sex': sex}
 
         if not (username and password and re_password and age and categories and nickname):
             res_data["error"] = "입력되지 않은 값이 있습니다"
@@ -43,45 +39,49 @@ def register(request):
             res_data["error"] = "이미 존재하는 닉네임 입니다."
         else:
             user = User.objects.create_user(
-                username = username,
-                password = password,
-                age = age,
-                nickname = nickname,
-                categories = categories,
-                sex = sex,
-                avatar = f'https://avatars.dicebear.com/api/{sex}/{nickname}.svg'
+                username=username,
+                password=password,
+                age=age,
+                nickname=nickname,
+                categories=categories,
+                sex=sex,
+                avatar=f'https://avatars.dicebear.com/api/{sex}/{nickname}.svg'
             )
             user.save()
             return redirect('user:loginpage')
         return render(request, 'login/sign_up.html', res_data)
 
-#로그인 페이지로 이동
+
+# 로그인 페이지로 이동
 @csrf_exempt
 def loginpage(request):
     return render(request, "login/sign_in.html")
 
+
 # 로그인
-@csrf_exempt 
+@csrf_exempt
 def login(request):
     if request.method == "POST":
         if 'login' in request.POST:
             username = request.POST["username"]
             password = request.POST["password"]
-            user = auth.authenticate(request, username = username, password = password)
+            user = auth.authenticate(request, username=username, password=password)
             if user is not None:
                 auth.login(request, user)
                 return redirect('user:bunder')
             else:
-                return render(request, 'login/sign_in.html', {'error' : "아이디 혹은 비밀번호가 다릅니다."})
+                return render(request, 'login/sign_in.html', {'error': "아이디 혹은 비밀번호가 다릅니다."})
         elif 'forgotpassword' in request.POST:
             pass
     else:
         return render(request, 'login/sign_in.html')
 
+
 # 로그아웃
 def logout(request):
     auth.logout(request)
     return redirect('main:home')
+
 
 # 비밀번호 수정
 @csrf_exempt
@@ -96,35 +96,38 @@ def password_revise(request):
             if new_password == password_confirm:
                 user.set_password(new_password)
                 user.save()
-                auth.login(request,user)
-                error = {'error' : "비밀번호 변경 성공"}
+                auth.login(request, user)
+                error = {'error': "비밀번호 변경 성공"}
                 return render(request, "user/password_revise.html", error)
             else:
-                error = {'error':"새로운 비밀번호를 다시 확인해주세요."}
+                error = {'error': "새로운 비밀번호를 다시 확인해주세요."}
         else:
-            error = {'error':"현재 비밀번호가 일치하지 않습니다."}
+            error = {'error': "현재 비밀번호가 일치하지 않습니다."}
     else:
         if not request.user.is_authenticated:
             return HttpResponse("로그인 후 이용해주세요")
 
     return render(request, "user/password_revise.html", error)
 
+
 # profile 정보
 def profile(request):
     user = request.user
-    return render(request, 'user/profile.html', {'user' : user})
+    return render(request, 'user/profile.html', {'user': user})
+
 
 # bunder 정보 - 모든 책, 최근 독후감 2개, 최근 스크랩 2개, 프로필 북, 북클럽
 def bunder(request):
     user = request.user
-    book = Book.objects.filter(user_id = user.id)
+    book = Book.objects.filter(user_id=user.id)
     my_recent_reports = check_my_two_reports(request)
     scrap = check_my_two_scraps(request)
     book_club = getBookClub(user)
-    mainbook =  ProfileBook.objects.filter(user_id = user.id).last()
-    return render(request, 'user/bunder.html', {'user' : user, 'my_recent_reports' : my_recent_reports,
-                                                'scrap' : scrap, 'book' : book,
-                                                'book_club': book_club, 'mainbook' : mainbook})
+    mainbook = ProfileBook.objects.filter(user_id=user.id).last()
+    return render(request, 'user/bunder.html', {'user': user, 'my_recent_reports': my_recent_reports,
+                                                'scrap': scrap, 'book': book,
+                                                'book_club': book_club, 'mainbook': mainbook})
+
 
 # 카테고리 수정
 @csrf_exempt
@@ -133,50 +136,56 @@ def category_revise(request):
     if request.method == "POST":
         user.categories = request.POST.get('book_category')
         user.save()
-        return render(request, "user/category_revise.html", {'user' : user})
+        return render(request, "user/category_revise.html", {'user': user})
     else:
-        return render(request, "user/category_revise.html", {'user' : user})
+        return render(request, "user/category_revise.html", {'user': user})
+
 
 # 내 독후감 확인 (all_my_reports)
 def search_my_reports(request):
     my_reports = check_my_reports(request)
-    return render(request, 'user/all_my_reports.html', {'my_reports' : my_reports})
+    return render(request, 'user/all_my_reports.html', {'my_reports': my_reports})
+
 
 # 내 독후감 확인하는 함수
 def check_my_reports(request):
     my_reports = BookReport.objects.all()
     user = request.user
     if user:
-        my_reports = my_reports.filter(user_id = user.id)
+        my_reports = my_reports.filter(user_id=user.id)
     return my_reports
+
 
 # 내 스크랩 확인 (all_my_scraps)
 def search_my_scraps(request):
     my_scraps = check_my_scraps(request)
-    return render(request, 'user/all_my_scraps.html', {'my_scraps' : my_scraps})
+    return render(request, 'user/all_my_scraps.html', {'my_scraps': my_scraps})
+
 
 # 내 스크랩 확인하는 함수
 def check_my_scraps(request):
     my_scraps = Scrap.objects.all()
     user = request.user
     if user:
-        my_scraps = my_scraps.filter(user_id = user.id)
+        my_scraps = my_scraps.filter(user_id=user.id)
     return my_scraps
+
 
 # 내 독후감 최신순 2개 확인 함수
 def check_my_two_reports(request):
     my_reports = BookReport.objects.all()
     user = request.user
     if user:
-        my_reports = my_reports.filter(user_id = user.id).order_by('-id')[:2]
+        my_reports = my_reports.filter(user_id=user.id).order_by('-id')[:2]
     return my_reports
+
 
 # scrap 2개 뽑아서 번더 전달
 def check_my_two_scraps(request):
     scrap = Scrap.objects.all()
     user = request.user
     if user:
-        scrap = scrap.filter(user_id = user.id).order_by('-id')[:2]
+        scrap = scrap.filter(user_id=user.id).order_by('-id')[:2]
     return scrap
 
 
@@ -199,10 +208,11 @@ class UserBook(View):
 
         return redirect('user:bunder')
 
+
 # 프로필 책 등록
 def profilebook(request, id):
     user = request.user
-    book = get_object_or_404(Book, pk = id)
+    book = get_object_or_404(Book, pk=id)
     try:
         mainbook = ProfileBook.objects.get(user_id=user.id)
         mainbook.book = book
@@ -215,6 +225,7 @@ def profilebook(request, id):
         return redirect('user:bunder')
     return redirect('user:bunder')
 
+
 # 프로필 책 삭제
 def del_profilebook(request, id):
     user = request.user
@@ -222,18 +233,19 @@ def del_profilebook(request, id):
     mainbook.delete()
     return redirect('user:bunder')
 
+
 # 책 디테일페이지로 가기
 def bookdetail(request, id):
-    book = get_object_or_404(Book, pk = id)
-    return render(request, 'user/detail_book.html', {'book' : book})
+    book = get_object_or_404(Book, pk=id)
+    return render(request, 'user/detail_book.html', {'book': book})
+
 
 def getBookClub(user):
     query = Q()
     query.add(Q(user_id=user.id), query.AND)
-    query.add(Q(type="OWNER")|Q(type="MEMBER"), query.AND)
+    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
 
     book_club_member = BookClubMember.objects.prefetch_related('club').filter(query)
     club_list = [memberclub.club for memberclub in book_club_member]
 
     return club_list
-    

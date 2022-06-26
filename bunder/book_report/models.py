@@ -1,5 +1,4 @@
 from django.db import models
-from tabnanny import verbose
 from django.conf import settings
 from django.utils import timezone
 

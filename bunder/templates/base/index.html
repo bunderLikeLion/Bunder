@@ -6,13 +6,12 @@
 Hi, Bunder
 {% endblock title %}
 
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/base/base.css' %}" />
+{% endblock extrahead %}
+
 {% block content %}
-여기는 인덱스 페이지 입니다.
-<br>
-로그인 상태 :
-{% if user.is_authenticated %}
-로그인 상태입니다.
-{% else %}
-로그아웃 상태입니다.
-{% endif %}
+<div class="container">
+    <section class="one"></section>
+</div>
 {% endblock content %}

@@ -19,7 +19,7 @@ Club Detail
 				
             <div class="club_info">
                 <div class="img_container">
-                    <img class="club_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                    <img class="club_img" src="../../static/img/club_img_5.jpg">
                 </div>
                 <div class="club_description">
                     <p>소모임 소개 : {{ book_club.description }}</p>
@@ -48,23 +48,31 @@ Club Detail
         </div>
         <div class="club_detail_containaer">
             <div class="text">진행중인 이벤트</div>
-            <div class="vote_container">
+            <div class="vote_container club_book_list">
 				{% if not vote %}
-				<button class="button" id="vote-create_btn">투표 생성</button>
+                <div class="btn_container">
+                    <button class="button" id="vote-create_btn">투표 생성</button>
+                </div>
 				<div class="empty-vote">
 				    <p>현재 진행중인 투표가 없습니다.</p>
 				</div>
 				{% else %}
-                <button type="button" class="button" id="vote-create_btn deactivate">투표 생성</button>
-                <button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
-                <div class="empty-vote deactivate">
+                <div class="btn_container">
+                    <button type="button" class="button" id="vote-create_btn deactivate">투표 생성</button>
+                    <button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
+                </div>
+                <div class="empty-vote deactivate empty_list">
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 <div class="vote_function">
-                    <h4>투표</h4>
-                    투표 제목: {{ vote.topic }}
-                    기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-                    <button class="vote_btn">투표 하러 가기</button>
+                    <div class="text">투표</div>
+                    <div class="vote_info">
+                        <div>투표 제목: {{ vote.topic }}</div>
+                        <div>기간: {{ vote.start_date }} ~ {{ vote.end_date }}</div>
+                    </div>
+                    <div class="btn_container">
+                        <button class="button vote_btn">투표 하러 가기</button>
+                    </div>
                 </div>
 				{% endif %}
 
@@ -82,9 +90,14 @@ Club Detail
                 </div>
                 
                 <div class="text">현재 읽는 중인 책</div>
-                <div class="book_info_container current-book_container">
+                <div class="book_info_container current-book_container club_book_list">
+                    {% if not book_info %}
+                    <div class="empty-present_book empty_list">
+                        <p>현재 읽고 있는 책이 없습니다.</p>
+                    </div>
+                    {% endif %}
                     {% if book_info %}
-                    <div class="book_info_box current-book_container">
+                    <div class="book_info_box current-book_container ">
                         <div class="book_img">
                             <!-- <img src="{{book_report.book_img}}" class="book_cover"> -->
                             <img class="book_cover" src="{{ book_info.book_img }}">
@@ -118,7 +131,12 @@ Club Detail
             <div class="club_bookshelf">
                 <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
                 <div class="text">우리 소모임의 책장</div>
-                <div class="all_book_cover book" id="book_container">
+                <div class="all_book_cover book club_book_list" id="book_container">
+                    {% if not each_book %}
+                    <div class="empty-book_list empty_list">
+                        <p>현재 소모임 책장이 비어있습니다.</p>
+                    </div>
+                    {% endif %}
                     {% for each_book in book_list %}
 						<div class="book_cover">
 							<img class="book_cover" src="{{ each_book.book_img }}">

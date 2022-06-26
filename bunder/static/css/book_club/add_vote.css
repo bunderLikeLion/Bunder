@@ -1,0 +1,160 @@
+
+* {
+    /* color : red; */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.container {
+    position: relative;
+    width: 80%;
+    margin: 6rem;
+    padding: 2rem;
+    background-color: #EBECF0;
+    /* background-color: blue; */
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    color: #111;
+    font-weight: 600;
+}
+
+.inputBox {  
+    color: #686868;
+    clear: both;
+    border: 0;
+    outline: 0;
+    border-radius: 100px;
+    /* margin: 1rem 4rem; */
+    /* padding : 1rem 2rem; */
+    text-shadow: 1px 1px 0 #FFF;
+    /* background-color: pink; */
+}
+
+.input_bar {
+    
+    width: 7rem;
+}
+
+.input_bar {   /* 독후감 제목, 책제목, 책제목 검색 입력창 */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /* margin: 0px 20px; */
+    padding : 0.7rem;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
+    color: #111;
+    font-weight: 300;
+    border: none;
+
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 10px;
+    background: transparent;
+}
+
+/* #void-list > * {
+    margin : 1rem;
+}
+
+#void-list > * > * {
+    background-color : red;
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는거 */
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+}
+
+.upper_setting, .input_bar {
+    clear : both;
+    padding : 0.5rem 1rem;
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+}
+
+.upper_setting > * {
+    margin : 1rem;
+}
+
+
+.button {   /* 책검색, 독후감 발행 버튼 두개 */
+    font-weight: bold;
+    float : right;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    margin: 0 1rem 1rem 1rem;
+    height: 3.5rem;
+    padding : 0 3rem;
+    color: #AE1100;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+}
+
+.button:hover { /* */
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.button:active {/* */
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+input[type="date"] {
+    position: relative;
+    min-height:30px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    font-size: large;
+    font-weight: bold;
+    color : grey;
+    border-radius: 30px;
+    text-align : center;
+  }
+  
+  input[type="date"]::-webkit-clear-button,
+  input[type="date"]::-webkit-inner-spin-button { 
+      display: none;
+  } 
+
+  input[type="date"]::-webkit-calendar-picker-indicator{
+
+    z-index: 1;
+    cursor: pointer;
+  }
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before{
+    display: none;
+}
+
+.text {
+    width: 8rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 50px;
+    background: transparent;
+  }
+

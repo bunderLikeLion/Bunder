@@ -50,7 +50,8 @@ img {
   }
 
 .club_img {
-    width: 6rem;
+    width: 7rem;
+    height: 7rem;
 }
 
 .profile_img{
@@ -71,8 +72,8 @@ img {
     justify-content: center;
 }
 
-.club_info > * {
-    
+.club_book_list{
+    height: 17rem;
 }
 
 .button {
@@ -97,6 +98,18 @@ button:hover {
 
 button:active {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.button:hover {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.button:active {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.vote_btn {
+  float : right;
 }
 
 #edit_club_btn{
@@ -160,13 +173,9 @@ button:active {
   .book_info_container{
     justify-content: center;
     display : flex;
-    width: 80%;
-    margin: 0 auto;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    border-radius: 50px;
 }
 
-  .book_info_container {
+  .book_info_container, .all_book_cover {
     width: 90%;
     margin: 0 auto;
     padding: 1rem;
@@ -210,4 +219,9 @@ button:active {
     box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
     border-radius: 10px;
     background: transparent;
+}
+
+.empty_list{
+    width: 50%;
+    justify-content: center;
 }

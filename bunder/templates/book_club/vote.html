@@ -8,24 +8,37 @@
 {% block title %}
 	Vote
 {% endblock title %}
-
+<body>
 {% block content %}
 	<div class="container">
+
 		<form method="post">
 			{% csrf_token %}
-			<div class="inputBox">
-				<span>투표 주제 : {{vote.topic}}</span>
-
-			</div>
-			기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-			{% for vote in voteList %}
-				<div style="display:flex;align-items:center">
-					<label for="vote{{ forloop.counter }}">{{ vote.description }}</label><br>
-					<input type="radio" name="vote" id="vote{{ forloop.counter }}" value="{{ vote.id }}">
+			<div class="vote_info">
+				<div class="inputBox">
+					<div class="text"><span>투표 주제</span></div>
+					<div class="input_bar">{{vote.topic}}</div>
 				</div>
-			{% endfor %}
-			<input type="submit" value="Vote">
+				<div class="time">
+					<div class="text"><span>투표 기간</span></div>
+					<div class="input_bar">
+						{{ vote.start_date }} ~ {{ vote.end_date }}
+					</div>
+				</div>
+			</div>
+			
+			<div class="input_bar id="vote-list>
+				{% for vote in voteList %}
+				<div style="display:flex;align-items:center">
+					<label for="vote{{ forloop.counter }}" class="vote_item_info">{{ vote.description }}</label><br>
+					<input type="radio" name="vote" id="vote{{ forloop.counter }}" class="vote_item_info" value="{{ vote.id }}">
+				</div>
+				{% endfor %}
+			</div>
+			
+			<input type="submit" class="button" value="Vote">
 
 		</form>
 	</div>
 {% endblock content %}
+</body>

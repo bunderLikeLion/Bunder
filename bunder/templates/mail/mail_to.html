@@ -10,10 +10,6 @@ Mail to
 
 {% block content %}
 <div class="container">
-    <div class="write_report">
-        <input type="button" value="쪽지 작성하기" onClick = "location.href = 'mail_to'" >
-    </div>
-
     <div class="navbar_container">
         <div class="all_receiver">
             <ul class="navbar">
@@ -48,25 +44,22 @@ Mail to
                     닉네임
                     쪽지 내용
                 </li>
-
             </ul>
         </div>
     </div>
     <div class="write_mail_container">
-        <div class="write_mail">
-            <p>받는 사람 아이디</p>
-            
-            <div class="report_content">
-                <!--https://codepen.io/magnificode/pen/rQpaBO-->
-                <div class="holes"></div>
-                <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
+        <div class="inner_contaienr">
+            <div class="info">
+                <span>받는 사람 닉네임</span>
             </div>
             <form action="{% url '' %}" method="post">
                 <div class="inputBox">
                     {{error}} <input type="submit" value="보내기">
                 </div>
             </form>
-
+            <div class="report_content">
+                <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
@@ -257,9 +257,14 @@ class Vote(View):
         vote = BookClubVote.objects.get(id=voteId)
         voteList = VoteDetail.objects.filter(vote_id=voteId)
 
-        if club.owner_id != request.user.id:
+        query = Q()
+        query.add(Q(user_id=request.user.id), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+        query.add(Q(club=club), query.AND)
+
+        if not BookClubMember.objects.filter(query).exists():
             # TODO: 권한 없음 에러페이지 헨들링
-            return redirect("/")
+            return HttpResponse("멤버가 아님", status=403)
 
         return render(request, 'book_club/vote.html', {'vote': vote, 'voteList': voteList})
 
@@ -347,6 +352,6 @@ def getMyBookClub(user):
     query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
 
     book_club_member = BookClubMember.objects.prefetch_related('club').filter(query)
-    club_list = [memberclub.club for memberclub in book_club_member]
+    club_list = [member.club for member in book_club_member]
 
     return club_list

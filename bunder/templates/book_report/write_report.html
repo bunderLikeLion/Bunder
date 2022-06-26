@@ -1,0 +1,317 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+<head>
+    <title>Write Report</title>
+</head>
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_report/write_report.css' %}" />
+{% endblock extrahead %}
+
+{% block content %}
+<form action="{% url 'book_report:create' %}" method="post" enctype='multipart/form-data'>
+    <div class="container">
+        <div class="report_container">
+            <div class="inputBox">
+                <div class="text"><span>독후감 제목</span></div>
+                <input type="text" class="input_bar" required="required" name='report_name' id='report_name'>
+            </div>
+            <div class="inputBox" id="book_search">
+                <div id="book_search_bar">
+                    <div class="text"><span>책 검색</span></div>
+                    <input type="text" class="input_bar" id="book_search_input">
+                    {{error}} <button type="button" class="button" id="book_search_btn" value="검색">검색</button>
+                </div>
+            </div>
+        </div>
+        <div class="book_search_bar">
+            <div class="book_img">
+                <img id="book_img"
+                    src='data:image/jpeg;base64,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'
+                    class="book_cover">
+            </div>
+            <div id="book_info_container">
+                <div class="inputBox">
+                    <div class="search_bar">
+                        <div class="text"><span>책 제목</span></div>
+                        <input type="text" class="input_bar" required="required" name='book_name' id='book_name'>
+                    </div>
+                </div>
+                <div class="book_search_reault" id="book_info">
+                    <div class="text">
+                        <p class="author">글쓴이</p>
+                    </div>
+                    <input type="text" class="input_bar" id="book_author" name='book_author'>
+                    <p class="category">
+                    <div class="text">카테고리</div>
+                    <select name="book_category" id="book_category">
+                        <option value="문학">문학</option>
+                        <option value="경제/경영">경제/경영</option>
+                        <option value="예술">예술</option>
+                        <option value="자기계발">자기계발</option>
+                        <option value="정치/사회">정치/사회</option>
+                        <option value="과학">과학</option>
+                        <option value="기술IT">기술/IT</option>
+                        <option value="기타">기타</option>
+                    </select>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="report_content" id="content">
+            <!--https://codepen.io/magnificode/pen/rQpaBO-->
+            <div class="holes"></div>
+            <textarea name="content" id="content" placeholder="독후감 본문">
+            </textarea>
+        </div>
+        <input type="text" id='img_input' name="book_img"
+            value="data:image/jpeg;base64,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">
+        <form action="{% url 'book_report:create' %}" method="post">
+
+            <input type="file" name="image_upload">
+
+            <div class="inputBox" id="make_report_container">
+                <input type="submit" class="button" id="make_report" value="독후감 발행">
+            </div>
+        </form>
+
+    </div>
+    <div id="modal" class="modal-overlay">
+        <div class="modal-window">
+            <div class="title">
+                <h2>책 검색 결과</h2>
+            </div>
+            <div class="close-area">X</div>
+            <div class="content">
+                <div class="single-book">
+                    <img src=http://books.google.com/books/content?id=7KyLDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                        alt="">
+                    <div class="book-text-box">
+                        <p>아몬드</p>
+                        <p>손원평</p>
+                        <p>문학</p>
+                    </div>
+                </div>
+                <div class="single-book"></div>
+                <div class="single-book"></div>
+                <div class="single-book"></div>
+                <div class="single-book"></div>
+                <div class="single-book"></div>
+            </div>
+            <button class="book-select-btn">선택</button>
+
+
+
+
+            <script>
+                const bookNameInput = document.querySelector('#book_name');
+                const bookAuthorInput = document.querySelector('#book_author');
+                const bookCategoryInput = document.querySelector('#book_category')
+                const bookImgInput = document.querySelector('#book_img');
+
+                const modal = document.getElementById("modal")
+                const btnModal = document.getElementById("btn-modal")
+                const closeBtn = modal.querySelector(".close-area")
+                closeBtn.addEventListener("click", e => {
+                    modal.style.display = "none"
+                })
+
+                modal.addEventListener("click", e => {
+                    const evTarget = e.target
+                    if (evTarget.classList.contains("modal-overlay")) {
+                        modal.style.display = "none"
+                    }
+                })
+
+                // category converter
+                const categoryConverter = (category) => {
+                    const typedCategory = category.toUpperCase();
+                    const new_category = {
+                        "문학":
+                            ['ANTIQUES & COLLECTIBLES',
+                                'JUVENILE FICTION',
+                                'JUVENILE NONFICTION',
+                                'COMICS & GRAPHIC NOVELS',
+                                'LITERARY COLLECTIONS',
+                                'LITERARY CRITICISM',
+                                'DRAMA',
+                                'FICTION',
+                                'POETRY',
+                                'YOUNG ADULT FICTION',
+                                'YOUNG ADULT NONFICTION'
+                            ],
+                        "경제/경영": [
+                            'BUSINESS & ECONOMICS'
+                        ],
+                        "자기계발": [
+                            'COOKING',
+                            'CRAFTS & HOBBIES',
+                            'FOREIGN LANGUAGE STUDY',
+                            'STUDY AIDS',
+                            'HEALTH & FITNESS',
+                            'GARDENING',
+                            'GAMES & ACTIVITIES',
+                            'BODY, MIND & SPIRIT',
+                            'SELF-HELP',
+                            'TRAVEL'
+                        ],
+                        "인문": [
+                            'BIOGRAPHY & AUTOBIOGRAPHY',
+                            'EDUCATION',
+                            'LANGUAGE ARTS & DISCIPLINES',
+                            'FAMILY & RELATIONSHIPS',
+                            'HISTORY',
+                            'HOUSE & HOME',
+                            'HUMOR',
+                            'PETS',
+                            'REFERENCE',
+                            'PHILOSOPHY',
+                            'SPORTS & RECREATION'
+                        ],
+                        "정치/사회": [
+                            'TRUE CRIME',
+                            'LAW',
+                            'BIBLES',
+                            'RELIGION',
+                            'SOCIAL SCIENCE'
+                        ],
+                        "예술": [
+                            'ART',
+                            'DESIGN',
+                            'PHOTOGRAPHY',
+                            'PERFORMING ARTS',
+                            'MUSIC',
+                        ],
+                        "과학": [
+                            'MATHEMATICS',
+                            'MEDICAL',
+                            'NATURE'
+                        ],
+                        "기술/IT": [
+                            'COMPUTERS',
+                            'TRANSPORTATION',
+                            'ARCHITECTURE',
+                            'TECHNOLOGY & ENGINEERING'
+                        ]
+                    }
+                    for (let cat in new_category) {
+                        if (new_category[cat].includes(typedCategory)) {
+                            return cat;
+                            break;
+                        } else {
+                            return '기타';
+                        }
+                    }
+                }
+
+
+
+
+
+
+                // getting data from api
+
+                const searchInputVal = document.querySelector('#book_search_input');
+                const searchBtn = document.querySelector('#book_search_btn');
+                const contentEl = document.querySelector('.content');
+                const selectBtn = document.querySelector('.book-select-btn');
+                const bookImgSrcInput = document.querySelector('#img_input');
+                const key = JSON.parse("{{ bookSecret|escapejs }}");
+                let bookInfo = [];
+
+                const fetchFunc = (bookName) => {
+                    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&key=${key}`)
+                        .then(res => res.json())
+                        .then(res => {
+                            bookInfo = [];
+                            for (let book of res.items) {
+                                if (bookInfo.length >= 6) break;
+                                const singleBook = book?.volumeInfo;
+                                const tmp = {};
+                                if (singleBook?.authors && singleBook?.categories) {
+                                    tmp.title = singleBook.title;
+                                    tmp.author = singleBook.authors[0];
+                                    tmp.imageLink = singleBook?.imageLinks;
+                                    tmp.category = categoryConverter(singleBook?.categories[0]);
+                                    bookInfo.push(tmp)
+                                }
+                            }
+                        })
+                }
+
+
+
+                let selectedInfo = null;
+
+                searchBtn.addEventListener('click', async () => {
+                    await fetchFunc(searchInputVal.value);
+                    selectedInfo = null;
+                    contentEl.innerHTML = '';
+                    bookInfo.map(singleBook => {
+                        const singleBookEl = document.createElement('div');
+                        singleBookEl.setAttribute('class', 'single-book');
+                        const singleImageEl = document.createElement('img');
+                        if (singleBook.imageLink) {
+                            singleImageEl.setAttribute('src', singleBook.imageLink['thumbnail'])
+                            console.log(singleBook.imageLink['thumbnail'], 'right');
+                        } else {
+                            singleImageEl.setAttribute('src', 'data:image/jpeg;base64,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')
+                        }
+                        singleBookEl.appendChild(singleImageEl);
+                        const textBoxEl = document.createElement('div');
+                        textBoxEl.setAttribute('class', 'book-text-box');
+                        for (let text in singleBook) {
+                            if (typeof singleBook[text] === 'string') {
+                                const word = document.createElement('p');
+                                word.innerText = singleBook[text];
+                                textBoxEl.appendChild(word);
+                            }
+                        }
+                        singleBookEl.appendChild(textBoxEl);
+                        singleBookEl.addEventListener('mouseenter', () => {
+                            if (singleBookEl.className === 'single-book') {
+                                singleBookEl.setAttribute('class', 'single-book hover');
+                            }
+                        })
+                        singleBookEl.addEventListener('mouseleave', () => {
+                            if (singleBookEl.className === 'single-book hover') {
+                                singleBookEl.setAttribute('class', 'single-book');
+                            }
+                        })
+                        singleBookEl.addEventListener('click', () => {
+                            const allBooks = document.querySelectorAll('.single-book');
+                            allBooks.forEach(single => {
+                                single.setAttribute('class', 'single-book');
+                            })
+                            singleBookEl.setAttribute('class', 'single-book click')
+                            let extractedStr = singleBookEl.innerHTML.split('<p>').slice(1);
+                            const imgStr = singleBookEl.querySelector('img').src;
+                            extractedStr = extractedStr.map(single => {
+                                return single.replace('</p>', '').replace('</div>', '');
+                            })
+                            selectedInfo = { title: extractedStr[0], author: extractedStr[1], category: extractedStr[2], imgStr: imgStr };
+                        })
+                        contentEl.appendChild(singleBookEl);
+
+                    })
+                    modal.style.display = "flex";
+                })
+
+                selectBtn.addEventListener('click', () => {
+                    if (selectedInfo) {
+                        console.log(selectedInfo);
+                        modal.style.display = "none";
+                        bookNameInput.value = selectedInfo['title'];
+                        bookAuthorInput.value = selectedInfo['author'];
+                        bookCategoryInput.value = selectedInfo['category'];
+                        bookImgSrcInput.value = selectedInfo['imgStr'];
+                        bookImgInput.setAttribute('src', selectedInfo['imgStr']);
+                    } else {
+                        console.log('none');
+                    };
+                })
+
+            </script>
+            {% endblock content %}

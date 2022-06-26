@@ -3,7 +3,6 @@
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login/mail_to.css' %}" />
 {% endblock extrahead %}
-
 {% block title %}
 Mail to
 {% endblock title %}
@@ -52,7 +51,7 @@ Mail to
             <div class="info">
                 <span>받는 사람 닉네임</span>
             </div>
-            <form action="{% url '' %}" method="post">
+            <form action="#" method="post">
                 <div class="inputBox">
                     {{error}} <input type="submit" value="보내기">
                 </div>

@@ -120,13 +120,13 @@ button:active {
   #vote-create_btn {
     float : right;
     position: relative;
-    top: -4.5rem;
+    /*top: -4.5rem;*/
   }
   
 
   .btn_container {
-    float : right;
-    padding-bottom : 1rem;
+      top: -4.5rem;
+      padding-bottom : 1rem;
   }
 
   #request_btn {
@@ -151,6 +151,23 @@ button:active {
   .kakao_link, .zoom_link {
     width: 80%;
     margin : 0.2rem auto;
+  }
+
+  .club_detail_header {
+      box-shadow: none;
+      padding: 0px;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .event_div {
+      width: 12rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+      border-radius: 50px;
+      background: transparent;
   }
 
   .text {

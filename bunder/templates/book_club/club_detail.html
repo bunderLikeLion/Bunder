@@ -47,32 +47,39 @@ Club Detail
             </div>
         </div>
         <div class="club_detail_containaer">
-            <div class="text">진행중인 이벤트</div>
+			<div class="club_detail_header">
+            	<div class="event_div">진행중인 이벤트</div>
+				{% if not vote %}
+				<div class="btn_container">
+					<button class="button" id="vote-create_btn">투표 생성</button>
+					<button type="button" class="button deactivate"id="vote-delete_btn">투표 삭제</button>
+				</div>
+				{% else %}
+				<div class="btn_container">
+					<button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
+					<button type="button" class="button deactivate" id="vote-create_btn">투표 생성</button>
+				</div>
+				{% endif %}
+			</div>
             <div class="vote_container club_book_list">
 				{% if not vote %}
-                <div class="btn_container">
-                    <button class="button" id="vote-create_btn">투표 생성</button>
-                </div>
 				<div class="empty-vote">
 				    <p>현재 진행중인 투표가 없습니다.</p>
 				</div>
 				{% else %}
-                <div class="btn_container">
-                    <button type="button" class="button" id="vote-create_btn deactivate">투표 생성</button>
-                    <button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
-                </div>
                 <div class="empty-vote deactivate empty_list">
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 <div class="vote_function">
-                    <div class="text">투표</div>
+					<div class="club_detail_header">
+						<div class="text">투표</div>
+						<button class="button vote_btn">투표 하러 가기</button>
+					</div>
                     <div class="vote_info">
                         <div>투표 제목: {{ vote.topic }}</div>
                         <div>기간: {{ vote.start_date }} ~ {{ vote.end_date }}</div>
                     </div>
-                    <div class="btn_container">
-                        <button class="button vote_btn">투표 하러 가기</button>
-                    </div>
+
                 </div>
 				{% endif %}
 
@@ -162,6 +169,8 @@ Club Detail
         const bookContainer = document.querySelector("#book_container");
         const currentBook = document.querySelector(".current-book_container");
 
+        const voteContainer = document.querySelector(".vote_function");
+
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
         let bookId;
         let voteId;
@@ -175,10 +184,9 @@ Club Detail
                 await axios.delete(url,{ id });
             }
 
-            voteDeleteButton.addEventListener('click', (event)=> {
-                const voteDiv = event.target.parentElement;
-                voteDiv.lastElementChild.classList.add("deactivate");
-                event.target.classList.add("deactivate");
+            voteDeleteButton.addEventListener('click', ()=> {
+                voteContainer.classList.add("deactivate");
+                voteDeleteButton.classList.add("deactivate");
                 voteCreateButton.classList.remove("deactivate");
 
 				const emptyDiv = document.querySelector(".empty-vote")

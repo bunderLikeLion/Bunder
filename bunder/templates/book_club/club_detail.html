@@ -12,7 +12,11 @@ Club Detail
 <body>
     {% block content %}
     <div class="container">
-        <button class="button" id="request_btn">소모임 참여 요청</button>
+		{% if is_member %}
+        	<button class="button" id="exit_btn">소모임 나가기</button>
+		{% else %}
+        	<button class="button" id="request_btn">소모임 참여 요청</button>
+		{% endif %}
         <h1>소모임 명 : {{ book_club.club_name }}</h1>
         <div class="profile_container">
             
@@ -29,13 +33,13 @@ Club Detail
 
         <div class="club_detail_containaer">
             <div class="text">소모임 단원 리스트</div>
-            <div class="all_profile_img">
-				{% for member in member_list %}
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">    
+            <div class="all_profile_container">
+				{% for member in user_list %}
+					<div class="member_box">
+						<img class="profile_img" src="{{ member.avatar }}">
+						<span>{{ member.nickname }}</span>
+					</div>
+				{% endfor %}
             </div>
         </div>
 
@@ -154,17 +158,22 @@ Club Detail
                 </div>
             </div>
         </div>
+
+		{% if is_owner %}
         <div class="club_detail_containaer">
-            <input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
+			<input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
         </div>
-        
+		{% endif %}
+
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
-		const requestButton = document.querySelector("#request_btn");
         const voteCreateButton = document.querySelector("#vote-create_btn");
         const voteDeleteButton = document.querySelector("#vote-delete_btn");
         const voteListButton = document.querySelector(".vote_btn");
+		const requestButton = document.querySelector("#request_btn");
+
+        const exitButton = document.querySelector("#exit_btn");
 
         const removeBookButton = document.querySelector(".book-remove_btn");
         const bookContainer = document.querySelector("#book_container");
@@ -173,8 +182,11 @@ Club Detail
         const voteContainer = document.querySelector(".vote_function");
 
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
+        const userId = JSON.parse("{{ user_id|escapejs }}");
+
         let bookId;
         let voteId;
+
         try {
             voteId = JSON.parse("{{ vote_id|escapejs }}");
             voteListButton.addEventListener('click', ()=> {
@@ -207,18 +219,34 @@ Club Detail
         axios.defaults.xsrfCookieName = 'csrftoken';
         axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
-        requestButton.addEventListener('click', ()=> {
-            requestMember(bookClubId)
-		})
-
-        voteCreateButton.addEventListener('click', ()=> {
+        voteCreateButton.addEventListener('click', () => {
             createVote(bookClubId)
 		})
 
+		if (requestButton == null) {
+            exitButton.addEventListener('click', () => {
+                exitClub(bookClubId, userId);
+            })
+		} else if (exitButton == null) {
+            requestButton.addEventListener('click', () => {
+                requestMember(bookClubId)
+            })
+		}
 
 		const requestMember = async (id) => {
 			const url = "member/";
 			await axios.post(url,{ id });
+		}
+
+        const exitClub = async (bookClubId, userId) => {
+            const url = "member/"
+			console.log(bookClubId, userId)
+			await axios.delete(url, {
+            	data:{
+            	    bookClubId: bookClubId,
+					userId: userId
+            	}})
+			window.location.reload();
 		}
 
         const createVote = async (id) => {

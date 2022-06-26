@@ -19,7 +19,7 @@ Club Detail
 				
             <div class="club_info">
                 <div class="img_container">
-                    <img class="club_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                    <img class="club_img" src="../../static/img/club_img_5.jpg">
                 </div>
                 <div class="club_description">
                     <p>소모임 소개 : {{ book_club.description }}</p>
@@ -50,21 +50,29 @@ Club Detail
             <div class="text">진행중인 이벤트</div>
             <div class="vote_container club_book_list">
 				{% if not vote %}
-				<button class="button" id="vote-create_btn">투표 생성</button>
+                <div class="btn_container">
+                    <button class="button" id="vote-create_btn">투표 생성</button>
+                </div>
 				<div class="empty-vote">
 				    <p>현재 진행중인 투표가 없습니다.</p>
 				</div>
 				{% else %}
-                <button type="button" class="button" id="vote-create_btn deactivate">투표 생성</button>
-                <button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
+                <div class="btn_container">
+                    <button type="button" class="button" id="vote-create_btn deactivate">투표 생성</button>
+                    <button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
+                </div>
                 <div class="empty-vote deactivate empty_list">
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 <div class="vote_function">
-                    <h4>투표</h4>
-                    투표 제목: {{ vote.topic }}
-                    기간: {{ vote.start_date }} ~ {{ vote.end_date }}
-                    <button class="vote_btn">투표 하러 가기</button>
+                    <div class="text">투표</div>
+                    <div class="vote_info">
+                        투표 제목: {{ vote.topic }}
+                        기간: {{ vote.start_date }} ~ {{ vote.end_date }}
+                    </div>
+                    <div class="btn_container">
+                        <button class="button" id="vote_btn">투표 하러 가기</button>
+                    </div>
                 </div>
 				{% endif %}
 

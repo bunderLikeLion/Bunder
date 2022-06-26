@@ -13,50 +13,63 @@ Hi, Bunder
 
 {% block content %}
 <div class="container">
-    <div class="container">
-        <!------------------------------------------------------------>
-        <div class="div_top">
-            <div class="top">
-                <h1>Bunder </h1>
-            </div>
-            <div class="main">
-                <h1>책 아래에는 뭐가 있나요?</h1>
-            </div>
+    <!------------------------------------------------------------>
+    <div class="div_top">
+        <div class="top">
+            <h1>Bunder, </h1>
         </div>
-        <!--------------------------------------------------------------->
-        <div class="div" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
-            <div class="my_book_club">
-                <img src="../../static/img/first.jpeg">
-            </div>
-            책 아래에는<br><br>
-            더 깊은 생각의 바다가,
-        </div>
-        <!-------------------------------------------------------------->
-        <div class="div" data-aos="fade-right">
-            <div class="my_book_club">
-                <img src="../../static/img/second.jpeg">
-            </div>
-            우연히 같은 경험을 하다 마주친 타인들,
-        </div>
-        <!-- ------------------------------------------------------------->
-        <div class="div" data-aos="fade-up">
-            <div class="my_book_club">
-                <img src="../../static/img/third.jpeg">
-            </div>
-            혹은 또다른 여정을 품은 책이,
-        </div>
-        <div class="div" data-aos="fade-up">
-            <div class="my_book_club">
-                <img src="../../static/img/forth.jpeg">
-            </div>
-            이 곳은 책 아래, BUNDER.
+        <div class="main">
+            <h1>책 아래에는 뭐가 있나요?</h1>
         </div>
     </div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 3000,
-            once: true,
-        });
-    </script>
-    {% endblock content %}
+    <!--------------------------------------------------------------->
+    <div class="div" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+        <div class="my_book_club">
+            <img class="first" src="../../static/img/first.jpeg">
+            <div class="first_text">
+                책 아래에는<br><br>
+                더 깊은 생각의 바다가,
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------------------->
+    <div class="div" data-aos="fade-right">
+        <div class="my_book_club">
+            <div class="second_text">
+                우연히 같은<br> 경험을하다<br>마주친 타인들,
+            </div>
+            <img class="first" src="../../static/img/second.jpeg">
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------->
+    <div class="div" data-aos="fade-up">
+        <div class="my_book_club">
+            <img class="first" src="../../static/img/third.jpeg">
+            <div class="third_text">
+                혹은 또다른<br> 여정을 품은 책이,
+            </div>
+        </div>
+    </div>
+    <div class="div" data-aos="fade-up">
+        <div class="my_book_club">
+            <div class="forth_text">
+                이 곳은 책 아래,<br>BUNDER
+            </div>
+            <img class="first" src="../../static/img/forth.jpeg">
+        </div>
+    </div>
+    <div class="bunder">
+        <a href={% url 'main:home' %}>
+            <img src="../../static/img/bunder_logo.png" class="logo">
+        </a>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+</script>
+{% endblock content %}

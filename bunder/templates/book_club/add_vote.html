@@ -1,75 +1,87 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% block extrahead %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/add_vote.css' %}" />
 {% endblock extrahead %}
 
 {% block title %}
 Add Vote
 {% endblock title %}
-
+<body>
 {% block content %}
-<div class="container">
-    <button class="add_Club" type="button">
-        투표 만들기
-    </button>
+    <div class="container">
+        <button class="button" type="button">
+            투표 만들기
+        </button>
 
-	<form method="post">
-		{% csrf_token %}
-		<div class="inputBox">
-			<span>투표 주제</span>
-			<input type="text" required="required" name='topic' id='topic'>
-		</div>
-		<input type="date" name="startvote" id="startvote">
-		<input type="date" name="endvote" id="endvote">
-		{# TODO: JS로 동적 생성가능하게 만들어야 함 #}
-		<div id="vote-list" style="display:flex;flex-direction:column;width:300px">
-		</div>
-		<button>제출</button>
-	</form>
-
-	<button class="addItem_btn">항목 추가</button>
-
-</div>
-	<script>
-        const voteList = document.getElementById('vote-list');
-        const toDoForm = document.getElementById('todo-form');
-        const addButton = document.querySelector('.addItem_btn');
-
-
-        let itemList = [];
-
-        function deleteTodo(event) {
-            const div = event.target.parentElement;
-            div.remove();
-            itemList = itemList.filter((item) => item.id !== parseInt(div.id));
-        }
-
-        function renderItem(item) {
-            const div = document.createElement('div');
-            div.id = item.id;
-            const input = document.createElement('input');
-            const button = document.createElement('button');
-
-            input.setAttribute('name', 'input[]')
-            input.setAttribute('type', 'text')
-
-            button.innerText = '❌';
-            button.addEventListener('click', deleteTodo);
-
-            div.appendChild(input);
-            div.appendChild(button);
-            voteList.appendChild(div);
-        }
-
-        function addItem() {
-            const item = {
-                id: Date.now(),
-            };
-            itemList.push(item);
-            renderItem(item);
-        }
-        addItem()
-        addButton.addEventListener('click', addItem);
-	</script>
+        
+    
+        <form method="post">
+            {% csrf_token %}
+            <button class="button">제출</button>
+            <div class="upper_setting">
+                <div class="inputBox">
+                    <div class="text"><span>투표 주제</span></div>
+                    <input type="text" class="input_bar" required="required" name='topic' id='topic'>
+                </div>
+                <div class="time">
+                    <input type="date" name="startvote" id="startvote">
+                    <span>~</span>
+                    <input type="date" name="endvote" id="endvote">
+                </div>
+            </div>
+            
+            
+            {# TODO: JS로 동적 생성가능하게 만들어야 함 #}
+            <div class="input_bar" id="vote-list">
+            </div>
+            
+            
+        </form>
+    
+        <button class="addItem_btn button">항목 추가</button>
+    
+    </div>
+        <script>
+            const voteList = document.getElementById('vote-list');
+            const toDoForm = document.getElementById('todo-form');
+            const addButton = document.querySelector('.addItem_btn');
+    
+    
+            let itemList = [];
+    
+            function deleteTodo(event) {
+                const div = event.target.parentElement;
+                div.remove();
+                itemList = itemList.filter((item) => item.id !== parseInt(div.id));
+            }
+    
+            function renderItem(item) {
+                const div = document.createElement('div');
+                div.id = item.id;
+                const input = document.createElement('input');
+                const button = document.createElement('button');
+    
+                input.setAttribute('name', 'input[]')
+                input.setAttribute('type', 'text')
+    
+                button.innerText = '❌';
+                button.addEventListener('click', deleteTodo);
+    
+                div.appendChild(input);
+                div.appendChild(button);
+                voteList.appendChild(div);
+            }
+    
+            function addItem() {
+                const item = {
+                    id: Date.now(),
+                };
+                itemList.push(item);
+                renderItem(item);
+            }
+            addItem()
+            addButton.addEventListener('click', addItem);
+        </script>
 {% endblock content %}
+</body>

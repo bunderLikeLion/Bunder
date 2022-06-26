@@ -40,11 +40,11 @@ My Bunder
         </div>
     </div>
     <div class="book_club_container">
-	{% for club in book_club %}
-		<div class="my_book_club">
-			<img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-		</div>
-	{% endfor %}
+        {% for club in book_club %}
+        <div class="my_book_club">
+            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+        </div>
+        {% endfor %}
     </div>
     <div class="profile_bookshelf">
         <h3>나의 책장</h3>
@@ -81,10 +81,10 @@ My Bunder
                 <h3>독후감</h3>
             </div>
         </div>
-        {% for single_report in my_reports %}
+        {% for book in Book%}
         <div class="report_container">
             <div class="inner_report_container">
-                <a href="../bookreport/{{ single_report.id }}" class="reports_name">{{ single_report.report_name }}</a>
+                <a href='' class="reports_name"></a>
             </div>
         </div>
         {% endfor %}

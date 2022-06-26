@@ -138,9 +138,9 @@ def category_revise(request):
     if request.method == "POST":
         user.categories = request.POST.get('book_category')
         user.save()
-        return render(request, "user/category_revise.html", {'user': user})
+        return render(request, "user/profile_revise.html", {'user': user})
     else:
-        return render(request, "user/category_revise.html", {'user': user})
+        return render(request, "user/profile_revise.html", {'user': user})
 
 
 # 내 독후감 확인 (all_my_reports)

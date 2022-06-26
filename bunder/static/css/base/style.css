@@ -6,7 +6,7 @@
 
 body {
     /* background-image: url(../../img/background.jpg); */
-    background-color: #EBECF0;
+background: linear-gradient(180deg, rgba(53,57,62,1) 0%, rgba(25,26,30,1) 100%);
     min-height: 100vh;
 }
 

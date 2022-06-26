@@ -66,6 +66,14 @@ def book_club_detail(request, bookclub_id):
     try:
         book = Book.objects.filter(club_id=bookclub_id, active=True).first()
         book_id_json = None
+
+        query = Q()
+        query.add(Q(club=book_club), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+        member_list = BookClubMember.objects.prefetch_related("user").filter(query)
+        user_list = [user.nickname for user in member_list]
+
         if book:
             book_id_json = json.dumps(book.id)
         book_list = get_book(bookclub_id)
@@ -78,7 +86,8 @@ def book_club_detail(request, bookclub_id):
                        'vote_id': vote_id_json,
                        'book_info': book,
                        'book_list': book_list,
-                       'book_id': book_id_json})
+                       'book_id': book_id_json,
+                       'member_list': member_list})
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club, 'bookclub_id': bookclub_id_json,

@@ -80,7 +80,9 @@ Club Detail
                 <div class="vote_function">
 					<div class="club_detail_header">
 						<div class="text">투표</div>
+						{% if is_member %}
 						<button class="button vote_btn">투표 하러 가기</button>
+						{% endif %}
 					</div>
                     <div class="vote_info">
                         <div>투표 제목: {{ vote.topic }}</div>
@@ -190,6 +192,7 @@ Club Detail
         const currentBook = document.querySelector(".current-book_container");
 
         const bookEditButton = document.querySelector(".book-edit_btn");
+        const emptyDiv = document.querySelector(".empty-book_list");
 
         const voteContainer = document.querySelector(".vote_function");
 
@@ -201,6 +204,12 @@ Club Detail
 
         try {
             voteId = JSON.parse("{{ vote_id|escapejs }}");
+
+            const voteList = async (clubid, voteId) => {
+                window.location.href = "vote/lis" +
+					"t?clubId=" + clubid + "&voteId=" + voteId;
+            }
+
             voteListButton.addEventListener('click', ()=> {
                 voteList(bookClubId, voteId)
             })
@@ -220,9 +229,7 @@ Club Detail
                 deleteVote(bookClubId)
             })
 
-            const voteList = async (clubid, voteId) => {
-                window.location.href = "vote/list?clubId=" + clubid + "&voteId=" + voteId;
-            }
+
 
         } catch (error) {
             console.log(error);
@@ -230,16 +237,17 @@ Club Detail
 
         axios.defaults.xsrfCookieName = 'csrftoken';
         axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+		if (voteCreateButton !== null) {
+			voteCreateButton.addEventListener('click', () => {
+				createVote(bookClubId)
+			})
+		}
 
-        voteCreateButton.addEventListener('click', () => {
-            createVote(bookClubId)
-		})
-
-		if (requestButton == null) {
+		if (requestButton == null && exitButton !== null) {
             exitButton.addEventListener('click', () => {
                 exitClub(bookClubId, userId);
             })
-		} else if (exitButton == null) {
+		} else if (exitButton == null && requestButton !== null) {
             requestButton.addEventListener('click', () => {
                 requestMember(bookClubId)
             })
@@ -287,6 +295,9 @@ Club Detail
                 bookEditButton.value = "책 올리기";
                 currentBook.classList.add("deactivate");
                 removeBookButton.classList.add("deactivate");
+                if (emptyDiv !== null) {
+                    emptyDiv.classList.add("deactivate");
+				}
 
             }
 		} catch (error) {

@@ -62,6 +62,14 @@ button:hover {
 button:active {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }
+.button:hover {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.button:active {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
 
 .button_container{
     display: flex;
@@ -159,6 +167,10 @@ button.delete {
 
   .book_info > * {
     margin-top: 1rem;
+  }
+
+  .book_info {
+    width: 50%;
   }
 
   .book_info_container{

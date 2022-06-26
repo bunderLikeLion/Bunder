@@ -11,6 +11,8 @@
 
 <body>
 	{% block content %}
+
+	
 	<div class="container">
 		<div class="report_detail_container">
 			<div class="report_title">
@@ -56,16 +58,9 @@
 					<div class="category">
 						<p class="category">
 						<div class="text">카테고리</div>
-						<select name="book_category" id="book_category">
-							<option value="default" selected>{{book_report.book_category}}</option>
-							<option value="문학">문학</option>
-							<option value="경제/경영">경제/경영</option>
-							<option value="예술">예술</option>
-							<option value="자기계발">자기계발</option>
-							<option value="정치/사회">정치/사회</option>
-							<option value="과학">과학</option>
-							<option value="기술IT">기술/IT</option>
-						</select>
+						<div class="book_info_bar">
+							{{book_report.book_category}}
+						</div>
 						</p>
 					</div>
 
@@ -117,7 +112,7 @@
 					<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="댓글 작성"></textarea>
 				</div>
 				<div class="comment_button">
-					<input class="comment_btn" type="submit" value='작성' name="comment_submit">
+					<input class="comment_btn button" type="submit" value='작성' name="comment_submit">
 				</div>
 			</div>
 

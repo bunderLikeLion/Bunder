@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     flex-direction: column;
+background: linear-gradient(180deg, rgba(177,180,184,1) 0%, rgba(35,38,42,1) 26%, rgba(0,0,0,1) 100%);
     }
 
 .div{

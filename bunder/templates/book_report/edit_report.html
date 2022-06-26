@@ -9,52 +9,79 @@
     <title>Edit Report</title>
 </head>
 
-{% block content %}
-<form action="{% url 'book_report:update' book.id %}" , method="post">
-    {% csrf_token %}
-    <div class="container">
-        <div class="report_container">
-            <div class="inputBox">
-                <input type="text" required="required" name='report_name' id='report_name' value={{book.report_name}}>
-                <span>독후감 제목</span>
-            </div>
-            <div class="inputBox book_search">
-                <div class="search_bar">
-                    <input type="text" required="required" name='book_name' id='book_name' value={{book.book_name}}>
-                    <span>책 제목</span>
+<body>
+    {% block content %}
+    <form action="{% url 'book_report:update' book.id %}" , method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="report_container">
+                <div class="report_title">
+                    <div class="report_title_text">
+                        <div class="text"><span>독후감 제목</span></div>
+                        <span class="date">{{book.created_at}} </span>
+                    </div>
+                    <input type="text" class= "input_bar" required="required" name='report_name' id='report_name' value={{book.report_name}}>
                 </div>
-                <div class="inputBox">
-                    {{error}} <input type="submit" value="검색">
+
+                <div class="profile_container">
+                    <div class="profile_img">
+                        <img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                    </div>
+    
+                    <div class="name"><span class="nickname">{{book.user.nickname}}</span></div>
                 </div>
-            </div>
-            <div class="book_result">
-                <div class="book_img">
-                    <img src="" class="book_cover">
+                
+                <div class="book_info_container">
+                    <div class="book_img">
+                        <img src="{{book.book_img}}" class="book_cover">
+                    </div>
+                    <div class="book_info">
+                        <div class="book_name">
+                            <p class="book_name">
+                            <div class="text">책 제목</div>
+                            <input type="text" readonly class="book_info_bar"required="required" name='book_name' id='book_name' value={{book.book_name}}>
+                            </p>
+                        </div>
+    
+                        <div class="author">
+                            <p class="author">
+                            <div class="text">글쓴이</div>
+                            <div class="book_info_bar">
+                                {{book.book_author}}
+                            </div>
+                            </p>
+                        </div>
+    
+                        <div class="category">
+                            <p class="category">
+                            <div class="text">카테고리</div>
+                            <div class="book_info_bar">
+                                {{book.book_category}}
+                            </div>
+                            </p>
+                        </div>
+    
+                    </div>
                 </div>
-                <div class="book_info">
-                    <p class="book_name">책 제목 : book_name</p>
-                    <p class="author">글쓴이 : author</p>
-                    <p class="category">
-                        카테고리 : <select name="book_category" id="book_category">
-                            <option value="문학">문학</option>
-                            <option value="경제/경영">경제/경영</option>
-                            <option value="예술">예술</option>
-                            <option value="자기계발">자기계발</option>
-                            <option value="정치/사회">정치/사회</option>
-                            <option value="과학">과학</option>
-                            <option value="기술IT">기술/IT</option>
-                        </select>
-                    </p>
+
+                <div class="report_content" id="content">
+                    <!--https://codepen.io/magnificode/pen/rQpaBO-->
+                    <div class="holes"></div>
+                    <textarea name="content" id="content" placeholder="독후감 본문">
+                        {{book.content}}
+                    </textarea>
                 </div>
-            </div>
-            <div class="report_content">
-                <!--https://codepen.io/magnificode/pen/rQpaBO-->
-                <div class="holes"></div>
-                <textarea name="content" id="content">{{book.content}}</textarea>
-            </div>
-            <div class="inputBox">
-                {{error}} <input type="submit" value="독후감 수정">
+                
+                <input type="file" name="image_upload">
+    
+                <div class="inputBox" id="edit_report_container">
+                    {{eror}} <input type="submit" class="button" id="edit_report" value="독후감 수정">
+                </div>
+                
+
+                
             </div>
         </div>
-</form>
-{% endblock %}
+    </form>
+    {% endblock %}
+</body>

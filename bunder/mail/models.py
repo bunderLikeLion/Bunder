@@ -7,5 +7,6 @@ User = settings.AUTH_USER_MODEL
 # Create your models here.
 
 class Mail(models.Model):
-    receive_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
     content = models.CharField(max_length=1000)

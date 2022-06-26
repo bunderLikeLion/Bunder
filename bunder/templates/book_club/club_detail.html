@@ -67,11 +67,11 @@ Club Detail
                 <div class="vote_function">
                     <div class="text">투표</div>
                     <div class="vote_info">
-                        투표 제목: {{ vote.topic }}
-                        기간: {{ vote.start_date }} ~ {{ vote.end_date }}
+                        <div>투표 제목: {{ vote.topic }}</div>
+                        <div>기간: {{ vote.start_date }} ~ {{ vote.end_date }}</div>
                     </div>
                     <div class="btn_container">
-                        <button class="button" id="vote_btn">투표 하러 가기</button>
+                        <button class="button vote_btn">투표 하러 가기</button>
                     </div>
                 </div>
 				{% endif %}

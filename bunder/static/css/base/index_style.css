@@ -1,29 +1,108 @@
-section {
-    height: 100vh;
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    scroll-snap-align: start;
+    width: 100%;
+    flex-direction: column;
+background: linear-gradient(180deg, rgba(177,180,184,1) 0%, rgba(35,38,42,1) 26%, rgba(0,0,0,1) 100%);
+    }
+
+.div{
+    box-shadow:  15px 15px 56px #26292d,
+             -15px -15px 56px #40474d;
+    height: 20rem;
+    width: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(53,57,62,1) 0%, rgba(25,26,30,1) 100%);;
+    color: #ed591a;
+    margin: 40rem 0;
+    border-radius: 3rem;
 }
 
-.container {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
+.div_top {
+    width: 100%;
+    margin-top: 30rem;
 }
 
-.one {
-    background-color: green;
+.container .top h1{
+    color: #ed591a;
+    display: block;
+    font-family: 'Fira Code', monospace;
+    font-weight: 800;
+    font-size: 5rem;
+    margin: 0 0 0 35%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 20rem;
+    animation: type 1.7s steps(30,end) forwards;
+    position: relative;
+    left: -5rem;
 }
 
-.two {
-    background-color: red;
+.container .main h1{
+    background: #ed591a;
+    opacity: 0;
+    font-family: "Work Sans", sans-serif;
+    margin: 100px auto auto auto;
+    font-weight: 800;
+    font-size: 5em;  
+    width: 50rem;
+    white-space: nowrap;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    overflow: hidden;
+    animation: shring-animation 3s steps(40,end) 2s forwards, blink .5s step-end infinite alternate;
 }
 
-.three {
-    background-color: blue;
+@keyframes shring-animation {
+    0% {
+        background-position: 0 0;
+        opacity: 0;
+        width: 0;
+    }
+    1% {
+        background-position: 0 0;
+        opacity: 1;
+        border-right: 1px solid orange;
+    }
+    50% {
+        background-position: 150px 0;
+        opacity: 1;
+        border-right: 1px solid orange;
+    }
+    100% {
+        background-position: 400px 0;
+        opacity: 1;
+        border-right: 1px solid orange;
+    }
 }
 
-.four {
-    background-color: lightsalmon;
+@keyframes type {
+    0% {
+        width: 0;
+    }
+    1%, 99%{
+        border-right: 1px solid orange;
+    }
+    100%{
+        border-right: none;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.my_book_club {
+    width: 10rem;
+}
+
+.my_book_club img {
+    width: 100%;
 }

@@ -8,21 +8,55 @@ Hi, Bunder
 
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/base/index_style.css' %}" />
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 {% endblock extrahead %}
 
 {% block content %}
 <div class="container">
-    <section class="one">
-        <h1>1</h1>
-    </section>
-    <section class="two">
-        <h1>2</h1>
-    </section>
-    <section class="three">
-        <h1>3</h1>
-    </section>
-    <section class="four">
-        <h1>4</h1>
-    </section>
-</div>
-{% endblock content %}
+    <div class="container">
+        <!------------------------------------------------------------>
+        <div class="div_top">
+            <div class="top">
+                <h1>Bunder </h1>
+            </div>
+            <div class="main">
+                <h1>책 아래에는 뭐가 있나요?</h1>
+            </div>
+        </div>
+        <!--------------------------------------------------------------->
+        <div class="div" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+            <div class="my_book_club">
+                <img src="../../static/img/first.jpeg">
+            </div>
+            책 아래에는<br><br>
+            더 깊은 생각의 바다가,
+        </div>
+        <!-------------------------------------------------------------->
+        <div class="div" data-aos="fade-right">
+            <div class="my_book_club">
+                <img src="../../static/img/second.jpeg">
+            </div>
+            우연히 같은 경험을 하다 마주친 타인들,
+        </div>
+        <!-- ------------------------------------------------------------->
+        <div class="div" data-aos="fade-up">
+            <div class="my_book_club">
+                <img src="../../static/img/third.jpeg">
+            </div>
+            혹은 또다른 여정을 품은 책이,
+        </div>
+        <div class="div" data-aos="fade-up">
+            <div class="my_book_club">
+                <img src="../../static/img/forth.jpeg">
+            </div>
+            이 곳은 책 아래, BUNDER.
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 3000,
+            once: true,
+        });
+    </script>
+    {% endblock content %}

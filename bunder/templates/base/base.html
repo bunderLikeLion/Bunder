@@ -13,7 +13,7 @@
     <!-- js -->
     <!-- style -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/base/style.css' %}" />
-    <link rel="stylesheet" href="">
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.ico" />
     {% block extrahead %}
     {% endblock extrahead %}
 </head>
@@ -45,10 +45,7 @@
             <li><a href="../bookclub/">
                     <ion-icon name="people-outline"></ion-icon>소모임
                 </a></li>
-            <li><a href="#">
-                    <ion-icon name="earth-outline"></ion-icon>찬/반 토론장
-                </a></li>
-            <li><a href="#">
+            <li><a href="../mail/">
                     <ion-icon name="mail-outline"></ion-icon>메일함
                 </a></li>
             {% if user.is_authenticated %}

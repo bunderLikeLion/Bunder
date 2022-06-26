@@ -225,6 +225,7 @@ button:active {
     flex-flow: wrap;
     width: 95%;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .all_book_cover > * {
@@ -254,4 +255,17 @@ button:active {
 .all_profile_container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.edit_container a{
+    box-shadow: none;
+    padding : 0px;
+}
+
+.vote_info {
+    margin-top: 10px;
+}
+
+.empty_list p{
+    text-align: center;
 }

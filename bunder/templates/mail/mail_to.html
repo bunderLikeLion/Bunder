@@ -1,62 +1,79 @@
 {% extends "base/base.html" %}
 {% load static %}
 {% block extrahead %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/login/mail_to.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/mail/mail_to.css' %}" />
 {% endblock extrahead %}
 {% block title %}
 Mail to
 {% endblock title %}
+
 {% block content %}
 <div class="container">
-    <div class="navbar_container">
-        <div class="all_receiver">
-            <ul class="navbar">
-                <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
-                <li class="filter-trigger" data-filter="receiver">
-                    <img src="" class="profile_img">
-                    닉네임
-                    쪽지 내용
-                </li>
-                <li class="filter-trigger" data-filter="receiver">
-                    <img src="" class="profile_img">
-                    닉네임
-                    쪽지 내용
-                </li>
-                <li class="filter-trigger" data-filter="receiver">
-                    <img src="" class="profile_img">
-                    닉네임
-                    쪽지 내용
-                </li>
-                <li class="filter-trigger" data-filter="receiver">
-                    <img src="" class="profile_img">
-                    닉네임
-                    쪽지 내용
-                </li>
-                <li class="filter-trigger" data-filter="receiver">
-                    <img src="" class="profile_img">
-                    닉네임
-                    쪽지 내용
-                </li>
-                <li class="filter-trigger" data-filter="receiver">
-                    <img src="" class="profile_img">
-                    닉네임
-                    쪽지 내용
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="write_mail_container">
-        <div class="inner_contaienr">
-            <div class="info">
-                <input type="text" name="receiver" value="닉네임">
+    <div class="all_report_container">
+        <div class="navbar_container big_container">
+            <div class="categories">
+                <ul class="navbar">
+                    <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <form action="#" method="post">
-                <div class="inputBox">
-                    {{error}} <input type="submit" value="보내기">
-                </div>
-            </form>
-            <div class="report_content">
-                <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
+        </div>
+        
+        <div class="write_mail_container">
+            <div class="inner_container">
+                <form action="{% url 'mail:create' %}" method="post">
+                    {% csrf_token %}
+                
+                    <div class="send_mail">
+                        <input type="submit" class="button" id="send_mail_btn" value="쪽지 보내기">
+                    </div>   
+                    <div class="write_mail">
+                        <input class="input_bar" type="text" name="receiver" placeholder="받는 사람 닉네임">
+                        <div class="report_content">
+                            <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
+                        </div>
+                    </div> 
+                   
+                </form>
             </div>
         </div>
     </div>

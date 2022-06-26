@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
@@ -83,6 +83,9 @@ def book_club_detail(request, bookclub_id):
         if book:
             book_id_json = json.dumps(book.id)
         book_list = get_book(bookclub_id)
+        is_full = True if len(book_list) >= 5 else False
+        is_full_json = json.dumps(is_full)
+
         vote = BookClubVote.objects.get(club=book_club)
         vote_id_json = json.dumps(vote.id)
         return render(request, 'book_club/club_detail.html',
@@ -96,7 +99,9 @@ def book_club_detail(request, bookclub_id):
                        'user_list': user_list,
                        'is_owner': is_owner,
                        'is_member': is_member,
-                       'user_id': user_id_json})
+                       'user_id': user_id_json,
+                       'is_full_json': is_full_json})
+
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club, 'bookclub_id': bookclub_id_json,
@@ -106,7 +111,8 @@ def book_club_detail(request, bookclub_id):
                        'user_list': user_list,
                        'is_owner': is_owner,
                        'is_member': is_member,
-                       'user_id': user_id_json})
+                       'user_id': user_id_json,
+                       'is_full_json': is_full_json})
 
 
 def book_club_edit(request, bookclub_id):
@@ -114,7 +120,7 @@ def book_club_edit(request, bookclub_id):
 
 
 def get_book(bookclub_id):
-    return Book.objects.filter(club_id=bookclub_id, active=False).order_by('-created_at')[0:3]
+    return Book.objects.filter(club_id=bookclub_id, active=False).order_by('-created_at')[0:5]
 
 
 class club_admit(View):
@@ -251,9 +257,14 @@ class Vote(View):
         vote = BookClubVote.objects.get(id=voteId)
         voteList = VoteDetail.objects.filter(vote_id=voteId)
 
-        if club.owner_id != request.user.id:
+        query = Q()
+        query.add(Q(user_id=request.user.id), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+        query.add(Q(club=club), query.AND)
+
+        if not BookClubMember.objects.filter(query).exists():
             # TODO: 권한 없음 에러페이지 헨들링
-            return redirect("/")
+            return HttpResponse("멤버가 아님", status=403)
 
         return render(request, 'book_club/vote.html', {'vote': vote, 'voteList': voteList})
 
@@ -341,6 +352,6 @@ def getMyBookClub(user):
     query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
 
     book_club_member = BookClubMember.objects.prefetch_related('club').filter(query)
-    club_list = [memberclub.club for memberclub in book_club_member]
+    club_list = [member.club for member in book_club_member]
 
     return club_list

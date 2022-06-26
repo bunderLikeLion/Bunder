@@ -7,6 +7,10 @@ User = settings.AUTH_USER_MODEL
 # Create your models here.
 
 class Mail(models.Model):
+    class Meta:
+        db_table = "mail"
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receivernick')
     content = models.CharField(max_length=1000)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)

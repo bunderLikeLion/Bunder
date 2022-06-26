@@ -14,22 +14,53 @@ Mail
             <div class="categories">
                 <ul class="navbar">
                     <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
-                    <li class="active reset filter-trigger" data-filter="1">1</li>
-                    <li class="filter-trigger" data-filter="2">2</li>
-                    <li class="filter-trigger" data-filter="3">3</li>
-                    <li class="filter-trigger" data-filter="4">4</li>
-                    <li class="filter-trigger" data-filter="5">5</li>
-                    <li class="filter-trigger" data-filter="6">6</li>
-                    <li class="filter-trigger" data-filter="7">7</li>
-                    <li class="filter-trigger" data-filter="8">8</li>
-                    <li class="filter-trigger" data-filter="9">10</li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_img">
+                            <img class="img"
+                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                        </div>
+
+                        <div class="profile_name">
+                            <span class="name">닉네임</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="reports_container big_container">
             <div class="write_report">
-                <input type="button" class="button" id="write_report_btn" value="쪽지 쓰기" onClick="location.href = 'new'">
+                <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기" onClick="location.href = 'new'">
             </div>
             <div class="container_body">
                 <div class="pagination_container">
@@ -44,14 +75,14 @@ Mail
             <div class="report_box">
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">쪽지 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -62,14 +93,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -80,14 +111,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -98,14 +129,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -116,14 +147,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -134,14 +165,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -152,14 +183,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -170,14 +201,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -188,14 +219,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -206,14 +237,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -224,14 +255,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -242,14 +273,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -260,14 +291,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -278,14 +309,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -296,14 +327,14 @@ Mail
                 </div>
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">독후감 제목 </p>
+                        <p class="bookname">쪽지 내용 </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
                                 src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                         </div>
-                        <!--각 독후감 작성자 프로필 링크 설정 수정해야할듯-->
+
                         <div class="profile_name">
                             <span class="name">닉네임</span>
                         </div>
@@ -320,4 +351,5 @@ Mail
 
         </div>
     </div>
+</div>
     {% endblock content %}

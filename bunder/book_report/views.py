@@ -1,6 +1,5 @@
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
-from django.contrib import auth
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt

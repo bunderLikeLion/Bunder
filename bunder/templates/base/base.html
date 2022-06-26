@@ -27,20 +27,11 @@
         </a>
     </div>
     <div class="navigation">
-        {% if user.is_authenticated %}
         <div class="userBx" onclick="location.href='../user/profile'" style="cursor:pointer;">
             <div class="imgBx">
                 <img src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
             </div>
             <p class="username">{{ user.nickname }}</p>
-        </div>
-        {% else %}
-        <div class="userBx" onclick="location.href='../user/profile'" style="cursor:pointer;">
-            <div class="imgBx">
-                <img src="../../static/img/B.png" style="padding: 0.5rem;">
-            </div>
-            <p class="username">로그인이 필요합니다</p>
-            {% endif %}
         </div>
         <div class="menuToggle">
         </div>

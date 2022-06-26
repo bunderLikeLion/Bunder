@@ -20,10 +20,14 @@ Category Clubs
 		</div>
 		<div class="book_club_container">
 			{% for club in club_list %}
-			<div class="my_book_club">
-				<img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+			<div class="con">
+				<div class="my_book_club">
+					<img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+				</div>
+				<span>소모임명: {{ club.club_name }}</span>
+				<span>인원 {{ club.member_cnt }}/{{ club.member_total }}</span>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 	</div>
 	<!-- <div class="container">

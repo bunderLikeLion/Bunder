@@ -12,7 +12,9 @@ Club Detail
 <body>
     {% block content %}
     <div class="container">
-		{% if is_member %}
+
+		{% if is_owner %}
+		{% elif is_member %}
         	<button class="button" id="exit_btn">소모임 나가기</button>
 		{% else %}
         	<button class="button" id="request_btn">소모임 참여 요청</button>
@@ -54,12 +56,12 @@ Club Detail
         <div class="club_detail_containaer">
 			<div class="club_detail_header">
             	<div class="event_div">진행중인 이벤트</div>
-				{% if not vote %}
+				{% if not vote and is_owner %}
 				<div class="btn_container">
 					<button class="button" id="vote-create_btn">투표 생성</button>
 					<button type="button" class="button deactivate"id="vote-delete_btn">투표 삭제</button>
 				</div>
-				{% else %}
+				{% elif vote and is_owner %}
 				<div class="btn_container">
 					<button type="button" class="button"id="vote-delete_btn">투표 삭제</button>
 					<button type="button" class="button deactivate" id="vote-create_btn">투표 생성</button>
@@ -96,9 +98,15 @@ Club Detail
                 
                 <div class="btn_container">
                     <a href="book?clubId={{ book_club.id }}">
+						{% if not book_info and is_owner %}
+                        <input type="button" class="button book-edit_btn" value="책 올리기">
+						{% elif book_info and is_owner %}
                         <input type="button" class="button book-edit_btn" value="책 수정">
+						{% endif %}
                     </a>
-                    <input type="button" class="button book-remove_btn" value="책장으로">
+					{% if book_info %}
+					<input type="button" class="button book-remove_btn" value="책장으로">
+					{% endif %}
                 </div>
                 
                 <div class="text">현재 읽는 중인 책</div>
@@ -144,7 +152,7 @@ Club Detail
                 <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
                 <div class="text">우리 소모임의 책장</div>
                 <div class="all_book_cover book club_book_list" id="book_container">
-                    {% if not each_book %}
+                    {% if not book_list %}
                     <div class="empty-book_list empty_list">
                         <p>현재 소모임 책장이 비어있습니다.</p>
                     </div>
@@ -160,8 +168,10 @@ Club Detail
         </div>
 
 		{% if is_owner %}
-        <div class="club_detail_containaer">
-			<input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
+        <div class="edit_container">
+			<a href="{% url 'book_club:book_club_edit' book_club.id %}">
+				<input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
+			</a>
         </div>
 		{% endif %}
 
@@ -179,11 +189,13 @@ Club Detail
         const bookContainer = document.querySelector("#book_container");
         const currentBook = document.querySelector(".current-book_container");
 
+        const bookEditButton = document.querySelector(".book-edit_btn");
+
         const voteContainer = document.querySelector(".vote_function");
 
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
         const userId = JSON.parse("{{ user_id|escapejs }}");
-
+        const isFull = JSON.parse("{{ is_full_json|escapejs }}");
         let bookId;
         let voteId;
 
@@ -259,20 +271,22 @@ Club Detail
             })
 
             const removeBook = async (bookId) => {
-                const url = "book"
+                const url = "book";
                 const response = await axios.patch(url, {bookId});
 
-                const div = document.createElement('div')
-                const img = document.createElement('img')
+                const div = document.createElement('div');
+                const img = document.createElement('img');
                 div.classList.add("book_cover");
                 img.classList.add("book_cover");
                 div.appendChild(img);
                 bookContainer.insertBefore(div, bookContainer.firstChild);
-
-                bookContainer.removeChild(bookContainer.lastElementChild);
+				if (isFull) {
+                	bookContainer.removeChild(bookContainer.lastElementChild);
+				}
                 img.src = response.data.img;
-
-                currentBook.classList.add("deactivate")
+                bookEditButton.value = "책 올리기";
+                currentBook.classList.add("deactivate");
+                removeBookButton.classList.add("deactivate");
 
             }
 		} catch (error) {

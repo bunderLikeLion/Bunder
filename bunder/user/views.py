@@ -149,7 +149,7 @@ def search_my_reports(request):
     return render(request, 'user/all_my_reports.html', {'my_reports': my_reports})
 
 
-# 내 독후감 확인하는 함수
+# 내 독후감 확인하는 함수2
 def check_my_reports(request):
     my_reports = BookReport.objects.all()
     user = request.user

@@ -81,28 +81,13 @@ My Bunder
                 <h3>독후감</h3>
             </div>
         </div>
-        {% for book in Book%}
+        {% for report in my_recent_reports%}
         <div class="report_container">
             <div class="inner_report_container">
-                <a href='' class="reports_name"></a>
+                <a href='' class="reports_name">{{ report.report_name }}</a>
             </div>
         </div>
         {% endfor %}
-        <div class="report_name_container">
-            <div class="report_name">
-                <h3>찬/반 토론</h3>
-            </div>
-        </div>
-        <div class="report_container">ㅃ
-            <div class="inner_report_container">
-                <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
-            </div>
-        </div>
-        <div class="report_container">
-            <div class="inner_report_container">
-                <a href="" class="reports_name">찬/반토론 제목</a>
-            </div>
-        </div>
     </div>
     <div class="margin">
         <div class="profile_reports">
@@ -121,29 +106,16 @@ My Bunder
                     <h3>독후감</h3>
                 </div>
             </div>
+            {% for scrap in scrap%}
+            <div class="report_container">
+                <div class="inner_report_container">
+                    <a href="" class="reports_name">{{scrap.book_report}}</a>
+                </div>
+            </div>
+            {% endfor %}
             <div class="report_container">
                 <div class="inner_report_container">
                     <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
-            <div class="report_name_container">
-                <div class="report_name">
-                    <h3>찬/반 토론</h3>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">찬/반토론 제목 아마 이정도 길겠죠?</a>
-                </div>
-            </div>
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">찬/반토론 제목</a>
                 </div>
             </div>
         </div>

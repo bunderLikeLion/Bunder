@@ -120,15 +120,23 @@ def profile(request):
 
 # bunder 정보 - 모든 책, 최근 독후감 2개, 최근 스크랩 2개, 프로필 북, 북클럽
 def bunder(request):
-    user = request.user
-    book = Book.objects.filter(user_id=user.id)
-    my_recent_reports = check_my_two_reports(request)
-    scrap = check_my_two_scraps(request)
-    book_club = getBookClub(user)
-    mainbook = ProfileBook.objects.filter(user_id=user.id).last()
-    return render(request, 'user/bunder.html', {'user': user, 'my_recent_reports': my_recent_reports,
-                                                'scrap': scrap, 'book': book,
-                                                'book_club': book_club, 'mainbook': mainbook})
+    if request.method == 'GET':
+        user_info = None
+        try:
+            user_id = request.GET.get('id')
+            user_info = get_object_or_404(User, pk=user_id)
+        except:
+            user_info = request.user
+
+
+        book = Book.objects.filter(user_id=user_info.id)
+        my_recent_reports = check_my_two_reports(request)
+        scrap = check_my_two_scraps(request)
+        book_club = getBookClub(user_info)
+        mainbook = ProfileBook.objects.filter(user_id=user_info.id).last()
+        return render(request, 'user/bunder.html', {'user_info': user_info, 'my_recent_reports': my_recent_reports,
+                                                    'scrap': scrap, 'book': book,
+                                                    'book_club': book_club, 'mainbook': mainbook})
 
 
 # 카테고리 수정

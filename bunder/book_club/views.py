@@ -109,6 +109,10 @@ def book_club_detail(request, bookclub_id):
                        'user_id': user_id_json})
 
 
+def book_club_edit(request, bookclub_id):
+    return render(request, 'book_club/club_revise.html')
+
+
 def get_book(bookclub_id):
     return Book.objects.filter(club_id=bookclub_id, active=False).order_by('-created_at')[0:3]
 

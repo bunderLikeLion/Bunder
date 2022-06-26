@@ -27,3 +27,136 @@ body {
     color: #111;
     font-weight: 600;
 }
+
+.big_container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    }
+    
+.result_container > * {
+    margin : 0 auto;
+    width: 95%;
+}
+
+.button {
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    margin: 1rem;
+    height: 3.5rem;
+    padding : 0 3rem;
+    color: #61677C;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+}
+
+button:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+button:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+.button:hover {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.button:active {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+
+.button_container{
+    display: flex;
+    justify-content: center;
+  }
+
+form {
+    display : flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.search_bar {
+    width : 80%;
+    margin : auto 0;
+    padding: 1rem;
+    padding-right: 0;
+}
+
+.inputBox {
+    margin : auto 0;
+}
+
+.input_bar, .report_list {
+    width: 90%;     /* 100% 하면 옆에 빠져나옴 */
+    margin: 0 auto;
+    padding : 0.7rem;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
+    color: #111;
+    font-weight: 300;
+    border: none;
+    
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    border-radius: 10px;
+    background: transparent;
+    }
+    
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-transition: background-color 9999s ease-out;
+      box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+      -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+    }
+
+    .text {
+        width: 8rem;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+        border-radius: 50px;
+        background: transparent;
+        }
+
+    .text2 {
+        width: 20rem;
+    }
+
+    .report_list{
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .report {
+        width: 90%;
+        padding: 1rem;
+        margin: 0.5rem auto;
+        box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+        border-radius: 10px;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .report_info2{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .report_info2 > * {
+        margin : 0 1rem;
+    }

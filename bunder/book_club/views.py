@@ -323,7 +323,6 @@ class ClubBook(View):
 def getBookClub():
     literature = BookClub.objects.filter(category="문학").order_by('-created_at')[0:3]
     humanities = BookClub.objects.filter(category="인문").order_by('-created_at')[0:3]
-    economy = BookClub.objects.filter(category="경제/경영").order_by('-created_at')[0:3]
     self_development = BookClub.objects.filter(category="자기계발").order_by('-created_at')[0:3]
     political_society = BookClub.objects.filter(category="정치/사회").order_by('-created_at')[0:3]
     art = BookClub.objects.filter(category="예술").order_by('-created_at')[0:3]
@@ -334,7 +333,6 @@ def getBookClub():
     book_club = {
         'literature': literature,
         'humanities': humanities,
-        'economy': economy,
         'self_development': self_development,
         'political_society': political_society,
         'art': art,

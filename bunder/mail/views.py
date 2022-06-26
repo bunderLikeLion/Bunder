@@ -21,10 +21,12 @@ def create(request):
     newmail.user = request.user
     receiver = request.POST.get('receiver')
     newmail.content = request.POST.get('content')
+    res_data = {}
     try:
         userob = User.objects.get(nickname= receiver)
         newmail.receiver = userob
         newmail.save()
     except User.DoesNotExist:
-        return HttpResponse("닉네임 없음")
+        res_data['error'] = '존재하지 않는 닉네임 입니다.'
+        return render(request, 'mail/mail_to.html', res_data)
     return redirect('mail:main')

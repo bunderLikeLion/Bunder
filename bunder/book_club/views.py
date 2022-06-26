@@ -83,6 +83,9 @@ def book_club_detail(request, bookclub_id):
         if book:
             book_id_json = json.dumps(book.id)
         book_list = get_book(bookclub_id)
+        is_full = True if len(book_list) >= 5 else False
+        is_full_json = json.dumps(is_full)
+
         vote = BookClubVote.objects.get(club=book_club)
         vote_id_json = json.dumps(vote.id)
         return render(request, 'book_club/club_detail.html',
@@ -96,7 +99,9 @@ def book_club_detail(request, bookclub_id):
                        'user_list': user_list,
                        'is_owner': is_owner,
                        'is_member': is_member,
-                       'user_id': user_id_json})
+                       'user_id': user_id_json,
+                       'is_full_json': is_full_json})
+
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club, 'bookclub_id': bookclub_id_json,
@@ -106,7 +111,8 @@ def book_club_detail(request, bookclub_id):
                        'user_list': user_list,
                        'is_owner': is_owner,
                        'is_member': is_member,
-                       'user_id': user_id_json})
+                       'user_id': user_id_json,
+                       'is_full_json': is_full_json})
 
 
 def book_club_edit(request, bookclub_id):
@@ -114,7 +120,7 @@ def book_club_edit(request, bookclub_id):
 
 
 def get_book(bookclub_id):
-    return Book.objects.filter(club_id=bookclub_id, active=False).order_by('-created_at')[0:3]
+    return Book.objects.filter(club_id=bookclub_id, active=False).order_by('-created_at')[0:5]
 
 
 class club_admit(View):

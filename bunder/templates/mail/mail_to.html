@@ -47,17 +47,18 @@ Mail to
     </div>
     <div class="write_mail_container">
         <div class="inner_contaienr">
+            <form action="{% url 'mail:create' %}" method="post">
+                {% csrf_token %}
             <div class="info">
                 <input type="text" name="receiver" value="닉네임">
             </div>
-            <form action="#" method="post">
                 <div class="inputBox">
                     {{error}} <input type="submit" value="보내기">
                 </div>
-            </form>
             <div class="report_content">
                 <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
             </div>
+            </form>
         </div>
     </div>
 </div>

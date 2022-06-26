@@ -45,9 +45,7 @@ body {
 }
 
 .container .book_club_container .my_book_club {
-    width: 100%;
-    height: 15rem;
-    margin-top: 5rem;
+    width: 75%;
 }
 
 .container .book_club_container .book_cover {
@@ -83,6 +81,8 @@ body {
 }
 
 .con {
+    margin: 3rem 0.5rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }

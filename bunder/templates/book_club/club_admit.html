@@ -23,20 +23,34 @@ Club Admit
 		}
 	</style>
 </head>
+
 <body>
 	<div class="container">
-		북클럽 참여 희망 명단
-		북클럽 현재 인원 <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
+		<div>
+			<div><h2>북클럽 참여 희망 명단</h2></div>
+			<div class="club_people_number">
+				북클럽 현재 인원
+				 <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
+			</div>
+		</div>
+		
 
 		<div class="container_all_requesters">
 			{% for member in members %}
 				<div class="container_single_requester">
-					<div class="requester_profile">
-						<img class="profile_img" src="{{ member.user.avatar }}">
-						{{ member.user.nickname }}
+					<div class="requester_profile_container">
+						<div class="profile_img_container">
+							<img class="profile_img" src="{{ member.user.avatar }}">
+						</div>
+						<div class="profile_name_container">
+							{{ member.user.nickname }}
+						</div>
 					</div>
-					<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'MEMBER')">수락</button>
-					<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'REJECT')">거절</button>
+
+					<div class="button_container">
+						<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'MEMBER')">수락</button>
+						<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'REJECT')">거절</button>
+					</div>
 				</div>
 			{% endfor %}
 

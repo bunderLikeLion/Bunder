@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    top: 8rem;
+    width: 60%;
+    padding: 3rem;
+    background-color: #EBECF0;
+    border-radius: 2rem;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    color: #585858;
+}
+
+.container_single_requester {
+    clear: both;
+    border-radius: 30px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    padding: 1rem;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.club_people_number{
+    float: right;
+    margin: 0 1rem;
+}
+
+.requester_profile_container {
+    /* border-radius: 10px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF; */
+    padding: 1rem;
+    display: flex;
+    
+}
+
+.profile_name_container {
+    height : 5rem;
+    line-height: 5rem;
+    padding: 0 1rem;
+    font-size: x-large;
+}
+
+.requester_profile_container > * {
+    margin: auto 0;
+}
+
+img {
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    text-shadow: 1px 1px 0 #FFF;
+    padding: 1rem;
+    width: 8rem;
+}
+
+.request_btn {
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    margin-top: 0;
+    height: 5rem;
+    padding : 0 2rem;
+    color: #AE1100;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+  }
+
+.request_btn:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.request_btn:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.request_btn.login{
+    text-align: center;
+    display: inline;
+    margin-left: 72%;
+    margin-top: 1%;
+    width: 30%;
+    height: 3rem;
+    color: hsla(220, 100%, 54%, 1);
+}

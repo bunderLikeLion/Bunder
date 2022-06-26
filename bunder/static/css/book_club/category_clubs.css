@@ -45,8 +45,7 @@ body {
 }
 
 .container .book_club_container .my_book_club {
-    width: 26%;
-    height: 15rem;
+    width: 75%;
     margin-top: 5rem;
 }
 
@@ -80,4 +79,9 @@ body {
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     width: 20%;
     height: 80%;
+}
+
+.con {
+    display: flex;
+    flex-direction: column;
 }

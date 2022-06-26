@@ -24,10 +24,13 @@ Category Clubs
 				<div class="my_book_club">
 					<img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
 				</div>
-				<span>소모임명: {{ club.club_name }}</span>
-				<span>인원 {{ club.member_cnt }}/{{ club.member_total }}</span>
-				{% endfor %}
+				<div class="my_book_club_info">
+					<div>소모임명: {{ club.club_name }}</div>
+					<div>인원 {{ club.member_cnt }}/{{ club.member_total }}</div>
+				</div>
 			</div>
+			{% endfor %}
+			
 		</div>
 	</div>
 	<!-- <div class="container">

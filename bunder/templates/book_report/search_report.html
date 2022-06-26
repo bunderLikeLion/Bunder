@@ -12,31 +12,50 @@
 <body>
     {% block content %}
     <div class="container">
-        <h3>검색 결과</h3>
-        <div class="return_report">
-            <input type="button" value="목록" onclick="location.href='/bookreport/'">
+        <div class="return_report_menu">
+            <input type="button" class="button" value="돌아가기" onclick="location.href='/bookreport/main'">
         </div>
-        <div class="reports_container">
-            <div class="reports">
-                <img src="" class="book_cover">
-                <p class="bookname">책 제목</p>
-            </div>
-            {% for book in books %}
-            {{book.book_name}}
-            {% endfor %}
-            <div class="reports">
-                <img src="" class="book_cover">
-                <p class="bookname">책 제목</p>
+        <div class="search_container big_container">
+            <form action="{% url 'book_report:search' %}" method="get">
+                <div class="search_bar">
+                    <div class="text"><span>책 제목</span></div>
+                    <input type="text" class="input_bar" required="required" name='search_name' id='search_name'>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" class="button" value="검색">
+                </div>
+            </form>
+        </div>
+
+        <div class="result_container big_container">
+            <h3 class="text text2"> bookname의 독후감 검색 결과</h3>
+        
+            <div class="reports_container">
+                <div class="report_list">
+                    {% if not book %}
+                    <div class="empty-vote">
+                        <p>현재 진행중인 투표가 없습니다.</p>
+                    </div>
+                    {% else %}
+                    {% for book in books %}
+                    <div class="report">
+                        <div class="report_info">{{book.report_name}}</div>
+                        <div class="report_info2">
+                            <div>작성자</div>
+                            <div>{{book.created_at}}</div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+    
+    
             </div>
         </div>
-        <form action="{% url 'book_report:search' %}" method="get">
-            <div class="search_bar">
-                <input type="text" required="required" name='search_name' id='search_name'>
-                <span>책 제목</span>
-            </div>
-            <div class="inputBox">
-                <input type="submit" value="검색">
-            </div>
-        </form>
+
+
+
+
     </div>
     {% endblock content %}

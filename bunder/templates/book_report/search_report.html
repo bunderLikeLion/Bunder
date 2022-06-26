@@ -28,23 +28,23 @@
         </div>
 
         <div class="result_container big_container">
-            <h3 class="text text2"> bookname의 독후감 검색 결과</h3>
+            <h3 class="text text2">book_name의 독후감 검색 결과</h3>
         
             <div class="reports_container">
                 <div class="report_list">
-                    {% if not book %}
-                    <div class="empty-vote">
-                        <p>현재 진행중인 투표가 없습니다.</p>
+                    {% if not books %}
+                    <div class="empty-report">
+                        <p>검색 결과가 없습니다.</p>
                     </div>
                     {% else %}
                     {% for book in books %}
                     <div class="report">
                         <div class="report_info">{{book.report_name}}</div>
                         <div class="report_info2">
-                            <div>작성자</div>
+                            {{book.book_name}}
+                            <div>{{book.user.nickname}}</div>
                             <div>{{book.created_at}}</div>
                         </div>
-                        
                     </div>
                     {% endfor %}
                     {% endif %}

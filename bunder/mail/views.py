@@ -5,10 +5,14 @@ from .models import Mail
 def main(request):
     return render(request, "mail/mail.html")
 
-def create(request, id):
-    newmail = Mail()
-    newmail.user = request.user
-    newmail.receiver = request.POST.get('receiver')
-    newmail.content = request.POST.get('context')
-    newmail.save()
-    return redirect('mail:main')
+def send_mail(request):
+    return render(request, "mail/mail_to.html")
+
+def create(request):
+    # newmail = Mail()
+    # newmail.user = request.user
+    # newmail.receiver = request.POST.get('receiver')
+    # newmail.content = request.POST.get('context')
+    # newmail.save()
+    # return redirect('mail:main')
+    return 0

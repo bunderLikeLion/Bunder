@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from django.views import View
+from user.models import User
 import json
 import os
 from django.db import connection
@@ -308,16 +309,24 @@ def response_invite(request):
     if request.method == "PATCH":
         req = json.loads(request.body)
         type = req["type"]
-        book_club_id = req["bookClubId"]
+        book_club_id = req["clubId"]
+        # user_id = req["userId"]
+        # user = User.objects.get(id=user_id)
+        user = request.user
         club = get_object_or_404(BookClub, pk=book_club_id)
-        member = BookClubMember.Objects.get(user=request.user, club=club)
+        member = BookClubMember.objects.get(user=user, club=club)
+
+        if member.type != "INVITE":
+            return JsonResponse({'message': "초대된 멤버가 아닙니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=404)
 
         member.type = type
         if type == "MEMBER":
             club.score += 5
         member.save()
         club.save()
-        return JsonResponse({'message': "멤버 상태 변경 성공",
+
+        return JsonResponse({'message': "멤버 상태 변경 성공", "member": member.type
                              }, json_dumps_params={'ensure_ascii': False}, status=200)
 
 

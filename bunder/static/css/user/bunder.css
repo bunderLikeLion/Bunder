@@ -8,11 +8,10 @@ body {
     top: 8rem;
     width: 80%;
     padding: 3rem;
-    background-color: #EBECF0;
+    background-color: #33383D;
     border-radius: 2rem;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    color: #585858;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    color: #a6a7a9;
 }
 
 .container .profile_container {
@@ -24,8 +23,8 @@ body {
     width: 7rem;
     height: 7rem;
     border-radius: 50%;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
 }
 
 .container .profile_container .img_container img {
@@ -42,8 +41,8 @@ body {
     width: 50%;
     height: 7rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 20%;
 }
 
@@ -67,8 +66,8 @@ body {
     width: 20%;
     height: 3rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 40%;
     top: 3%;
     margin-top: 3rem;
@@ -96,14 +95,15 @@ body {
 .pagination li {
     flex: 1;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: 9px 9px 18px #b94514, -9px -9px 18px #ff6d20;
+    background-color: #ed591a;
 }
 
 .pagination li a {
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
-    color: #4d3252;
+    color: #ffffff;
     height: 2rem;
     width: 2rem;
     display: block;
@@ -131,22 +131,20 @@ body {
 
 .container .profile_book_cover {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 40%;
-    height: 8%;
-    overflow: hidden;
+    /* position: relative; */
+    width: 30%;
+    padding: 1rem;
+    margin: 0 auto;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    left: 30%;
-    top: 3%;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* align-items: center; */
+    justify-content: center;
 }
 
 .container .profile_book_cover .book_cover {
     padding: 3%;
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
 }
 
@@ -170,8 +168,8 @@ body {
     width: 20%;
     height: 3rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 5%;
     top: 2rem;
 }
@@ -184,8 +182,8 @@ body {
     width: 90%;
     height: 19rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 5%;
     top: 1%;
 }
@@ -195,8 +193,8 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     width: 25%;
     height: 80%;
 }
@@ -209,8 +207,8 @@ body {
     width: 20%;
     height: 3rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 5%;
     top: 2rem;
 }
@@ -224,8 +222,8 @@ body {
     width: 90%;
     height: 25rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 5%;
     top: -4%;
 }
@@ -245,8 +243,8 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     width: 22%;
     height: 43%;
 }
@@ -265,8 +263,8 @@ body {
     width: 20%;
     height: 3rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 5%;
     top: 2rem;
 }
@@ -285,8 +283,8 @@ body {
     width: 90%;
     height:28rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
     left: 5%;
     top: -11%;
 }
@@ -301,7 +299,7 @@ body {
     width: 10rem;
     height: 3rem;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;;
     margin-top: 1rem;
 }
 .container .reports_container .report_container {
@@ -314,7 +312,7 @@ body {
     width: 95%;
     height: 4rem;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;;
 }
 
 .container .reports_container .report_container a {

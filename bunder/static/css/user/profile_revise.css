@@ -9,10 +9,9 @@ body {
 .container {
     position: relative;
     width: 35rem;
-    background-color: #EBECF0;
+    background-color: #33383D;
     border-radius: 3rem;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
+    box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;
     padding: 3.5rem;
 }
 
@@ -22,7 +21,8 @@ body {
     line-height: 1em;
     font-weight: 700;
     padding-left: 1rem;
-    border-left: 5px solid hsla(220, 100%, 54%, 1);
+    color: #ffffff;
+    border-left: 5px solid #ed591a;
 }
 
 
@@ -31,8 +31,9 @@ body {
     width: 28rem;
     overflow: hidden;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    color: #a6a7a9;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -52,14 +53,14 @@ body {
 .container .inputBox {
     display: flex;
     position: relative;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 19rem;
     height: 3rem;
     margin-bottom: 1.8rem;
     border: 0;
     outline: 0;
     border-radius: 320px;
-    background-color: #ebecf0;
+    background-color: #33383D;
 }
 
 
@@ -92,9 +93,7 @@ input:-webkit-autofill:active {
 }
 
 .button {
-    color: #61677C;
-    font-weight: bold;
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    box-shadow: 9px 9px 18px #b94514, -9px -9px 18px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
@@ -116,7 +115,8 @@ input:-webkit-autofill:active {
     display: inline;
     width: 40%;
     height: 3rem;
-    color: #AE1100;
+    color: #ffffff;
+    background-color: #ed591a;
     margin-left: 60%;
 }
 
@@ -127,7 +127,8 @@ input:-webkit-autofill:active {
     top: 10%;
     height: 80%;
     width: 80%;
-    background: #EBECF0;
+    color: #a6a7a9;
+    background: transparent;
 }
 
 .input_bar {   /* 독후감 제목, 책제목, 책제목 검색 입력창 */
@@ -137,11 +138,10 @@ input:-webkit-autofill:active {
     border-radius: 4px;
     outline: none;
     font-size: 1rem;
-    color: #111;
+    color: #a6a7a9;
     font-weight: 300;
     border: none;
-
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent;
 }

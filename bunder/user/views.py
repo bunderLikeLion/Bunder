@@ -39,6 +39,10 @@ def register(request):
             res_data["error"] = "이미 존재하는 닉네임 입니다."
         elif User.objects.filter(username=username).exists():
             res_data["error"] = "이미 존재하는 아이디 입니다."
+        elif len(nickname) > 8:
+            res_data["error"] = "닉네임 길이는 최대 8자 입니다."
+        elif len(username) > 20:
+            res_data["error"] = "아이디 길이는 최대 20자 입니다."
         else:
             user = User.objects.create_user(
                 username=username,
@@ -139,16 +143,30 @@ def bunder(request):
                                                     'book_club': book_club, 'mainbook': mainbook})
 
 
-# 카테고리 수정
+# 프로필 수정
 @csrf_exempt
-def category_revise(request):
+def profile_revise(request):
     user = request.user
+    res_data = {'user' : user}
     if request.method == "POST":
-        user.categories = request.POST.get('book_category')
-        user.save()
-        return render(request, "user/profile_revise.html", {'user': user})
+        nickname = request.POST.get('nickname')
+        if user.nickname != nickname:
+            if User.objects.filter(nickname=nickname).exists():
+                res_data["error"] = "이미 존재하는 닉네임 입니다."
+                return render(request, "user/profile_revise.html", res_data)
+            else:
+                user.nickname = request.POST.get('nickname')
+                user.age = request.POST.get('age')
+                user.categories = request.POST.get('book_category')
+                user.save()
+                return redirect('user:profile')
+        else:
+            user.age = request.POST.get('age')
+            user.categories = request.POST.get('book_category')
+            user.save()
+            return redirect('user:profile')
     else:
-        return render(request, "user/profile_revise.html", {'user': user})
+        return render(request, "user/profile_revise.html", res_data)
 
 
 # 독후감 확인 (reports)

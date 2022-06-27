@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
-
 User = settings.AUTH_USER_MODEL
 
 
@@ -20,9 +19,9 @@ class BookReport(models.Model):
     book_img = models.CharField(max_length=500, verbose_name="책 사진", default="")
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='', verbose_name="유저")
-    like = models.ManyToManyField(User, related_name = 'likes', blank = True)
+    like = models.ManyToManyField(User, related_name='likes', blank=True)
     likes = models.IntegerField(verbose_name='likes_counter', default=0)
-    image_upload = models.ImageField(upload_to='book_report_images', blank = True, null = True)
+    image_upload = models.ImageField(upload_to='book_report_images', blank=True, null=True)
 
     def __str__(self):
         return self.report_name
@@ -33,12 +32,14 @@ class Scrap(models.Model):
         db_table = "scrap"
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
-    book_report = models.ForeignKey(BookReport, on_delete = models.CASCADE, default='')
+    book_report = models.ForeignKey(BookReport, on_delete=models.CASCADE, default='')
+
 
 class Comment(models.Model):
     class Meta:
         db_table = 'report_comment'
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default ='')
-    book_report = models.ForeignKey(BookReport, on_delete=models.CASCADE, default = "")
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    book_report = models.ForeignKey(BookReport, on_delete=models.CASCADE, default="")
     content = models.CharField(max_length=500, verbose_name='content')
     created_at = models.DateTimeField(verbose_name='created at', default=timezone.now)

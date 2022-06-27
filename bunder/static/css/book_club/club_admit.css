@@ -14,18 +14,17 @@ body {
     top: 8rem;
     width: 60%;
     padding: 3rem;
-    background-color: #EBECF0;
+    background-color: #33383D;
     border-radius: 2rem;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    color: #585858;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    color: #d3d4d5;
 }
 
 .container_single_requester {
     clear: both;
     border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+
     padding: 1rem;
     justify-content: space-between;
     display: flex;
@@ -39,8 +38,7 @@ body {
 
 .requester_profile_container {
     /* border-radius: 10px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF; */
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     padding: 1rem;
     display: flex;
     
@@ -55,18 +53,18 @@ body {
 
 .requester_profile_container > * {
     margin: auto 0;
+    color: #f7f7f7;
 }
 
 img {
     border-radius: 10px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     padding: 1rem;
     width: 8rem;
 }
 
 .request_btn {
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -74,8 +72,8 @@ img {
     margin-top: 0;
     height: 5rem;
     padding : 0 2rem;
-    color: #AE1100;
-    background-color: transparent;
+    color: #813818;
+    background-color: #ed591a;
     border: 0;
     outline: 0;
     border-radius: 320px;

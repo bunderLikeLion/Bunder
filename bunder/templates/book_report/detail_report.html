@@ -12,7 +12,7 @@
 <body>
 	{% block content %}
 
-	
+
 	<div class="container">
 		<div class="report_detail_container">
 			<div class="report_title">
@@ -26,7 +26,8 @@
 
 			<div class="profile_container">
 				<div class="profile_img">
-					<img class="img" src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
+					<img class="img"
+						src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
 				</div>
 
 				<div class="name"><span class="nickname">{{book_report.user.nickname}}</span></div>
@@ -74,7 +75,7 @@
 				</div>
 			</div>
 			{% if book_report.image_upload %}
-			<img src="{{book_report.image_upload.url}}" alt="">
+			<img src={{book_report.image_upload.url}} alt="">
 			{% endif %}
 
 			<div class="button_container">
@@ -102,7 +103,7 @@
 		</div>
 
 		<hr>
-		<h3 >댓글 <span class="comment-count_h3">{{ comment_len }}</span>개</h3>
+		<h3>댓글 <span class="comment-count_h3">{{ comment_len }}</span>개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
 				{% csrf_token %}
@@ -159,10 +160,10 @@
 		const commentDiv = document.querySelector(".comment_content")
 		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
 
-        const commentCount = document.querySelector(".comment-count_h3");
-        console.log(commentCount.innerText);
+		const commentCount = document.querySelector(".comment-count_h3");
+		console.log(commentCount.innerText);
 
-        const deleteCommentButton = document.querySelectorAll(".delete-comment_btn");
+		const deleteCommentButton = document.querySelectorAll(".delete-comment_btn");
 
 		commentButton.addEventListener("click", () => {
 			sendComment(bookReportId, content.value);
@@ -174,24 +175,24 @@
 		})
 
 		if (deleteCommentButton !== null) {
-            deleteCommentButton.forEach(el => {
-                el.addEventListener('click', (event) => {
-                    const commentId = event.target.parentNode.lastElementChild.value;
-                    deleteComment(bookReportId, commentId)
-                })
+			deleteCommentButton.forEach(el => {
+				el.addEventListener('click', (event) => {
+					const commentId = event.target.parentNode.lastElementChild.value;
+					deleteComment(bookReportId, commentId)
+				})
 			})
 
 		}
 
-        const deleteComment = async (bookReportId, commentId) => {
-            const url = "comment"
-            await axios.delete(url, {
-                data: {
-                    bookReportId: bookReportId,
-                    commentId: commentId
-                }
-            })
-            window.location.reload();
+		const deleteComment = async (bookReportId, commentId) => {
+			const url = "comment"
+			await axios.delete(url, {
+				data: {
+					bookReportId: bookReportId,
+					commentId: commentId
+				}
+			})
+			window.location.reload();
 		}
 
 		const requestMember = async (id) => {
@@ -206,51 +207,51 @@
 			const singleComment = document.createElement('div');
 			const profileImg = document.createElement('div');
 			const img = document.createElement('img');
-            const commentInfo = document.createElement('div');
+			const commentInfo = document.createElement('div');
 
-            const div = document.createElement('div');
+			const div = document.createElement('div');
 
 			const comment = response.data.comment;
 			const nickname = document.createElement('p');
 			const content = document.createElement('p');
 			const created_at = document.createElement('p');
 
-            const deleteDiv = document.createElement('div');
-            const submitButton = document.createElement('input');
-            const valueField = document.createElement('input');
+			const deleteDiv = document.createElement('div');
+			const submitButton = document.createElement('input');
+			const valueField = document.createElement('input');
 
-            deleteDiv.classList.add("delete_btn");
-            submitButton.classList.add("button", "delete-comment_btn")
-            submitButton.setAttribute("type", "submit");
-            valueField.classList.add("comment_id")
-            valueField.setAttribute("type", "hidden");
-            submitButton.value = "삭제";
-            valueField.value = comment.id;
+			deleteDiv.classList.add("delete_btn");
+			submitButton.classList.add("button", "delete-comment_btn")
+			submitButton.setAttribute("type", "submit");
+			valueField.classList.add("comment_id")
+			valueField.setAttribute("type", "hidden");
+			submitButton.value = "삭제";
+			valueField.value = comment.id;
 
-            singleComment.classList.add("single_comment");
-            profileImg.classList.add("profile_img");
-            img.classList.add("img");
-            commentInfo.classList.add("comment_info");
-            created_at.id = "time";
+			singleComment.classList.add("single_comment");
+			profileImg.classList.add("profile_img");
+			img.classList.add("img");
+			commentInfo.classList.add("comment_info");
+			created_at.id = "time";
 
-            singleComment.appendChild(profileImg);
-            profileImg.appendChild(img);
-            singleComment.appendChild(commentInfo)
-            commentInfo.appendChild(div);
+			singleComment.appendChild(profileImg);
+			profileImg.appendChild(img);
+			singleComment.appendChild(commentInfo)
+			commentInfo.appendChild(div);
 
-            singleComment.appendChild(deleteDiv)
+			singleComment.appendChild(deleteDiv)
 
 
-            div.appendChild(nickname);
-            div.appendChild(content);
-            commentInfo.appendChild(created_at);
+			div.appendChild(nickname);
+			div.appendChild(content);
+			commentInfo.appendChild(created_at);
 
-            deleteDiv.appendChild(submitButton);
-            deleteDiv.appendChild(valueField);
+			deleteDiv.appendChild(submitButton);
+			deleteDiv.appendChild(valueField);
 
-            commentDiv.appendChild(singleComment);
+			commentDiv.appendChild(singleComment);
 
-            img.src = "https://avatars.dicebear.com/api/" + comment.sex + "/" + comment.nickname + ".svg"
+			img.src = "https://avatars.dicebear.com/api/" + comment.sex + "/" + comment.nickname + ".svg"
 
 
 			const date = comment.created_at.split("T")[0].split("-");
@@ -276,12 +277,12 @@
 			created_at.innerText = reformat_date;
 
 
-            submitButton.addEventListener('click', (event) => {
-                const commentId = event.target.parentNode.lastElementChild.value;
-                deleteComment(bookReportId, commentId)
-            })
+			submitButton.addEventListener('click', (event) => {
+				const commentId = event.target.parentNode.lastElementChild.value;
+				deleteComment(bookReportId, commentId)
+			})
 
-            commentCount.innerText = Number(commentCount.innerText) + 1;
+			commentCount.innerText = Number(commentCount.innerText) + 1;
 
 			window.scrollTo(0, document.body.scrollHeight);
 

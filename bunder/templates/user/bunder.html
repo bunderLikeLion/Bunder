@@ -13,7 +13,8 @@ My Bunder
 <div class="container">
     <div class="profile_container">
         <div class="img_container">
-            <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
+            <img class="profile_img"
+                src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
         </div>
         <div class="name_container">
             <h3 class="name">이름 : {{user_info.nickname}}</h3>
@@ -89,7 +90,7 @@ My Bunder
         </div>
         {% endfor %}
     </div>
-	{% if user == user_info %}
+    {% if user == user_info %}
     <div class="margin">
         <div class="profile_reports">
             <h3>{{ user_info.nickname }}님이 스크랩한 글</h3>
@@ -114,11 +115,6 @@ My Bunder
                 </div>
             </div>
             {% endfor %}
-            <div class="report_container">
-                <div class="inner_report_container">
-                    <a href="" class="reports_name">독후감 제목</a>
-                </div>
-            </div>
         </div>
     </div>
     <div class="bunder_reco">
@@ -140,6 +136,6 @@ My Bunder
             </div>
         </div>
     </div>
-	{% endif %}
+    {% endif %}
 </div>
 {% endblock content %}

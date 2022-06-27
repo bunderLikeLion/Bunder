@@ -28,8 +28,9 @@
         </div>
 
         <div class="result_container big_container">
-            <h3 class="text text2">book_name의 독후감 검색 결과</h3>
-        
+            {% for book in books %}
+            <h3 class="text text2">{{ books.book_name}}의 독후감 검색 결과</h3>
+            {% endfor %}
             <div class="reports_container">
                 <div class="report_list">
                     {% if not books %}
@@ -49,8 +50,8 @@
                     {% endfor %}
                     {% endif %}
                 </div>
-    
-    
+
+
             </div>
         </div>
 

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Mail
 from django.views.decorators.csrf import csrf_exempt
 from user.models import User
+from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 
 
@@ -11,7 +12,7 @@ def main(request):
     if request.method == 'GET':
         if request.GET.get("id"):
             click_receiver = request.GET.get("id")
-            each_content = Mail.objects.filter(user=request.user, receiver=click_receiver)
+            each_content = Mail.objects.filter(Q(user=request.user) | Q(user=click_receiver), Q(receiver=click_receiver) | Q(receiver=request.user)).order_by('-created_at')
             check_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True).distinct()
             receiver = User.objects.filter(id__in=[id for id in check_receiver])
             return render(request, "mail/mail.html", {'receiver': receiver, 'each_content' : each_content})

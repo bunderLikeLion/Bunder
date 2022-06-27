@@ -11,6 +11,7 @@ urlpatterns = [
     path('member/', views.request_member, name='request_member'),
     path('book', views.ClubBook.as_view(), name='book'),
     path('admit', views.club_admit.as_view()),
+    path('reject', views.member_reject.as_view()),
     path('', views.main, name='main'),
     path('list', views.book_club_list, name="book_club_list"),
     path('edit/<int:bookclub_id>', views.book_club_edit, name="book_club_edit"),

@@ -1,0 +1,82 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/club_admit.css' %}" />
+{% endblock extrahead %}
+
+{% block title %}
+Club Admit
+{% endblock title %}
+
+{% block content %}
+<head>
+	<style>
+		.active {
+			color: red;
+		}
+		.container_single_requester {
+			display: flex;
+		}
+		.request-done {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<div><h2>소모임 명단</h2></div>
+			<div class="club_people_number">
+				소모임 현재 인원
+				 <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
+			</div>
+		</div>
+		
+
+		<div class="container_all_requesters">
+			{% for member in members %}
+				<div class="container_single_requester">
+					<div class="requester_profile_container">
+						<div class="profile_img_container">
+							<img class="profile_img" src="{{ member.user.avatar }}">
+						</div>
+						<div class="profile_name_container">
+							{{ member.user.nickname }}
+						</div>
+					</div>
+
+					<div class="button_container">
+						<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }})">내보내기</button>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+
+        axios.defaults.xsrfCookieName = 'csrftoken'
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+        const requestButton = document.querySelector(".request_btn");
+        const memberSpan = document.querySelector(".member-cnt_span");
+
+        const changeMember = async (event, memberId, clubId) => {
+            const url = "reject";
+            const container = event.target.parentElement;
+            const type = "REJECT";
+            container.classList.add("request-done");
+
+            const response = await axios.patch(url, { memberId, clubId })
+            const club = response.data.club;
+            memberSpan.innerText = club.memberCnt + "/" + club.maxCnt;
+
+		}
+
+	</script>
+	{% endblock content %}
+
+
+</body>

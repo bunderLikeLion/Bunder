@@ -45,7 +45,7 @@ div, p, span, input{
 }
 
 .club_info_container{
-    margin: 2rem;
+    margin: 2rem 0px;
 }
 
 .container .body {
@@ -416,4 +416,40 @@ textarea {   /* 독후감 본문 입력란 */
 .radio__input:checked + .category__box::before{
     background-color: hsla(220, 100%, 54%, 1);
     box-shadow: inset 0 0 0px 1px rgba(0,150,255, 0.3), inset 0 0 4px 1px rgba(0,150,255, 0.3), inset 0 0 8px 1px rgba(0,150,255, 0.3), inset -1px -1px 1px 0px rgba(255,255,255, 0.6), inset -2px -2px 2px 0px rgba(255,255,255, 0.3), inset 1px 1px 1px 0px rgba(12,13,18, 0.6), inset 2px 2px 2px 0px rgba(12,13,18, 0.4);
+}
+
+.club-edit_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.member-edit_btn {
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    margin-top: 0;
+    height: 3.5rem;
+    padding : 0 3rem;
+    color: #AE1100;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+}
+
+.button_container {
+    float: right;
+    margin: 10px 0px;
+}
+
+.button_container input {
+    margin-left: 30px;
+}
+
+.edit_button_container {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: right;
 }

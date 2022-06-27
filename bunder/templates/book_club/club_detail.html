@@ -49,9 +49,13 @@ Club Detail
                 </div>
             </div>
         </div>
-
+        {% if is_owner %}
+        <div class="invite_con">
+            <button class="button" id="invite">초대하기</button>
+        </div>
+        {% endif %}
         <div class="club_detail_containaer">
-            <div class="text">소모임 단원 리스트</div>
+            <div class="text">소모임원&nbsp;&nbsp;&nbsp;{{ book_club.member_cnt }} / {{ book_club.member_total }}</div>
             <div class="all_profile_container">
                 {% for member in user_list %}
                 <div class="member_box">
@@ -61,6 +65,7 @@ Club Detail
                 {% endfor %}
             </div>
         </div>
+        
 
         
         <div class="club_detail_containaer">

@@ -7,7 +7,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 body {
@@ -22,7 +21,7 @@ body {
   width: 80%;
   margin: 6rem;
   padding: 2rem;
-  background-color: #33383D;
+  background-color: #33383d;
   /* background-color: blue; */
   border-radius: 30px;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -32,14 +31,14 @@ body {
 }
 
 .container > * {
-  margin : 2rem;
+  margin: 2rem;
   color: #d3d4d5;
 }
 
 .container > * > * {
   border-radius: 30px;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-  padding : 1rem;
+  padding: 1rem;
 }
 
 img {
@@ -54,7 +53,7 @@ img {
   height: 7rem;
 }
 
-.profile_img{
+.profile_img {
   border-radius: 100px;
 }
 
@@ -85,7 +84,7 @@ img {
   margin-bottom: 0.5rem;
   /* margin-top: 0; */
   height: 3.5rem;
-  padding : 0 3rem;
+  padding: 0 3rem;
   color: #813818;
   background-color: #ed591a;
   border: 0;
@@ -94,54 +93,53 @@ img {
 }
 
 button:hover {
-  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 }
 
 button:active {
-  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
 }
 
 .button:hover {
-box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 }
 
 .button:active {
-box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
 }
 
 .vote_btn {
-float : right;
+  float: right;
 }
 
-#edit_club_btn{
-  float : right;
+#edit_club_btn {
+  float: right;
   margin-right: 2rem;
 }
 
 #vote-create_btn {
-  float : right;
+  float: right;
   position: relative;
   /*top: -4.5rem;*/
 }
 
-
 .btn_container {
-    /* top: -4.5rem; */
-    float: right;
-    /* padding-bottom : 1rem; */
+  /* top: -4.5rem; */
+  float: right;
+  /* padding-bottom : 1rem; */
 }
 
 #request_btn,
-#exit_btn{
-  float : right;
+#exit_btn {
+  float: right;
 }
 
-.profile_container > *{
-  margin : 1rem 2rem;
+.profile_container > * {
+  margin: 1rem 2rem;
 }
 
 .vote_container {
-  height : 10rem;
+  height: 10rem;
 }
 
 .book_info_box {
@@ -151,7 +149,8 @@ float : right;
   justify-content: center;
 }
 
-.kakao_link, .zoom_link {
+.kakao_link,
+.zoom_link {
   /* width: 80%; */
   margin: 0 0.5rem;
   /* margin : 0.2rem auto; */
@@ -159,58 +158,58 @@ float : right;
 }
 
 .club_detail_header {
-    box-shadow: none;
-    padding: 0px;
-    display: flex;
-    /* margin: 1rem; */
-    justify-content: space-between;
-  }
+  box-shadow: none;
+  padding: 0px;
+  display: flex;
+  /* margin: 1rem; */
+  justify-content: space-between;
+}
 
-  .kakao_link, .zoom_link {
-    text-align: center;
-    /* margin : 0.2rem auto; */
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
-    /* position: absolute; */
-    /* top: 2%; */
-    right: 40%;
-  }
+.kakao_link,
+.zoom_link {
+  text-align: center;
+  /* margin : 0.2rem auto; */
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  /* position: absolute; */
+  /* top: 2%; */
+  right: 40%;
+}
 
-    .kakao_link {
-      right: 26%;
-    }
+.kakao_link {
+  right: 26%;
+}
 
-  .link {
-    text-decoration: none;
-    color: blueviolet;
-  }
+.link {
+  text-decoration: none;
+  color: blueviolet;
+}
 
+.club_detail_header {
+  box-shadow: none;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+}
 
-  .club_detail_header {
-      box-shadow: none;
-      padding: 0px;
-      display: flex;
-      align-items: center;
-  }
+.event_div {
+  width: 12rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  border-radius: 50px;
+  background: transparent;
+}
 
-  .event_div {
-      width: 12rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-      border-radius: 50px;
-      background: transparent;
-  }
-
-  .event_div {
-    width: 12rem;
-    padding: 1rem;
-    color: #a6a7a9;
-    margin-top: 1rem;
-    text-align: center;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    border-radius: 50px;
-    background: transparent;
+.event_div {
+  width: 12rem;
+  padding: 1rem;
+  color: #a6a7a9;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  border-radius: 50px;
+  background: transparent;
 }
 
 .text {
@@ -228,19 +227,20 @@ float : right;
 }
 
 .book_info_box > * {
-  margin : auto 2rem;
+  margin: auto 2rem;
 }
 
 .book_info > * {
   margin-top: 1rem;
 }
 
-.book_info_container{
+.book_info_container {
   justify-content: center;
-  display : flex;
+  display: flex;
 }
 
-.book_info_container, .all_book_cover {
+.book_info_container,
+.all_book_cover {
   width: 90%;
   margin: 0 auto;
   padding: 1rem;
@@ -253,7 +253,7 @@ float : right;
 .book_info_bar {
   width: 140%;
   /* margin: 0px 20px; */
-  padding : 0.7rem;
+  padding: 0.7rem;
   border-radius: 4px;
   outline: none;
   font-size: 1rem;
@@ -265,8 +265,8 @@ float : right;
   background: transparent;
 }
 
-.all_book_cover{
-  padding : 1rem;
+.all_book_cover {
+  padding: 1rem;
   display: flex;
   flex-flow: wrap;
   width: 95%;
@@ -286,7 +286,7 @@ float : right;
   background: transparent;
 }
 
-.empty_list{
+.empty_list {
   height: 100%;
   padding: 1rem;
   width: 50%;
@@ -305,33 +305,40 @@ float : right;
 }
 
 .all_profile_container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: block;
 }
 
-.edit_container a{
+.edit_container a {
   box-shadow: none;
-  padding : 0px;
+  padding: 0px;
 }
 
-.vote_info > div {text-align: center;}
+.vote_info > div {
+  text-align: center;
+}
 
-.empty_list p{
+.empty_list p {
   text-align: center;
 }
 
 a {
-  color : #f7f7f7;
+  color: #f7f7f7;
   text-decoration: none;
 }
 #link_container {
   display: flex;
   margin: 0;
   float: right;
-  margin-top : 1rem;
+  margin-top: 1rem;
 }
 
-.club_bookshelf, .present_book_container {
-  box-shadow : none;
+.club_bookshelf,
+.present_book_container {
+  box-shadow: none;
+}
+
+#invite {
+  float: right;
+  position: relative;
+  top: -0.7em;
 }

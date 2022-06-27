@@ -39,6 +39,10 @@ def register(request):
             res_data["error"] = "이미 존재하는 닉네임 입니다."
         elif User.objects.filter(username=username).exists():
             res_data["error"] = "이미 존재하는 아이디 입니다."
+        elif len(nickname) > 8:
+            res_data["error"] = "닉네임 길이는 최대 8자 입니다."
+        elif len(username) > 20:
+            res_data["error"] = "아이디 길이는 최대 20자 입니다."
         else:
             user = User.objects.create_user(
                 username=username,

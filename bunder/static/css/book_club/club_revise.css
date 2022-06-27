@@ -54,10 +54,10 @@ div, p, span, input{
 }
 
 .container .inputBox {
-    display: flex;
+    /* display: flex; */
     position: relative;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    width: 20rem;
+    width: 100%;
     height: 3rem;
     margin-bottom: 0.5rem;
 }
@@ -184,7 +184,7 @@ button.login{
 .button_container{
     display: flex;
     justify-content: flex-end;
-    margin: 1rem 2rem;
+    /* margin: 1rem 2rem; */
 }
 
 .genre_container {
@@ -213,6 +213,8 @@ button.login{
     flex-wrap: wrap;
     border-radius: 30px;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    align-items: center;
+    justify-content: center;
 }
 
 .genre {
@@ -288,8 +290,9 @@ button.login{
 
 .box_container {
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 textarea {   /* 독후감 본문 입력란 */
@@ -312,13 +315,15 @@ textarea {   /* 독후감 본문 입력란 */
 
 .container_body {
     display: grid;
-    height: 5%;
-    width: 5%;
+    /* height: 5%; */
+    /* width: 5%; */
     position: relative;
-    left: 67%;
-    top: 3%;
+    /* left: 67%; */
+    /* top: 3%; */
+    margin: 0.5rem;
     place-items: center;
     text-align: center;
+    justify-content: end;
 }
 
 .pagination_container {
@@ -331,6 +336,7 @@ textarea {   /* 독후감 본문 입력란 */
 
 .pagination li {
     flex: 1;
+    margin: 0 0.5rem;
     border-radius: 1rem;
     background-color: #ed591a;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
@@ -355,11 +361,11 @@ textarea {   /* 독후감 본문 입력란 */
 }
 
 .pagination li:first-child {
-    margin: 0 15px 0 0;
+    /* margin: 0 15px 0 0; */
 }
 
 .pagination li:last-child {
-    margin: 0 0 0 15px;
+    /* margin: 0 0 0 15px; */
 }
 
 .pagination li:hover {
@@ -382,13 +388,14 @@ textarea {   /* 독후감 본문 입력란 */
     margin-left: 60px;
     color: #686868;
     border-radius: 20%;
-    background-color: rgba(238,240,245,1);
-    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
+    /* background-color: rgba(238,240,245,1); */
+    /* box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06); */
 }
 
 .category__text img {
     height: 7rem;
     width: 7rem;
+    padding: 0.5rem;
 }
 
 .category__box {
@@ -429,12 +436,13 @@ textarea {   /* 독후감 본문 입력란 */
 }
 
 .member-edit_btn {
+    margin: 0 0.5rem;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
     font-weight: 600;
-    margin-top: 0;
+    /* margin-top: 0; */
     height: 3.5rem;
     padding : 0 3rem;
     color: #813818;
@@ -446,15 +454,27 @@ textarea {   /* 독후감 본문 입력란 */
 
 .button_container {
     float: right;
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
 }
 
 .button_container input {
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
 .edit_button_container {
     margin: 20px 0px;
     display: flex;
     justify-content: right;
+}
+
+.temp {
+    display: flex;
+}
+
+.box {
+    width: 50%;
+}
+
+.requester_profile_container {
+    margin : 0.5rem;
 }

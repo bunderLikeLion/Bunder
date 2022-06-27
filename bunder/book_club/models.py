@@ -28,7 +28,10 @@ class BookClub(models.Model):
     kakao_link = models.CharField(max_length=200, verbose_name="카카오톡 링크", blank=True)
 
     def add_member_cnt(self):
-        self.member_cnt += 1 
+        self.member_cnt += 1
+
+    def decrement_member_cnt(self):
+        self.member_cnt -= 1
 
 
 class BookClubMember(models.Model):

@@ -38,7 +38,8 @@ def detail_report(request, id):
     commentList = Comment.objects.filter(book_report_id=id)
     user_info = book_report.user
 
-    return render(request, 'book_report/detail_report.html', {'user_info': user_info, 'book_report' : book_report, "book_report_id": book_report_id_json, "comment": commentList})
+    return render(request, 'book_report/detail_report.html', {'user_info': user_info, 'book_report' : book_report,
+                                                              "book_report_id": book_report_id_json, "comment": commentList})
 
 @csrf_exempt
 def create(request):
@@ -134,8 +135,8 @@ def likes(request):
     context = {'like_count' : like_count}
     return HttpResponse(json.dumps(context), content_type = 'application/json')
 
-#댓글 작성
-class CreateComment(View):
+#댓글
+class CommentRequest(View):
 
     def post(self, request):
         req = json.loads(request.body)
@@ -149,8 +150,10 @@ class CreateComment(View):
             comment.book_report = book_report
             comment.save()
             response = {'content' : content,
+                        'id': comment.id,
                         'nickname': request.user.nickname,
-                        'created_at': comment.created_at}
+                        'created_at': comment.created_at,
+                        'sex': request.user.sex}
             return JsonResponse({'comment': response }
                                 , json_dumps_params={'ensure_ascii': False}
                                 , status=200)
@@ -158,11 +161,15 @@ class CreateComment(View):
         else:
             return HttpResponse("로그인 후 이용")
 
-# 댓글 삭제
-def comment_delete(request, book_report_id, comments_id):
-    comment_delete = get_object_or_404(Comment, pk = comments_id)    
-    comment_delete.delete()
-    return redirect('book_report:detail', id = book_report_id)
+    def delete(self, request):
+        req = json.loads(request.body)
+        book_report_id = req['bookReportId']
+        comments_id = req['commentId']
+
+        comment = get_object_or_404(Comment, pk = comments_id)
+        comment.delete()
+
+        return redirect('book_report:detail', id = book_report_id)
 
 # 내 독후감 좋아요 순 3개 확인 함수
 def populated_reports(request):

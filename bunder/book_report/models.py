@@ -33,6 +33,7 @@ class Scrap(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     book_report = models.ForeignKey(BookReport, on_delete=models.CASCADE, default='')
+    created_at = models.DateTimeField(verbose_name='created_at', default=timezone.now)
 
 
 class Comment(models.Model):

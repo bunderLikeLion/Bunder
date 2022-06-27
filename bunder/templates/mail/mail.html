@@ -17,7 +17,7 @@ Mail
                     {% for person in receiver %}
 {#                    <form action="{% url 'mail:main' person.id %} " method="post">#}
                     {% csrf_token %}
-						<a href="?receiver={{ person.id }}">
+						<a href="receiver?id={{ person.id }}">
 							<button type="submit" name="each_mail">
 								<div class="profile_img">
 									<img class="img"
@@ -51,10 +51,10 @@ Mail
             </div>
 
             <div class="report_box">
-                {% for content in mailcontents %}
+                {% for content in each_content %}
                 <div class="report">
                     <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
+                        <p class="bookname">{{ content.content }} </p>
                     </div>
                     <div class="report_info">
                         <div class="profile_img">
@@ -63,10 +63,10 @@ Mail
                         </div>
 
                         <div class="profile_name">
-                            <span class="name">닉네임</span>
+                            <span class="name">{{ content.user.nickname }}</span>
                         </div>
                         <div class="report_time">
-                            <span class="time">2022.1.1</span>
+                            <span class="time">{{ content.created_at }}</span>
                         </div>
                     </div>
                 </div>

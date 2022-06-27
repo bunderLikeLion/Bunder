@@ -63,14 +63,14 @@
                     </a></li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                <li><a href="../user/logout">
+                <li><a href={% url 'user:logout' %}>
                         <ion-icon name="log-out-outline"></ion-icon>로그아웃
                     </a></li>
                 {% else %}
                 <li><a href={% url 'user:loginpage' %}>
                         <ion-icon name="log-in-outline"></ion-icon>로그인
                     </a></li>
-                <li><a href="../user/signup">
+                <li><a href={% url 'user:register' %}>
                         <ion-icon name="person-add-outline"></ion-icon>회원가입
                     </a></li>
                 {% endif %}

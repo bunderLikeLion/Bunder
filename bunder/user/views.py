@@ -132,7 +132,6 @@ def bunder(request):
         except:
             user_info = request.user
 
-
         book = Book.objects.filter(user_id=user_info.id)
         my_recent_reports = check_two_reports(user_info)
         scrap = check_two_scraps(user_info)
@@ -147,7 +146,7 @@ def bunder(request):
 @csrf_exempt
 def profile_revise(request):
     user = request.user
-    res_data = {'user' : user}
+    res_data = {'user': user}
     if request.method == "POST":
         nickname = request.POST.get('nickname')
         if user.nickname != nickname:
@@ -175,7 +174,7 @@ def reports(request):
         userId = request.GET.get("id")
         user_info = get_object_or_404(User, pk=userId)
         user_reports = get_reports(user_info)
-        return render(request, 'user/all_user_reports.html', {'user_reports': user_reports, 'user_info': user_info })
+        return render(request, 'user/all_user_reports.html', {'user_reports': user_reports, 'user_info': user_info})
 
 
 # 내 독후감 확인하는 함수2
@@ -202,14 +201,14 @@ def check_my_scraps(request):
 
 # 독후감 최신순 2개 확인 함수
 def check_two_reports(user):
-    my_reports = BookReport.objects.filter(user=user).order_by('-id')[:2]
+    my_reports = BookReport.objects.filter(user=user).order_by('-created_at')[:2]
 
     return my_reports
 
 
 # scrap 2개 뽑아서 번더 전달
 def check_two_scraps(user):
-    scrap = Scrap.objects.filter(user=user).order_by('-id')[:2]
+    scrap = Scrap.objects.filter(user=user).order_by('-created_at')[:2]
     return scrap
 
 

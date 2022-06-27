@@ -18,9 +18,11 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in my_club%}
+        {% for club in my_club%}
         <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+            	<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
         </div>
         {% endfor %}
     </div>
@@ -65,10 +67,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.literature %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.literature %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -82,10 +86,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.art %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.art %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -99,10 +105,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.self_development %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.self_development %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -116,10 +124,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.political_society %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.political_society %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -133,10 +143,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.science %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.science %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -150,10 +162,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.it %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.it %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -167,10 +181,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.humanities %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.humanities %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="profile_club">
@@ -184,10 +200,12 @@
         </div>
     </div>
     <div class="book_club_container">
-        {% for img in book_club.amity %}
-        <div class="my_book_club">
-            <img class="book_cover" src="../../static/img/club_img_{{ img.image }}.jpg">
-        </div>
+        {% for club in book_club.amity %}
+		<div class="my_book_club">
+			<a href={% url 'book_club:book_club_detail' club.id %}>
+				<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+			</a>
+		</div>
         {% endfor %}
     </div>
     <div class="margin">

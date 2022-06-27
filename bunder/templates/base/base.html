@@ -46,16 +46,18 @@
             <div class="menuToggle">
             </div>
             <ul class="menu">
+				{% if user.is_authenticated %}
                 <li><a href={% url 'user:bunder' %}>
                         <ion-icon name="person-outline"></ion-icon>개인 번더
                     </a></li>
+				{% endif %}
                 <li><a href="../bookreport/main?page=1">
                         <ion-icon name="book-outline"></ion-icon>독후감
                     </a></li>
                 <li><a href="../bookclub/">
                         <ion-icon name="people-outline"></ion-icon>소모임
                     </a></li>
-                <li><a href="../mail/">
+                <li><a href="../mail/receiver">
                         <ion-icon name="mail-outline"></ion-icon>메일함
                     </a></li>
                 {% if user.is_authenticated %}

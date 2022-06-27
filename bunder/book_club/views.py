@@ -79,7 +79,6 @@ def book_club_detail(request, bookclub_id):
         book = Book.objects.filter(club_id=bookclub_id, active=True).first()
         book_id_json = None
 
-
         if book:
             book_id_json = json.dumps(book.id)
         book_list = get_book(bookclub_id)
@@ -116,7 +115,33 @@ def book_club_detail(request, bookclub_id):
 
 
 def book_club_edit(request, bookclub_id):
-    return render(request, 'book_club/club_revise.html')
+    if request.method == "GET":
+        book_club = get_object_or_404(BookClub, pk=bookclub_id)
+
+        query = Q()
+        query.add(Q(club=book_club), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+        member_list = BookClubMember.objects.prefetch_related("user").filter(query)
+        user_list = [member.user for member in member_list]
+        category = json.dumps(book_club.category)
+        image = json.dumps(book_club.image)
+        return render(request, 'book_club/club_revise.html', {"book_club": book_club,
+                                                              "user_list": user_list,
+                                                              "category": category,
+                                                              "image": image})
+    elif request.method == "POST":
+        book_club = get_object_or_404(BookClub, pk=bookclub_id)
+
+        book_club.club_name = request.POST["clubname"]
+        book_club.image = request.POST["club_img"]
+        book_club.category = request.POST["book_category"]
+        book_club.description = request.POST["content"]
+        book_club.zoom_link = request.POST["zoom_link"]
+        book_club.kakao_link = request.POST["kakao_link"]
+        book_club.save()
+
+        return redirect('book_club:book_club_detail', book_club.id)
 
 
 def get_book(bookclub_id):
@@ -170,6 +195,47 @@ class club_admit(View):
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
 
 
+class member_reject(View):
+    def get(self, request):
+        clubId = request.GET.get('clubId', None)
+        book_club = get_object_or_404(BookClub, id=clubId)
+
+        members = getMember(book_club)
+        return render(request, 'book_club/member_reject.html',
+                      {'members': members, 'book_club': book_club})
+
+    def patch(self, request):
+        req = json.loads(request.body)
+        memberId = req['memberId']
+        type = "REJECT"
+        member = get_object_or_404(BookClubMember, pk=memberId)
+        club = member.club
+
+        member.type = type
+        member.save()
+
+        total, curr_cnt = member.get_club_cnt()
+
+        if curr_cnt < total and type == "MEMBER":
+            club.decrement_member_cnt()
+            club.save()
+
+            club_response = {'clubName': club.club_name,
+                             'memberCnt': club.member_cnt,
+                             'maxCnt': club.member_total
+                             }
+
+            member_response = {'nickname': member.user.nickname,
+                               'type': member.type}
+
+            return JsonResponse({'member': member_response,
+                                 'club': club_response,
+                                 "message": "멤버 내보내기 성공"})
+        else:
+            return JsonResponse({'message': "잘못된 접근 입니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=400)
+
+
 @csrf_exempt
 def request_member(request):
     if request.method == "POST":
@@ -187,7 +253,7 @@ def request_member(request):
         user_id = req['userId']
 
         try:
-            find_member = BookClubMember.objects.get(club_id=bookclub_id,user_id=user_id)
+            find_member = BookClubMember.objects.get(club_id=bookclub_id, user_id=user_id)
             find_member.delete()
             return JsonResponse({'message': "멤버 삭제 성공",
                                  }, json_dumps_params={'ensure_ascii': False}, status=200)
@@ -195,7 +261,6 @@ def request_member(request):
             print("존재하지 하지 않는 멤버입니다.")
             return JsonResponse({'message': "존재하지 하지 않는 멤버입니다.",
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
-
 
 
 class AddVote(View):
@@ -353,3 +418,11 @@ def getMyBookClub(user):
     club_list = [member.club for member in book_club_member]
 
     return club_list
+
+
+def getMember(book_club):
+    query = Q()
+    query.add(Q(club=book_club), query.AND)
+    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+    return BookClubMember.objects.filter(query)

@@ -26,14 +26,32 @@ def main(request):
 
 
 def category_search(request, category):
-    book_report_list = BookReport.objects.filter(book_category=category).order_by('-created_at')
-    page = request.GET.get('page')
-    paginator = Paginator(book_report_list, CONTENT_COUNT)
-    book_report = paginator.get_page(page)
-    populated_report = populated_reports(request)
-
+    if category == '경제':
+        book_report_list=BookReport.objects.filter(book_category='경제/경영').order_by('-created_at')
+        page = request.GET.get('page')
+        paginator = Paginator(book_report_list, CONTENT_COUNT)
+        book_report = paginator.get_page(page)
+        populated_report = populated_reports(request)
+    elif category == '정치':
+        book_report_list=BookReport.objects.filter(book_category='정치/사회').order_by('-created_at')
+        page = request.GET.get('page')
+        paginator = Paginator(book_report_list, CONTENT_COUNT)
+        book_report = paginator.get_page(page)
+        populated_report = populated_reports(request)
+    elif category == '기술':
+        book_report_list=BookReport.objects.filter(book_category='기술/IT').order_by('-created_at')
+        page = request.GET.get('page')
+        paginator = Paginator(book_report_list, CONTENT_COUNT)
+        book_report = paginator.get_page(page)
+        populated_report = populated_reports(request)
+    else:
+        book_report_list = BookReport.objects.filter(book_category=category).order_by('-created_at')
+        page = request.GET.get('page')
+        paginator = Paginator(book_report_list, CONTENT_COUNT)
+        book_report = paginator.get_page(page)
+        populated_report = populated_reports(request)
     return render(request, "book_report/book_report.html",
-                  {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page, 'populated_report' : populated_report})
+                  {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page, 'populated_report': populated_report})
 
 
 def write_report(request):

@@ -19,7 +19,7 @@ Mail
                         {% csrf_token %}
                         <a href="receiver?id={{ person.id }}">
                             <button type="submit" name="each_mail">
-                                <div class="profile_img">
+                                <div class=" profile_img">
                                     <img class="img"
                                         src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
                                 </div>
@@ -39,8 +39,10 @@ Mail
                     onClick="location.href = 'new'">
             </div>
             <div class="write_report">
-                <input type="button" class="button" id="write_report_btn" value="쪽지 답장하기"
-                    onClick="location.href = 'new'">
+                <a href="reply?id={{ click_receiver }}">
+                    <input type="submit" class="button" id="write_report_btn" value="쪽지 답장하기"
+                        onClick="location.href = 'new'">
+                </a>
             </div>
             <div class="container_body">
                 <div class="pagination_container">
@@ -73,13 +75,25 @@ Mail
                     </div>
                 </div>
                 {% endfor %}
-
-
-
-
             </div>
-
         </div>
     </div>
 </div>
+<script>
+    function toggleBtn1() {
+
+        // 토글 할 버튼 선택 (btn1)
+        const btn1 = document.getElementById('btn1');
+
+        // btn1 숨기기 (display: none)
+        if (btn1.style.display !== 'none') {
+            btn1.style.display = 'none';
+        }
+        // btn` 보이기 (display: block)
+        else {
+            btn1.style.display = 'block';
+        }
+
+    }
+</script>
 {% endblock content %}

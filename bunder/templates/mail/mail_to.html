@@ -19,12 +19,21 @@ Mail to
                     <div class="send_mail">
                         <input type="submit" class="button" id="send_mail_btn" value="쪽지 보내기">
                     </div>
+                    {% if receiver %}
                     <div class="write_mail">
-                        <input class="input_bar" type="text" name="receiver" placeholder="받는 사람 닉네임">
+                        <input class="input_bar" type="text" name="receiver" value="{{ receiver.nickname }}" readonly>
                         <div class="report_content">
                             <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="write_mail">
+                        <input class="input_bar" type="text" name="receiver" placeholder="닉네임">
+                        <div class="report_content">
+                            <textarea name="content" id="content" placeholder="쪽지 작성"></textarea>
+                        </div>
+                    </div>
+                    {% endif %}
 
                 </form>
             </div>

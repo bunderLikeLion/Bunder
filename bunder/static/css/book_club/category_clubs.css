@@ -31,7 +31,7 @@ body {
 .container .book_club_container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     position: relative;
     width: 90%;
@@ -48,7 +48,7 @@ body {
 }
 
 .container .book_club_container .book_cover {
-    padding: 3%;
+    padding: 10%;
     height: 100%;
     width: 20rem;
 }
@@ -80,8 +80,19 @@ body {
 }
 
 .con {
-    margin: 3rem 0.5rem;
+    width: 14rem;
+    margin: 2rem 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.my_book_club_info {
+    text-align: center;
+    border-radius: 1rem;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    width: 90%;
+    padding: 0.5rem;
+
 }

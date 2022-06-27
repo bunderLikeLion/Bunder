@@ -27,8 +27,8 @@ body {
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    left: 5%;
-    top: 2rem;
+    /* left: 5%; */
+    /* top: 2rem; */
 }
 
 .container .book_club_container {
@@ -70,7 +70,7 @@ body {
 }
 
 .pagination li {
-    flex: 1;
+    display: flex;
     border-radius: 1rem;
     background-color: #ed591a;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
@@ -110,8 +110,9 @@ body {
     height: 10%;
     width: 5%;
     position: relative;
-    left: 82%;
-    top: -2%;
+    float: right;
+    /* left: 82%; */
+    /* top: -2%; */
     place-items: center;
     text-align: center;
 }

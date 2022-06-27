@@ -165,6 +165,8 @@ button {
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
+    height: 100%;
+    padding: 0.5rem;
     background-color: #ed591a;
 }
 
@@ -179,8 +181,8 @@ button:active {
 button.login{
     text-align: center;
     display: inline;
+    margin: 1.5rem;
     margin-left: 72%;
-    margin-top: 1%;
     width: 25%;
     height: 3rem;
     color: #813818;
@@ -292,10 +294,11 @@ textarea {   /* 독후감 본문 입력란 */
 .container_body {
     display: grid;
     height: 5%;
-    width: 5%;
-    position: relative;
-    left: 67%;
-    top: 3%;
+    width: 30%;
+    margin: 0px 2rem 0 auto;
+    /* position: relative; */
+    /* left: 67%; */
+    /* top: 3%; */
     place-items: center;
     text-align: center;
 }
@@ -310,6 +313,7 @@ textarea {   /* 독후감 본문 입력란 */
 
 .pagination li {
     flex: 1;
+    margin: 0.5rem;
     border-radius: 1rem;
     background-color: #ed591a;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
@@ -320,10 +324,10 @@ textarea {   /* 독후감 본문 입력란 */
     font-weight: 700;
     text-decoration: none;
     color: #813818;
-    height: 2rem;
+    height: 100%;
     width: 2rem;
     display: block;
-    line-height: 2.4rem;
+    line-height: 2rem;
 }
 .pagination li:first-child a {
     width: 6rem;
@@ -331,14 +335,6 @@ textarea {   /* 독후감 본문 입력란 */
 
 .pagination li:last-child a {
     width: 6rem;
-}
-
-.pagination li:first-child {
-    margin: 0 15px 0 0;
-}
-
-.pagination li:last-child {
-    margin: 0 0 0 15px;
 }
 
 .pagination li:hover {
@@ -359,17 +355,15 @@ textarea {   /* 독후감 본문 입력란 */
 
 .category__text {
     position: absolute;
-    top: 55.5%;
     margin-left: 60px;
-    color: #686868;
-    border-radius: 20%;
-    background-color: #33383D;
+    align-items: center;
 }
 
 .category__text img {
     height: 7rem;
     width: 7rem;
     padding: 0.5rem;
+    border-radius: 1rem;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 

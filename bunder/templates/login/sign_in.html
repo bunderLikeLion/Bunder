@@ -22,9 +22,11 @@ Sign in
         </div>
         {{error}}
         <div class="button">
-            <button class="login" type="submit" value="Login" name="login"><i class="icon ion-md-lock"></i>Sign
-                in</button>
+            <button class="login" type="submit" value="Login" name="login">Sign in</button>
         </div>
     </form>
+    <div class="signup">
+        <li><a href={% url 'user:register' %}>Sign Up</a></li>
+    </div>
 </div>
 {% endblock content %}

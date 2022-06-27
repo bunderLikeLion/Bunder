@@ -22,7 +22,6 @@ div, p, span, input{
     background-color: #EBECF0;
     border-radius: 30px;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
     color: red;
     font-weight: 300;
 }
@@ -124,9 +123,37 @@ button.login{
     color: #AE1100;
 }
 
-button.password{
-    width: 50%;
+.signup {
+    text-align: center;
+    position: absolute;
+    width: 30%;
     height: 3rem;
+    overflow: hidden;
+    border: none;
+    background: #EBECF0;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    border-radius: 50px;
+    top: 19.5rem;
+    left: 2.6rem;
+}
+
+
+.signup li {
+    list-style: none;
+}
+
+.signup li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    font-size: 1em;
+    text-decoration: none;
     color: #AE1100;
+    font-weight: bold;
+}
+
+.signup li a:hover {
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 

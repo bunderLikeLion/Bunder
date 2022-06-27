@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
@@ -91,7 +93,14 @@ def book_club_detail(request, bookclub_id):
 
         if BookClubVote.objects.filter(club=book_club, active=True).exists():
             vote = BookClubVote.objects.get(club=book_club, active=True)
-            vote_id_json = json.dumps(vote.id)
+            end_date = vote.end_date
+            today = datetime.datetime.now()
+            if today > end_date:
+                vote.active = False
+                vote.save()
+                vote = None
+            else:
+                vote_id_json = json.dumps(vote.id)
 
         if BookClubVote.objects.filter(club=book_club, active=False).exists():
             end_vote = BookClubVote.objects.filter(club=book_club, active=False).order_by('-created_at')[0]

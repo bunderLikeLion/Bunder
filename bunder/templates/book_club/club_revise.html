@@ -19,18 +19,25 @@ Club Revise
 		{% csrf_token %}
         <div class="club_info_container">
             <div class="box_container">
-                <div class="inputBox">
-                    <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
-                    <span class="first">소모임 명</span>
+                <div class="temp">
+                    <div class="box">
+                        <div class="inputBox">
+                            <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
+                            <span class="first">소모임 명</span>
+                        </div>
+                    </div>
+                    
+                    <div class="box">
+                        <div class="inputBox">
+                            <input type="text" required="required" name='kakao_link' id='link' value=" {{ book_club.kakao_link }}">
+                            <span class="second">소모임 KakaoTalk Link</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="link_box">
                     <div class="inputBox">
                         <input type="text" required="required" name='zoom_link' id='link' value="{{ book_club.zoom_link }}">
                         <span class="second">소모임 Zoom Link</span>
-                    </div>
-                    <div class="inputBox">
-                        <input type="text" required="required" name='kakao_link' id='link' value=" {{ book_club.kakao_link }}">
-                        <span class="second">소모임 KakaoTalk Link</span>
                     </div>
                 </div>
             </div>

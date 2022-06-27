@@ -62,6 +62,9 @@ class BookClubVote(models.Model):
     topic = models.CharField(max_length=50, verbose_name="투표 주제", blank=False)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
+    active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
 
 
 class VoteDetail(models.Model):

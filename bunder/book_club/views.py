@@ -59,6 +59,8 @@ def new(request):
 
         return redirect('/bookclub/' + str(book_club.id))
 
+def get_end_vote(club):
+    pass
 
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
@@ -85,8 +87,19 @@ def book_club_detail(request, bookclub_id):
         is_full = True if len(book_list) >= 5 else False
         is_full_json = json.dumps(is_full)
 
-        vote = BookClubVote.objects.get(club=book_club)
-        vote_id_json = json.dumps(vote.id)
+        end_vote, vote, vote_id_json = None, None, None
+
+        if BookClubVote.objects.filter(club=book_club, active=True).exists():
+            vote = BookClubVote.objects.get(club=book_club, active=True)
+            vote_id_json = json.dumps(vote.id)
+
+        if BookClubVote.objects.filter(club=book_club, active=False).exists():
+            end_vote = BookClubVote.objects.filter(club=book_club, active=False).order_by('-created_at')[0]
+            end_vote_list = VoteDetail.objects.filter(vote=end_vote).order_by('-vote_cnt')
+        max_vote = end_vote_list[0].vote_cnt
+        onset_list = [v for v in end_vote_list if v.vote_cnt == max_vote]
+
+
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club,
                        'bookclub_id': bookclub_id_json,
@@ -99,7 +112,10 @@ def book_club_detail(request, bookclub_id):
                        'is_owner': is_owner,
                        'is_member': is_member,
                        'user_id': user_id_json,
-                       'is_full_json': is_full_json})
+                       'is_full_json': is_full_json,
+                       'end_vote': end_vote,
+                       'end_vote_list': end_vote_list,
+                       'onset_list': onset_list})
 
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
@@ -304,6 +320,7 @@ class AddVote(View):
         vote.topic = request.POST['topic']
         vote.start_date = request.POST['startvote']
         vote.end_date = request.POST['endvote']
+        vote.active = True
 
         vote.save()
         voteList = []

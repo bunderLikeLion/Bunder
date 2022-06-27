@@ -55,7 +55,7 @@ Club Detail
         </div>
         <div class="club_detail_containaer">
             <div class="club_detail_header">
-                <div class="event_div">진행중인 이벤트</div>
+                <div class="event_div">진행중인 투표</div>
                 {% if not vote and is_owner %}
                 <div class="btn_container">
                     <button class="button" id="vote-create_btn">투표 생성</button>
@@ -96,16 +96,32 @@ Club Detail
         </div>
         <div class="club_detail_containaer">
             <div class="club_detail_header">
-                <div class="event_div">종료된 투표</div>
+                <div class="event_div">최근 종료 투표</div>
             </div>
             <div class="vote_container club_book_list">
-                {% if not vote %}
+                {% if not end_vote %}
                 <div class="empty-vote">
                     <p>현재 종료된 투표가 없습니다.</p>
                 </div>
                 {% else %}
-                <div class="empty-vote deactivate empty_list">
-                    <p>현재 종료된 투표가 없습니다.</p>
+                <div class="empty-vote empty_list">
+					<div class="vote_info">
+						<div>투표 제목: {{ end_vote.topic }}</div>
+						<div>1등 결과</div>
+						{% for one in onset_list %}
+							<div>
+								<span>내용: {{ one.description }}</span>
+							</div>
+						{% endfor %}
+						<br />
+						{% for each_vote in end_vote_list %}
+							<div>
+								<span>내용: {{ each_vote.description }}</span>
+								<span>득표수: {{ each_vote.vote_cnt }}</span>
+							</div>
+						{% endfor %}
+{#						<div>기간: {{ end_vote.start_date }} ~ {{ end_vote.end_date }}</div>#}
+					</div>
                 </div>
                 {% endif %}
             </div>

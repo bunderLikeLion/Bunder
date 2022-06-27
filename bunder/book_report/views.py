@@ -36,8 +36,9 @@ def detail_report(request, id):
     book_report = get_object_or_404(BookReport, pk = id)
     book_report_id_json = json.dumps(id)
     commentList = Comment.objects.filter(book_report_id=id)
+    user_info = book_report.user
 
-    return render(request, 'book_report/detail_report.html', {'book_report' : book_report, "book_report_id": book_report_id_json, "comment": commentList})
+    return render(request, 'book_report/detail_report.html', {'user_info': user_info, 'book_report' : book_report, "book_report_id": book_report_id_json, "comment": commentList})
 
 @csrf_exempt
 def create(request):
@@ -99,7 +100,7 @@ def make_scrap(request):
     return JsonResponse({'scrap': model_to_dict(scrap)})
 
 # 내 스크랩 확인
-class all_my_scraps(View):
+class all_scraps(View):
     def get(self, request):
         scraps = Scrap.objects.filter(user_id=request.user.id)
         report = []

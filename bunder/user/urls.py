@@ -10,7 +10,7 @@ urlpatterns = [
     path('profile', views.profile),
     path('updatepassword', views.password_revise),
     path('updatecategory', views.category_revise),
-    path('myreport', views.search_my_reports, name = "search_my_reports"),
+    path('report', views.reports, name = "reports"),
     path('myscrap', views.search_my_scraps, name = "search_my_scraps"),
     path('bunder', views.bunder, name = "bunder"),
     path('login', views.loginpage, name = "loginpage"),

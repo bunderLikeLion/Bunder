@@ -13,11 +13,11 @@ My Bunder
 <div class="container">
     <div class="profile_container">
         <div class="img_container">
-            <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+            <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
         </div>
         <div class="name_container">
-            <h3 class="name">이름 : {{user.nickname}}</h3>
-            <h3 class="book_category">선호하는 책 장르 : {{ user.categories }}</h3>
+            <h3 class="name">이름 : {{user_info.nickname}}</h3>
+            <h3 class="book_category">선호하는 책 장르 : {{ user_info.categories }}</h3>
         </div>
     </div>
 
@@ -42,12 +42,12 @@ My Bunder
     <div class="book_club_container">
         {% for club in book_club %}
         <div class="my_book_club">
-            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+            <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
         </div>
         {% endfor %}
     </div>
     <div class="profile_bookshelf">
-        <h3>나의 책장</h3>
+        <h3>{{ user_info.nickname }}님의 책장</h3>
     </div>
     <div class="container_body_add">
         <div class="pagination_container">
@@ -66,12 +66,12 @@ My Bunder
         {% endfor %}
     </div>
     <div class="profile_reports">
-        <h3>내가 쓴 글</h3>
+        <h3>{{ user_info.nickname }}님이 쓴 글</h3>
     </div>
     <div class="container_body_reports">
         <div class="pagination_container">
             <ul class="pagination ">
-                <li><a href={% url 'user:search_my_reports' %} class="all_my_reports">전체보기</a></li>
+                <li><a href="report?id={{ user_info.id }}" class="all_my_reports">전체보기</a></li>
             </ul>
         </div>
     </div>
@@ -84,19 +84,20 @@ My Bunder
         {% for report in my_recent_reports%}
         <div class="report_container">
             <div class="inner_report_container">
-                <a href='' class="reports_name">{{ report.report_name }}</a>
+                <a href={% url 'book_report:detail' report.id %} class="reports_name">{{ report.report_name }}</a>
             </div>
         </div>
         {% endfor %}
     </div>
+	{% if user == user_info %}
     <div class="margin">
         <div class="profile_reports">
-            <h3>내가 스크랩한 글</h3>
+            <h3>{{ user_info.nickname }}님이 스크랩한 글</h3>
         </div>
         <div class="container_body_reports">
             <div class="pagination_container">
                 <ul class="pagination ">
-                    <li><a href={% url 'book_report:all_my_scrap' %} class="all_my_reports">전체보기</a></li>
+                    <li><a href={% url 'book_report:all_scrap' %} class="all_my_reports">전체보기</a></li>
                 </ul>
             </div>
         </div>
@@ -139,5 +140,6 @@ My Bunder
             </div>
         </div>
     </div>
+	{% endif %}
 </div>
 {% endblock content %}

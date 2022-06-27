@@ -120,15 +120,23 @@ def profile(request):
 
 # bunder 정보 - 모든 책, 최근 독후감 2개, 최근 스크랩 2개, 프로필 북, 북클럽
 def bunder(request):
-    user = request.user
-    book = Book.objects.filter(user_id=user.id)
-    my_recent_reports = check_my_two_reports(request)
-    scrap = check_my_two_scraps(request)
-    book_club = getBookClub(user)
-    mainbook = ProfileBook.objects.filter(user_id=user.id).last()
-    return render(request, 'user/bunder.html', {'user': user, 'my_recent_reports': my_recent_reports,
-                                                'scrap': scrap, 'book': book,
-                                                'book_club': book_club, 'mainbook': mainbook})
+    if request.method == 'GET':
+        user_info = None
+        try:
+            user_id = request.GET.get('id')
+            user_info = get_object_or_404(User, pk=user_id)
+        except:
+            user_info = request.user
+
+
+        book = Book.objects.filter(user_id=user_info.id)
+        my_recent_reports = check_two_reports(user_info)
+        scrap = check_two_scraps(user_info)
+        book_club = getBookClub(user_info)
+        mainbook = ProfileBook.objects.filter(user_id=user_info.id).last()
+        return render(request, 'user/bunder.html', {'user_info': user_info, 'my_recent_reports': my_recent_reports,
+                                                    'scrap': scrap, 'book': book,
+                                                    'book_club': book_club, 'mainbook': mainbook})
 
 
 # 카테고리 수정
@@ -143,18 +151,19 @@ def category_revise(request):
         return render(request, "user/profile_revise.html", {'user': user})
 
 
-# 내 독후감 확인 (all_my_reports)
-def search_my_reports(request):
-    my_reports = check_my_reports(request)
-    return render(request, 'user/all_my_reports.html', {'my_reports': my_reports})
+# 독후감 확인 (reports)
+def reports(request):
+    if request.method == "GET":
+        userId = request.GET.get("id")
+        user_info = get_object_or_404(User, pk=userId)
+        user_reports = get_reports(user_info)
+        return render(request, 'user/all_user_reports.html', {'user_reports': user_reports, 'user_info': user_info })
 
 
 # 내 독후감 확인하는 함수2
-def check_my_reports(request):
-    my_reports = BookReport.objects.all()
-    user = request.user
-    if user:
-        my_reports = my_reports.filter(user_id=user.id)
+def get_reports(user):
+    my_reports = BookReport.objects.filter(user=user)
+
     return my_reports
 
 
@@ -173,21 +182,16 @@ def check_my_scraps(request):
     return my_scraps
 
 
-# 내 독후감 최신순 2개 확인 함수
-def check_my_two_reports(request):
-    my_reports = BookReport.objects.all()
-    user = request.user
-    if user:
-        my_reports = my_reports.filter(user_id=user.id).order_by('-id')[:2]
+# 독후감 최신순 2개 확인 함수
+def check_two_reports(user):
+    my_reports = BookReport.objects.filter(user=user).order_by('-id')[:2]
+
     return my_reports
 
 
 # scrap 2개 뽑아서 번더 전달
-def check_my_two_scraps(request):
-    scrap = Scrap.objects.all()
-    user = request.user
-    if user:
-        scrap = scrap.filter(user_id=user.id).order_by('-id')[:2]
+def check_two_scraps(user):
+    scrap = Scrap.objects.filter(user=user).order_by('-id')[:2]
     return scrap
 
 

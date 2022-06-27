@@ -160,10 +160,48 @@ float : right;
     box-shadow: none;
     padding: 0px;
     display: flex;
+    margin: 1rem;
     justify-content: space-between;
-}
+  }
 
-.event_div {
+  .kakao_link, .zoom_link {
+    width: 12%;
+    text-align: center;
+    margin : 0.2rem auto;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    position: absolute;
+    top: 3%;
+    right: 7%;
+  }
+
+    .kakao_link {
+      right: 20%;
+    }
+
+  .link {
+    text-decoration: none;
+    color: blueviolet;
+  }
+
+
+  .club_detail_header {
+      box-shadow: none;
+      padding: 0px;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .event_div {
+      width: 12rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+      border-radius: 50px;
+      background: transparent;
+  }
+
+  .event_div {
     width: 12rem;
     padding: 1rem;
     color: #a6a7a9;

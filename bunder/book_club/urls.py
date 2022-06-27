@@ -15,4 +15,5 @@ urlpatterns = [
     path('', views.main, name='main'),
     path('list', views.book_club_list, name="book_club_list"),
     path('edit/<int:bookclub_id>', views.book_club_edit, name="book_club_edit"),
+    path('cover', views.get_book_club_image, name='get_book_club_image')
 ]

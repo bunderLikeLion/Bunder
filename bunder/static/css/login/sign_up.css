@@ -44,6 +44,17 @@ div, p, span, input{
     border-left: 5px solid #ed591a;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      color: white;
+      -webkit-transition: background-color 9999s ease-out;
+      box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+      -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+}
+
 .container .inputBox {
     display: flex;
     position: relative;

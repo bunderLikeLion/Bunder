@@ -18,7 +18,7 @@ Mail
                     {# <form action="{% url 'mail:main' person.id %} " method="post">#}
                         {% csrf_token %}
                         <a href="receiver?id={{ person.id }}">
-                            <button type="submit" name="each_mail">
+                            <button type="submit" class="each_mail" name="each_mail">
                                 <div class=" profile_img">
                                     <img class="img"
                                         src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
@@ -62,15 +62,17 @@ Mail
                         <p class="bookname">{{ content.content }} </p>
                     </div>
                     <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ content.user.sex }}/{{ content.user.nickname }}.svg">
+                        <div class="box">
+                            <div class="profile_img">
+                                <img class="img"
+                                    src="https://avatars.dicebear.com/api/{{ content.user.sex }}/{{ content.user.nickname }}.svg">
+                            </div>
+    
+                            <div class="profile_name">
+                                <span class="name">{{ content.user.nickname }}</span>
+                            </div>
                         </div>
-
-                        <div class="profile_name">
-                            <span class="name">{{ content.user.nickname }}</span>
-                        </div>
-                        <div class="report_time">
+                        <div class="report_time box">
                             <span class="time">{{ content.created_at }}</span>
                         </div>
                     </div>

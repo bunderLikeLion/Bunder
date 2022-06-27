@@ -131,8 +131,8 @@ button.login{
     height: 3rem;
     overflow: hidden;
     border: none;
-    background: #EBECF0;
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    background: #ed591a;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     border-radius: 50px;
     top: 19.5rem;
     left: 2.6rem;
@@ -145,16 +145,16 @@ button.login{
 
 .signup li a {
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 3rem;
-    font-size: 1em;
+    /* font-size: 1em; */
     text-decoration: none;
     color: #AE1100;
     font-weight: bold;
+    align-items: center;
 }
 
 .signup li a:hover {
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
 }
 

@@ -13,7 +13,7 @@ Club Revise
 <div class="container">
 	<div class="club-edit_header">
 		<h2>Club Revise</h2>
-		<button class="login" type="submit" value="Club closure">소모임 폐쇄</button>
+		<button class="login club_close_btn" type="submit" value="Club closure">소모임 폐쇄</button>
 	</div>
     <form method="post" action="{% url 'book_club:book_club_edit' book_club.id %}">
 		{% csrf_token %}
@@ -174,12 +174,18 @@ Club Revise
         </div>
     </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const category = JSON.parse("{{ category|escapejs }}");
     const image = JSON.parse("{{ image|escapejs }}");
+    const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
 
     const categorySelect = document.querySelectorAll(".category_input");
     const imageSelect = document.querySelectorAll(".image_input");
+    const clubCloseButton = document.querySelector(".club_close_btn");
+
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
 
     categorySelect.forEach((el) => {
@@ -193,6 +199,23 @@ Club Revise
             el.setAttribute("checked", "checked")
 		}
 	})
+
+    clubCloseButton.addEventListener("click", () => {
+        closeClub(bookClubId);
+	})
+
+    const closeClub = async (id) => {
+        const url = "/bookclub/edit/" + bookClubId;
+        await axios.delete(url);
+        window.location.href = "/bookclub/";
+    }
+
+    const requestImg = async (id) => {
+        const url = "member/";
+        await axios.post(url, { id });
+    }
+
+
 
 
 </script>

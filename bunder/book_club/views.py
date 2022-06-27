@@ -117,6 +117,7 @@ def book_club_detail(request, bookclub_id):
 def book_club_edit(request, bookclub_id):
     if request.method == "GET":
         book_club = get_object_or_404(BookClub, pk=bookclub_id)
+        bookclub_id_json = json.dumps(book_club.id)
 
         query = Q()
         query.add(Q(club=book_club), query.AND)
@@ -129,7 +130,8 @@ def book_club_edit(request, bookclub_id):
         return render(request, 'book_club/club_revise.html', {"book_club": book_club,
                                                               "user_list": user_list,
                                                               "category": category,
-                                                              "image": image})
+                                                              "image": image,
+                                                              "bookclub_id": bookclub_id_json})
     elif request.method == "POST":
         book_club = get_object_or_404(BookClub, pk=bookclub_id)
 
@@ -142,6 +144,22 @@ def book_club_edit(request, bookclub_id):
         book_club.save()
 
         return redirect('book_club:book_club_detail', book_club.id)
+
+    elif request.method == "DELETE":
+        book_club = get_object_or_404(BookClub, pk=bookclub_id)
+        book_club.delete()
+        return JsonResponse({"message": "소모임 삭제 성공.",
+                             }, json_dumps_params={'ensure_ascii': False}, status=200)
+
+# def get_book_club_image(request):
+#     if request.method == 'GET':
+#         page = request.GET.get["page"]
+#
+#         switch page == 1:
+
+
+
+
 
 
 def get_book(bookclub_id):

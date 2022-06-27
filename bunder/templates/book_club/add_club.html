@@ -34,9 +34,9 @@ Add Club
         <div class="container_body">
             <div class="pagination_container">
                 <ul class="pagination">
-                    <li><a href="#" class="previous">Previous</a></li>
-                    <li><a href="#none">1/5</a></li>
-                    <li><a href="#" class="next">Next</a></li>
+                    <li><button class="previous previous_btn">Previous</button></li>
+                    <li><a href="#none">1/3</a></li>
+                    <li><button href="#" class="next next_btn">Next</button></li>
                 </ul>
             </div>
         </div>
@@ -129,6 +129,12 @@ Add Club
         <button class="login" type="submit" value="Sign up">소모임 발행</button>
     </form>
 </div>
+<script>
+    const previousButton = document.querySelector(".previous_btn");
+    const nextButton = document.querySelector(".next_btn");
+
+
+</script>
 {% endblock content %}
 
 

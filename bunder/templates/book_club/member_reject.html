@@ -36,22 +36,28 @@ Club Admit
 		
 
 		<div class="container_all_requesters">
+			{% if not members %}
+			<div class="container_single_requester empty_container">
+				<div>소모임에 참여중인 멤버가 없습니다.</div>
+			</div>
+			{% else %}
 			{% for member in members %}
-				<div class="container_single_requester">
-					<div class="requester_profile_container">
-						<div class="profile_img_container">
-							<img class="profile_img" src="{{ member.user.avatar }}">
-						</div>
-						<div class="profile_name_container">
-							{{ member.user.nickname }}
-						</div>
+			<div class="container_single_requester">
+				<div class="requester_profile_container">
+					<div class="profile_img_container">
+						<img class="profile_img" src="{{ member.user.avatar }}">
 					</div>
-
-					<div class="button_container">
-						<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }})">내보내기</button>
+					<div class="profile_name_container">
+						{{ member.user.nickname }}
 					</div>
 				</div>
+
+				<div class="button_container">
+					<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }})">내보내기</button>
+				</div>
+			</div>
 			{% endfor %}
+			{% endif %}
 
 		</div>
 	</div>
@@ -65,8 +71,7 @@ Club Admit
 
         const changeMember = async (event, memberId, clubId) => {
             const url = "reject";
-            const container = event.target.parentElement;
-            const type = "REJECT";
+            const container = event.target.parentElement.parentElement;
             container.classList.add("request-done");
 
             const response = await axios.patch(url, { memberId, clubId })

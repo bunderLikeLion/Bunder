@@ -98,3 +98,9 @@ img {
     height: 3rem;
     color: hsla(220, 100%, 54%, 1);
 }
+
+.empty_container {
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+}

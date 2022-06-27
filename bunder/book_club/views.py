@@ -216,7 +216,7 @@ class member_reject(View):
 
         total, curr_cnt = member.get_club_cnt()
 
-        if curr_cnt < total and type == "MEMBER":
+        if curr_cnt > 0 and type == "REJECT":
             club.decrement_member_cnt()
             club.save()
 
@@ -423,6 +423,6 @@ def getMyBookClub(user):
 def getMember(book_club):
     query = Q()
     query.add(Q(club=book_club), query.AND)
-    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+    query.add(Q(type="MEMBER"), query.AND)
 
     return BookClubMember.objects.filter(query)

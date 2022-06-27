@@ -95,10 +95,12 @@
 						<span class="submit_num" id="like_count">{{book_report.like.count}}</span>
 					</button>
 				</div>
+				{% if user == user %}
 				<div class="scrap_button">
 					<button class="button" id="scrap">스크랩</button>
 					<!-- <span class="scrap">15</span>   css 정렬 땜에 잠시 주석처리 -->
 				</div>
+				{% endif %}
 			</div>
 			{% if user == user_info %}
 			<div class="CRUD_button">

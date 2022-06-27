@@ -15,20 +15,22 @@ Mail
                 <ul class="navbar">
                     <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
                     {% for person in receiver %}
-                    <form action="{% url 'mail:main' %} " method="post">
+{#                    <form action="{% url 'mail:main' person.id %} " method="post">#}
                     {% csrf_token %}
-                        <button type="submit" name="each_mail">
-                            <div class="profile_img">
-                                <img class="img"
-                                    src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
-                            </div>
+						<a href="?receiver={{ person.id }}">
+							<button type="submit" name="each_mail">
+								<div class="profile_img">
+									<img class="img"
+										src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
+								</div>
 
-                            <div class="profile_name">
-                                <span class="name">{{ person.nickname }}</span>
-                            </div>
-                        
-                        </button>
-                    </form>
+								<div class="profile_name">
+									<span class="name">{{ person.nickname }}</span>
+								</div>
+
+							</button>
+						</a>
+{#                    </form>#}
                     {% endfor %}
                 </ul>
             </div>

@@ -14,11 +14,28 @@ Club Detail
     <div class="container">
 
         {% if is_owner %}
+        <div class="club_detail_containaer" id="link_container">
+            <div class="kakao_link">
+                <a href="{{ book_club.kakao_link }}" class="link">Kakao Talk</a>
+            </div>
+            <div class="zoom_link">
+                <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
+            </div>
+        </div>
         {% elif is_member %}
         <button class="button" id="exit_btn">소모임 나가기</button>
+        <div class="club_detail_containaer" id="link_container">
+            <div class="kakao_link">
+                <a href="{{ book_club.kakao_link }}" class="link">Kakao Talk</a>
+            </div>
+            <div class="zoom_link">
+                <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
+            </div>
+        </div>
         {% else %}
         <button class="button" id="request_btn">소모임 참여 요청</button>
         {% endif %}
+
         <h1>소모임 명 : {{ book_club.club_name }}</h1>
         <div class="profile_container">
 
@@ -45,14 +62,7 @@ Club Detail
             </div>
         </div>
 
-        <div class="club_detail_containaer" id="link_container">
-            <div class="kakao_link">
-                <a href="{{ book_club.kakao_link }}" class="link">Kakao Talk</a>
-            </div>
-            <div class="zoom_link">
-                <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
-            </div>
-        </div>
+        
         <div class="club_detail_containaer">
             <div class="club_detail_header">
                 <div class="event_div">진행중인 투표</div>
@@ -71,11 +81,11 @@ Club Detail
             </div>
             <div class="vote_container club_book_list">
                 {% if not vote %}
-                <div class="empty-vote">
+                <div class="empty_list">
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 {% else %}
-                <div class="empty-vote deactivate empty_list">
+                <div class="empty_list deactivate empty_list">
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 <div class="vote_function">

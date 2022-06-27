@@ -40,7 +40,7 @@ Mail
             </div>
             <div class="write_report">
                 <input type="button" class="button" id="write_report_btn" value="쪽지 답장하기"
-                    onClick="location.href = 'reply'">
+                    onClick="location.href = 'new'">
             </div>
             <div class="container_body">
                 <div class="pagination_container">
@@ -61,7 +61,7 @@ Mail
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                                src="https://avatars.dicebear.com/api/{{ content.user.sex }}/{{ content.user.nickname }}.svg">
                         </div>
 
                         <div class="profile_name">

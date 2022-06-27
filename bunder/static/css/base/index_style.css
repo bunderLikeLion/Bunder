@@ -15,7 +15,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ed591a;
     margin: 40rem 0;
 }
 
@@ -25,7 +24,6 @@
 }
 
 .container .top h1{
-    color: #ed591a;
     display: block;
     font-weight: 800;
     font-size: 5rem;
@@ -40,7 +38,7 @@
 }
 
 .container .main h1{
-    background: #ed591a;
+    background: white;
     opacity: 0;
     margin: 100px auto auto auto;
     font-weight: 800;
@@ -63,17 +61,17 @@
     1% {
         background-position: 0 0;
         opacity: 1;
-        border-right: 1px solid orange;
+        border-right: 1px solid gray;
     }
     50% {
         background-position: 150px 0;
         opacity: 1;
-        border-right: 1px solid orange;
+        border-right: 1px solid gray;
     }
     100% {
         background-position: 400px 0;
         opacity: 1;
-        border-right: 1px solid orange;
+        border-right: 1px solid gray;
     }
 }
 
@@ -82,7 +80,7 @@
         width: 0;
     }
     1%, 99%{
-        border-right: 1px solid orange;
+        border-right: 1px solid gray;
     }
     100%{
         border-right: none;

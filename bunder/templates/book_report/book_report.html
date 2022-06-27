@@ -121,9 +121,9 @@
 </div>
 <script>
     const popularDetailBtn = document.querySelector('#detail_trigger_btn');
-    const firstBox = document.querySelector('#song-1').querySelector('img');
+    const firstBox = document.querySelector('#song-1')?.querySelector('img');
     const cards = document.querySelectorAll('.card');
-    let selectedId = firstBox.nextElementSibling.value;
+    let selectedId = firstBox?.nextElementSibling.value;
     const lit = document.querySelector('#lit');
     const business = document.querySelector('#business');
     const self = document.querySelector('#self');
@@ -134,13 +134,13 @@
     const tech = document.querySelector('#tech');
     const catObj = {
         문학: lit,
-        '경제/경영': self,
-        자기계발: business,
+        '경제': business,
+        자기계발: self,
         인문: human,
-        '정치/사회': politics,
+        '정치': politics,
         예술: art,
         과학: science,
-        '기술/IT': tech
+        '기술': tech
     }
 
     for (let [key, val] of Object.entries(catObj)) {

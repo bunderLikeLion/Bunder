@@ -1,5 +1,6 @@
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -19,39 +20,44 @@ def main(request):
     paginator = Paginator(book_report_list, CONTENT_COUNT)
     book_report = paginator.get_page(page)
     populated_report = populated_reports(request)
-
+    all = json.dumps('전체')
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populate_reports': populated_report, })
+                   'populate_reports': populated_report, 'all': all })
 
 
 def category_search(request, category):
     if category == '경제':
-        book_report_list=BookReport.objects.filter(book_category='경제/경영').order_by('-created_at')
+        book_report_list = BookReport.objects.filter(book_category='경제/경영').order_by('-created_at')
         page = request.GET.get('page')
         paginator = Paginator(book_report_list, CONTENT_COUNT)
         book_report = paginator.get_page(page)
         populated_report = populated_reports(request)
+        category = json.dumps('경제')
     elif category == '정치':
-        book_report_list=BookReport.objects.filter(book_category='정치/사회').order_by('-created_at')
+        book_report_list = BookReport.objects.filter(book_category='정치/사회').order_by('-created_at')
         page = request.GET.get('page')
         paginator = Paginator(book_report_list, CONTENT_COUNT)
         book_report = paginator.get_page(page)
         populated_report = populated_reports(request)
+        category = json.dumps('정치')
     elif category == '기술':
-        book_report_list=BookReport.objects.filter(book_category='기술/IT').order_by('-created_at')
+        book_report_list = BookReport.objects.filter(book_category='기술/IT').order_by('-created_at')
         page = request.GET.get('page')
         paginator = Paginator(book_report_list, CONTENT_COUNT)
         book_report = paginator.get_page(page)
         populated_report = populated_reports(request)
+        category = json.dumps('기술')
     else:
         book_report_list = BookReport.objects.filter(book_category=category).order_by('-created_at')
         page = request.GET.get('page')
         paginator = Paginator(book_report_list, CONTENT_COUNT)
         book_report = paginator.get_page(page)
         populated_report = populated_reports(request)
+        category = json.dumps(category)
     return render(request, "book_report/book_report.html",
-                  {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page, 'populated_report': populated_report})
+                  {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
+                   'populated_report': populated_report, 'category':category})
 
 
 def write_report(request):
@@ -136,6 +142,14 @@ def make_scrap(request):
         )
 
     return JsonResponse({'scrap': model_to_dict(scrap)})
+
+
+# 스크랩 취소
+
+def del_scrap(request, id):
+    noscrap = get_object_or_404(Scrap, pk=id)
+    noscrap.delete()
+    return HttpResponseRedirect(request.path_info)
 
 
 # 내 스크랩 확인

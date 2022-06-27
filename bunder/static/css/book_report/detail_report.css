@@ -298,3 +298,19 @@ textarea {   /* 독후감 본문 입력란 */
 .report_content {
   color: #f7f7f7;
 }
+
+.utility {
+  position:  absolute;
+  top: 7rem;
+  left: 12rem;
+  padding: 1rem;
+  background-color: #ed591a;
+  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  width: 12rem;
+  font-weight: 700;
+  border-radius: 2rem;
+}
+
+.utility a {
+  text-decoration: none;
+}

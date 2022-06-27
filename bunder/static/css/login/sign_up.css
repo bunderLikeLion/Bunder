@@ -241,8 +241,8 @@ button.login{
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(238,240,245,1);
     transition: background-color 0.4s 0.1s, box-shadow 0.4s;
+    
 }
 
 .radio__text {

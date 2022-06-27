@@ -150,9 +150,24 @@ button:active {
   }
 
   .kakao_link, .zoom_link {
-    width: 80%;
+    width: 12%;
+    text-align: center;
     margin : 0.2rem auto;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    position: absolute;
+    top: 3%;
+    right: 7%;
   }
+
+    .kakao_link {
+      right: 20%;
+    }
+
+  .link {
+    text-decoration: none;
+    color: blueviolet;
+  }
+
 
   .club_detail_header {
       box-shadow: none;

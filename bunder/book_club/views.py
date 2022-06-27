@@ -66,6 +66,11 @@ def get_end_vote(club):
 
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
+
+    book_club.view += 1
+    book_club.score += 1
+    book_club.save()
+
     bookclub_id_json = json.dumps(book_club.id)
     user_id_json = json.dumps(request.user.id)
     is_owner = True if request.user == book_club.owner else False
@@ -89,7 +94,7 @@ def book_club_detail(request, bookclub_id):
         is_full = True if len(book_list) >= 5 else False
         is_full_json = json.dumps(is_full)
 
-        end_vote, vote, vote_id_json = None, None, None
+        end_vote, vote, vote_id_json, end_vote_list, onset_list = None, None, None, None, None
 
         if BookClubVote.objects.filter(club=book_club, active=True).exists():
             vote = BookClubVote.objects.get(club=book_club, active=True)
@@ -105,8 +110,10 @@ def book_club_detail(request, bookclub_id):
         if BookClubVote.objects.filter(club=book_club, active=False).exists():
             end_vote = BookClubVote.objects.filter(club=book_club, active=False).order_by('-created_at')[0]
             end_vote_list = VoteDetail.objects.filter(vote=end_vote).order_by('-vote_cnt')
-        max_vote = end_vote_list[0].vote_cnt
-        onset_list = [v for v in end_vote_list if v.vote_cnt == max_vote]
+
+        if end_vote_list != None:
+            max_vote = end_vote_list[0].vote_cnt
+            onset_list = [v for v in end_vote_list if v.vote_cnt == max_vote]
 
 
         return render(request, 'book_club/club_detail.html',
@@ -217,6 +224,7 @@ class club_admit(View):
 
         if curr_cnt < total and type == "MEMBER":
             club.add_member_cnt()
+            club.score += 5
             club.save()
 
             club_response = {'clubName': club.club_name,
@@ -449,8 +457,10 @@ def getBookClub():
     science = BookClub.objects.filter(category="과학").order_by('-created_at')[0:3]
     it = BookClub.objects.filter(category="기술/IT").order_by('-created_at')[0:3]
     amity = BookClub.objects.filter(category="자율").order_by('-created_at')[0:3]
+    popular = BookClub.objects.filter().order_by('-score')[0:3]
 
     book_club = {
+        'popular': popular,
         'literature': literature,
         'humanities': humanities,
         'self_development': self_development,

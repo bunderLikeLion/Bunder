@@ -26,6 +26,8 @@ class BookClub(models.Model):
     zoom_link = models.CharField(max_length=200, verbose_name="줌 링크", blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     kakao_link = models.CharField(max_length=200, verbose_name="카카오톡 링크", blank=True)
+    view = models.IntegerField(default=0)
+    score = models.IntegerField(default=0)
 
     def add_member_cnt(self):
         self.member_cnt += 1

@@ -61,8 +61,6 @@ def new(request):
 
         return redirect('/bookclub/' + str(book_club.id))
 
-def get_end_vote(club):
-    pass
 
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
@@ -304,6 +302,24 @@ class member_reject(View):
         else:
             return JsonResponse({'message': "잘못된 접근 입니다.",
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
+
+
+def response_invite(request):
+    if request.method == "PATCH":
+        req = json.loads(request.body)
+        type = req["type"]
+        book_club_id = req["bookClubId"]
+        club = get_object_or_404(BookClub, pk=book_club_id)
+        member = BookClubMember.Objects.get(user=request.user, club=club)
+
+        member.type = type
+        if type == "MEMBER":
+            club.score += 5
+        member.save()
+        club.save()
+        return JsonResponse({'message': "멤버 상태 변경 성공",
+                             }, json_dumps_params={'ensure_ascii': False}, status=200)
+
 
 
 @csrf_exempt

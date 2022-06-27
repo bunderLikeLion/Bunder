@@ -45,33 +45,33 @@ Club Revise
             <div class="container_body">
                 <div class="pagination_container">
                     <ul class="pagination">
-                        <li><a href="#" class="previous">Previous</a></li>
-                        <li><a href="#none">1/5</a></li>
-                        <li><a href="#" class="next">Next</a></li>
+						<li><button type="button" class="previous previous_btn">Previous</button></li>
+						<li><span class="current_span">1</span>/<span>3</span></li>
+						<li><button type="button" href="#" class="next next_btn">Next</button></li>
                     </ul>
                 </div>
             </div>
-    
+
             <section class="category_container">
                 <label class="category">
-                    <input type="radio" value="1" name="club_img" checked class="radio__input image_input">
+                    <input type="radio" value="1" name="club_img" class="radio__input cover_input image_input">
                     <div class="category__box"></div>
-                    <span class="category__text"><img src="../../static/img/club_img_1.jpg"></span>
+                    <span class="category__text"><img class="cover_image" src="../../static/img/club_img_1.jpg"></span>
                 </label>
                 <label class="category">
-                    <input type="radio" value="2" name="club_img" class="radio__input image_input">
+                    <input type="radio" value="2" name="club_img" class="radio__input cover_input image_input">
                     <div class="category__box"></div>
-                    <span class="category__text"><img src="../../static/img/club_img_2.jpg"></span>
+                    <span class="category__text"><img class="cover_image" src="../../static/img/club_img_2.jpg"></span>
                 </label>
                 <label class="category">
-                    <input type="radio" value="3" name="club_img" class="radio__input image_input">
+                    <input type="radio" value="3" name="club_img" class="radio__input cover_input image_input">
                     <div class="category__box"></div>
-                    <span class="category__text"><img src="../../static/img/club_img_3.jpg"></span>
+                    <span class="category__text"><img class="cover_image" src="../../static/img/club_img_3.jpg"></span>
                 </label>
                 <label class="category">
-                    <input type="radio" value="4" name="club_img" class="radio__input image_input">
+                    <input type="radio" value="4" name="club_img" class="radio__input cover_input image_input">
                     <div class="category__box"></div>
-                    <span class="category__text"><img src="../../static/img/club_img_4.jpg"></span>
+                    <span class="category__text"><img class="cover_image" src="../../static/img/club_img_4.jpg"></span>
                 </label>
             </section>
         </div>
@@ -210,9 +210,44 @@ Club Revise
         window.location.href = "/bookclub/";
     }
 
-    const requestImg = async (id) => {
-        const url = "member/";
-        await axios.post(url, { id });
+    {#const requestImg = async (id) => {#}
+    {#    const url = "member/";#}
+    {#    await axios.post(url, { id });#}
+    {#}#}
+
+    const previousButton = document.querySelector(".previous_btn");
+    const nextButton = document.querySelector(".next_btn");
+    const currentPage = document.querySelector(".current_span");
+
+    const images = document.querySelectorAll(".cover_image");
+    const values = document.querySelectorAll(".cover_input");
+
+    previousButton.addEventListener("click", () => {
+        const pageNum = Number(currentPage.innerText);
+        if (pageNum > 1) {
+            requestImage(pageNum - 1, "prev");
+        }
+    })
+
+    nextButton.addEventListener("click", () => {
+        const pageNum = Number(currentPage.innerText);
+        if (pageNum < 3) {
+            requestImage(pageNum + 1, "next");
+        }
+    })
+
+    const requestImage = async (page, flag) => {
+        const url = "/bookclub/cover?page=" + page;
+        const response = await axios.get(url)
+        console.log(response.data)
+        const responseImg = response.data.image;
+        const nums = response.data.nums;
+
+        currentPage.innerText = flag == "prev" ? Number(currentPage.innerText) - 1 :  Number(currentPage.innerText) + 1
+        for (let i = 0; i < 4; i++) {
+            images[i].src = responseImg[i];
+            values[i].value = nums[i];
+        }
     }
 
 

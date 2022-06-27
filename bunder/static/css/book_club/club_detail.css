@@ -1,271 +1,279 @@
 .deactivate {
-    display: none !important;
+  display: none !important;
 }
 
 * {
-    /* color : red; */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  /* color : red; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
 }
 
 .container {
-    position: relative;
-    width: 80%;
-    margin: 6rem;
-    padding: 2rem;
-    background-color: #EBECF0;
-    /* background-color: blue; */
-    border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    color: #111;
-    font-weight: 600;
+  position: relative;
+  width: 80%;
+  margin: 6rem;
+  padding: 2rem;
+  background-color: #33383D;
+  /* background-color: blue; */
+  border-radius: 30px;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+
+  color: #111;
+  font-weight: 600;
 }
 
 .container > * {
-    margin : 2rem;
+  margin : 2rem;
+  color: #d3d4d5;
 }
 
 .container > * > * {
-    border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    padding : 1rem;
+  border-radius: 30px;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+
+  padding : 1rem;
 }
 
 img {
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-    width: 3rem;
-    border-radius: 10px;
-    background: transparent;
-  }
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  width: 3rem;
+  border-radius: 10px;
+  background: transparent;
+}
 
 .club_img {
-    width: 7rem;
-    height: 7rem;
+  width: 7rem;
+  height: 7rem;
 }
 
 .profile_img{
-    border-radius: 100px;
+  border-radius: 100px;
 }
 
 .book_cover {
-    width: 10rem;
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-    border-radius: 10px;
-  }
+  width: 10rem;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  border-radius: 10px;
+}
 
 .club_info {
-    border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    display: flex;
-    justify-content: center;
+  border-radius: 30px;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+
+  display: flex;
+  justify-content: center;
 }
 
 .club_book_list{
-    height: 17rem;
+  height: 17rem;
 }
 
 .button {
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    font-size: large;
-    font-weight: 600;
-    margin-top: 0;
-    height: 3.5rem;
-    padding : 0 3rem;
-    color: #AE1100;
-    background-color: transparent;
-    border: 0;
-    outline: 0;
-    border-radius: 320px;
-  }
+  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 600;
+  margin-top: 0;
+  height: 3.5rem;
+  padding : 0 3rem;
+  color: #813818;
+  background-color: #ed591a;
+  border: 0;
+  outline: 0;
+  border-radius: 320px;
+}
 
 button:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
-}
-
-button:active {
-    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-}
-
-.button:hover {
   box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
 
-.button:active {
+button:active {
   box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }
 
+.button:hover {
+box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.button:active {
+box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
 .vote_btn {
-  float : right;
+float : right;
 }
 
 #edit_club_btn{
-    float : right;
-    margin-right: 2rem;
+  float : right;
+  margin-right: 2rem;
 }
 
-  #vote-create_btn {
-    float : right;
-    position: relative;
-    /*top: -4.5rem;*/
-  }
-  
+#vote-create_btn {
+  float : right;
+  position: relative;
+  /*top: -4.5rem;*/
+}
 
-  .btn_container {
-      top: -4.5rem;
-      padding-bottom : 1rem;
-  }
 
-  #request_btn,
-  #exit_btn{
-    float : right;
-  }
+.btn_container {
+    top: -4.5rem;
+    padding-bottom : 1rem;
+}
 
-  .profile_container > *{
-    margin : 1rem 2rem;
-  }
+#request_btn,
+#exit_btn{
+  float : right;
+}
 
-  .vote_container {
-    height : 10rem;
-  }
+.profile_container > *{
+  margin : 1rem 2rem;
+}
 
-  .book_info_box {
-    width: 15rem;
+.vote_container {
+  height : 10rem;
+}
+
+.book_info_box {
+  width: 15rem;
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+}
+
+.kakao_link, .zoom_link {
+  width: 80%;
+  margin : 0.2rem auto;
+  color: #f7f7f7;
+}
+
+.club_detail_header {
+    box-shadow: none;
+    padding: 0px;
     display: flex;
-    margin: 1rem;
-    justify-content: center;
-  }
+    justify-content: space-between;
+}
 
-  .kakao_link, .zoom_link {
-    width: 80%;
-    margin : 0.2rem auto;
-  }
-
-  .club_detail_header {
-      box-shadow: none;
-      padding: 0px;
-      display: flex;
-      justify-content: space-between;
-  }
-
-  .event_div {
-      width: 12rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-      border-radius: 50px;
-      background: transparent;
-  }
-
-  .text {
+.event_div {
     width: 12rem;
     padding: 1rem;
+    color: #a6a7a9;
+    margin-top: 1rem;
     text-align: center;
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 50px;
     background: transparent;
-  }
-
-  .book_info_box > * {
-    margin : auto 2rem;
-  }
-
-  .book_info > * {
-    margin-top: 1rem;
-  }
-
-  .book_info_container{
-    justify-content: center;
-    display : flex;
 }
 
-  .book_info_container, .all_book_cover {
-    width: 90%;
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    align-items: center;
-  }
+.text {
+  width: 12rem;
+  color: #a6a7a9;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  border-radius: 50px;
+  background: transparent;
+}
 
-  .book_info_bar {
-    width: 140%;
-    /* margin: 0px 20px; */
-    padding : 0.7rem;
-    border-radius: 4px;
-    outline: none;
-    font-size: 1rem;
-    color: #111;
-    font-weight: 300;
-    border: none;
+.book_info_box > * {
+  margin : auto 2rem;
+}
 
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-    border-radius: 10px;
-    background: transparent;
-  }
+.book_info > * {
+  margin-top: 1rem;
+}
+
+.book_info_container{
+  justify-content: center;
+  display : flex;
+}
+
+.book_info_container, .all_book_cover {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 30px;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+
+  align-items: center;
+}
+
+.book_info_bar {
+  width: 140%;
+  /* margin: 0px 20px; */
+  padding : 0.7rem;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  color: #f7f7f7;
+  font-weight: 300;
+  border: none;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  border-radius: 10px;
+  background: transparent;
+}
 
 .all_book_cover{
-    padding : 1rem;
-    display: flex;
-    flex-flow: wrap;
-    width: 95%;
-    margin: 0 auto;
-    justify-content: center;
+  padding : 1rem;
+  display: flex;
+  flex-flow: wrap;
+  width: 95%;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .all_book_cover > * {
-    margin: 0.5rem;
+  margin: 0.5rem;
 }
 
 .club_description {
-    width: 70%;
-    padding: 1rem;
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-    border-radius: 10px;
-    background: transparent;
+  width: 70%;
+  padding: 1rem;
+  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  border-radius: 10px;
+  background: transparent;
 }
 
 .empty_list{
-    width: 50%;
-    justify-content: center;
+  width: 50%;
+  justify-content: center;
 }
 
 .member_box {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  align-items: center;
 }
 
 .all_profile_container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .edit_container a{
-    box-shadow: none;
-    padding : 0px;
+  box-shadow: none;
+  padding : 0px;
 }
 
 .vote_info {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .empty_list p{
-    text-align: center;
+  text-align: center;
+}
+
+a {
+  color : #f7f7f7;
+  text-decoration: none;
 }

@@ -183,11 +183,30 @@ def book_club_edit(request, bookclub_id):
         return JsonResponse({"message": "소모임 삭제 성공.",
                              }, json_dumps_params={'ensure_ascii': False}, status=200)
 
-# def get_book_club_image(request):
-#     if request.method == 'GET':
-#         page = request.GET.get["page"]
-#
-#         switch page == 1:
+def get_book_club_image(request):
+    if request.method == 'GET':
+        page = request.GET.get("page")
+
+        response = {}
+        base_src = "../../static/img/club_img_"
+        last_src = ".jpg"
+        response['image'] = []
+        response['nums'] = []
+
+        if page == "1":
+            for i in range(1, 5):
+                response['image'].append(base_src + str(i) + last_src)
+                response['nums'].append(i)
+        elif page == "2":
+            for i in range(5, 9):
+                response['image'].append(base_src + str(i) + last_src)
+                response['nums'].append(i)
+        elif page == "3":
+            for i in range(9, 13):
+                response['image'].append(base_src + str(i) + last_src)
+                response['nums'].append(i)
+
+        return JsonResponse(response, status=200)
 
 
 

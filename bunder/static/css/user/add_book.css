@@ -1,312 +1,307 @@
 #modal.modal-overlay {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(1.5px);
-            -webkit-backdrop-filter: blur(1.5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-        #modal .modal-window {
-            background: BABECC;
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 13.5px );
-            -webkit-backdrop-filter: blur( 13.5px );
-            border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-            width: 60%;
-            height: 80%;
-            position: relative;
-            padding: 10px;
-        }
-        #modal .title {
-            padding-left: 10px;
-            display: inline;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+#modal .modal-window {
+    background: BABECC;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: 60%;
+    height: 80%;
+    position: relative;
+    padding: 10px;
+}
+#modal .title {
+    padding-left: 10px;
+    display: inline;
+    color: white;
 
-        }
-        #modal .title h2 {
-            height: 10%;
-            display: inline;
-        }
-        #modal .close-area {
-            display: inline;
-            float: right;
-            padding-right: 10px;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
-        }
+}
+#modal .title h2 {
+    height: 10%;
+    display: inline;
+}
+#modal .close-area {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+    color: white;
+}
 
-        #modal .content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3%;
-            width: 100%;
-            height: 80%;
-            margin-top: 20px;
-            padding: 2% 10px;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
-        }
+#modal .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3%;
+    width: 100%;
+    height: 80%;
+    margin-top: 20px;
+    padding: 2% 10px;
+    color: white;
+}
 
 
 
-        #modal .single-book {
-            display: flex;
-            width: 30%;
-            height: 46%;
-        }
+#modal .single-book {
+    display: flex;
+    width: 30%;
+    height: 46%;
+}
 
-        #modal .single-book.hover {
-            border: solid 10px rgba(236, 231, 99, 0.7);
-        }
+#modal .single-book.hover {
+    border: solid 10px rgba(236, 231, 99, 0.7);
+}
 
-        #modal .single-book.click {
-            border: solid 10px rgba(236, 231, 99, 0.7);
-        }
-
-
-        .single-book .book-text-box {
-            background: rgba(22, 52, 78, 0.7);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .book-text-box p {
-            width: 100%;
-            padding: 10% 0;
-        }
-
-        .single-book img {
-            width: 60%;
-        }
-
-        #modal .book-select-btn {
-            width: 20%;
-            height: 8%;
-            
-            font-weight: bold;
-            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-            font-size: x-large;
-            font-weight: 600;
-            margin-left: 75%;
-            height: 3.5rem;
-            color: #AE1100;
-            background-color: transparent;
-            border: 0;
-            outline: 0;
-            border-radius: 320px;
-        }
-
-        #img_input {
-            display: none;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* background-color: red; */
-        }
-
-        .container {
-            position: relative;
-            width: 70rem;
-            margin: 6rem;
-            padding: 2rem;
-            background-color: #EBECF0;
-            /* background-color: blue; */
-            border-radius: 30px;
-            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-            text-shadow: 1px 1px 0 #FFF;
-            color: #111;
-            font-weight: 600;
-        }
-
-        .input_bar {
-            width: 80%;     /* 100% 하면 옆에 빠져나옴 */
-            /* margin: 0px 20px; */
-            padding : 0.7rem;
-            border-radius: 4px;
-            outline: none;
-            font-size: 1rem;
-            color: #111;
-            font-weight: 300;
-            border: none;
-
-            box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-            border-radius: 10px;
-            background: transparent;
-        }
-
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active {
-            transition: background-color 5000s ease-in-out 0s;
-            -webkit-transition: background-color 9999s ease-out;
-            box-shadow:  0 0 0px 1000px white 00.1s inset !important;
-            -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
-        }
-
-        .report_container > .inputBox {
-            width: 55rem;
-            margin-left: 10%;
-        }
-
-        .inputBox {
-            color: #686868;
-            clear: both;
-            border: 0;
-            outline: 0;
-            border-radius: 100px;
-            /* margin: 1rem 4rem; */
-            /* padding : 1rem 2rem; */
-            text-shadow: 1px 1px 0 #FFF;
-            background-color: #ebecf0;
-            /* background-color: pink; */
-        }
-
-        #book_img {
-            padding : 2rem;
-            box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-            border-radius: 10px;
-            background: transparent;
-        }
-
-        .book_search {
-            padding : 2rem;
-            padding-bottom: 0.5rem;
-            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-            border-radius: 50px;
-        }
-
-        /* #book_search_bar{
-            width: 90%;
-            margin: 0 auto;
-        } */
-
-        .book_search_bar{
-            justify-content: center;
-            display : flex;
-            width: 80%;
-            margin: 0 auto;
-            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-            border-radius: 50px;
-        }
-
-        #book_info > * {
-            margin-top : 1rem;
-
-        }
-
-        .book_search_bar > * {
-            margin : 2rem;
-        }
-
-        #book_info_container {
-            width: 25em;
-        }
-
-        .book_search_result {
-            display: flex;
-        }
-
-        .book_search_result > * {
-            padding : 1rem 2rem;
-        }
-
-        #book_category {
-            cursor: pointer;
-            width: 300px;
-            min-height: 60px;
-            max-height: 300px;
-            border-radius: 15px;
-            background-color: rgb(250, 250, 250);
-            box-shadow: 2px 4px 8px #c5c5c5;
-            transition: all 300ms;
-            
-            border: none;
-        }
-
-        #book_category > option:hover {
-            background-color: red;
-            color: white;
-        }
-
-        option {
-            width: 100%;
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-            transition: all 300ms;
-        }
-
-        img {
-            display: flex;
-            margin : 0 auto;
-        }
+#modal .single-book.click {
+    border: solid 10px rgba(236, 231, 99, 0.7);
+}
 
 
-        .button {
-            font-weight: bold;
-            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-            font-size: large;
-            font-weight: 600;
-            margin: 0 1rem 1rem 1rem;
-            height: 3.5rem;
-            padding : 0 3rem;
-            color: #AE1100;
-            background-color: transparent;
-            border: 0;
-            outline: 0;
-            border-radius: 320px;
-        }
+.single-book .book-text-box {
+    background: rgba(22, 52, 78, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .button:hover {
-            box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
-        }
+.book-text-box p {
+    width: 100%;
+    padding: 10% 0;
+}
 
-        .button:active {
-            box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-        }
-          .text {
-            width: 8rem;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
-            border-radius: 50px;
-            background: transparent;
-          }
+.single-book img {
+    width: 60%;
+}
 
-        #add_book_btn {
-            margin: 2rem 5rem;
-            padding: 0 2rem;
-            width: 10rem;
-            display: flex;
-            margin-left: auto;
-        }
+#modal .book-select-btn {
+    width: 20%;
+    height: 8%;
+    
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: x-large;
+    font-weight: 600;
+    margin-left: 75%;
+    height: 3.5rem;
+    color: #AE1100;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+}
+
+#img_input {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.container {
+    position: relative;
+    width: 70rem;
+    margin: 6rem;
+    padding: 2rem;
+    background-color: #33383D;
+    /* background-color: blue; */
+    border-radius: 30px;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    color: #a6a7a9;
+    font-weight: 600;
+}
+
+.input_bar {
+    width: 80%;     /* 100% 하면 옆에 빠져나옴 */
+    /* margin: 0px 20px; */
+    padding : 0.7rem;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
+    color: #f7f7f7;
+    font-weight: 300;
+    border: none;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    border-radius: 10px;
+    background: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+}
+
+.report_container > .inputBox {
+    width: 55rem;
+    margin-left: 10%;
+}
+
+.inputBox {
+    color: #a6a7a9;
+    clear: both;
+    border: 0;
+    outline: 0;
+    border-radius: 100px;
+    /* margin: 1rem 4rem; */
+    /* padding : 1rem 2rem; */
+    background-color: #33383D;
+    /* background-color: pink; */
+}
+
+#book_img {
+    padding : 2rem;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.book_search {
+    padding : 2rem;
+    padding-bottom: 0.5rem;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    border-radius: 50px;
+}
+
+/* #book_search_bar{
+    width: 90%;
+    margin: 0 auto;
+} */
+
+.book_search_bar{
+    justify-content: center;
+    display : flex;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    border-radius: 50px;
+}
+
+#book_info > * {
+    margin-top : 1rem;
+
+}
+
+.book_search_bar > * {
+    margin : 2rem;
+}
+
+#book_info_container {
+    width: 25em;
+}
+
+.book_search_result {
+    display: flex;
+}
+
+.book_search_result > * {
+    padding : 1rem 2rem;
+}
+
+#book_category {
+    cursor: pointer;
+    width: 300px;
+    min-height: 60px;
+    max-height: 300px;
+    border-radius: 15px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 2px 4px 8px #c5c5c5;
+    transition: all 300ms;
+    
+    border: none;
+}
+
+#book_category > option:hover {
+    background-color: red;
+    color: white;
+}
+
+option {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    transition: all 300ms;
+}
+
+img {
+    display: flex;
+    margin : 0 auto;
+}
+
+
+.button {
+    font-weight: bold;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    margin: 0 1rem 1rem 1rem;
+    height: 3.5rem;
+    padding : 0 3rem;
+    color: #AE1100;
+    background-color: #ed591a;
+    border: 0;
+    outline: 0;
+    border-radius: 320px;
+}
+
+.button:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.button:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+  .text {
+    width: 8rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    border-radius: 50px;
+    background: transparent;
+  }
+
+#add_book_btn {
+    margin: 2rem 5rem;
+    padding: 0 2rem;
+    width: 10rem;
+    display: flex;
+    margin-left: auto;
+    background-color: #ed591a;
+}

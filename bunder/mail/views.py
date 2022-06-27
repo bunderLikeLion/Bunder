@@ -28,23 +28,29 @@ def send_mail(request):
 
 
 def reply(request):
-    id= request.GET.get("id")
-    receiver = get_object_or_404(User, pk=id)
-    return render(request, "mail/mail_to.html", {'receiver': receiver})
+    try:
+        id= request.GET.get("id")
+        receiver = get_object_or_404(User, pk=id)
+        return render(request, "mail/mail_to.html", {'receiver': receiver})
+    except ValueError:
+        check_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True).distinct()
+        receiver = User.objects.filter(id__in=[id for id in check_receiver])
+        return render(request, "mail/mail.html", {'error': '상대방을 먼저 선택 하세요.', 'receiver' : receiver})
 
 
 @csrf_exempt
 def create(request):
-    newmail = Mail()
-    newmail.user = request.user
-    receiver = request.POST.get('receiver')
-    newmail.content = request.POST.get('content')
-    res_data = {}
-    try:
-        userob = User.objects.get(nickname= receiver)
-        newmail.receiver = userob
-        newmail.save()
-    except User.DoesNotExist:
-        res_data['error'] = '존재하지 않는 닉네임 입니다.'
-        return render(request, 'mail/mail_to.html', res_data)
-    return redirect('mail:main')
+    if request.method == "POST":
+        newmail = Mail()
+        newmail.user = request.user
+        receiver = request.POST.get('receiver')
+        newmail.content = request.POST.get('content')
+        res_data = {}
+        try:
+            userob = User.objects.get(nickname= receiver)
+            newmail.receiver = userob
+            newmail.save()
+        except User.DoesNotExist:
+            res_data['error'] = '존재하지 않는 닉네임 입니다.'
+            return render(request, 'mail/mail_to.html', res_data)
+        return redirect("/mail/receiver?id=" + str(newmail.receiver.id))

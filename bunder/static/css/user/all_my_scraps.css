@@ -8,11 +8,10 @@ body {
     top: 12rem;
     width: 80%;
     padding: 3rem;
-    background-color: #EBECF0;
+    background-color: #33383D;
     border-radius: 2rem;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    color: #585858;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    color: #a6a7a9;
 }
 
 .container .profile_reports {
@@ -23,8 +22,8 @@ body {
     width: 20%;
     height: 3rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     left: 2%;
     top: -6rem;
 }
@@ -34,8 +33,8 @@ container .reports_container {
     width: 90%;
     height:28rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     left: 5%;
     top: -11%;
 }
@@ -49,7 +48,7 @@ container .reports_container {
     width: 10rem;
     height: 3rem;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;;
     margin-top: 1rem;
 }
 .container .reports_container .report_container {
@@ -62,7 +61,7 @@ container .reports_container {
     width: 95%;
     height: 4rem;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;;
 }
 
 .container .reports_container .report_container a {

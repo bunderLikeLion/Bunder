@@ -19,24 +19,22 @@ body {
     width: 80%;
     margin: 6rem;
     padding: 2rem;
-    background-color: #EBECF0;
+    background-color: #33383D;
     /* background-color: blue; */
     border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
-    color: #111;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    color: #a6a7a9;
     font-weight: 600;
 }
 
-.inputBox {  
-    color: #686868;
+.inputBox {
+    /* color: #686868; */
     clear: both;
     border: 0;
     outline: 0;
     border-radius: 100px;
     /* margin: 1rem 4rem; */
     /* padding : 1rem 2rem; */
-    text-shadow: 1px 1px 0 #FFF;
     /* background-color: pink; */
 }
 
@@ -49,17 +47,15 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-
     /* margin: 0px 20px; */
     padding : 0.7rem;
     border-radius: 4px;
     outline: none;
     font-size: 1rem;
-    color: #111;
+    color: #f7f7f7;
     font-weight: 300;
     border: none;
-
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent;
 }
@@ -78,8 +74,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
     clear : both;
     padding : 0.5rem 1rem;
     border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .upper_setting > * {
@@ -90,7 +85,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 .button {   /* 책검색, 독후감 발행 버튼 두개 */
     font-weight: bold;
     float : right;
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -98,8 +93,8 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
     margin: 1rem;
     height: 3.5rem;
     padding : 0 3rem;
-    color: #AE1100;
-    background-color: transparent;
+    color: #813818;
+    background-color: #ed591a;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -117,7 +112,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
     width: 8rem;
     padding: 1rem;
     text-align: center;
-    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 50px;
     background: transparent;
   }

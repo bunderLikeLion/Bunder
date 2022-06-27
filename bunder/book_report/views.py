@@ -30,9 +30,10 @@ def category_search(request, category):
     page = request.GET.get('page')
     paginator = Paginator(book_report_list, CONTENT_COUNT)
     book_report = paginator.get_page(page)
+    populated_report = populated_reports(request)
 
     return render(request, "book_report/book_report.html",
-                  {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page})
+                  {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page, 'populated_report' : populated_report})
 
 
 def write_report(request):

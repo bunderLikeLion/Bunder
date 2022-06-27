@@ -39,7 +39,8 @@ def detail_report(request, id):
     user_info = book_report.user
 
     return render(request, 'book_report/detail_report.html', {'user_info': user_info, 'book_report' : book_report,
-                                                              "book_report_id": book_report_id_json, "comment": commentList})
+                                                              "book_report_id": book_report_id_json, "comment": commentList,
+                                                              "comment_len": len(commentList)})
 
 @csrf_exempt
 def create(request):

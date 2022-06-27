@@ -102,7 +102,7 @@
 		</div>
 
 		<hr>
-		<h3>댓글 N개</h3>
+		<h3 >댓글 <span class="comment-count_h3">{{ comment_len }}</span>개</h3>
 		<div class="comment_container">
 			<div class="comment_navbar">
 				{% csrf_token %}
@@ -158,6 +158,9 @@
 		const content = document.querySelector("#comment")
 		const commentDiv = document.querySelector(".comment_content")
 		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
+
+        const commentCount = document.querySelector(".comment-count_h3");
+        console.log(commentCount.innerText);
 
         const deleteCommentButton = document.querySelectorAll(".delete-comment_btn");
 
@@ -277,6 +280,8 @@
                 const commentId = event.target.parentNode.lastElementChild.value;
                 deleteComment(bookReportId, commentId)
             })
+
+            commentCount.innerText = Number(commentCount.innerText) + 1;
 
 			window.scrollTo(0, document.body.scrollHeight);
 

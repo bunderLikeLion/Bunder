@@ -94,6 +94,22 @@ Club Detail
 
             </div>
         </div>
+        <div class="club_detail_containaer">
+            <div class="club_detail_header">
+                <div class="event_div">종료된 투표</div>
+            </div>
+            <div class="vote_container club_book_list">
+                {% if not vote %}
+                <div class="empty-vote">
+                    <p>현재 종료된 투표가 없습니다.</p>
+                </div>
+                {% else %}
+                <div class="empty-vote deactivate empty_list">
+                    <p>현재 종료된 투표가 없습니다.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
 
         <div class="club_detail_containaer">
             <div class="present_book_container">

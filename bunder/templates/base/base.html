@@ -46,29 +46,31 @@
             <div class="menuToggle">
             </div>
             <ul class="menu">
-				{% if user.is_authenticated %}
+                {% if user.is_authenticated %}
                 <li><a href={% url 'user:bunder' %}>
                         <ion-icon name="person-outline"></ion-icon>개인 번더
                     </a></li>
-				{% endif %}
-                <li><a href="/bookreport/main?page=1">
+                {% endif %}
+                <li><a href={% url 'book_report:main' %}>
                         <ion-icon name="book-outline"></ion-icon>독후감
                     </a></li>
-                <li><a href="/bookclub/">
+                <li><a href={% url 'book_club:main' %}>
                         <ion-icon name="people-outline"></ion-icon>소모임
                     </a></li>
-                <li><a href="/mail/receiver">
+                {% if user.is_authenticated %}
+                <li><a href={% url 'mail:main' %}>
                         <ion-icon name="mail-outline"></ion-icon>메일함
                     </a></li>
+                {% endif %}
                 {% if user.is_authenticated %}
-                <li><a href="/user/logout">
+                <li><a href="../user/logout">
                         <ion-icon name="log-out-outline"></ion-icon>로그아웃
                     </a></li>
                 {% else %}
-                <li><a href="/user/login">
+                <li><a href={% url 'user:loginpage' %}>
                         <ion-icon name="log-in-outline"></ion-icon>로그인
                     </a></li>
-                <li><a href="/user/signup">
+                <li><a href="../user/signup">
                         <ion-icon name="person-add-outline"></ion-icon>회원가입
                     </a></li>
                 {% endif %}

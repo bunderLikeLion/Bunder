@@ -15,30 +15,32 @@ Mail
                 <ul class="navbar">
                     <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
                     {% for person in receiver %}
-{#                    <form action="{% url 'mail:main' person.id %} " method="post">#}
-                    {% csrf_token %}
-						<a href="receiver?id={{ person.id }}">
-							<button type="submit" name="each_mail">
-								<div class="profile_img">
-									<img class="img"
-										src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
-								</div>
-
-								<div class="profile_name">
-									<span class="name">{{ person.nickname }}</span>
-								</div>
-
-							</button>
-						</a>
-{#                    </form>#}
-                    {% endfor %}
+                    {# <form action="{% url 'mail:main' person.id %} " method="post">#}
+                        {% csrf_token %}
+                        <a href="receiver?id={{ person.id }}">
+                            <button type="submit" name="each_mail">
+                                <div class="profile_img">
+                                    <img class="img"
+                                        src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
+                                </div>
+                                <div class="profile_name">
+                                    <span class="name">{{ person.nickname }}</span>
+                                </div>
+                            </button>
+                        </a>
+                        {% endfor %}
                 </ul>
             </div>
         </div>
 
         <div class="reports_container big_container">
             <div class="write_report">
-                <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기" onClick="location.href = 'new'">
+                <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기"
+                    onClick="location.href = 'new'">
+            </div>
+            <div class="write_report">
+                <input type="button" class="button" id="write_report_btn" value="쪽지 답장하기"
+                    onClick="location.href = 'new'">
             </div>
             <div class="container_body">
                 <div class="pagination_container">
@@ -59,7 +61,7 @@ Mail
                     <div class="report_info">
                         <div class="profile_img">
                             <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                                src="https://avatars.dicebear.com/api/{{ content.user.sex }}/{{ content.user.nickname }}.svg">
                         </div>
 
                         <div class="profile_name">
@@ -80,4 +82,4 @@ Mail
         </div>
     </div>
 </div>
-    {% endblock content %}
+{% endblock content %}

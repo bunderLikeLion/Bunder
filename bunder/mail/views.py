@@ -15,7 +15,7 @@ def main(request):
             each_content = Mail.objects.filter(Q(user=request.user) | Q(user=click_receiver), Q(receiver=click_receiver) | Q(receiver=request.user)).order_by('-created_at')
             check_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True).distinct()
             receiver = User.objects.filter(id__in=[id for id in check_receiver])
-            return render(request, "mail/mail.html", {'receiver': receiver, 'each_content' : each_content})
+            return render(request, "mail/mail.html", {'receiver': receiver, 'each_content' : each_content, 'click_receiver' : click_receiver})
 
         else:
             check_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True).distinct()
@@ -25,6 +25,12 @@ def main(request):
 
 def send_mail(request):
     return render(request, "mail/mail_to.html")
+
+
+def reply(request):
+    id= request.GET.get("id")
+    receiver = get_object_or_404(User, pk=id)
+    return render(request, "mail/mail_to.html", {'receiver': receiver})
 
 
 @csrf_exempt

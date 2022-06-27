@@ -39,8 +39,10 @@ Mail
                     onClick="location.href = 'new'">
             </div>
             <div class="write_report">
-                <input type="button" class="button" id="write_report_btn" value="쪽지 답장하기"
+                <a href="reply?id={{ click_receiver }}">
+                <input type="submit" class="button" id="write_report_btn" value="쪽지 답장하기"
                     onClick="location.href = 'new'">
+                </a>
             </div>
             <div class="container_body">
                 <div class="pagination_container">

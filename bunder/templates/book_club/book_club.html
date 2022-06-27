@@ -54,15 +54,13 @@
         </div>
     </div>
     <div class="book_club_container">
-        <div class="my_book_club">
-            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-        </div>
-        <div class="my_book_club">
-            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-        </div>
-        <div class="my_book_club">
-            <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-        </div>
+		{% for club in book_club.popular %}
+			<div class="my_book_club">
+				<a href={% url 'book_club:book_club_detail' club.id %}>
+					<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+				</a>
+			</div>
+		{% endfor %}
     </div>
     <div class="profile_club">
         <h3>문학 북클럽</h3>

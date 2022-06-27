@@ -62,7 +62,7 @@ Mail to
             <div class="inner_container">
                 <form action="{% url 'mail:create' %}" method="post">
                     {% csrf_token %}
-                
+                    {{error}}
                     <div class="send_mail">
                         <input type="submit" class="button" id="send_mail_btn" value="쪽지 보내기">
                     </div>   

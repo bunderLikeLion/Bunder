@@ -3,24 +3,28 @@ body {
     align-items: center;
     justify-content: center;
 }
+h3 {
+    margin: 0.5rem 14%;
+    color: #a6a7a9;
+}
 .container {
     position: relative;
     width: 50%;
-    height: 100%;
-    background-color: #EBECF0;
+    /* height: 100%; */
+    background-color: #33383D;
     border-radius: 3rem;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
+    box-shadow:  20px 20px 22px #25292d, -20px -20px 22px #41474d;
+    /* text-shadow: 1px 1px 0 #FFF; */
 }
 
 .container h2 {
-    color: #686868;
+    color: #ffffff;
     font-size: 2.5rem;
     margin-bottom: 3rem;
     line-height: 1em;
     font-weight: 700;
     padding-left: 10px;
-    border-left: 5px solid hsla(220, 100%, 54%, 1);
+    border-left: 5px solid #ed591a;
 }
 
 .container .all_container {
@@ -29,6 +33,7 @@ body {
 
 .container .profile_container {
     display: flex;
+    justify-content: space-around;
 }
 
 .container .profile_container .img_container {
@@ -37,8 +42,8 @@ body {
     height: 8rem;
     overflow: hidden;
     border-radius: 50%;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow:  20px 20px 22px #25292d, -20px -20px 22px #41474d;;
 }
 
 .container .profile_container .img_container img {
@@ -54,29 +59,24 @@ body {
     position: relative;
     width: 70%;
     height: 15rem;
-    overflow: scroll;
+    /* overflow: scroll; */
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    left: 10%;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container .profile_container .name_container h3 {
     position: relative;
     width: 80%;
-    left: 10%;
-    top: 16%;
     letter-spacing: 0.1rem;
-    margin: 3%;
-    margin-bottom: 5%;
 }
 
 .container_body {
-    height: 10%;
-    width: 50%;
     place-items: center;
     text-align: center;
-    margin-top: 1rem;
 }
 
 .pagination_container {
@@ -85,29 +85,27 @@ body {
 .pagination {
     display: flex;
     list-style: none;
+    margin-top: 7%;
+    margin-right: 5%;
+    justify-content: flex-end;
 }
 .pagination li {
-    flex: 1;
+    /* flex: 1; */
+    margin: 0 1rem;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
-    position: absolute;
+    box-shadow: 9px 9px 18px #b94514, -9px -9px 18px #ff6d20;
+    background-color: #ed591a;
 }
 
-.pagination li:first-child {
-    left: 35%;
-}
-.pagination li:last-child {
-    left: 70%;
-}
 .pagination li a {
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
-    color: #dc143c;
+    color: #ffffff;
     height: 3rem;
     width: 9rem;
     display: block;
-    line-height: 3.4rem;
+    line-height: 3rem;
 }
 
 .pagination a {

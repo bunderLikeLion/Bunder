@@ -14,46 +14,21 @@ Mail
             <div class="categories">
                 <ul class="navbar">
                     <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
-                    <li>
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
+                    {% for mail in allmails %}
+                    <form>
+                        <button type="submit">
+                            <div class="profile_img">
+                                <img class="img"
+                                    src="https://avatars.dicebear.com/api/{{ mail.receiver.sex }}/{{ mail.receiver.nickname }}.svg">
+                            </div>
 
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                    </li>
+                            <div class="profile_name">
+                                <span class="name">{{ mail.receiver.nickname }}</span>
+                            </div>
+                        
+                        </button>
+                    </form>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

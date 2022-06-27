@@ -170,12 +170,12 @@ float : right;
     margin : 0.2rem auto;
     box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
     position: absolute;
-    top: 3%;
-    right: 7%;
+    top: 2%;
+    right: 40%;
   }
 
     .kakao_link {
-      right: 20%;
+      right: 27%;
     }
 
   .link {

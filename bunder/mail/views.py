@@ -8,8 +8,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 def main(request):
-    allmails = Mail.objects.filter(user=request.user)
-    return render(request, "mail/mail.html", {'allmails': allmails})
+    check_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True).distinct()
+    receiver = User.objects.filter(id__in=[id for id in check_receiver])
+    each_mail = request.GET.get('each_mail')
+    return render(request, "mail/mail.html", {'receiver': receiver})
 
 
 def send_mail(request):

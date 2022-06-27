@@ -14,16 +14,17 @@ Mail
             <div class="categories">
                 <ul class="navbar">
                     <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
-                    {% for mail in allmails %}
-                    <form>
-                        <button type="submit">
+                    {% for person in receiver %}
+                    <form action="{% url 'mail:main' %} " method="post">
+                    {% csrf_token %}
+                        <button type="submit" name="each_mail">
                             <div class="profile_img">
                                 <img class="img"
-                                    src="https://avatars.dicebear.com/api/{{ mail.receiver.sex }}/{{ mail.receiver.nickname }}.svg">
+                                    src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
                             </div>
 
                             <div class="profile_name">
-                                <span class="name">{{ mail.receiver.nickname }}</span>
+                                <span class="name">{{ person.nickname }}</span>
                             </div>
                         
                         </button>
@@ -48,6 +49,7 @@ Mail
             </div>
 
             <div class="report_box">
+                {% for content in mailcontents %}
                 <div class="report">
                     <div class="text" id="book_name">
                         <p class="bookname">쪽지 내용 </p>
@@ -66,258 +68,7 @@ Mail
                         </div>
                     </div>
                 </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="report">
-                    <div class="text" id="book_name">
-                        <p class="bookname">쪽지 내용 </p>
-                    </div>
-                    <div class="report_info">
-                        <div class="profile_img">
-                            <img class="img"
-                                src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                        </div>
-
-                        <div class="profile_name">
-                            <span class="name">닉네임</span>
-                        </div>
-                        <div class="report_time">
-                            <span class="time">2022.1.1</span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
 
 
 

@@ -86,7 +86,7 @@ def search(request):
         search_name = request.POST.get('search_name')
         if search_name:
             books = books.filter(book_name__contains = search_name)
-    return render(request, 'book_report/search_report.html', {'books' : books})
+    return render(request, 'book_report/search_report.html', {'books' : books, 'search_name':search_name})
 
 #스크랩 하기
 @csrf_exempt

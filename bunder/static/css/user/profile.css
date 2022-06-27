@@ -43,7 +43,7 @@ h3 {
     overflow: hidden;
     border-radius: 50%;
     background-color: #33383D;
-    box-shadow:  20px 20px 22px #25292d, -20px -20px 22px #41474d;;
+    box-shadow: 10px 10px 11px #25292d, -10px -10px 11px #41474d;
 }
 
 .container .profile_container .img_container img {
@@ -93,7 +93,7 @@ h3 {
     /* flex: 1; */
     margin: 0 1rem;
     border-radius: 1rem;
-    box-shadow: 9px 9px 18px #b94514, -9px -9px 18px #ff6d20;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     background-color: #ed591a;
 }
 

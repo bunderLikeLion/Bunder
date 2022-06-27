@@ -21,7 +21,6 @@ My Bunder
             <h3 class="book_category">선호하는 책 장르 : {{ user_info.categories }}</h3>
         </div>
     </div>
-
     <div class="profile_book_container">
         <h3>프로필 북</h3>
     </div>
@@ -111,7 +110,8 @@ My Bunder
             {% for scrap in scrap%}
             <div class="report_container">
                 <div class="inner_report_container">
-                    <a href="" class="reports_name">{{scrap.book_report}}</a>
+                    <a href={% url 'book_report:detail' scrap.book_report.id %}
+                        class="reports_name">{{scrap.book_report.report_name}}</a>
                 </div>
             </div>
             {% endfor %}

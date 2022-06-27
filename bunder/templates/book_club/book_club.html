@@ -47,29 +47,25 @@
     <div class="invite_request_container" style="height:10rem;">
         <h3>북클럽 초대 요청</h3>
         <div class="invite_request">
-            <div class="">
+            <div>
+				{% if invited_club %}
+				{% for club in invited_club %}
                 <div class="single_request">
                     <div class="club_info">
-                        소모임명
-                        닉네임
+                        소모임명: {{ club.club_name }}
+						<a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
                     </div>
                     
                     <div class="button_container">
 						<button class="request_btn">수락</button>
 						<button class="request_btn">거절</button>
+						<input type="hidden" value="{{ club.id }}"/>
 					</div>
                 </div>
-                <div class="single_request">
-                    <div class="club_info">
-                        소모임명
-                        닉네임
-                    </div>
-                    
-                    <div class="button_container">
-						<button class="request_btn">수락</button>
-						<button class="request_btn">거절</button>
-					</div>
-                </div>
+				{% endfor %}
+				{% else %}
+					<div>초대가 없습니다.</div>
+				{% endif %}
             </div>
         </div>
         
@@ -366,7 +362,10 @@
         </div>
     </div>
 </div> -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
     function clubToggle() {
         const clubContainer = document.querySelector('.club_container');
         logContainer.classList.toggle('active');
@@ -376,6 +375,26 @@
     function moveBunder() {
         location.href = "해당 Bunder Template.html";
     }
+
+    const requestButton = document.querySelectorAll(".request_btn")
+
+	requestButton.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+            const clubId = event.target.parentNode.lastElementChild.value;
+            if (event.target.innerText == "수락") {
+                inviteRequest(clubId, "MEMBER");
+			} else {
+                inviteRequest(clubId, "REJECT");
+			}
+		})
+	})
+
+	const inviteRequest = async (clubId, type) => {
+        const url = "invite";
+        const response = await axios.patch(url, { clubId, type })
+        window.location.reload();
+	}
+
 
 </script>
 {% endblock content %}

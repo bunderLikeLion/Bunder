@@ -56,7 +56,7 @@
             <div class="categories">
                 <ul class="navbar">
                     <!--https://codepen.io/OMGDrAcula/pen/bGgabjb-->
-                    <li class="active reset filter-trigger" id="all" data-filter="전체">전체</li>
+                    <li class="filter-trigger" id="all" data-filter="전체">전체</li>
                     <li class="filter-trigger" id="lit" data-filter="문학">문학</li>
                     <li class="filter-trigger" id='business' data-filter="경제/경영">경제/경영</li>
                     <li class="filter-trigger" id="self" data-filter="자기계발">자기계발</li>
@@ -132,6 +132,29 @@
     const art = document.querySelector('#art');
     const science = document.querySelector('#science');
     const tech = document.querySelector('#tech');
+    let givenCat = JSON.parse("{{ category|escapejs }}");
+    const buttons = document.querySelectorAll('.filter-trigger');
+    const allBtn = document.querySelector('#all');
+
+    allBtn.addEventListener('click', () => {
+        window.location.href = '/bookreport/main'
+    })
+
+    if (givenCat === '경제') {
+        givenCat = '경제/경영';
+    } else if (givenCat === '정치') {
+        givenCat = '정치/사회';
+    } else if (givenCat === '기술') {
+        givenCat = '기술/IT';
+    };
+
+    buttons.forEach((singleBtn) => {
+        console.log(singleBtn);
+        if (singleBtn.innerText === givenCat) {
+            singleBtn.classList.toggle('active')
+        }
+    })
+
     const catObj = {
         문학: lit,
         '경제': business,
@@ -159,6 +182,8 @@
         console.log(selectedId);
         window.location.href = `/bookreport/${selectedId}`
     })
+
+
 
 </script>
 {% endblock content %}

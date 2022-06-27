@@ -23,7 +23,7 @@ def main(request):
     all = json.dumps('전체')
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populate_reports': populated_report, 'all': all })
+                   'populate_reports': populated_report, 'category': all })
 
 
 def category_search(request, category):
@@ -70,11 +70,17 @@ def detail_report(request, id):
     book_report_id_json = json.dumps(id)
     commentList = Comment.objects.filter(book_report_id=id)
     user_info = book_report.user
+    user = request.user
+    if Scrap.objects.filter(user_id__exact=user.id, book_report_id__exact=id).exists():
+        boolean = 'True'
+    else:
+        boolean = 'False'
+
 
     return render(request, 'book_report/detail_report.html', {'user_info': user_info, 'book_report': book_report,
                                                               "book_report_id": book_report_id_json,
                                                               "comment": commentList,
-                                                              "comment_len": len(commentList)})
+                                                              "comment_len": len(commentList), 'boolean': boolean})
 
 
 @csrf_exempt

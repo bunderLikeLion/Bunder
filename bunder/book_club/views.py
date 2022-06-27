@@ -7,16 +7,25 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.forms.models import model_to_dict
 from django.views import View
+from user.models import User
 import json
 import os
 from django.db import connection
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
 
 
+def getInvitedClub(user):
+    club_member = BookClubMember.objects.prefetch_related('club').filter(user=user, type="INVITE")
+    club = [member.club for member in club_member]
+    return club
+
+
 def main(request):
     book_club = getBookClub()
     my_club = getMyBookClub(request.user)
-    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': my_club})
+    invited_club = getInvitedClub(request.user)
+    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': my_club,
+                                                        'invited_club': invited_club})
 
 
 def book_club_list(request):
@@ -61,8 +70,6 @@ def new(request):
 
         return redirect('/bookclub/' + str(book_club.id))
 
-def get_end_vote(club):
-    pass
 
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
@@ -304,6 +311,30 @@ class member_reject(View):
         else:
             return JsonResponse({'message': "잘못된 접근 입니다.",
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
+
+
+def response_invite(request):
+    if request.method == "PATCH":
+        req = json.loads(request.body)
+        type = req["type"]
+        book_club_id = req["clubId"]
+        user = request.user
+        club = get_object_or_404(BookClub, pk=book_club_id)
+        member = BookClubMember.objects.get(user=user, club=club)
+
+        if member.type != "INVITE":
+            return JsonResponse({'message': "초대된 멤버가 아닙니다.",
+                                 }, json_dumps_params={'ensure_ascii': False}, status=404)
+
+        member.type = type
+        if type == "MEMBER":
+            club.score += 5
+        member.save()
+        club.save()
+
+        return JsonResponse({'message': "멤버 상태 변경 성공", "member": member.type
+                             }, json_dumps_params={'ensure_ascii': False}, status=200)
+
 
 
 @csrf_exempt

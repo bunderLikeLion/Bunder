@@ -153,8 +153,9 @@ body {
 
 .invite_request {
     /* display: flex; */
-    /* align-items: center; */
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     position: relative;
     height: 19rem;
     border-radius: 1rem;

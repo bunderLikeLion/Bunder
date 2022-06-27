@@ -11,32 +11,32 @@ Club Revise
 
 {% block content %}
 <div class="container">
-    <h2>Club Revise</h2>
-    <form method="post">
+	<div class="club-edit_header">
+		<h2>Club Revise</h2>
+		<button class="login" type="submit" value="Club closure">소모임 폐쇄</button>
+	</div>
+    <form method="post" action="{% url 'book_club:book_club_edit' book_club.id %}">
+		{% csrf_token %}
         <div class="club_info_container">
             <div class="box_container">
                 <div class="inputBox">
-                    <input type="text" required="required" name='clubname' id='clubname' value="">
+                    <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
                     <span class="first">소모임 명</span>
                 </div>
                 <div class="link_box">
                     <div class="inputBox">
-                        <input type="text" required="required" name='link' id='link'>
+                        <input type="text" required="required" name='zoom_link' id='link' value="{{ book_club.zoom_link }}">
                         <span class="second">소모임 Zoom Link</span>
                     </div>
                     <div class="inputBox">
-                        <input type="text" required="required" name='link' id='link'>
+                        <input type="text" required="required" name='kakao_link' id='link' value=" {{ book_club.kakao_link }}">
                         <span class="second">소모임 KakaoTalk Link</span>
                     </div>
                 </div>
-                <!-- <div class="inputBox">
-                    <input type="number" required="required" name='number_of_member' id='number_of_member' min="2" max="30">
-                    <span class="third">소모임 최대 인원</span>
-                </div> -->
             </div>
     
-            <div class="report_content" id="content">
-                <textarea name="content" id="content" placeholder="소모임 소개"></textarea>
+            <div class="report_content" >
+                <textarea name="content" id="content" placeholder="소모임 소개">{{ book_club.description }}</textarea>
             </div>
         </div>
 
@@ -54,22 +54,22 @@ Club Revise
     
             <section class="category_container">
                 <label class="category">
-                    <input checked type="radio" value="1" name="club_img" checked class="radio__input">
+                    <input type="radio" value="1" name="club_img" checked class="radio__input image_input">
                     <div class="category__box"></div>
                     <span class="category__text"><img src="../../static/img/club_img_1.jpg"></span>
                 </label>
                 <label class="category">
-                    <input type="radio" value="2" name="club_img" class="radio__input">
+                    <input type="radio" value="2" name="club_img" class="radio__input image_input">
                     <div class="category__box"></div>
                     <span class="category__text"><img src="../../static/img/club_img_2.jpg"></span>
                 </label>
                 <label class="category">
-                    <input checked type="radio" value="3" name="club_img" class="radio__input">
+                    <input type="radio" value="3" name="club_img" class="radio__input image_input">
                     <div class="category__box"></div>
                     <span class="category__text"><img src="../../static/img/club_img_3.jpg"></span>
                 </label>
                 <label class="category">
-                    <input checked type="radio" value="4" name="club_img" class="radio__input">
+                    <input type="radio" value="4" name="club_img" class="radio__input image_input">
                     <div class="category__box"></div>
                     <span class="category__text"><img src="../../static/img/club_img_4.jpg"></span>
                 </label>
@@ -81,42 +81,42 @@ Club Revise
             <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
             <section class="genre_container">
                 <label class="genre">
-                    <input checked type="radio" value="문학" name="book_category" class="radio__input">
+                    <input type="radio" value="문학" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">문학</span>
                 </label>
                 <label class="genre">
-                    <input type="radio" value="예술" name="book_category" class="radio__input">
+                    <input type="radio" value="예술" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">예술</span>
                 </label>
                 <label class="genre">
-                    <input checked type="radio" value="자기계발" name="book_category" class="radio__input">
+                    <input type="radio" value="자기계발" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">자기계발</span>
                 </label>
                 <label class="genre">
-                    <input checked type="radio" value="정치/사회" name="book_category" class="radio__input">
+                    <input type="radio" value="정치/사회" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">정치/사회</span>
                 </label>
                 <label class="genre">
-                    <input checked type="radio" value="과학" name="book_category" class="radio__input">
+                    <input type="radio" value="과학" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">과학</span>
                 </label>
                 <label class="genre">
-                    <input checked type="radio" value="기술/IT" name="book_category" class="radio__input">
+                    <input type="radio" value="기술/IT" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">기술/IT</span>
                 </label>
                 <label class="genre">
-                    <input checked type="radio" value="인문" name="book_category" class="radio__input">
+                    <input type="radio" value="인문" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">인문</span>
                 </label>
                 <label class="genre">
-                    <input checked type="radio" value="기타" name="book_category" class="radio__input">
+                    <input type="radio" value="기타" name="book_category" class="radio__input category_input">
                     <div class="radio__box"></div>
                     <span class="radio__text">기타</span>
                 </label>
@@ -124,35 +124,40 @@ Club Revise
         </div>
 
         <div class="club_member_container">
+			<div class="button_container">
+				<input type="button" class="member-edit_btn" value="멤버 삭제">
+				<a href="/bookclub/admit?clubId={{ book_club.id }}">
+					<input type="button" class="member-edit_btn" value="멤버 요청 확인">
+				</a>
+			</div>
             <div>
-                <div><h3>북클럽 멤버 리스트</h3></div>
+				<h3>소모임 멤버 리스트</h3>
                 <div class="club_people_number">
-                    북클럽 현재 인원
+                    소모임 현재 인원
                      <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
                 </div>
             </div>
             
     
             <div class="container_all_requesters">
-                {% if not member %}
+                {% if not user_list %}
 				<div class="empty-member">
 				    <p>북클럽에 아무도 없습니다.</p>
 				</div>
 				{% else %}
-                {% for member in members %}
+                {% for user in user_list %}
                 <div class="container_single_requester">
                     <div class="requester_profile_container">
                         <div class="profile_img_container">
-                            <img class="profile_img" src="{{ member.user.avatar }}">
+                            <img class="profile_img" src="{{ user.avatar }}">
                         </div>
                         <div class="profile_name_container">
-                            {{ member.user.nickname }}
+                            {{ user.nickname }}
                         </div>
                     </div>
-
-                    <div class="button_container">
-                        <button class="request_btn" onclick="">강제퇴장</button>
-                    </div>
+{#                    <div class="button_container">#}
+{#                        <button class="request_btn" onclick="">강제퇴장</button>#}
+{#                    </div>#}
                 </div>
             {% endfor %}
 				{% endif %}
@@ -162,11 +167,31 @@ Club Revise
         
         {{error}}
 
-        <div class="button_container">
-            <button class="login" type="submit" value="Club closure">소모임 폐쇄</button>
+        <div class="edit_button_container">
             <button class="login" type="submit" value="Sign up">소모임 수정</button>
         </div>
-
     </form>
 </div>
+<script>
+    const category = JSON.parse("{{ category|escapejs }}");
+    const image = JSON.parse("{{ image|escapejs }}");
+
+    const categorySelect = document.querySelectorAll(".category_input");
+    const imageSelect = document.querySelectorAll(".image_input");
+
+
+    categorySelect.forEach((el) => {
+        if (el.value == category) {
+            el.setAttribute("checked", "checked")
+		}
+	})
+
+    imageSelect.forEach((el) => {
+        if (el.value == image) {
+            el.setAttribute("checked", "checked")
+		}
+	})
+
+
+</script>
 {% endblock content %}

@@ -116,7 +116,33 @@ def book_club_detail(request, bookclub_id):
 
 
 def book_club_edit(request, bookclub_id):
-    return render(request, 'book_club/club_revise.html')
+    if request.method == "GET":
+        book_club = get_object_or_404(BookClub, pk=bookclub_id)
+
+        query = Q()
+        query.add(Q(club=book_club), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+        member_list = BookClubMember.objects.prefetch_related("user").filter(query)
+        user_list = [member.user for member in member_list]
+        category = json.dumps(book_club.category)
+        image = json.dumps(book_club.image)
+        return render(request, 'book_club/club_revise.html', {"book_club": book_club,
+                                                              "user_list": user_list,
+                                                              "category": category,
+                                                              "image": image})
+    elif request.method == "POST":
+        book_club = get_object_or_404(BookClub, pk=bookclub_id)
+
+        book_club.club_name = request.POST["clubname"]
+        book_club.image = request.POST["club_img"]
+        book_club.category = request.POST["book_category"]
+        book_club.description = request.POST["content"]
+        book_club.zoom_link = request.POST["zoom_link"]
+        book_club.kakao_link = request.POST["kakao_link"]
+        book_club.save()
+
+        return redirect('book_club:book_club_detail', book_club.id)
 
 
 def get_book(bookclub_id):

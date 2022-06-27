@@ -298,3 +298,10 @@ textarea {   /* 독후감 본문 입력란 */
 .report_content {
   color: #f7f7f7;
 }
+
+.utility {
+  padding: 1rem;
+  background-color: red;
+  width: 12rem;
+
+}

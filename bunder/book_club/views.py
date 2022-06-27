@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
@@ -59,6 +61,8 @@ def new(request):
 
         return redirect('/bookclub/' + str(book_club.id))
 
+def get_end_vote(club):
+    pass
 
 def book_club_detail(request, bookclub_id):
     book_club = get_object_or_404(BookClub, id=bookclub_id)
@@ -85,8 +89,26 @@ def book_club_detail(request, bookclub_id):
         is_full = True if len(book_list) >= 5 else False
         is_full_json = json.dumps(is_full)
 
-        vote = BookClubVote.objects.get(club=book_club)
-        vote_id_json = json.dumps(vote.id)
+        end_vote, vote, vote_id_json = None, None, None
+
+        if BookClubVote.objects.filter(club=book_club, active=True).exists():
+            vote = BookClubVote.objects.get(club=book_club, active=True)
+            end_date = vote.end_date
+            today = datetime.datetime.now()
+            if today > end_date:
+                vote.active = False
+                vote.save()
+                vote = None
+            else:
+                vote_id_json = json.dumps(vote.id)
+
+        if BookClubVote.objects.filter(club=book_club, active=False).exists():
+            end_vote = BookClubVote.objects.filter(club=book_club, active=False).order_by('-created_at')[0]
+            end_vote_list = VoteDetail.objects.filter(vote=end_vote).order_by('-vote_cnt')
+        max_vote = end_vote_list[0].vote_cnt
+        onset_list = [v for v in end_vote_list if v.vote_cnt == max_vote]
+
+
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club,
                        'bookclub_id': bookclub_id_json,
@@ -99,7 +121,10 @@ def book_club_detail(request, bookclub_id):
                        'is_owner': is_owner,
                        'is_member': is_member,
                        'user_id': user_id_json,
-                       'is_full_json': is_full_json})
+                       'is_full_json': is_full_json,
+                       'end_vote': end_vote,
+                       'end_vote_list': end_vote_list,
+                       'onset_list': onset_list})
 
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
@@ -281,7 +306,7 @@ def request_member(request):
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
 
 
-class AddVote(View):
+class VoteRequest(View):
     def get(self, request):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
@@ -304,6 +329,7 @@ class AddVote(View):
         vote.topic = request.POST['topic']
         vote.start_date = request.POST['startvote']
         vote.end_date = request.POST['endvote']
+        vote.active = True
 
         vote.save()
         voteList = []
@@ -316,6 +342,17 @@ class AddVote(View):
 
         return redirect('/bookclub/' +
                         str(clubId))
+
+    def patch(self, request):
+        req = json.loads(request.body)
+        id = req['voteId']
+        vote = get_object_or_404(BookClubVote, pk=id)
+
+        vote.active = False
+        vote.save()
+
+        return JsonResponse({"description": "투표가 종료 되었습니다.",
+                             }, json_dumps_params={'ensure_ascii': False}, status=200)
 
     def delete(self, request):
         clubId = request.GET.get('clubId', None)

@@ -38,7 +38,9 @@
                     {% else %}
                     {% for book in books %}
                     <div class="report">
+                        <a href="../bookreport/{{ book.id }}">
                         <div class="report_info">{{book.report_name}}</div>
+                        </a>
                         <div class="report_info2">
                             {{book.book_name}}
                             <div>{{book.user.nickname}}</div>

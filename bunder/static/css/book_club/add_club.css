@@ -19,30 +19,30 @@ div, p, span, input{
 .container {
     position: relative;
     width: 70%;
+    margin: 6rem;
     padding: 70px 40px 20px 40px;
-    background-color: #EBECF0;
+    background-color: #33383D;
     border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    text-shadow: 1px 1px 0 #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .container h2 {
-    color: #686868;
+    color: #d3d4d5;
     margin-bottom: 45px;
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid hsla(220, 100%, 54%, 1);
+    border-left: 5px solid #ed591a;
 }
 
 .container h3 {
-    color: #686868;
+    color: #a6a7a9;
     margin-top: 3rem;
     margin-bottom: 3rem;
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid hsla(220, 100%, 54%, 1);;
+    border-left: 5px solid #ed591a;
 }
 
 .container .body {
@@ -52,7 +52,7 @@ div, p, span, input{
 .container .inputBox {
     display: flex;
     position: relative;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 20rem;
     height: 3rem;
     margin-bottom: 1.8rem;
@@ -79,21 +79,21 @@ div, p, span, input{
 .container .inputBox_radio {
     display: flex;
     position: relative;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 3.5rem;
     height: 2rem;
     margin-bottom: 1.8rem;
     border: 0;
     outline: 0;
     border-radius: 320px;
-    background-color: #ebecf0;
+    background-color: #33383D;
 }
 
-.container .inputBox, button {    
+.container .inputBox, button {
     border: 0;
     outline: 0;
     border-radius: 320px;
-    background-color: #ebecf0;
+    background-color: #33383D;
 }
 
 .container .inputBox:nth-child(5) {    
@@ -159,12 +159,13 @@ div, p, span, input{
 }
 
 button {
-    color: #61677C;
-    font-weight: bold;
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    /* color: #61677C; */
+    /* font-weight: bold; */
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
+    background-color: #ed591a;
 }
 
 button:hover {
@@ -180,9 +181,9 @@ button.login{
     display: inline;
     margin-left: 72%;
     margin-top: 1%;
-    width: 30%;
+    width: 25%;
     height: 3rem;
-    color: hsla(220, 100%, 54%, 1);
+    color: #813818;
 }
 
 .genre_container {
@@ -197,7 +198,7 @@ button.login{
     height: 10rem;
     flex-wrap: wrap;
     border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .genre {
@@ -232,7 +233,7 @@ button.login{
     height: 24px;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: rgba(238,240,245,1);
+    background-color: #EBECF0;
     box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
 }
 
@@ -252,12 +253,12 @@ button.login{
 
 .radio__text {
     position: relative;
-    margin-left: 60px;
+    margin-left: 45px;
     top: -45%;
-    color: #686868;
+    color: #a6a7a9;
     border-radius: 20%;
-    background-color: rgba(238,240,245,1);
-    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
+    /* background-color: rgba(238,240,245,1); */
+    /* box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06); */
 }
 
 .radio__input:checked + .radio__box::before {
@@ -279,11 +280,11 @@ textarea {   /* 독후감 본문 입력란 */
     border: none;
     resize: none;
     border-radius: 0.5rem;
-    box-shadow: 9px 9px 16px rgb(163 177 198 / 60%), -9px -9px 16px rgb(255 255 255 / 50%), inset 3px 3px 7px rgb(136 165 191 / 48%), inset -3px -3px 7px #ffffff;
+    box-shadow: 15px 15px 56px #26292d, -15px -15px 56px #40474d;
     background-color: transparent;
 
     /* 기본 스타일 */
-    /* box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent; */
 }
@@ -310,14 +311,15 @@ textarea {   /* 독후감 본문 입력란 */
 .pagination li {
     flex: 1;
     border-radius: 1rem;
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    background-color: #ed591a;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
 }
 
 .pagination li a {
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
-    color: #4d3252;
+    color: #813818;
     height: 2rem;
     width: 2rem;
     display: block;
@@ -347,8 +349,8 @@ textarea {   /* 독후감 본문 입력란 */
     width: 100%;
     height: 19rem;
     border-radius: 1rem;
-    background-color: #EBECF0;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .my_book_club {
@@ -361,13 +363,14 @@ textarea {   /* 독후감 본문 입력란 */
     margin-left: 60px;
     color: #686868;
     border-radius: 20%;
-    background-color: rgba(238,240,245,1);
-    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
+    background-color: #33383D;
 }
 
 .category__text img {
     height: 7rem;
     width: 7rem;
+    padding: 0.5rem;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .category__box {

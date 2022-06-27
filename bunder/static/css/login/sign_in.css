@@ -19,36 +19,36 @@ div, p, span, input{
     position: relative;
     width: 24rem;
     padding: 70px 40px;
-    background-color: #EBECF0;
+    background-color: #33383D;
     border-radius: 30px;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    color: red;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    color: #a6a7a9;
     font-weight: 300;
 }
 
 .container h2 {
-    color: #111;
+    color: #d3d4d5;
     margin-bottom: 45px;
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid #e91e63;
+    border-left: 5px solid #ed591a;
 }
 
 .container .inputBox {
     display: flex;
     position: relative;
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 19rem;
     height: 3rem;
     margin-bottom: 1.8rem;
 }
 
-.container .inputBox:nth-child(1), .inputBox:nth-child(2), button {    
+.container .inputBox:nth-child(1), .inputBox:nth-child(2), button {
     border: 0;
     outline: 0;
     border-radius: 320px;
-    background-color: #ebecf0;
+    background-color: #33383D;
 }
 
 .container .inputBox input {
@@ -61,7 +61,7 @@ div, p, span, input{
     border-radius: 4px;
     outline: none;
     font-size: 1rem;
-    color: #111;
+    color: #f7f7f7;
     font-weight: 300;
     border: none;
 }
@@ -72,13 +72,14 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
       transition: background-color 5000s ease-in-out 0s;
-     -webkit-transition: background-color 9999s ease-out;
-     box-shadow:  0 0 0px 1000px white 00.1s inset !important;
-     -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+      -webkit-transition: background-color 9999s ease-out;
+      box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+      -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
 }
 
 .container .inputBox span {
     position: absolute;
+    color: #a6a7a9;
     top: 0.4rem;
     left: 0.4rem;
     padding: 3%;
@@ -97,9 +98,10 @@ input:-webkit-autofill:active {
 button {
     color: #61677C;
     font-weight: bold;
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    background-color: #ed591a;
     font-weight: 600;
 }
 
@@ -120,7 +122,7 @@ button.login{
     left: 70%;
     width: 30%;
     height: 3rem;
-    color: #AE1100;
+    color: #813818;
 }
 
 .signup {

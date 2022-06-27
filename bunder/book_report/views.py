@@ -79,6 +79,8 @@ def update(request, id):
     update_book.book_name = request.POST.get('book_name')
     update_book.category = request.POST.get('category')
     update_book.content = request.POST.get('content')
+    update_book.image_upload = None
+    update_book.image_upload = request.FILES.get('image_upload')
     update_book.save()
     return redirect('book_report:detail', update_book.id)
 

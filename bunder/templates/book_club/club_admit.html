@@ -36,6 +36,11 @@ Club Admit
 		
 
 		<div class="container_all_requesters">
+			{% if not members %}
+			<div class="container_single_requester empty_container">
+				<div>참여 요청한 멤버가 없습니다.</div>
+			</div>
+			{% else %}
 			{% for member in members %}
 				<div class="container_single_requester">
 					<div class="requester_profile_container">
@@ -53,6 +58,7 @@ Club Admit
 					</div>
 				</div>
 			{% endfor %}
+			{% endif %}
 
 		</div>
 	</div>
@@ -66,7 +72,7 @@ Club Admit
 
         const changeMember = async (event, memberId, clubId, type) => {
             const url = "admit";
-            const container = event.target.parentElement;
+            const container = event.target.parentElement.parentElement;
             container.classList.add("request-done");
 
             const response = await axios.patch(url, { memberId, clubId, type })

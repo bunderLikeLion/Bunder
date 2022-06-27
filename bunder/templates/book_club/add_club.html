@@ -45,7 +45,7 @@ Add Club
         </div>
         <section class="category_container">
             <label class="category">
-                <input checked type="radio" value="1" name="club_img" checked class="radio__input cover_input">
+                <input type="radio" value="1" name="club_img" checked class="radio__input cover_input">
                 <div class="category__box"></div>
                 <span class="category__text"><img class="cover_image" src="../../static/img/club_img_1.jpg"></span>
             </label>
@@ -55,7 +55,7 @@ Add Club
                 <span class="category__text"><img class="cover_image" src="../../static/img/club_img_2.jpg"></span>
             </label>
             <label class="category">
-                <input checked type="radio" value="3" name="club_img" class="radio__input cover_input">
+                <input type="radio" value="3" name="club_img" class="radio__input cover_input">
                 <div class="category__box"></div>
                 <span class="category__text"><img class="cover_image" src="../../static/img/club_img_3.jpg"></span>
             </label>
@@ -154,7 +154,6 @@ Add Club
             requestImage(pageNum + 1, "next");
         }
 	})
-    console.log(values)
 
     const requestImage = async (page, flag) => {
         const url = "/bookclub/cover?page=" + page;

@@ -297,7 +297,7 @@ def request_member(request):
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
 
 
-class AddVote(View):
+class VoteRequest(View):
     def get(self, request):
         clubId = request.GET.get('clubId', None)
         club = BookClub.objects.get(id=clubId)
@@ -333,6 +333,17 @@ class AddVote(View):
 
         return redirect('/bookclub/' +
                         str(clubId))
+
+    def patch(self, request):
+        req = json.loads(request.body)
+        id = req['voteId']
+        vote = get_object_or_404(BookClubVote, pk=id)
+
+        vote.active = False
+        vote.save()
+
+        return JsonResponse({"description": "투표가 종료 되었습니다.",
+                             }, json_dumps_params={'ensure_ascii': False}, status=200)
 
     def delete(self, request):
         clubId = request.GET.get('clubId', None)

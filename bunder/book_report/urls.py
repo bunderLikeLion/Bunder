@@ -16,9 +16,8 @@ urlpatterns = [
     path('main', views.main, name="main"),
     path('category/<slugConverter:category>', views.category_search, name="category_search"),
     path('search', views.search, name="search"),
-    path('scrap', views.make_scrap, name='make_scrap'),
+    path('scrap', views.ScrapRequest.as_view()),
     path('myscrap', views.all_scraps.as_view(), name='all_scrap'),
     path('like/', views.likes, name="likes"),
     path('comment', views.CommentRequest.as_view()),
-    path('noscrap', views.del_scrap, name='del_scrap'),
 ]

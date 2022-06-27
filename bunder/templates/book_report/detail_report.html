@@ -171,6 +171,7 @@
 		const content = document.querySelector("#comment")
 		const commentDiv = document.querySelector(".comment_content")
 		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
+		let is_scrap = JSON.parse("{{ is_scrap|escapejs }}");
 
 		const commentCount = document.querySelector(".comment-count_h3");
 		console.log(commentCount.innerText);
@@ -183,7 +184,7 @@
 		})
 
 		requestButton.addEventListener('click', () => {
-			requestMember(bookReportId);
+			scrapReport(bookReportId);
 		})
 
 		if (deleteCommentButton !== null) {
@@ -207,9 +208,18 @@
 			window.location.reload();
 		}
 
-		const requestMember = async (id) => {
+		const scrapReport = async (id) => {
 			const url = "scrap";
-			await axios.post(url, { id });
+
+            if (is_scrap == 'True') {
+                await axios.delete(url, {
+                    data: {bookClubId: id} })
+                is_scrap = 'False';
+			} else {
+				await axios.post(url, { id });
+                is_scrap = 'True';
+			}
+
 		}
 
 		const sendComment = async (book_report_id, text) => {
@@ -305,7 +315,8 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		function book_report_like(id) {
+
+        function book_report_like(id) {
 			console.log("hi")
 			$.ajax({
 				url: "{%url 'book_report:likes'%}",

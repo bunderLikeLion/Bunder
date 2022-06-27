@@ -76,11 +76,13 @@ def detail_report(request, id):
     else:
         boolean = 'False'
 
+    is_scrap = json.dumps(boolean)
 
     return render(request, 'book_report/detail_report.html', {'user_info': user_info, 'book_report': book_report,
                                                               "book_report_id": book_report_id_json,
                                                               "comment": commentList,
-                                                              "comment_len": len(commentList), 'boolean': boolean})
+                                                              "comment_len": len(commentList), 'boolean': boolean,
+                                                              "is_scrap": is_scrap})
 
 
 @csrf_exempt
@@ -137,25 +139,31 @@ def search(request):
 
 
 # 스크랩 하기
-@csrf_exempt
-def make_scrap(request):
-    req = json.loads(request.body)
-    book_report_id = req['id']
-    if request.method == "POST":
-        scrap, created = Scrap.objects.get_or_create(
-            book_report=get_object_or_404(BookReport, id=book_report_id),
-            user=request.user,
-        )
+class ScrapRequest(View):
 
-    return JsonResponse({'scrap': model_to_dict(scrap)})
+    def post(self, request):
+        req = json.loads(request.body)
+        book_report_id = req['id']
+        if request.method == "POST":
+            scrap, created = Scrap.objects.get_or_create(
+                book_report=get_object_or_404(BookReport, id=book_report_id),
+                user=request.user,
+            )
+
+        return JsonResponse({'scrap': model_to_dict(scrap)})
 
 
-# 스크랩 취소
+    # 스크랩 취소
+    def delete(self, request):
+        req = json.loads(request.body)
+        book_report_id = req['bookClubId']
 
-def del_scrap(request, id):
-    noscrap = get_object_or_404(Scrap, pk=id)
-    noscrap.delete()
-    return HttpResponseRedirect(request.path_info)
+        scrap = Scrap.objects.filter(user=request.user, book_report_id=book_report_id)
+        scrap.delete()
+
+        return  JsonResponse({'message': "스크랩 취소 성공"}
+                             , json_dumps_params={'ensure_ascii': False}
+                             , status=200)
 
 
 # 내 스크랩 확인

@@ -14,10 +14,18 @@ from django.db import connection
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
 
 
+def getInvitedClub(user):
+    club_member = BookClubMember.objects.prefetch_related('club').filter(user=user, type="INVITE")
+    club = [member.club for member in club_member]
+    return club
+
+
 def main(request):
     book_club = getBookClub()
     my_club = getMyBookClub(request.user)
-    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': my_club})
+    invited_club = getInvitedClub(request.user)
+    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': my_club,
+                                                        'invited_club': invited_club})
 
 
 def book_club_list(request):
@@ -310,8 +318,6 @@ def response_invite(request):
         req = json.loads(request.body)
         type = req["type"]
         book_club_id = req["clubId"]
-        # user_id = req["userId"]
-        # user = User.objects.get(id=user_id)
         user = request.user
         club = get_object_or_404(BookClub, pk=book_club_id)
         member = BookClubMember.objects.get(user=user, club=club)

@@ -23,7 +23,7 @@ def main(request):
     all = json.dumps('전체')
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populate_reports': populated_report, 'all': all })
+                   'populate_reports': populated_report, 'category': all })
 
 
 def category_search(request, category):

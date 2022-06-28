@@ -122,7 +122,6 @@ def book_club_detail(request, bookclub_id):
             max_vote = end_vote_list[0].vote_cnt
             onset_list = [v for v in end_vote_list if v.vote_cnt == max_vote]
 
-
         return render(request, 'book_club/club_detail.html',
                       {'book_club': book_club,
                        'bookclub_id': bookclub_id_json,
@@ -190,6 +189,7 @@ def book_club_edit(request, bookclub_id):
         return JsonResponse({"message": "소모임 삭제 성공.",
                              }, json_dumps_params={'ensure_ascii': False}, status=200)
 
+
 def get_book_club_image(request):
     if request.method == 'GET':
         page = request.GET.get("page")
@@ -214,10 +214,6 @@ def get_book_club_image(request):
                 response['nums'].append(i)
 
         return JsonResponse(response, status=200)
-
-
-
-
 
 
 def get_book(bookclub_id):
@@ -338,10 +334,13 @@ def response_accept(request):
 
 class Invite(View):
     def get(self, request):
-        return render(request, "book_club/club_invite.html")
+        club_list = BookClub.objects.filter(owner=request.user)
+
+        return render(request, "book_club/club_invite.html", {"club_list": club_list})
 
     def post(self, request):
-        pass
+        value = request.POST["club"]
+        return render(request, "book_club/club_invite.html")
 
 
 @csrf_exempt
@@ -548,3 +547,9 @@ def getMember(book_club):
     query.add(Q(type="MEMBER"), query.AND)
 
     return BookClubMember.objects.filter(query)
+
+
+def recommend_member(request):
+    user = request.user
+    recommend = User.objects.filter(categories=user.categories).exclude(id=user.id).order_by('?')[:3]
+    return recommend

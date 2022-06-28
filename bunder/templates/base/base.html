@@ -55,11 +55,11 @@
                         <ion-icon name="book-outline"></ion-icon>독후감
                     </a></li>
                 <li><a href={% url 'book_club:main' %}>
-                        <ion-icon name="people-outline"></ion-icon>소모임
+                        <ion-icon name="people-outline"></ion-icon>북클럽
                     </a></li>
                 {% if user.is_authenticated %}
                 <li><a href={% url 'mail:main' %}>
-                        <ion-icon name="mail-outline"></ion-icon>메일함
+                        <ion-icon name="mail-outline"></ion-icon>쪽지함
                     </a></li>
                 {% endif %}
                 {% if user.is_authenticated %}

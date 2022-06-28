@@ -9,61 +9,80 @@
 	<title>Report Detail</title>
 </head>
 
-<body>
-	{% block content %}
-	<div class="container">
-		<div class="book_detail_container">
-			<div class="book_info_container">
-				<div class="book_img">
-					<img src="{{book.book_img}}" class="book_cover">
-				</div>
-				<div class="book_info">
-					<div class="book_name">
-						<p class="book_name">
-						<div class="text">책 제목</div>
-						<div class="book_info_bar">
-							{{book.book_name}}
-						</div>
-						</p>
-					</div>
-
-					<div class="author">
-						<p class="author">
-						<div class="text">글쓴이</div>
-						<div class="book_info_bar">
-							{{book.book_author}}
-						</div>
-						</p>
-					</div>
-
-					<div class="category">
-						<p class="category">
-						<div class="text">카테고리</div>
-						<select name="book_category" id="book_category">
-							<option value="default" selected>{{book.category}}</option>
-							<option value="문학">문학</option>
-							<option value="경제/경영">경제/경영</option>
-							<option value="예술">예술</option>
-							<option value="자기계발">자기계발</option>
-							<option value="정치/사회">정치/사회</option>
-							<option value="과학">과학</option>
-							<option value="기술IT">기술/IT</option>
-						</select>
-						</p>
-					</div>
-
-				</div>
+{% block content %}
+<div class="container">
+	<div class="book_detail_container">
+		<div class="book_info_container">
+			<div class="book_img">
+				<img src="{{book.book_img}}" class="book_cover">
 			</div>
+			<div class="book_info">
+				<div class="book_name">
+					<p class="book_name">
+					<div class="text">책 제목</div>
+					<div class="book_info_bar">
+						{{book.book_name}}
+					</div>
+					</p>
+				</div>
 
-			<div class="CRUD_button">
-				<form action="{% url 'user:profilebook' book.id %}">
-					<input class="button" type="submit" value="프로필북 설정" onClick="">
-				</form>
-				<form action="#">
-					<input class="button" type="submit" value="삭제" onClick="">
-				</form>
+				<div class="author">
+					<p class="author">
+					<div class="text">글쓴이</div>
+					<div class="book_info_bar">
+						{{book.book_author}}
+					</div>
+					</p>
+				</div>
+
+				<div class="category">
+					<p class="category">
+					<div class="text">카테고리</div>
+					<select name="book_category" id="book_category">
+						<option value="default" selected>{{book.category}}</option>
+						<option value="문학">문학</option>
+						<option value="경제/경영">경제/경영</option>
+						<option value="예술">예술</option>
+						<option value="자기계발">자기계발</option>
+						<option value="정치/사회">정치/사회</option>
+						<option value="과학">과학</option>
+						<option value="기술IT">기술/IT</option>
+					</select>
+					</p>
+				</div>
+
 			</div>
 		</div>
 
-		{% endblock content %}
-</body>
+		<div class="CRUD_button">
+			<form action="{% url 'user:profilebook' book.id %}">
+				<input class="button" type="submit" value="프로필북 설정" onClick="">
+			</form>
+
+			<input class="button delete-book_btn" type="submit" value="삭제" onClick="">
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+        axios.defaults.xsrfCookieName = "csrftoken";
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+
+        const deleteButton = document.querySelector(".delete-book_btn");
+        const bookId = JSON.parse("{{ bookId|escapejs }}");
+
+        deleteButton.addEventListener("click", () => {
+           deleteBook(bookId)
+		});
+
+        const deleteBook = async (bookId) => {
+            const url = "/user/book"
+            await axios.delete(url, {
+                data: {
+                    bookId: bookId,
+                }
+            })
+            window.location.href = "/user/bunder";
+        }
+	</script>
+	{% endblock content %}
+</div>

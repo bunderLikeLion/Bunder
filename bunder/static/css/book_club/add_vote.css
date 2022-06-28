@@ -38,7 +38,6 @@ body {
 }
 
 .input_bar {
-    
     width: 7rem;
 }
 
@@ -78,8 +77,9 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 }
 
 .upper_setting, .input_bar {
+    margin-bottom: 0.5rem;
     clear : both;
-    padding : 0.5rem 1rem;
+    padding : 0.5rem 2rem;
     border-radius: 30px;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
@@ -153,3 +153,20 @@ input[type="date"]:valid:before{
     background: transparent;
   }
 
+  .single_vote_item {
+    /* margin: 1rem; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.vote_item_input {
+    width: 90%;
+}
+
+.vote_item_delete {
+    height: 2rem;
+    width: 2rem;
+    background-color: transparent;
+    border: 0;
+    font-size: x-large;
+}

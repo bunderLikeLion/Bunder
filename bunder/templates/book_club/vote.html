@@ -29,8 +29,8 @@
 			
 			<div class="input_bar id="vote-list>
 				{% for vote in voteList %}
-				<div style="display:flex;align-items:center">
-					<label for="vote{{ forloop.counter }}" class="vote_item_info">{{ vote.description }}</label><br>
+				<div class="single_vote_item">
+					<label for="vote{{ forloop.counter }}" class="vote_item_info">{{ vote.description }}</label>
 					<input type="radio" name="vote" id="vote{{ forloop.counter }}" class="vote_item_info" value="{{ vote.id }}">
 				</div>
 				{% endfor %}

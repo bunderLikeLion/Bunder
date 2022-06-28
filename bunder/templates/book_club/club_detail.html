@@ -22,7 +22,7 @@ Club Detail
                 <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
             </div>
             <div class="chat_link">
-                <a href="#" class="link">Boom</a>
+                <a href="../bookclub/room/{{ book_club.id }}" class="link">Boom</a>
             </div>
         </div>
         {% elif is_member %}
@@ -34,6 +34,9 @@ Club Detail
             <div class="zoom_link">
                 <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
             </div>
+			<div class="chat_link">
+				<a href="../bookclub/room/{{ book_club.id }}" class="link">Boom</a>
+			</div>
         </div>
         {% else %}
         <button class="button" id="request_btn">소모임 참여 요청</button>

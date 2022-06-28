@@ -11,15 +11,15 @@ Add Vote
 <body>
     {% block content %}
     <div class="container">
-        <button class="button" type="button">
+        <!-- <button class="button" type="button">
             투표 만들기
-        </button>
+        </button> -->
 
 
 
         <form method="post">
             {% csrf_token %}
-            <button class="button">제출</button>
+            <button class="button">투표 생성</button>
             <div class="upper_setting">
                 <div class="inputBox">
                     <div class="text"><span>투표 주제</span></div>
@@ -35,6 +35,18 @@ Add Vote
 
             {# TODO: JS로 동적 생성가능하게 만들어야 함 #}
             <div class="input_bar" id="vote-list">
+                <div class="text"><span>투표 항목</span></div>
+                <div class="all_vote_container">
+                    <div class="single_vote_item" id="">
+                        <input type="text" class="vote_item_input input_bar">
+                        <button class="vote_item_delete">❌</button>
+                    </div>
+                    <div class="single_vote_item" id="">
+                        <input type="text" class="vote_item_input input_bar">
+                        <button class="vote_item_delete">❌</button>
+                    </div>
+                </div>
+               
             </div>
 
 

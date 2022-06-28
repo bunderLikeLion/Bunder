@@ -56,7 +56,7 @@ body {
     color: #f7f7f7;
 }
 
-img {
+.profile_img {
     border-radius: 10px;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     padding: 1rem;

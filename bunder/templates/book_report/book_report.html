@@ -33,7 +33,7 @@
                     <div class="info-area" id="test">
                         {% for img in populate_reports%}
                         <label class="song-info" id="song-info-1">
-                            <div class="title">작성자: {{ img.id }} / 글제목: {{ img.report_name }}</div>
+                            <div class="title">작성자: {{ img.user.nickname }} / 글제목: {{ img.report_name }}</div>
                         </label>
                         {% endfor %}
                     </div>

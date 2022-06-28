@@ -11,11 +11,25 @@
 <div class="container">
   <h2>Invite My Club</h2>
   <form method="post">
-    <div class="img_container">
-      <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+    <div class="info">
+      <div class="img_container">
+        <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+      </div>
+      <div class="box">
+        <div class="inputBox">
+          <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
+          <span class="first">User Nickname</span>
+        </div>
+      </div>
+      <button class="search" type="submit" value="nickname">검색</button>
     </div>
-    <div class="club_description">
-      <p>소모임 소개 : {{ book_club.description }}</p>
+    <div class="alarm">
+      <div class="green">
+        <h1>성공적으로 검색했습니다!</h1>
+      </div>
+      <div class="red">
+        <h1>존재하지 않는 유저입니다!</h1>
+      </div>
     </div>
     {% csrf_token %}
     <h3 class="body">소모임 선택</h3>
@@ -34,24 +48,8 @@
       </label>
       {% endfor %}
     </section>
-    <h3 class="decorator decorator_indent-b_l">번더의 인물 추천</h3>
-    <div class="book_club_container">
-      <div class="all_profile_container">
-        <div class="member_box">
-          <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-          <span>추천 닉네임<span>
-        </div>
-        <div class="member_box">
-          <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-          <span>추천 닉네임<span>
-        </div>
-        <div class="member_box">
-          <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-          <span>추천 닉네임<span>
-        </div>
-      </div>
-    </div>
-    <button class=" login" type="submit" value="Sign up">소모임 초대</button>
+
+    <button class="login" type="submit" value="Sign up">소모임 초대</button>
   </form>
 </div>
 

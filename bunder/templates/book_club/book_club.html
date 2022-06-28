@@ -48,30 +48,30 @@
         <h3>북클럽 초대 요청</h3>
         <div class="invite_request">
             <div>
-				{% if invited_club %}
-				{% for club in invited_club %}
+                {% if invited_club %}
+                {% for club in invited_club %}
                 <div class="single_request">
                     <div class="club_info">
                         소모임명: {{ club.club_name }}
-						<a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
+                        <a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
                     </div>
-                    
+
                     <div class="button_container">
-						<button class="request_btn">수락</button>
-						<button class="request_btn">거절</button>
-						<input type="hidden" value="{{ club.id }}"/>
-					</div>
+                        <button class="request_btn">수락</button>
+                        <button class="request_btn">거절</button>
+                        <input type="hidden" value="{{ club.id }}" />
+                    </div>
                 </div>
-				{% endfor %}
-				{% else %}
-					<div>초대가 없습니다.</div>
-				{% endif %}
+                {% endfor %}
+                {% else %}
+                <div>초대가 없습니다.</div>
+                {% endif %}
             </div>
         </div>
-        
+
     </div>
 
-    
+
 
 
     <div class="profile_club">
@@ -246,7 +246,24 @@
         {% endfor %}
     </div>
     {% if user.is_authenticated %}
-    <div class="margin">
+    <h2 class="decorator decorator_indent-b_l">번더의 인물 추천</h2>
+    <div class="user_container">
+        <div class="all_profile_container">
+            <div class="member_box">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <span>추천 닉네임<span>
+            </div>
+            <div class="member_box">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <span>추천 닉네임<span>
+            </div>
+            <div class="member_box">
+                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                <span>추천 닉네임<span>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="margin">
         <div class="bunder_reco">
             <div class="profile_club">
                 <h3>번더의 인물 추천</h3>
@@ -268,13 +285,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     {% else %}
     <div class="margin">
         <div class="bunder_reco">
-            <div class="profile_club">
-                <h3>번더의 인물 추천</h3>
-            </div>
+            <h3 class="decorator decorator_indent-b_l">번더의 인물 추천</h3>
             <div class="book_club_container">
                 <a href={% url 'user:loginpage' %} style="text-decoration: none;color:red ">
                     <h1 class="login">로그인이 필요한 서비스입니다</h1>
@@ -301,22 +316,22 @@
 
     const requestButton = document.querySelectorAll(".request_btn")
 
-	requestButton.forEach((btn) => {
+    requestButton.forEach((btn) => {
         btn.addEventListener("click", (event) => {
             const clubId = event.target.parentNode.lastElementChild.value;
             if (event.target.innerText == "수락") {
                 inviteRequest(clubId, "MEMBER");
-			} else {
+            } else {
                 inviteRequest(clubId, "REJECT");
-			}
-		})
-	})
+            }
+        })
+    })
 
-	const inviteRequest = async (clubId, type) => {
+    const inviteRequest = async (clubId, type) => {
         const url = "accept";
         const response = await axios.patch(url, { clubId, type })
         window.location.reload();
-	}
+    }
 
 
 </script>

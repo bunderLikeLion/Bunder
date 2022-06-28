@@ -383,6 +383,7 @@ def response_accept(request):
 
 
 class Invite(View):
+    #TODO
     def get(self, request):
         club_list = BookClub.objects.filter(owner=request.user)
 

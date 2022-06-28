@@ -314,3 +314,14 @@ def getBookClub(user):
     club_list = [memberclub.club for memberclub in book_club_member]
 
     return club_list
+
+def user_search(request):
+    if request.method == "GET":
+        nickname = request.GET.get("nickname")
+        try:
+            user = User.objects.get(nickname=nickname)
+            response = {"userId": user.id, "nickname": user.nickname, "message": "성공적으로 검색했습니다!"}
+
+            return JsonResponse(response, json_dumps_params={'ensure_ascii': False}, status=200)
+        except User.DoesNotExist:
+            return JsonResponse({"message": "존재 하지 않는 유저 입니다."}, )

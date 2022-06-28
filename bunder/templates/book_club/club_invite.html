@@ -17,11 +17,11 @@
       </div>
       <div class="box">
         <div class="inputBox">
-          <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
+          <input type="text" required="required" name='clubname' class="nickname_input" value=" {{ book_club.club_name }}">
           <span class="first">User Nickname</span>
         </div>
       </div>
-      <button class="search" type="submit" value="nickname">검색</button>
+      <button type="button" class="search" type="submit" value="nickname">검색</button>
     </div>
     <div class="alarm">
       <div class="green">
@@ -52,6 +52,25 @@
     <button class="login" type="submit" value="Sign up">소모임 초대</button>
   </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	const searchButton = document.querySelector('.search');
+    const nickNameInput = document.querySelector('.nickname_input');
 
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+
+    const searchUser = async (nickname) => {
+        const url = "/user/search?nickname=" + nickname;
+        const response = await axios.get(url);
+        console.log(response.data)
+        return response;
+	}
+
+    searchButton.addEventListener('click', () => {
+        searchUser(nickNameInput.value)
+	})
+
+</script>
 
 {% endblock content %}

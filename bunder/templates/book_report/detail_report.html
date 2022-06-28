@@ -94,7 +94,7 @@
 					<span class="submit_num" id="like_count">{{book_report.like.count}}</span>
 				</button>
 			</div>
-			{% if boolean == True %}
+			{% if boolean == 'False' %}
 			<div class="scrap_button">
 				<button class="button" id="scrap">스크랩</button>
 				<!-- <span class="scrap">15</span>   css 정렬 땜에 잠시 주석처리 -->
@@ -214,14 +214,17 @@
 
 		const scrapReport = async (id) => {
 			const url = "scrap";
+            console.log(is_scrap);
 
-            if (is_scrap == 'True') {
-                await axios.delete(url, {
+            if (is_scrap == "True") {
+                const response = await axios.delete(url, {
                     data: {bookClubId: id} })
                 is_scrap = 'False';
+                requestButton.innerText = "스크랩";
 			} else {
-				await axios.post(url, { id });
-                is_scrap = 'True';
+                const response = await axios.post(url, { id });
+                is_scrap = "True";
+                requestButton.innerText = "스크랩 취소";
 			}
 
 		}

@@ -237,5 +237,6 @@ margin-right: 1rem;
   margin: 0.2rem auto;
   border-radius: 25px;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+  cursor: pointer;
 }
 

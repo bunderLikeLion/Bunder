@@ -338,10 +338,13 @@ def response_accept(request):
 
 class Invite(View):
     def get(self, request):
-        return render(request, "book_club/club_invite.html")
+        club_list = BookClub.objects.filter(owner=request.user)
+
+        return render(request, "book_club/club_invite.html", {"club_list": club_list})
 
     def post(self, request):
-        pass
+        value = request.POST["club"]
+        return render(request, "book_club/club_invite.html")
 
 
 @csrf_exempt

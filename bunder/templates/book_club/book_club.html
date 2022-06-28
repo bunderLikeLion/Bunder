@@ -306,10 +306,18 @@
 
         const urlPrefix = "/bookclub/"
 
-        currentPage.innerText =
-            flag == 'prev'
-                ? Number(currentPage.innerText) - 1
-                : Number(currentPage.innerText) + 1
+        const curr = currentPage.innerText;
+
+		currentPage.innerText =
+			flag == 'prev'
+				? Number(currentPage.innerText) - 1
+				: Number(currentPage.innerText) + 1
+		if (Number(currentPage.innerText) == 0) {
+            currentPage.innerText = 1;
+		} else if (Number(currentPage.innerText) >= totalCnt + 1) {
+            currentPage.innerText = 3;
+		}
+
 
         while (clubContainer.hasChildNodes()) {
             clubContainer.removeChild(clubContainer.firstChild);

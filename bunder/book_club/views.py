@@ -12,7 +12,7 @@ from user.models import User
 import json
 import os
 from django.db import connection
-from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
+from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book, VoteCheck
 
 import random
 import time
@@ -131,6 +131,7 @@ def book_club_detail(request, bookclub_id):
 
     is_member = True if request.user in user_list else False
 
+
     try:
         book = Book.objects.filter(club_id=bookclub_id, active=True).first()
         book_id_json = None
@@ -142,6 +143,7 @@ def book_club_detail(request, bookclub_id):
         is_full_json = json.dumps(is_full)
 
         end_vote, vote, vote_id_json, end_vote_list, onset_list = None, None, None, None, None
+        check = False
 
         if BookClubVote.objects.filter(club=book_club, active=True).exists():
             vote = BookClubVote.objects.get(club=book_club, active=True)
@@ -153,6 +155,13 @@ def book_club_detail(request, bookclub_id):
                 vote = None
             else:
                 vote_id_json = json.dumps(vote.id)
+
+            try:
+                vote_check = VoteCheck.objects.get(vote=vote, user=request.user)
+                check = vote_check.checked
+            except:
+                pass
+
 
         if BookClubVote.objects.filter(club=book_club, active=False).exists():
             end_vote = BookClubVote.objects.filter(club=book_club, active=False).order_by('-created_at')[0]
@@ -177,7 +186,8 @@ def book_club_detail(request, bookclub_id):
                        'is_full_json': is_full_json,
                        'end_vote': end_vote,
                        'end_vote_list': end_vote_list,
-                       'onset_list': onset_list})
+                       'onset_list': onset_list,
+                       'check': check})
 
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
@@ -504,6 +514,12 @@ class Vote(View):
         vote_detail.save()
 
         vote = BookClubVote.objects.get(id=vote_detail.vote_id)
+
+        check = VoteCheck()
+        check.user = request.user
+        check.vote = vote
+        check.checked = True
+        check.save()
 
         return redirect("/bookclub/" + str(vote.club.id))
 

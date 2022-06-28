@@ -11,97 +11,83 @@ My Bunder
 
 {% block content %}
 <div class="container">
-    <div class="profile_container">
-        <div class="img_container">
-            <img class="profile_img"
-                src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
-        </div>
-        <div class="name_container">
-            <h3 class="name">이름 : {{user_info.nickname}}</h3>
-            <h3 class="book_category">선호하는 책 장르 : {{ user_info.categories }}</h3>
-        </div>
-    </div>
-    <div class="profile_book_container">
-        <h3>프로필 북</h3>
-    </div>
-    <div class="profile_book_cover">
-        <a href="../user/bookdetail/{{ mainbook.book.id }}">
-        <img class="book_cover" src={{mainbook.book.book_img}}>
-        </a>
-    </div>
-    <div class="profile_club">
-        <h3>참여중인 소모임</h3>
-    </div>
-    <div class="container_body">
-        <div class="pagination_container">
-            <ul class="pagination">
-                <li><a class="previous previous_btn">Previous</a></li>
-                <li><a><span class="current_span">1</span>/{{ total_cnt }}</a></li>
-                <li><a class="next next_btn">Next</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="book_club_container my_book_club_container">
-        {% for club in book_club %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-            <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="profile_bookshelf">
-        <h3>{{ user_info.nickname }}님의 책장</h3>
-    </div>
-    <div class="container_body_add">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href="{% url 'user:book' %}" class="add_bookshelf">Add</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="bookshelf_container">
-        {% for b in book %}
-        <div class="my_books">
-            <a href="{% url 'user:bookdetail' b.id %}">
-                <button type="button" class="btn_image"><img class="bookshlef_cover" src={{ b.book_img }}></button>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="profile_reports">
-        <h3>{{ user_info.nickname }}님이 쓴 글</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href="report?id={{ user_info.id }}" class="all_my_reports">전체보기</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="reports_container">
-        <div class="report_name_container">
-            <div class="report_name">
-                <h3>독후감</h3>
+
+    <div class="box">
+        <div class="profile_container">
+            <div class="img_container">
+                <img class="profile_img"
+                    src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
+            </div>
+            <div class="name_container">
+                <h3 class="name">이름 : {{user_info.nickname}}</h3>
+                <h3 class="book_category">선호하는 책 장르 : {{ user_info.categories }}</h3>
             </div>
         </div>
-        {% for report in my_recent_reports%}
-        <div class="report_container">
-            <div class="inner_report_container">
-                <a href={% url 'book_report:detail' report.id %} class="reports_name">{{ report.report_name }}</a>
+        <div class="profile_book_container">
+            <h3>프로필 북</h3>
+        </div>
+        <div class="profile_book_cover">
+            <a href="../user/bookdetail/{{ mainbook.book.id }}">
+            <img class="book_cover" src={{mainbook.book.book_img}}>
+            </a>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>참여중인 소모임</h3>
+        </div>
+        <div class="container_body">
+            <div class="pagination_container">
+                <ul class="pagination">
+                    <li><a class="previous previous_btn">Previous</a></li>
+                    <li><a><span class="current_span">1</span>/{{ total_cnt }}</a></li>
+                    <li><a class="next next_btn">Next</a></li>
+                </ul>
             </div>
         </div>
-        {% endfor %}
+        <div class="book_club_container my_book_club_container">
+            {% for club in book_club %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    {% if user == user_info %}
-    <div class="margin">
+
+
+    <div class="box">
+        <div class="profile_bookshelf">
+            <h3>{{ user_info.nickname }}님의 책장</h3>
+        </div>
+        <div class="container_body_add">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href="{% url 'user:book' %}" class="add_bookshelf">Add</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bookshelf_container">
+            {% for b in book %}
+            <div class="my_books">
+                <a href="{% url 'user:bookdetail' b.id %}">
+                    <button type="button" class="btn_image"><img class="bookshlef_cover" src={{ b.book_img }}></button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="box">
         <div class="profile_reports">
-            <h3>{{ user_info.nickname }}님의 스크랩</h3>
+            <h3>{{ user_info.nickname }}님이 쓴 글</h3>
         </div>
         <div class="container_body_reports">
             <div class="pagination_container">
                 <ul class="pagination ">
-                    <li><a href={% url 'book_report:all_scrap' %} class="all_my_reports">전체보기</a></li>
+                    <li><a href="report?id={{ user_info.id }}" class="all_my_reports">전체보기</a></li>
                 </ul>
             </div>
         </div>
@@ -111,16 +97,48 @@ My Bunder
                     <h3>독후감</h3>
                 </div>
             </div>
-            {% for scrap in scrap%}
+            {% for report in my_recent_reports%}
             <div class="report_container">
                 <div class="inner_report_container">
-                    <a href={% url 'book_report:detail' scrap.book_report.id %}
-                        class="reports_name">{{scrap.book_report.report_name}}</a>
+                    <a href={% url 'book_report:detail' report.id %} class="reports_name">{{ report.report_name }}</a>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+
+
+    {% if user == user_info %}
+    <div class="box">
+        <div class="margin">
+            <div class="profile_reports">
+                <h3>{{ user_info.nickname }}님의 스크랩</h3>
+            </div>
+            <div class="container_body_reports">
+                <div class="pagination_container">
+                    <ul class="pagination ">
+                        <li><a href={% url 'book_report:all_scrap' %} class="all_my_reports">전체보기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reports_container">
+                <div class="report_name_container">
+                    <div class="report_name">
+                        <h3>독후감</h3>
+                    </div>
+                </div>
+                {% for scrap in scrap%}
+                <div class="report_container">
+                    <div class="inner_report_container">
+                        <a href={% url 'book_report:detail' scrap.book_report.id %}
+                            class="reports_name">{{scrap.book_report.report_name}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="bunder_reco">
         <div class="profile_club">
             <h3>번더의 추천 책</h3>
@@ -142,6 +160,10 @@ My Bunder
     </div>
     {% endif %}
 </div>
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     axios.defaults.xsrfCookieName = 'csrftoken';

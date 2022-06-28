@@ -78,6 +78,14 @@ class VoteDetail(models.Model):
     vote_cnt = models.IntegerField(default=0)
 
 
+class VoteCheck(models.Model):
+    class Meta:
+        db_table = "vote_check"
+    vote = models.ForeignKey(BookClubVote, on_delete=models.CASCADE, verbose_name="투표 ID")
+    user = models.ForeignKey('user.User', on_delete=models.CASCADE, verbose_name="유저 ID")
+    checked = models.BooleanField(default=False)
+
+
 class Book(models.Model):
     class Meta:
         db_table = "book"

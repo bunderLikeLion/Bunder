@@ -23,13 +23,13 @@
                     <input type="text" class= "input_bar" required="required" name='report_name' id='report_name' value={{book.report_name}}>
                 </div>
 
-                <div class="profile_container">
+                <!-- <div class="profile_container">
                     <div class="profile_img">
                         <img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                     </div>
     
                     <div class="name"><span class="nickname">{{book.user.nickname}}</span></div>
-                </div>
+                </div> -->
                 
                 <div class="book_info_container">
                     <div class="book_img">
@@ -72,7 +72,7 @@
                     </textarea>
                 </div>
                 
-                <input type="file" name="image_upload" >
+                <input type="file" name="image_upload" class="image_upload" >
     
                 <div class="inputBox" id="edit_report_container">
                     {{eror}} <input type="submit" class="button" id="edit_report" value="독후감 수정">

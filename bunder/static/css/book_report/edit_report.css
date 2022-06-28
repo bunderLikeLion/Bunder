@@ -16,7 +16,7 @@ body {  /* 완전 전체 가운데정렬 */
     position: relative;
     width: 70rem;
     margin: 6rem;
-    padding: 2rem;
+    padding: 5rem 3rem;
     background-color: #33383D;
     /* background-color: blue; */
     border-radius: 30px;
@@ -51,8 +51,8 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 }
 
 .report_container > .inputBox {
-    width: 55rem;
-    margin-left: 10%;
+    /* width: 55rem; */
+    /* margin-left: 10%; */
 }
 
 
@@ -124,7 +124,15 @@ textarea {   /* 독후감 본문 입력란 */
     /* background-color: pink; */
     width: 90%;
     padding: 0.3rem 4rem;
-    
+}
+
+.report_title_text {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    margin-left: 1rem;
 }
 
 
@@ -154,11 +162,12 @@ textarea {   /* 독후감 본문 입력란 */
 }
 
 #edit_report{/* */
-    margin: 2rem 5rem;
-    padding: 0 2rem;
+    margin: 1rem 4rem;
+    /* padding: 0 2rem; */
     width: 10rem;
     display: flex;
     margin-left: auto;
+    justify-content: center;
 }
 
 .text {
@@ -181,7 +190,7 @@ textarea {   /* 독후감 본문 입력란 */
   }
 
   .book_info > * {
-    margin-top: 1rem;
+    margin: 1rem;
   }
 
   .book_info {
@@ -199,7 +208,7 @@ textarea {   /* 독후감 본문 입력란 */
 
   .book_info_container {
     width: 90%;
-    margin: 0 auto;
+    margin: 0.5rem auto;
     padding: 1rem;
     border-radius: 30px;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -207,7 +216,7 @@ textarea {   /* 독후감 본문 입력란 */
   }
 
   .book_info_bar {
-    width: 80%;
+    width: 100%;
     /* margin: 0px 20px; */
     padding : 0.7rem;
     border-radius: 4px;
@@ -232,4 +241,8 @@ textarea {   /* 독후감 본문 입력란 */
     transition: all 300ms;
     
     border: none;
+}
+
+.image_upload {
+    margin-left: 3rem;
 }

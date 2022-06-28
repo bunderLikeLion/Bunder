@@ -232,6 +232,10 @@ class UserBook(View):
 
         return redirect('user:bunder')
 
+    def delete(self, request):
+        book = get_object_or_404(Book, request.id)
+        book.delete()
+        return redirect('user:bunder')
 
 # 프로필 책 등록
 def profilebook(request, id):

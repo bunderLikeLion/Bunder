@@ -11,7 +11,7 @@
 
 <body>
     {% block content %}
-    <form action="{% url 'book_report:update' book.id %}"  method="post" enctype='multipart/form-data'>
+    <form action="{% url 'book_report:update' book.id %}" method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         <div class="container">
             <div class="report_container">
@@ -20,7 +20,8 @@
                         <div class="text"><span>독후감 제목</span></div>
                         <span class="date">{{book.created_at}} </span>
                     </div>
-                    <input type="text" class= "input_bar" required="required" name='report_name' id='report_name' value={{book.report_name}}>
+                    <input type="text" class="input_bar" required="required" name='report_name' id='report_name'
+                        value={{book.report_name}}>
                 </div>
 
                 <!-- <div class="profile_container">
@@ -30,7 +31,7 @@
     
                     <div class="name"><span class="nickname">{{book.user.nickname}}</span></div>
                 </div> -->
-                
+
                 <div class="book_info_container">
                     <div class="book_img">
                         <img src="{{book.book_img}}" class="book_cover">
@@ -39,10 +40,11 @@
                         <div class="book_name">
                             <p class="book_name">
                             <div class="text">책 제목</div>
-                            <input type="text" readonly class="book_info_bar"required="required" name='book_name' id='book_name' value={{book.book_name}}>
+                            <input type="text" readonly class="book_info_bar" required="required" name='book_name'
+                                id='book_name' value={{book.book_name}}>
                             </p>
                         </div>
-    
+
                         <div class="author">
                             <p class="author">
                             <div class="text">글쓴이</div>
@@ -51,7 +53,7 @@
                             </div>
                             </p>
                         </div>
-    
+
                         <div class="category">
                             <p class="category">
                             <div class="text">카테고리</div>
@@ -60,26 +62,24 @@
                             </div>
                             </p>
                         </div>
-    
+
                     </div>
                 </div>
 
                 <div class="report_content" id="content">
                     <!--https://codepen.io/magnificode/pen/rQpaBO-->
                     <div class="holes"></div>
-                    <textarea name="content" id="content" placeholder="독후감 본문">
-                        {{book.content}}
-                    </textarea>
+                    <textarea name="content" id="content" placeholder="독후감 본문">{{book.content}}</textarea>
                 </div>
-                
-                <input type="file" name="image_upload" class="image_upload" >
-    
+
+                <input type="file" name="image_upload" class="image_upload">
+
                 <div class="inputBox" id="edit_report_container">
                     {{eror}} <input type="submit" class="button" id="edit_report" value="독후감 수정">
                 </div>
-                
 
-                
+
+
             </div>
         </div>
     </form>

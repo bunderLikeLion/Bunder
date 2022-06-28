@@ -406,3 +406,15 @@ a {
   position: relative;
   left: 36rem;
 }
+
+		.active {
+			color: red;
+		}
+
+		.container_single_requester {
+			display: flex;
+		}
+
+		.request-done {
+			display: none;
+		}

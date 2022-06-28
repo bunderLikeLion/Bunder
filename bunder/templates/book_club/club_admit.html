@@ -10,30 +10,20 @@ Club Admit
 {% endblock title %}
 
 {% block content %}
-<head>
-	<style>
-		.active {
-			color: red;
-		}
-		.container_single_requester {
-			display: flex;
-		}
-		.request-done {
-			display: none;
-		}
-	</style>
-</head>
+
 
 <body>
 	<div class="container">
 		<div>
-			<div><h2>북클럽 참여 희망 명단</h2></div>
+			<div>
+				<h2>북클럽 참여 희망 명단</h2>
+			</div>
 			<div class="club_people_number">
 				북클럽 현재 인원
-				 <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
+				<span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
 			</div>
 		</div>
-		
+
 
 		<div class="container_all_requesters">
 			{% if not members %}
@@ -42,42 +32,48 @@ Club Admit
 			</div>
 			{% else %}
 			{% for member in members %}
-				<div class="container_single_requester">
-					<div class="requester_profile_container">
-						<div class="profile_img_container">
-							<img class="profile_img" src="{{ member.user.avatar }}">
-						</div>
-						<div class="profile_name_container">
-							{{ member.user.nickname }}
-						</div>
+			<div class="container_single_requester">
+				<div class="requester_profile_container">
+					<div class="profile_img_container">
+						<img class="profile_img" src="{{ member.user.avatar }}">
 					</div>
-
-					<div class="button_container">
-						<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'MEMBER')">수락</button>
-						<button class="request_btn" onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'REJECT')">거절</button>
+					<div class="profile_name_container">
+						{{ member.user.nickname }}
 					</div>
 				</div>
+
+				<div class="button_container">
+					<button class="request_btn"
+						onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'MEMBER')">수락</button>
+					<button class="request_btn"
+						onclick="changeMember(event, {{ member.id }}, {{ book_club.id }}, 'REJECT')">거절</button>
+				</div>
+			</div>
 			{% endfor %}
 			{% endif %}
-
+			<div class="edit_container">
+				<a href="">
+					<input type="button" class="button" id="edit_club_btn" value="돌아가기">
+				</a>
+			</div>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
 
-        axios.defaults.xsrfCookieName = 'csrftoken'
-        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
-        const requestButton = document.querySelector(".request_btn");
-        const memberSpan = document.querySelector(".member-cnt_span");
+		axios.defaults.xsrfCookieName = 'csrftoken'
+		axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+		const requestButton = document.querySelector(".request_btn");
+		const memberSpan = document.querySelector(".member-cnt_span");
 
-        const changeMember = async (event, memberId, clubId, type) => {
-            const url = "admit";
-            const container = event.target.parentElement.parentElement;
-            container.classList.add("request-done");
+		const changeMember = async (event, memberId, clubId, type) => {
+			const url = "admit";
+			const container = event.target.parentElement.parentElement;
+			container.classList.add("request-done");
 
-            const response = await axios.patch(url, { memberId, clubId, type })
-            const club = response.data.club;
-            memberSpan.innerText = club.memberCnt + "/" + club.maxCnt;
+			const response = await axios.patch(url, { memberId, clubId, type })
+			const club = response.data.club;
+			memberSpan.innerText = club.memberCnt + "/" + club.maxCnt;
 
 		}
 

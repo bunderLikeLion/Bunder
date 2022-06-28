@@ -102,3 +102,36 @@ body {
     justify-content: center;
     min-height: 300px;
 }
+
+.button {
+  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 600;
+  margin-top: 2rem;
+  height: 2.5rem;
+  padding: 0 3rem;
+  color: #813818;
+  background-color: #ed591a;
+  border: 0;
+  outline: 0;
+  border-radius: 320px;
+  float: right;
+}
+
+button:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+button:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.button:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.button:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}

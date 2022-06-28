@@ -285,11 +285,11 @@ Club Detail
                 window.location.href = "vote/lis" +
                     "t?clubId=" + clubid + "&voteId=" + voteId;
             }
-			if (voteListButton !== null) {
-				voteListButton.addEventListener('click', () => {
-					voteList(bookClubId, voteId)
-				})
-			}
+            if (voteListButton !== null) {
+                voteListButton.addEventListener('click', () => {
+                    voteList(bookClubId, voteId)
+                })
+            }
             const deleteVote = async (id) => {
                 const url = "vote?clubId=" + id;
                 await axios.delete(url, { id });

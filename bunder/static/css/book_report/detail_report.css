@@ -44,8 +44,9 @@ body {
   font-size: large;
   font-weight: 600;
   margin: 1rem;
+  margin-left: 2.5rem;
   height: 3.5rem;
-  padding : 0 3rem;
+  padding: 0 2rem;
   color: #813818;
   background-color: #ed591a;
   border: 0;
@@ -83,7 +84,7 @@ box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-weight: 600;
-  margin: 0 1rem;
+  margin: 0 1.5rem;
   height: 3.5rem;
   padding : 0 1rem;
   color: #813818;
@@ -147,6 +148,8 @@ button.delete {
   border-radius: 10px;
   background: transparent;
   margin-right: 1rem;
+  height: fit-content;
+  display: flex;
 }
 
 
@@ -189,7 +192,7 @@ button.delete {
 .book_info_bar {
   width: 80%;
   /* margin: 0px 20px; */
-  padding : 0.7rem;
+  padding: 0.7rem 2rem;
   border-radius: 4px;
   outline: none;
   font-size: 1rem;
@@ -244,32 +247,40 @@ button.delete {
   background-color: transparent;
 }
 
+.comment_navbar > * {
+  display: flex;
+  align-items: center;
+}
+
 .comment_navbar {
   display: flex;
   justify-content: center;
 }
 
-.comment_navbar, .comment_content_container {
+.comment_navbar{
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
   border-radius: 20px;
   padding: 1rem;
+  margin: 1rem;
 }
 
 .single_comment {
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
   border-radius: 20px;
-  padding: 1rem;
-  display: flex;
-}
-
-.comment_info {
-  width: 100%;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
 }
 
+.comment_info {
+  width: 100%;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+
 #time {
-  font-size: 1rem;
+  float: right;
+  font-size: small;
   line-height: 1rem;
   color: #c6c5c6;
 }
@@ -281,6 +292,7 @@ button.delete {
 textarea {   /* 독후감 본문 입력란 */
   padding : 1rem;
   width: 100%;
+  height: 5rem;
   border: none;
   resize: none;
   color: #f7f7f7;
@@ -317,4 +329,17 @@ textarea {   /* 독후감 본문 입력란 */
 .profile_img > .img {
   width: 5rem;
   height: 5rem;
+}
+
+.box {
+  display: flex;
+  width: 100%;
+}
+
+#comment_content {
+  word-break: break-all;
+}
+
+.comment_info_container{
+  width: 100%;
 }

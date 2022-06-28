@@ -102,7 +102,7 @@ Club Detail
                 <div class="vote_function">
                     <div class="club_detail_header">
                         <div class="text">투표</div>
-                        {% if is_member %}
+                        {% if is_member and not check %}
                         <button class="button vote_btn">투표 하러 가기</button>
                         {% endif %}
                     </div>
@@ -285,10 +285,11 @@ Club Detail
                 window.location.href = "vote/lis" +
                     "t?clubId=" + clubid + "&voteId=" + voteId;
             }
-
-            voteListButton.addEventListener('click', () => {
-                voteList(bookClubId, voteId)
-            })
+			if (voteListButton !== null) {
+				voteListButton.addEventListener('click', () => {
+					voteList(bookClubId, voteId)
+				})
+			}
             const deleteVote = async (id) => {
                 const url = "vote?clubId=" + id;
                 await axios.delete(url, { id });

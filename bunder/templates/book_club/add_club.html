@@ -1,71 +1,84 @@
 {% extends "base/base.html" %}
 {% load static %}
-
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/book_club/add_club.css' %}" />
 {% endblock extrahead %}
-
-{% block title %}
-Add Club
+{% block title %} Add Club
 {% endblock title %}
-
 {% block content %}
 <div class="container">
-    <h2>Add Club</h2>
-    <form method="post">
-        <div class="box_container">
-            <div class="inputBox">
-                <input type="text" required="required" name='clubname' id='clubname'>
-                <span class="first">소모임 명</span>
-            </div>
-            <div class="inputBox">
-                <input type="text" required="required" name='link' id='link'>
-                <span class="second">소모임 Zoom Link</span>
-            </div>
-            <div class="inputBox">
-                <input type="number" required="required" name='number_of_member' id='number_of_member' min="2" max="30">
-                <span class="third">소모임 최대 인원</span>
-            </div>
-        </div>
-        <div class="report_content" id="content">
-            <textarea name="content" id="content" placeholder="소모임 소개"></textarea>
-        </div>
-        <h3 class="body">소모임 이미지 선택</h3>
-        <div class="container_body">
-            <div class="pagination_container">
-                <ul class="pagination">
-                    <li><button type="button" class="previous previous_btn">Previous</button></li>
-                    <li><a href="#none">
-						<span class="current_span">1</span>/<span>3</span>
-					</a>
-					</li>
-                    <li><button type="button" href="#" class="next next_btn">Next</button></li>
-                </ul>
-            </div>
-        </div>
-        <section class="category_container">
-            <label class="category">
-                <input type="radio" value="1" name="club_img" checked class="radio__input cover_input">
-                <div class="category__box"></div>
-                <span class="category__text"><img class="cover_image" src="../../static/img/club_img_1.jpg"></span>
-            </label>
-            <label class="category">
-                <input type="radio" value="2" name="club_img" class="radio__input cover_input">
-                <div class="category__box"></div>
-                <span class="category__text"><img class="cover_image" src="../../static/img/club_img_2.jpg"></span>
-            </label>
-            <label class="category">
-                <input type="radio" value="3" name="club_img" class="radio__input cover_input">
-                <div class="category__box"></div>
-                <span class="category__text"><img class="cover_image" src="../../static/img/club_img_3.jpg"></span>
-            </label>
-            <label class="category">
-                <input checked type="radio" value="4" name="club_img" class="radio__input cover_input">
-                <div class="category__box"></div>
-                <span class="category__text"><img class="cover_image" src="../../static/img/club_img_4.jpg"></span>
-            </label>
-        </section>
-        <!-- <div class="book_club_container">
+  <h2>Add Club</h2>
+  <form method="post">
+    <div class="box_container">
+      <div class="inputBox">
+        <input type="text" required="required" name="clubname" id="clubname" />
+        <span class="first">소모임 명</span>
+      </div>
+      <div class="inputBox">
+        <input type="text" required="required" name="link" id="link" />
+        <span class="second">소모임 Zoom Link</span>
+      </div>
+      <div class="inputBox">
+        <input type="number" required="required" name="number_of_member" id="number_of_member" min="2" max="30" />
+        <span class="third">소모임 최대 인원</span>
+      </div>
+    </div>
+    <div class="report_content" id="content">
+      <textarea name="content" id="content" placeholder="소모임 소개"></textarea>
+    </div>
+    <h3 class="body">소모임 이미지 선택</h3>
+    <div class="container_body">
+      <div class="pagination_container">
+        <ul class="pagination">
+          <li>
+            <button type="button" class="previous previous_btn">
+              Previous
+            </button>
+          </li>
+          <li>
+            <a href="#none">
+              <span class="current_span">1</span>
+              /
+              <span>3</span>
+            </a>
+          </li>
+          <li>
+            <button type="button" href="#" class="next next_btn">Next</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <section class="category_container">
+      <label class="category">
+        <input type="radio" value="1" name="club_img" checked class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_1.jpg" />
+        </span>
+      </label>
+      <label class="category">
+        <input type="radio" value="2" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_2.jpg" />
+        </span>
+      </label>
+      <label class="category">
+        <input type="radio" value="3" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_3.jpg" />
+        </span>
+      </label>
+      <label class="category">
+        <input checked type="radio" value="4" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_4.jpg" />
+        </span>
+      </label>
+    </section>
+    <!-- <div class="book_club_container">
             <label>
                 <div class="my_book_club">
                     <input type="radio" name="club_img" value="1" checked>
@@ -85,94 +98,94 @@ Add Club
                 </div>
             </label>
         </div> -->
-        <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
-        <section class="genre_container">
-            <label class="genre">
-                <input checked type="radio" value="문학" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">문학</span>
-            </label>
-            <label class="genre">
-                <input type="radio" value="예술" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">예술</span>
-            </label>
-            <label class="genre">
-                <input checked type="radio" value="자기계발" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">자기계발</span>
-            </label>
-            <label class="genre">
-                <input checked type="radio" value="정치/사회" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">정치/사회</span>
-            </label>
-            <label class="genre">
-                <input checked type="radio" value="과학" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">과학</span>
-            </label>
-            <label class="genre">
-                <input checked type="radio" value="기술/IT" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">기술/IT</span>
-            </label>
-            <label class="genre">
-                <input checked type="radio" value="인문" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">인문</span>
-            </label>
-            <label class="genre">
-                <input checked type="radio" value="자율" name="book_category" class="radio__input">
-                <div class="radio__box"></div>
-                <span class="radio__text">자율</span>
-            </label>
-        </section>
-        {{error}}
-        <button class="login" type="submit" value="Sign up">소모임 발행</button>
-    </form>
+    <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
+    <section class="genre_container">
+      <label class="genre">
+        <input checked type="radio" value="문학" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">문학</span>
+      </label>
+      <label class="genre">
+        <input type="radio" value="예술" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">예술</span>
+      </label>
+      <label class="genre">
+        <input checked type="radio" value="자기계발" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">자기계발</span>
+      </label>
+      <label class="genre">
+        <input checked type="radio" value="정치/사회" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">정치/사회</span>
+      </label>
+      <label class="genre">
+        <input checked type="radio" value="과학" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">과학</span>
+      </label>
+      <label class="genre">
+        <input checked type="radio" value="기술/IT" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">기술/IT</span>
+      </label>
+      <label class="genre">
+        <input checked type="radio" value="인문" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">인문</span>
+      </label>
+      <label class="genre">
+        <input checked type="radio" value="자율" name="book_category" class="radio__input" />
+        <div class="radio__box"></div>
+        <span class="radio__text">자율</span>
+      </label>
+    </section>
+    {{error}}
+    <button class="login" type="submit" value="Sign up">소모임 발행</button>
+  </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    const previousButton = document.querySelector(".previous_btn");
-    const nextButton = document.querySelector(".next_btn");
-    const currentPage = document.querySelector(".current_span");
+  const previousButton = document.querySelector('.previous_btn')
+  const nextButton = document.querySelector('.next_btn')
+  const currentPage = document.querySelector('.current_span')
 
-    const images = document.querySelectorAll(".cover_image");
-    const values = document.querySelectorAll(".cover_input");
+  const images = document.querySelectorAll('.cover_image')
+  const values = document.querySelectorAll('.cover_input')
 
-    previousButton.addEventListener("click", () => {
-        const pageNum = Number(currentPage.innerText);
-        if (pageNum > 1) {
-        	requestImage(pageNum - 1, "prev");
-		}
-	})
-
-    nextButton.addEventListener("click", () => {
-        const pageNum = Number(currentPage.innerText);
-        if (pageNum < 3) {
-            requestImage(pageNum + 1, "next");
-        }
-	})
-
-    const requestImage = async (page, flag) => {
-        const url = "/bookclub/cover?page=" + page;
-        const response = await axios.get(url)
-		console.log(response.data)
-		const responseImg = response.data.image;
-		const nums = response.data.nums;
-
-        currentPage.innerText = flag == "prev" ? Number(currentPage.innerText) - 1 :  Number(currentPage.innerText) + 1
-        for (let i = 0; i < 4; i++) {
-            images[i].src = responseImg[i];
-            values[i].value = nums[i];
-		}
+  previousButton.addEventListener('click', () => {
+    const pageNum = Number(currentPage.innerText)
+    if (pageNum > 1) {
+      requestImage(pageNum - 1, 'prev')
     }
+  })
 
+  nextButton.addEventListener('click', () => {
+    const pageNum = Number(currentPage.innerText)
+    if (pageNum < 3) {
+      requestImage(pageNum + 1, 'next')
+    }
+  })
 
+  const requestImage = async (page, flag) => {
+    const url = '/bookclub/cover?page=' + page
+    const response = await axios.get(url)
+    console.log(response.data)
+    const responseImg = response.data.image
+    const nums = response.data.nums
+
+    currentPage.innerText =
+      flag == 'prev'
+        ? Number(currentPage.innerText) - 1
+        : Number(currentPage.innerText) + 1
+    for (let i = 0; i < 4; i++) {
+      images[i].src = responseImg[i]
+      values[i].value = nums[i]
+    }
+  }
 </script>
 {% endblock content %}
-
 
 <!-- <h2>Add My Club!</h2>
     <form method="post">

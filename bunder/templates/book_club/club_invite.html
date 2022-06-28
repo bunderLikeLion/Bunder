@@ -1,0 +1,117 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/add_club.css' %}" />
+{% endblock extrahead %}
+{% block title %} Add Club {% endblock title %}
+{% block content %}
+<div class="container">
+  <h2>Invite My Club</h2>
+  <form method="post">
+    <h3 class="body">소모임 선택</h3>
+    <section class="category_container">
+      <label class="category">
+        <input type="radio" value="1" name="club_img" checked class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_1.jpg" />
+        </span>
+        <div class="my_book_club_info">
+          <div>소모임명 : 가나다테스트</div>
+          <div>인원 : 1/5</div>
+        </div>
+      </label>
+      <label class="category">
+        <input type="radio" value="2" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_2.jpg" />
+        </span>
+        <div class="my_book_club_info">
+          <div>소모임명 : 가나다테스트</div>
+          <div>인원 : 1/5</div>
+        </div>
+      </label>
+      <label class="category">
+        <input type="radio" value="3" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_3.jpg" />
+        </span>
+        <div class="my_book_club_info">
+          <div>소모임명 : 가나다테스트</div>
+          <div>인원 : 1/5</div>
+        </div>
+      </label>
+      <label class="category">
+        <input checked type="radio" value="4" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_4.jpg" />
+        </span>
+        <div class="my_book_club_info">
+          <div>소모임명 : 가나다테스트</div>
+          <div>인원 : 1/5</div>
+        </div>
+      </label>
+      <label class="category">
+        <input checked type="radio" value="4" name="club_img" class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_4.jpg" />
+        </span>
+        <div class="my_book_club_info">
+          <div>소모임명 : 가나다테스트</div>
+          <div>인원 : 1/5</div>
+        </div>
+      </label>
+    </section>
+    <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
+    <button class="login" type="submit" value="Sign up">소모임 초대</button>
+  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const previousButton = document.querySelector('.previous_btn')
+  const nextButton = document.querySelector('.next_btn')
+  const currentPage = document.querySelector('.current_span')
+
+  const images = document.querySelectorAll('.cover_image')
+  const values = document.querySelectorAll('.cover_input')
+
+  previousButton.addEventListener('click', () => {
+    const pageNum = Number(currentPage.innerText)
+    if (pageNum > 1) {
+      requestImage(pageNum - 1, 'prev')
+    }
+  })
+
+  nextButton.addEventListener('click', () => {
+    const pageNum = Number(currentPage.innerText)
+    if (pageNum < 3) {
+      requestImage(pageNum + 1, 'next')
+    }
+  })
+
+  const requestImage = async (page, flag) => {
+    const url = '/bookclub/cover?page=' + page
+    const response = await axios.get(url)
+    console.log(response.data)
+    const responseImg = response.data.image
+    const nums = response.data.nums
+
+    currentPage.innerText =
+      flag == 'prev'
+        ? Number(currentPage.innerText) - 1
+        : Number(currentPage.innerText) + 1
+    for (let i = 0; i < 4; i++) {
+      images[i].src = responseImg[i]
+      values[i].value = nums[i]
+    }
+  }
+</script>
+
+
+{% endblock content %}

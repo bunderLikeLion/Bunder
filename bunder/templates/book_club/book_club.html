@@ -7,42 +7,47 @@
 
 {% block content %}
 <div class="container">
-    <div class="profile_club">
-        <h3>나의 소모임</h3>
-    </div>
-    {% if user.is_authenticated %}
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='new/' class="all_my_reports">Add Club!</a></li>
-            </ul>
+    <div class="box">
+        <div class="profile_club">
+            <h3>나의 소모임</h3>
         </div>
-    </div>
-    <div class="book_club_container">
-        {% for club in my_club%}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+        {% if user.is_authenticated %}
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='new/' class="all_my_reports">Add Club!</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book_club_container">
+            {% for club in my_club%}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="container_body_add">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href="#" class="previous">Previous</a></li>
+                    <li><a href="#none">1/5</a></li>
+                    <li><a href="#" class="next">Next</a></li>
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <div class="book_club_container" style="margin-top: 2rem;">
+            <a href={% url 'user:loginpage' %} style="text-decoration: none;color:red ">
+                <h1 class="login">로그인이 필요한 서비스입니다</h1>
             </a>
         </div>
-        {% endfor %}
+        {% endif %}
+    
     </div>
-    <div class="container_body_add">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href="#" class="previous">Previous</a></li>
-                <li><a href="#none">1/5</a></li>
-                <li><a href="#" class="next">Next</a></li>
-            </ul>
-        </div>
-    </div>
-    {% else %}
-    <div class="book_club_container" style="margin-top: 2rem;">
-        <a href={% url 'user:loginpage' %} style="text-decoration: none;color:red ">
-            <h1 class="login">로그인이 필요한 서비스입니다</h1>
-        </a>
-    </div>
-    {% endif %}
+    
+    <hr>
 
     <div class="invite_request_container" style="height:10rem;">
         <h3>북클럽 초대 요청</h3>
@@ -71,180 +76,213 @@
 
     </div>
 
+    <div class="box">
+        <div class="profile_club">
+            <h3>인기 북클럽</h3>
+        </div>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=문학&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book_club_container">
+            {% for club in book_club.popular %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
+    <div class="box">
+        <div class="profile_club">
+            <h3>문학 북클럽</h3>
+        </div>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=문학&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book_club_container">
+            {% for club in book_club.literature %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
 
-    <div class="profile_club">
-        <h3>인기 북클럽</h3>
     </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=문학&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>예술 북클럽</h3>
+        </div>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=예술&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book_club_container">
+            {% for club in book_club.art %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="book_club_container">
-        {% for club in book_club.popular %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>자기계발 북클럽</h3>
         </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>문학 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=문학&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=자기계발&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="book_club_container">
-        {% for club in book_club.literature %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>예술 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=예술&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="book_club_container">
+            {% for club in book_club.self_development %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="book_club_container">
-        {% for club in book_club.art %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
+
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>정치/사회 북클럽</h3>
         </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>자기계발 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=자기계발&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=정치/사회&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="book_club_container">
-        {% for club in book_club.self_development %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>정치/사회 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=정치/사회&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="book_club_container">
+            {% for club in book_club.political_society %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="book_club_container">
-        {% for club in book_club.political_society %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
+
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>과학 북클럽</h3>
         </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>과학 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=과학&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=과학&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="book_club_container">
-        {% for club in book_club.science %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>기술/IT 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=기술/IT&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="book_club_container">
+            {% for club in book_club.science %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="book_club_container">
-        {% for club in book_club.it %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
+
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>기술/IT 북클럽</h3>
         </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>인문 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=인문&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=기술/IT&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="book_club_container">
-        {% for club in book_club.humanities %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="profile_club">
-        <h3>자율 북클럽</h3>
-    </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=자율&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
+        <div class="book_club_container">
+            {% for club in book_club.it %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="book_club_container">
-        {% for club in book_club.amity %}
-        <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
+
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>인문 북클럽</h3>
         </div>
-        {% endfor %}
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=인문&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book_club_container">
+            {% for club in book_club.humanities %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+
+
+    <div class="box">
+        <div class="profile_club">
+            <h3>자율 북클럽</h3>
+        </div>
+        <div class="container_body_reports">
+            <div class="pagination_container">
+                <ul class="pagination ">
+                    <li><a href='list?category=자율&page=1' class="all_my_reports">전체보기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book_club_container">
+            {% for club in book_club.amity %}
+            <div class="my_book_club">
+                <a href={% url 'book_club:book_club_detail' club.id %}>
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
     {% if user.is_authenticated %}
     <h2 class="decorator decorator_indent-b_l">번더의 인물 추천</h2>
     <div class="user_container">

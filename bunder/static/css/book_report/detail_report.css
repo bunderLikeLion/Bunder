@@ -147,7 +147,6 @@ button.delete {
   border-radius: 10px;
   background: transparent;
   margin-right: 1rem;
-  width: 3rem;
 }
 
 
@@ -313,4 +312,9 @@ textarea {   /* 독후감 본문 입력란 */
 
 .utility a {
   text-decoration: none;
+}
+
+.profile_img > .img {
+  width: 5rem;
+  height: 5rem;
 }

@@ -727,3 +727,7 @@ body {
 .box {
     margin: 3rem auto;
 }
+ 
+.btn_image {
+    cursor: pointer;
+}

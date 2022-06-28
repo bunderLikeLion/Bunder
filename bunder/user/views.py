@@ -1,3 +1,5 @@
+from django.core.paginator import Paginator
+from django.forms import model_to_dict
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 from utilities.get_random_book import get_random_book_list
@@ -136,12 +138,41 @@ def bunder(request):
         book = Book.objects.filter(user_id=user_info.id)
         my_recent_reports = check_two_reports(user_info)
         scrap = check_two_scraps(user_info)
-        book_club = getBookClub(user_info)
+
+        result = get_book_club(request, user_info)
+        # book_club = getBookClub(user_info)
+        total_json = json.dumps(result['total_cnt'])
+
         mainbook = ProfileBook.objects.filter(user_id=user_info.id).last()
         return render(request, 'user/bunder.html', {'user_info': user_info, 'my_recent_reports': my_recent_reports,
                                                     'scrap': scrap, 'book': book,
-                                                    'book_club': book_club, 'mainbook': mainbook})
+                                                    'book_club': result['club_list'],
+                                                    'mainbook': mainbook,
+                                                    'total_cnt': result['total_cnt'],
+                                                    'total_json': total_json})
 
+def get_book_club(request, user):
+    if request.method == 'GET':
+        page = int(request.GET.get("page", 1) or 1)
+
+        query = Q()
+        query.add(Q(user=user), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+        book_club_member = BookClubMember.objects.prefetch_related('club').filter(query).order_by('-id')
+
+        paginator = Paginator(book_club_member, 3)
+        club_list_page = paginator.get_page(page)
+
+        club_list = [model_to_dict(member.club) for member in club_list_page]
+        result = {'club_list': club_list, 'total_cnt': paginator.num_pages}
+        return result
+
+
+def get_book_club_json(request):
+    result = get_book_club(request)
+    return JsonResponse({'club_list': result['club_list'], 'total_cnt': result['total_cnt']},
+                        json_dumps_params={'ensure_ascii': False}, status=200)
 
 # 프로필 수정
 @csrf_exempt

@@ -11,65 +11,24 @@
 <div class="container">
   <h2>Invite My Club</h2>
   <form method="post">
+	{% csrf_token %}
     <h3 class="body">소모임 선택</h3>
     <section class="category_container">
-      <label class="category">
-        <input type="radio" value="1" name="club_img" checked class="radio__input cover_input" />
-        <div class="category__box"></div>
-        <span class="category__text">
-          <img class="cover_image" src="../../static/img/club_img_1.jpg" />
-        </span>
-        <div class="my_book_club_info">
-          <div>소모임명 : 가나다테스트</div>
-          <div>인원 : 1/5</div>
-        </div>
-      </label>
-      <label class="category">
-        <input type="radio" value="2" name="club_img" class="radio__input cover_input" />
-        <div class="category__box"></div>
-        <span class="category__text">
-          <img class="cover_image" src="../../static/img/club_img_2.jpg" />
-        </span>
-        <div class="my_book_club_info">
-          <div>소모임명 : 가나다테스트</div>
-          <div>인원 : 1/5</div>
-        </div>
-      </label>
-      <label class="category">
-        <input type="radio" value="3" name="club_img" class="radio__input cover_input" />
-        <div class="category__box"></div>
-        <span class="category__text">
-          <img class="cover_image" src="../../static/img/club_img_3.jpg" />
-        </span>
-        <div class="my_book_club_info">
-          <div>소모임명 : 가나다테스트</div>
-          <div>인원 : 1/5</div>
-        </div>
-      </label>
-      <label class="category">
-        <input checked type="radio" value="4" name="club_img" class="radio__input cover_input" />
-        <div class="category__box"></div>
-        <span class="category__text">
-          <img class="cover_image" src="../../static/img/club_img_4.jpg" />
-        </span>
-        <div class="my_book_club_info">
-          <div>소모임명 : 가나다테스트</div>
-          <div>인원 : 1/5</div>
-        </div>
-      </label>
-      <label class="category">
-        <input checked type="radio" value="4" name="club_img" class="radio__input cover_input" />
-        <div class="category__box"></div>
-        <span class="category__text">
-          <img class="cover_image" src="../../static/img/club_img_4.jpg" />
-        </span>
-        <div class="my_book_club_info">
-          <div>소모임명 : 가나다테스트</div>
-          <div>인원 : 1/5</div>
-        </div>
-      </label>
+	{% for club in club_list %}
+		<label class="category">
+			<input type="radio" value="{{ club.id }}" name="club" checked class="radio__input cover_input" />
+			<div class="category__box"></div>
+			<span class="category__text">
+	  		<img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
+			</span>
+			<div class="my_book_club_info">
+				<div>소모임명 : {{ club.club_name }}</div>
+				<div>인원 : {{ club.member_cnt }}/{{ club.member_total }}</div>
+			</div>
+		</label>
+	{% endfor %}
     </section>
-    <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
+	<h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
     <button class="login" type="submit" value="Sign up">소모임 초대</button>
   </form>
 </div>

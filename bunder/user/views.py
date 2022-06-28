@@ -273,10 +273,3 @@ def getBookClub(user):
     club_list = [memberclub.club for memberclub in book_club_member]
 
     return club_list
-
-
-# 인물 추천 - 진행 중
-# def recommend_member(request):
-#     user = request.user
-#     all_users = User.objects.filter(categories = user.categories)
-#     random_idx = random.randint(0, User.objects.count()-1)

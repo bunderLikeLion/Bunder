@@ -24,21 +24,19 @@
             <a href="/bookclub/{{ club.id }}">
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+        {{ club.club_name }}
         </div>
         {% endfor %}
     </div>
     <div class="container_body_add">
         <div class="pagination_container">
             <ul class="pagination ">
-<<<<<<< HEAD
                 <li><a class="previous previous_btn">Previous</a></li>
                 <li class="num"><span class="current_span">1</span>/{{ total_cnt }}</li>
                 <li><a class="next next_btn">Next</a></li>
-=======
                 <li><a class="previous previous_btn">이전</a></li>
                 <li><span class="current_span">1</span>/{{ total_cnt }}</li>
                 <li><a class="next next_btn">다음</a></li>
->>>>>>> a40a4d1d327c2fb9567892d8478c02625d05c19f
             </ul>
         </div>
     </div>

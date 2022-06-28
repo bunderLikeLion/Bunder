@@ -230,3 +230,8 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+.member_box img {
+    width: 10rem;
+    height: 11rem;
+}

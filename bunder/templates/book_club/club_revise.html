@@ -11,38 +11,39 @@ Club Revise
 
 {% block content %}
 <div class="container">
-	<div class="club-edit_header">
-		<h2>Club Revise</h2>
-		<button class="login club_close_btn" type="submit" value="Club closure">소모임 폐쇄</button>
-	</div>
+    <div class="club-edit_header">
+        <h2>Club Revise</h2>
+        <button class="login club_close_btn" type="submit" value="Club closure">소모임 폐쇄</button>
+    </div>
     <form method="post" action="{% url 'book_club:book_club_edit' book_club.id %}">
-		{% csrf_token %}
+        {% csrf_token %}
         <div class="club_info_container">
             <div class="box_container">
                 <div class="temp">
                     <div class="box">
                         <div class="inputBox">
-                            <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
+                            <input type="text" required="required" name='clubname' id='clubname'
+                                value=" {{ book_club.club_name }}">
                             <span class="first">소모임 명</span>
                         </div>
                     </div>
-                    
+
                     <div class="box">
                         <div class="inputBox">
-                            <input type="text" required="required" name='kakao_link' id='link' value=" {{ book_club.kakao_link }}">
+                            <input type="text" name='kakao_link' id='link' value=" {{ book_club.kakao_link }}">
                             <span class="second">소모임 KakaoTalk Link</span>
                         </div>
                     </div>
                 </div>
                 <div class="link_box">
                     <div class="inputBox">
-                        <input type="text" required="required" name='zoom_link' id='link' value="{{ book_club.zoom_link }}">
+                        <input type="text" name='zoom_link' id='link' value="{{ book_club.zoom_link }}">
                         <span class="second">소모임 Zoom Link</span>
                     </div>
                 </div>
             </div>
-    
-            <div class="report_content" >
+
+            <div class="report_content">
                 <textarea name="content" id="content" placeholder="소모임 소개">{{ book_club.description }}</textarea>
             </div>
         </div>
@@ -52,9 +53,9 @@ Club Revise
             <div class="container_body">
                 <div class="pagination_container">
                     <ul class="pagination">
-						<li><button type="button" class="previous previous_btn">Previous</button></li>
-						<li><span class="current_span">1</span>/<span>3</span></li>
-						<li><button type="button" href="#" class="next next_btn">Next</button></li>
+                        <li><button type="button" class="previous previous_btn">Previous</button></li>
+                        <li><span class="current_span">1</span>/<span>3</span></li>
+                        <li><button type="button" href="#" class="next next_btn">Next</button></li>
                     </ul>
                 </div>
             </div>
@@ -131,29 +132,29 @@ Club Revise
         </div>
 
         <div class="club_member_container">
-			<div class="button_container">
-				<a href="/bookclub/reject?clubId={{ book_club.id }}">
-					<input type="button" class="member-edit_btn" value="멤버 삭제">
-				</a>
-				<a href="/bookclub/admit?clubId={{ book_club.id }}">
-					<input type="button" class="member-edit_btn" value="멤버 요청 확인">
-				</a>
-			</div>
+            <div class="button_container">
+                <a href="/bookclub/reject?clubId={{ book_club.id }}">
+                    <input type="button" class="member-edit_btn" value="멤버 삭제">
+                </a>
+                <a href="/bookclub/admit?clubId={{ book_club.id }}">
+                    <input type="button" class="member-edit_btn" value="멤버 요청 확인">
+                </a>
+            </div>
             <div>
-				<h3>소모임 멤버 리스트</h3>
+                <h3>소모임 멤버 리스트</h3>
                 <div class="club_people_number">
                     소모임 현재 인원
-                     <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
+                    <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
                 </div>
             </div>
-            
-    
+
+
             <div class="container_all_requesters">
                 {% if not user_list %}
-				<div class="empty-member">
-				    <p>북클럽에 아무도 없습니다.</p>
-				</div>
-				{% else %}
+                <div class="empty-member">
+                    <p>북클럽에 아무도 없습니다.</p>
+                </div>
+                {% else %}
                 {% for user in user_list %}
                 <div class="container_single_requester">
                     <div class="requester_profile_container">
@@ -164,16 +165,16 @@ Club Revise
                             {{ user.nickname }}
                         </div>
                     </div>
-{#                    <div class="button_container">#}
-{#                        <button class="request_btn" onclick="">강제퇴장</button>#}
-{#                    </div>#}
+                    {# <div class="button_container">#}
+                        {# <button class="request_btn" onclick="">강제퇴장</button>#}
+                        {# </div>#}
                 </div>
-            {% endfor %}
-				{% endif %}
-                
+                {% endfor %}
+                {% endif %}
+
             </div>
         </div>
-        
+
         {{error}}
 
         <div class="edit_button_container">
@@ -198,18 +199,18 @@ Club Revise
     categorySelect.forEach((el) => {
         if (el.value == category) {
             el.setAttribute("checked", "checked")
-		}
-	})
+        }
+    })
 
     imageSelect.forEach((el) => {
         if (el.value == image) {
             el.setAttribute("checked", "checked")
-		}
-	})
+        }
+    })
 
     clubCloseButton.addEventListener("click", () => {
         closeClub(bookClubId);
-	})
+    })
 
     const closeClub = async (id) => {
         const url = "/bookclub/edit/" + bookClubId;
@@ -217,10 +218,12 @@ Club Revise
         window.location.href = "/bookclub/";
     }
 
-    {#const requestImg = async (id) => {#}
-    {#    const url = "member/";#}
-    {#    await axios.post(url, { id });#}
-    {#}#}
+    {
+        #const requestImg = async (id) => {# }
+        {#    const url = "member/";# }
+        {#    await axios.post(url, { id });# }
+        {# }#
+    }
 
     const previousButton = document.querySelector(".previous_btn");
     const nextButton = document.querySelector(".next_btn");
@@ -250,7 +253,7 @@ Club Revise
         const responseImg = response.data.image;
         const nums = response.data.nums;
 
-        currentPage.innerText = flag == "prev" ? Number(currentPage.innerText) - 1 :  Number(currentPage.innerText) + 1
+        currentPage.innerText = flag == "prev" ? Number(currentPage.innerText) - 1 : Number(currentPage.innerText) + 1
         for (let i = 0; i < 4; i++) {
             images[i].src = responseImg[i];
             values[i].value = nums[i];

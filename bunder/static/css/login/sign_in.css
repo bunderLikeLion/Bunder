@@ -96,12 +96,11 @@ input:-webkit-autofill:active {
 
 button {
     color: #61677C;
-    font-weight: bold;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     background-color: #ed591a;
-    font-weight: 600;
+    font-weight: 100;
 }
 
 button:hover {
@@ -120,14 +119,14 @@ button.login{
     top: 1.3rem;
     left: 70%;
     width: 30%;
-    height: 3rem;
+    height: 3.1rem;
     color: #813818;
 }
 
 .signup {
     text-align: center;
     position: absolute;
-    width: 30%;
+    width: 25%;
     height: 3rem;
     overflow: hidden;
     border: none;
@@ -147,14 +146,13 @@ button.login{
     display: flex;
     justify-content: center;
     height: 3rem;
-    /* font-size: 1em; */
+    font-size: 0.9em;
     text-decoration: none;
     color: #AE1100;
-    font-weight: bold;
     align-items: center;
 }
 
 .signup li a:hover {
-    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
 

@@ -238,3 +238,12 @@ span {
     position: absolute;
     top: 15.5rem;
 }
+
+.current_span {
+    position: unset;
+}
+
+.previous_btn,
+.next_btn {
+    cursor: pointer;
+}

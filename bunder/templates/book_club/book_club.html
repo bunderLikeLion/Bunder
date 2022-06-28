@@ -18,10 +18,10 @@
             </ul>
         </div>
     </div>
-    <div class="book_club_container">
+    <div class="book_club_container my_book_club_container">
         {% for club in my_club%}
         <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
+            <a href="/bookclub/{{ club.id }}">
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
         </div>
@@ -30,15 +30,15 @@
     <div class="container_body_add">
         <div class="pagination_container">
             <ul class="pagination ">
-                <li><a href="#" class="previous">Previous</a></li>
-                <li><a href="#none">1/5</a></li>
-                <li><a href="#" class="next">Next</a></li>
+                <li><a class="previous previous_btn">Previous</a></li>
+                <li><span class="current_span">1</span>/{{ total_cnt }}</li>
+                <li><a class="next next_btn">Next</a></li>
             </ul>
         </div>
     </div>
     {% else %}
     <div class="book_club_container" style="margin-top: 2rem;">
-        <a href={% url 'user:loginpage' %} style="text-decoration: none;color:red ">
+        <a href={% url 'user:loginpage' %} style="text-decoration:none;color:red;">
             <h1 class="login">로그인이 필요한 서비스입니다</h1>
         </a>
     </div>
@@ -79,7 +79,7 @@
     <div class="container_body_reports">
         <div class="pagination_container">
             <ul class="pagination ">
-                <li><a href='list?category=문학&page=1' class="all_my_reports">전체보기</a></li>
+                <li><a href='list?category=인기&page=1' class="all_my_reports">전체보기</a></li>
             </ul>
         </div>
     </div>
@@ -270,6 +270,7 @@
     }
 
     const requestButton = document.querySelectorAll(".request_btn")
+    const totalCnt = JSON.parse("{{ total_json|escapejs }}");
 
     requestButton.forEach((btn) => {
         btn.addEventListener("click", (event) => {
@@ -287,6 +288,67 @@
         const response = await axios.patch(url, { clubId, type })
         window.location.reload();
     }
+
+    const previousButton = document.querySelector('.previous_btn')
+    const nextButton = document.querySelector('.next_btn')
+    const currentPage = document.querySelector('.current_span')
+
+    const clubContainer = document.querySelector(".my_book_club_container");
+
+
+
+    const requestClub = async (page, flag) => {
+        const url = '/bookclub/myclub?page=' + page
+        const response = await axios.get(url)
+        const clubList = response.data.club_list;
+        const prefix = "../../static/img/club_img_";
+        const suffix = ".jpg";
+
+        const urlPrefix = "/bookclub/"
+
+        currentPage.innerText =
+            flag == 'prev'
+                ? Number(currentPage.innerText) - 1
+                : Number(currentPage.innerText) + 1
+
+        while (clubContainer.hasChildNodes()) {
+            clubContainer.removeChild(clubContainer.firstChild);
+        }
+
+        for (let i = 0; i < clubList.length; i++) {
+            const bookClubDiv = document.createElement('div');
+            const bookClubLink = document.createElement('a');
+            const bookClubImg = document.createElement('img');
+
+            bookClubDiv.appendChild(bookClubLink);
+            bookClubLink.appendChild(bookClubImg);
+
+            bookClubDiv.classList.add('my_book_club');
+            bookClubImg.classList.add('book_cover');
+
+            bookClubLink.setAttribute("href", urlPrefix + clubList[i].id);
+            bookClubImg.setAttribute("src", prefix + clubList[i].image + suffix);
+            clubContainer.appendChild(bookClubDiv);
+        }
+    }
+
+    previousButton.addEventListener('click', () => {
+        const pageNum = Number(currentPage.innerText)
+        if (pageNum > 1) {
+            requestClub(pageNum - 1, 'prev')
+        }
+    })
+
+    nextButton.addEventListener('click', () => {
+        const pageNum = Number(currentPage.innerText)
+        if (pageNum < totalCnt) {
+            requestClub(pageNum + 1, 'next')
+        }
+    })
+
+
+
+
 
 
 </script>

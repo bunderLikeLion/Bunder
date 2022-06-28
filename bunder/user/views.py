@@ -283,4 +283,5 @@ def getBookClub(user):
 
 # 책 추천 - 진행중
 # def recommend_book(request):
-#     get_random_book_list('문학')
+#     user = request.user
+#     get_random_book_list(user.categories)

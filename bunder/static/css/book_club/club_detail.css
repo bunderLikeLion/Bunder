@@ -127,7 +127,7 @@ button:active {
 }
 
 .vote_btn {
-  float: right;
+  margin: auto;
 }
 
 #edit_club_btn {

@@ -152,6 +152,13 @@ button {
   font-size: 0.85rem;
 }
 
+.container .inputBox .second:focus ~ span,
+.container .inputBox .secon:valid ~ span {
+  transform: translateX(-0.7rem);
+  transform: translateY(-2rem);
+  font-size: 0.85rem;
+}
+
 .container .inputBox input:focus ~ h4,
 .container .inputBox input:valid ~ h4 {
   transform: translateX(-0.7rem);

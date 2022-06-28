@@ -252,6 +252,10 @@ margin-right: 1rem;
   margin: 0 2rem; 
 }
 
-#receiver {
+.btn .error {
+  position: absolute;
+  font-size: 2rem;
+  top: 2rem;
+  left: -26rem;
   color: red;
 }

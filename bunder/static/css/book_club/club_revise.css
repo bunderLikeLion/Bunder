@@ -123,18 +123,20 @@ div, p, span, input{
 
 .container .inputBox .first {
     position: absolute;
-    top: 17%;
     left: 5%;
 }
 .container .inputBox .second {
     position: absolute;
-    top: 8%;
     left: 3%;
 }
+
+.margin {
+    margin-top: 1rem;
+}
+
 .container .inputBox .third {
     position: absolute;
-    top: 25%;
-    left: 10%;
+    top: -25%;
 }
 .container .inputBox h4 {
     position: absolute;
@@ -142,9 +144,23 @@ div, p, span, input{
     left: 3%;
 }
 
-.container .inputBox input:focus ~ span,
-.container .inputBox input:valid ~ span {
+.container .inputBox input:invalid ~ .first,
+.container .inputBox input:valid ~ .first {
     transform: translateX(-0.7rem);
+    transform: translateY(-2rem);
+    font-size: 0.85rem;
+}
+
+.container .inputBox input:invalid ~ .second,
+.container .inputBox input:valid ~ .second {
+    transform: translateX(-0.7rem);
+    transform: translateY(-2rem);
+    font-size: 0.85rem;
+}
+
+.container .inputBox input:invalid ~ .third,
+.container .inputBox input:valid ~ .third {
+    transform: translateX(-6.7rem);
     transform: translateY(-2rem);
     font-size: 0.85rem;
 }

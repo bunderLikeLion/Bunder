@@ -21,6 +21,9 @@ Club Detail
             <div class="zoom_link">
                 <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
             </div>
+            <div class="chat_link">
+                <a href="#" class="link">Boom</a>
+            </div>
         </div>
         {% elif is_member %}
         <button class="button" id="exit_btn">소모임 나가기</button>
@@ -51,9 +54,9 @@ Club Detail
         </div>
         {% if is_owner %}
         <div class="invite_con">
-			<a class="invite_link" href="invite">
-            	<button class="button" id="invite">초대하기</button>
-			</a>
+            <a class="invite_link" href="invite">
+                <button class="button" id="invite">초대하기</button>
+            </a>
         </div>
         {% endif %}
         <div class="club_detail_containaer">
@@ -67,9 +70,9 @@ Club Detail
                 {% endfor %}
             </div>
         </div>
-        
 
-        
+
+
         <div class="club_detail_containaer">
             <div class="club_detail_header">
                 <div class="event_div">진행중인 투표</div>
@@ -123,23 +126,23 @@ Club Detail
                 </div>
                 {% else %}
                 <div class="empty-vote empty_list">
-					<div class="vote_info">
-						<div>투표 제목: {{ end_vote.topic }}</div>
-						<div>1등 결과</div>
-						{% for one in onset_list %}
-							<div>
-								<span>내용: {{ one.description }}</span>
-							</div>
-						{% endfor %}
-						<br />
-						{% for each_vote in end_vote_list %}
-							<div>
-								<span>내용: {{ each_vote.description }}</span>
-								<span>득표수: {{ each_vote.vote_cnt }}</span>
-							</div>
-						{% endfor %}
-{#						<div>기간: {{ end_vote.start_date }} ~ {{ end_vote.end_date }}</div>#}
-					</div>
+                    <div class="vote_info">
+                        <div>투표 제목: {{ end_vote.topic }}</div>
+                        <div>1등 결과</div>
+                        {% for one in onset_list %}
+                        <div>
+                            <span>내용: {{ one.description }}</span>
+                        </div>
+                        {% endfor %}
+                        <br />
+                        {% for each_vote in end_vote_list %}
+                        <div>
+                            <span>내용: {{ each_vote.description }}</span>
+                            <span>득표수: {{ each_vote.vote_cnt }}</span>
+                        </div>
+                        {% endfor %}
+                        {# <div>기간: {{ end_vote.start_date }} ~ {{ end_vote.end_date }}</div>#}
+                    </div>
                 </div>
                 {% endif %}
             </div>
@@ -307,14 +310,14 @@ Club Detail
         if (voteEndButton !== null) {
             voteEndButton.addEventListener('click', () => {
                 voteEnd(voteId);
-			})
-		}
+            })
+        }
 
         const voteEnd = async (voteId) => {
             const url = "vote";
-            await axios.patch(url, {voteId})
-			window.location.reload();
-		}
+            await axios.patch(url, { voteId })
+            window.location.reload();
+        }
 
         const requestMember = async (id) => {
             const url = "member/";

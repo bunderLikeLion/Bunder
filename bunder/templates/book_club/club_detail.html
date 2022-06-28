@@ -176,8 +176,9 @@ Club Detail
                     {% if book_info %}
                     <div class="book_info_box current-book_container ">
                         <div class="book_img">
-                            <!-- <img src="{{book_report.book_img}}" class="book_cover"> -->
-                            <img class="book_cover" src="{{ book_info.book_img }}">
+                            <a href="{% url 'user:bookdetail' book_info.id %}">
+                                <img class="book_cover" src="{{ book_info.book_img }}">
+                            </a>
                         </div>
                         <div class="book_info">
                             <div class="book_name">
@@ -216,7 +217,9 @@ Club Detail
                     {% endif %}
                     {% for each_book in book_list %}
                     <div class="book_cover">
-                        <img class="book_cover" src="{{ each_book.book_img }}">
+                        <a href="{% url 'user:bookdetail' each_book.id %}">
+                            <img class="book_cover" src="{{ each_book.book_img }}">
+                        </a>
                     </div>
                     {% endfor %}
 

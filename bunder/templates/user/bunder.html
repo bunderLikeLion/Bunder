@@ -28,7 +28,7 @@ My Bunder
         </div>
         <div class="profile_book_cover">
             <a href="../user/bookdetail/{{ mainbook.book.id }}">
-            <img class="book_cover" src={{mainbook.book.book_img}}>
+                <img class="book_cover" src={{mainbook.book.book_img}}>
             </a>
         </div>
     </div>
@@ -50,7 +50,7 @@ My Bunder
             {% for club in book_club %}
             <div class="my_book_club">
                 <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
                 </a>
             </div>
             {% endfor %}

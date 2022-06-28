@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+
+from utilities.get_random_book import get_random_book_list
 from .models import BookReport, Scrap, Comment
 from django.views import View
 import json
@@ -62,7 +64,8 @@ def category_search(request, category):
 
 def write_report(request):
     key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'));
-    return render(request, "book_report/write_report.html", {'bookSecret': key})
+    random_book_list = json.dumps(get_random_book_list(request.user.categories))
+    return render(request, "book_report/write_report.html", {'bookSecret': key, 'random_book_list' : random_book_list})
 
 
 def detail_report(request, id):

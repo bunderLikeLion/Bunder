@@ -280,8 +280,3 @@ def getBookClub(user):
 #     user = request.user
 #     all_users = User.objects.filter(categories = user.categories)
 #     random_idx = random.randint(0, User.objects.count()-1)
-
-# 책 추천 - 진행중
-# def recommend_book(request):
-#     user = request.user
-#     get_random_book_list(user.categories)

@@ -1,6 +1,7 @@
 body {
     display: flex;
     justify-content: center;
+    min-height : 400vh;
 }
 .container {
     position: relative;
@@ -353,7 +354,7 @@ body {
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 body {
     display: flex;
-    min-height: 410vh;
+    min-height: 450vh;
     justify-content: center;
 }
 .container {
@@ -656,7 +657,8 @@ body {
     position: relative;
     clear: both;
     width: 90%;
-    margin: 0 auto;height:28rem;
+    margin: 0 auto;
+    height: 22rem;
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;

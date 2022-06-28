@@ -4,6 +4,10 @@
 
 /* ------------------  Register Page ------------------ */
 
+main {
+    margin-top: 4rem;
+}
+
 #form-container{
     width: 400px;
     box-shadow:var(--shaddow);
@@ -144,14 +148,34 @@
 }
 
 .control-icon{
-    height: 20px;
-    width: 20px;
+    /*height: 20px;*/
+    /*width: 20px;*/
+    /*box-shadow: var(--shaddow);*/
+    /*background-color: #fff;*/
+    /*cursor: pointer;*/
+    /*padding: 10px;*/
+    /*border-radius: 5px;*/
+            height: 40px;
+    width: 40px;
     box-shadow: var(--shaddow);
-    background-color: #fff;
+    background-color: green;
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
+    /* color: black; */
+    fill: black;
+}
 
+.tmp {
+        height: 40px;
+    width: 40px;
+    box-shadow: var(--shaddow);
+    background-color: green;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    /* color: black; */
+    fill: black;
 }
 
 #leave-btn{

@@ -11,19 +11,14 @@ All My Reports
 {% block content %}
 <div class="container">
     <div class="profile_reports">
-        <h3>{{ user_info.nickname }}님이 쓴 글</h3>
+        <h1>{{ user_info.nickname }}님의 독후감</h1>
     </div>
     <div class="reports_container">
         <div class="first_container">
-            <div class="report_name_container">
-                <div class="report_name">
-                    <h3>독후감</h3>
-                </div>
-            </div>
             {% for report in user_reports %}
-            <div class="report_container">
+            <div class="report_container" onclick="location.href='../bookreport/{{ report.id }}';">
                 <div class="inner_report_container">
-                    <a href="../bookreport/{{ report.id }}" class="reports_name">{{report.report_name}}</a>
+                    <a href="" class="reports_name">{{report.report_name}}</a>
                 </div>
             </div>
             {% endfor %}

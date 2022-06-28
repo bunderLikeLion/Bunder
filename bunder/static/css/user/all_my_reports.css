@@ -1,11 +1,12 @@
 body {
     display: flex;
     justify-content: center;
+    min-height: 150vh;
 }
 .container {
     position: relative;
-    height: 150%;
-    top: 12rem;
+    height: 100%;
+    top: 10rem;
     width: 80%;
     padding: 3rem;
     background-color: #33383D;
@@ -19,27 +20,14 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 20%;
+    border-left: 5px solid #ed591a;
+    width: 19%;
     height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    left: 2%;
-    top: -6rem;
+    left: 1%;
+    top: -7rem;
 }
 
-container .reports_container {
-    position: relative;
-    width: 90%;
-    height:28rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    left: 5%;
-    top: -11%;
-}
-
-.container .reports_container .report_name_container {
+/* .container .reports_container .report_name_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +38,7 @@ container .reports_container {
     border-radius: 1rem;
     box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;;
     margin-top: 1rem;
-}
+} */
 .container .reports_container .report_container {
     display: flex;
     align-items: center;
@@ -62,6 +50,8 @@ container .reports_container {
     height: 4rem;
     border-radius: 1rem;
     box-shadow: 20px 20px 22px #25292d, -20px -20px 22px #41474d;;
+    margin-top: 3rem;
+    cursor: pointer;
 }
 
 .container .reports_container .report_container a {

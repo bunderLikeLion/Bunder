@@ -2,6 +2,7 @@
 {% load static %}
 {% block extrahead %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/book_club/room.css' %}" />
+    <script defer src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 {% endblock extrahead %}
 
 {% block title %}
@@ -18,15 +19,15 @@
 
 		<section id="controls-wrapper">
 			<div class="icon-wrapper">
-				<img class="control-icon" id="mic-btn" src="{% static 'video/microphone.svg' %}" />
+				<img class="control-icon" id="mic-btn" src={% static 'assets/mic.svg' %} />
 			</div>
 
 			<div class="icon-wrapper">
-				<img class="control-icon" id="camera-btn" src="{% static 'video/video.svg' %}" />
+				<img class="control-icon" id="camera-btn" src="{% static 'assets/screen.svg' %}" />
 			</div>
 
 			<div class="icon-wrapper">
-				<img class="control-icon" id="leave-btn" src="{% static 'video/leave.svg' %}" />
+				<img class="control-icon" id="leave-btn" src="{% static 'assets/leave.svg' %}" />
 			</div>
 		</section>
 	</main>
@@ -132,20 +133,20 @@
         const toggleCamera = async (e) => {
             if(localTracks[1].muted){
                 await localTracks[1].setMuted(false);
-                e.target.style.backgroundColor = '#fff';
+                e.target.style.backgroundColor = 'green';
             }else{
                 await localTracks[1].setMuted(true);
-                e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)';
+                e.target.style.backgroundColor = 'red';
             }
         }
 
         const toggleMic = async (e) => {
             if(localTracks[0].muted){
                 await localTracks[0].setMuted(false);
-                e.target.style.backgroundColor = '#fff';
+                e.target.style.backgroundColor = 'green';
             }else{
                 await localTracks[0].setMuted(true);
-                e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)';
+                e.target.style.backgroundColor = 'red';
             }
         }
 

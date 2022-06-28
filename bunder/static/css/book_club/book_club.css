@@ -70,6 +70,8 @@ body {
 
 .pagination li {
     display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 1rem;
     background-color: #ed591a;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
@@ -241,6 +243,7 @@ span {
 
 .current_span {
     position: unset;
+    width: 1rem;
 }
 
 .previous_btn,

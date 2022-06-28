@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
-
+from utilities.get_random_book import get_random_book_list
 from .models import ProfileBook, User
 from book_club.models import Book, BookClubMember
 from django.contrib import auth
@@ -275,8 +275,12 @@ def getBookClub(user):
     return club_list
 
 
-# 인물 추천
-def recommend_member(request):
-    user = request.user
-    all_users = User.objects.filter(categories = user.categories)
-    random_idx = random.randint(0, User.objects.count()-1)
+# 인물 추천 - 진행 중
+# def recommend_member(request):
+#     user = request.user
+#     all_users = User.objects.filter(categories = user.categories)
+#     random_idx = random.randint(0, User.objects.count()-1)
+
+# 책 추천 - 진행중
+# def recommend_book(request):
+#     get_random_book_list('문학')

@@ -251,3 +251,7 @@ margin-right: 1rem;
 .btn .button {
   margin: 0 2rem; 
 }
+
+#receiver {
+  color: red;
+}

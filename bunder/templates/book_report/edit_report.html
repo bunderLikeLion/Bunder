@@ -21,14 +21,14 @@
                         <span class="date">{{book.created_at}} </span>
                     </div>
                     <input type="text" class="input_bar" required="required" name='report_name' id='report_name'
-                        value={{book.report_name}}>
+                        value="{{book.report_name}}">
                 </div>
 
-                <!-- <div class="profile_container">
+                <!-- <div class=" profile_container">
                     <div class="profile_img">
                         <img class="img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
                     </div>
-    
+
                     <div class="name"><span class="nickname">{{book.user.nickname}}</span></div>
                 </div> -->
 
@@ -40,6 +40,8 @@
                         <div class="book_name">
                             <p class="book_name">
                             <div class="text">책 제목</div>
+                            <!-- <input type="text" readonly class="book_info_bar" required="required" name='book_name'
+                                id='book_name' value={{book.book_name}}> -->
                             <div class="book_info_bar">
                                 {{book.book_name}}
                             </div>

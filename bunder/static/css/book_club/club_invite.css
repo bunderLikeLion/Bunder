@@ -1,6 +1,7 @@
 body {
     display: flex;
     justify-content: center;
+    min-height: 135vh;
 }
 
 .container {

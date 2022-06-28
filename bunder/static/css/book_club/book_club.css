@@ -1,7 +1,7 @@
 body {
     display: flex;
     justify-content: center;
-    min-height: 200vh;
+    min-height: 700vh !important;
 }
 
 .container {
@@ -52,12 +52,14 @@ body {
 
 .container_body_add{
     height: 10%;
-    width: 5%;
+    display: flex;
+    width: 100%;
     position: relative;
-    left: 37.5%;
-    top: 1rem;
+    /* left: 37.5%; */
+    /* top: 1rem; */
     place-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .pagination_container {
@@ -73,6 +75,7 @@ body {
     border-radius: 1rem;
     background-color: #ed591a;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    align-items: center;
 }
 
 .pagination li a {
@@ -81,16 +84,16 @@ body {
     text-decoration: none;
     color: #813818;
     height: 2rem;
-    width: 2rem;
+    width: 4rem;
     display: block;
-    line-height: 2.4rem;
+    line-height: 2rem;
 }
 .pagination li:first-child a {
-    width: 6rem;
+    /* width: 6rem; */
 }
 
 .pagination li:last-child a {
-    width: 6rem;
+    /* width: 6rem; */
 }
 
 .pagination li:first-child {
@@ -246,4 +249,9 @@ span {
 .previous_btn,
 .next_btn {
     cursor: pointer;
+}
+
+.add_club_btn {
+    font-size: x-large !important;
+    width: 9rem !important;
 }

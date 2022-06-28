@@ -41,7 +41,7 @@ body {
     width: 7rem;
 }
 
-.input_bar {   /* 독후감 제목, 책제목, 책제목 검색 입력창 */
+.input_bar {   /* ë…í›„ê° ì œëª©, ì±…ì œëª©, ì±…ì œëª© ê²€ìƒ‰ ìž…ë ¥ì°½ */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@ body {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는거 */
+input:-webkit-autofill:active {  /* ìž…ë ¥ì°½ ìžë™ì™„ì„± ë°°ê²½ìƒ‰ ì—†ì• ëŠ”ê±° */
     transition: background-color 5000s ease-in-out 0s;
     -webkit-transition: background-color 9999s ease-out;
     box-shadow:  0 0 0px 1000px white 00.1s inset !important;
@@ -89,7 +89,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 }
 
 
-.button {   /* 책검색, 독후감 발행 버튼 두개 */
+.button {   /* ì±…ê²€ìƒ‰, ë…í›„ê° ë°œí–‰ ë²„íŠ¼ ë‘ê°œ */
     font-weight: bold;
     float : right;
     box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
@@ -157,6 +157,7 @@ input[type="date"]:valid:before{
     /* margin: 1rem; */
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .vote_item_input {
@@ -169,4 +170,8 @@ input[type="date"]:valid:before{
     background-color: transparent;
     border: 0;
     font-size: x-large;
+}
+
+.iconify {
+    width: 1.2rem !important;
 }

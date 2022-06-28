@@ -34,9 +34,9 @@ Club Detail
             <div class="zoom_link">
                 <a href="{{ book_club.zoom_link }}" class="link">Zoom</a>
             </div>
-			<div class="chat_link">
-				<a href="../bookclub/room/{{ book_club.id }}" class="link">Boom</a>
-			</div>
+            <div class="chat_link">
+                <a href="../bookclub/room/{{ book_club.id }}" class="link">Boom</a>
+            </div>
         </div>
         {% else %}
         <button class="button" id="request_btn">소모임 참여 요청</button>
@@ -164,8 +164,9 @@ Club Detail
                     <input type="button" class="button book-remove_btn" value="책장으로">
                     {% endif %}
                 </div>
-
-                <div class="text">현재 읽는 중인 책</div>
+                <div class="margin">
+                    <div class="text">현재 읽는 중인 책</div>
+                </div>
                 <div class="book_info_container current-book_container club_book_list">
                     {% if not book_info %}
                     <div class="empty-present_book empty_list">
@@ -224,7 +225,27 @@ Club Detail
         </div>
 
         {% if is_owner %}
+        <h1 class="decorator decorator_indent-b_l">번더의 인물 추천</h1>
+        <div class="reco_container">
+            <div class="reco_profile_container">
+                <div class="reco_box">
+                    <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                    <span>추천 닉네임<span>
+                </div>
+                <div class="reco_box">
+                    <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                    <span>추천 닉네임<span>
+                </div>
+                <div class="reco_box">
+                    <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+                    <span>추천 닉네임<span>
+                </div>
+            </div>
+        </div>
         <div class="edit_container">
+            <a href="/bookclub/admit?clubId={{ book_club.id }}">
+                <input type="button" class="member-edit_btn button" value="멤버 요청 확인">
+            </a>
             <a href="{% url 'book_club:book_club_edit' book_club.id %}">
                 <input type="button" class="button" id="edit_club_btn" value="북클럽 수정">
             </a>

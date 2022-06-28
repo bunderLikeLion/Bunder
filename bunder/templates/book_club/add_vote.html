@@ -39,11 +39,16 @@ Add Vote
                 <div class="all_vote_container">
                     <div class="single_vote_item" id="">
                         <input type="text" class="vote_item_input input_bar">
-                        <button class="vote_item_delete">❌</button>
+                        <button class="vote_item_delete">
+                            <span class="iconify" data-icon="bi:x-lg"></span>
+                        </button>
                     </div>
                     <div class="single_vote_item" id="">
                         <input type="text" class="vote_item_input input_bar">
-                        <button class="vote_item_delete">❌</button>
+                        <button class="vote_item_delete">
+                            <span class="iconify" data-icon="bi:x-lg"></span>
+                        </button>
+                        
                     </div>
                 </div>
                
@@ -55,7 +60,13 @@ Add Vote
         <button class="addItem_btn button">항목 추가</button>
 
     </div>
+
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    
     <script>
+
+
+
         const voteList = document.getElementById('vote-list');
         const toDoForm = document.getElementById('todo-form');
         const addButton = document.querySelector('.addItem_btn');

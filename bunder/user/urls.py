@@ -18,4 +18,5 @@ urlpatterns = [
     path('profilebook/<int:id>', views.profilebook, name="profilebook"),
     path('bookdetail/<int:id>', views.bookdetail, name="bookdetail"),
     path('del_profilebook/<int:id>', views.del_profilebook, name="del_profilebook"),
+    path('club', views.get_book_club_json, name='get_book_club_json'),
 ]

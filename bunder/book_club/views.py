@@ -1,4 +1,5 @@
 import datetime
+from math import ceil
 
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -27,10 +28,44 @@ def getInvitedClub(user):
 
 def main(request):
     book_club = getBookClub()
-    my_club = getMyBookClub(request.user)
+
+    query = Q()
+    query.add(Q(user=request.user), query.AND)
+    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+    result = get_my_book_club(request)
     invited_club = getInvitedClub(request.user)
-    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': my_club,
-                                                        'invited_club': invited_club})
+    total_json = json.dumps(result['total_cnt'])
+    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': result['club_list'],
+                                                        'total_cnt': result['total_cnt'],
+                                                        'invited_club': invited_club,
+                                                        'total_json': total_json})
+
+
+def get_my_book_club(request):
+    if request.method == 'GET':
+        user = request.user
+
+        page = int(request.GET.get("page", 1) or 1)
+
+        query = Q()
+        query.add(Q(user=user), query.AND)
+        query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
+
+        book_club_member = BookClubMember.objects.prefetch_related('club').filter(query).order_by('-id')
+
+        paginator = Paginator(book_club_member, 3)
+        club_list_page = paginator.get_page(page)
+
+        club_list = [model_to_dict(member.club) for member in club_list_page]
+        result = {'club_list': club_list, 'total_cnt': paginator.num_pages}
+        return result
+
+
+def get_my_book_club_json(request):
+    result = get_my_book_club(request)
+    return JsonResponse({'club_list': result['club_list'], 'total_cnt': result['total_cnt']},
+                        json_dumps_params={'ensure_ascii': False}, status=200)
 
 
 def book_club_list(request):
@@ -38,7 +73,7 @@ def book_club_list(request):
         category = request.GET.get("category")
         page = request.GET.get('page')
         if category == "인기":
-            club_list = BookClub.objects.all().order_by('-created_at')
+            club_list = BookClub.objects.all().order_by('-score')
         else:
             club_list = BookClub.objects.filter(category=category).order_by('-created_at')
         paginator = Paginator(club_list, 10)
@@ -540,17 +575,6 @@ def getBookClub():
     return book_club
 
 
-def getMyBookClub(user):
-    query = Q()
-    query.add(Q(user_id=user.id), query.AND)
-    query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
-
-    book_club_member = BookClubMember.objects.prefetch_related('club').filter(query)
-    club_list = [member.club for member in book_club_member]
-
-    return club_list
-
-
 def getMember(book_club):
     query = Q()
     query.add(Q(club=book_club), query.AND)
@@ -563,6 +587,7 @@ def recommend_member(request):
     user = request.user
     recommend = User.objects.filter(categories=user.categories).exclude(id=user.id).order_by('?')[:3]
     return recommend
+
 
 # videochat
 
@@ -596,7 +621,7 @@ def createMember(request):
         room_name=data['room_name']
     )
 
-    return JsonResponse({'name':data['name']}, safe=False)
+    return JsonResponse({'name': data['name']}, safe=False)
 
 
 def getMember(request):
@@ -608,7 +633,8 @@ def getMember(request):
         room_name=room_name,
     )
     name = member.name
-    return JsonResponse({'name':member.name}, safe=False)
+    return JsonResponse({'name': member.name}, safe=False)
+
 
 @csrf_exempt
 def deleteMember(request):

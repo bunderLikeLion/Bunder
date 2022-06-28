@@ -11,67 +11,49 @@
 <div class="container">
   <h2>Invite My Club</h2>
   <form method="post">
-	{% csrf_token %}
+    <div class="img_container">
+      <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+    </div>
+    <div class="club_description">
+      <p>소모임 소개 : {{ book_club.description }}</p>
+    </div>
+    {% csrf_token %}
     <h3 class="body">소모임 선택</h3>
     <section class="category_container">
-	{% for club in club_list %}
-		<label class="category">
-			<input type="radio" value="{{ club.id }}" name="club" checked class="radio__input cover_input" />
-			<div class="category__box"></div>
-			<span class="category__text">
-	  		<img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
-			</span>
-			<div class="my_book_club_info">
-				<div>소모임명 : {{ club.club_name }}</div>
-				<div>인원 : {{ club.member_cnt }}/{{ club.member_total }}</div>
-			</div>
-		</label>
-	{% endfor %}
+      {% for club in club_list %}
+      <label class="category">
+        <input type="radio" value="{{ club.id }}" name="club" checked class="radio__input cover_input" />
+        <div class="category__box"></div>
+        <span class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
+        </span>
+        <div class="my_book_club_info">
+          <div>소모임명 : {{ club.club_name }}</div>
+          <div>인원 : {{ club.member_cnt }}/{{ club.member_total }}</div>
+        </div>
+      </label>
+      {% endfor %}
     </section>
-	<h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
-    <button class="login" type="submit" value="Sign up">소모임 초대</button>
+    <h3 class="decorator decorator_indent-b_l">번더의 인물 추천</h3>
+    <div class="book_club_container">
+      <div class="all_profile_container">
+        <div class="member_box">
+          <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+          <span>추천 닉네임<span>
+        </div>
+        <div class="member_box">
+          <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+          <span>추천 닉네임<span>
+        </div>
+        <div class="member_box">
+          <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+          <span>추천 닉네임<span>
+        </div>
+      </div>
+    </div>
+    <button class=" login" type="submit" value="Sign up">소모임 초대</button>
   </form>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-  const previousButton = document.querySelector('.previous_btn')
-  const nextButton = document.querySelector('.next_btn')
-  const currentPage = document.querySelector('.current_span')
-
-  const images = document.querySelectorAll('.cover_image')
-  const values = document.querySelectorAll('.cover_input')
-
-  previousButton.addEventListener('click', () => {
-    const pageNum = Number(currentPage.innerText)
-    if (pageNum > 1) {
-      requestImage(pageNum - 1, 'prev')
-    }
-  })
-
-  nextButton.addEventListener('click', () => {
-    const pageNum = Number(currentPage.innerText)
-    if (pageNum < 3) {
-      requestImage(pageNum + 1, 'next')
-    }
-  })
-
-  const requestImage = async (page, flag) => {
-    const url = '/bookclub/cover?page=' + page
-    const response = await axios.get(url)
-    console.log(response.data)
-    const responseImg = response.data.image
-    const nums = response.data.nums
-
-    currentPage.innerText =
-      flag == 'prev'
-        ? Number(currentPage.innerText) - 1
-        : Number(currentPage.innerText) + 1
-    for (let i = 0; i < 4; i++) {
-      images[i].src = responseImg[i]
-      values[i].value = nums[i]
-    }
-  }
-</script>
 
 
 {% endblock content %}

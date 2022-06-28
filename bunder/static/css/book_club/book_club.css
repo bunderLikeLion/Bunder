@@ -1,6 +1,7 @@
 body {
     display: flex;
     justify-content: center;
+    min-height: 200vh;
 }
 
 .container {
@@ -41,10 +42,6 @@ body {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     left: 5%;
     top: 1%;
-}
-
-.container .book_club_container:last-child {
-    height: 13rem;
 }
 
 .container .book_club_container .book_cover {
@@ -144,6 +141,7 @@ body {
 
 .container .my_book_club {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
@@ -234,4 +232,9 @@ body {
 .member_box img {
     width: 10rem;
     height: 11rem;
+}
+
+span {
+    position: absolute;
+    top: 15.5rem;
 }

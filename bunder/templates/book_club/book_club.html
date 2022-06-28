@@ -55,7 +55,6 @@
                         소모임명: {{ club.club_name }}
                         <a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
                     </div>
-
                     <div class="button_container">
                         <button class="request_btn">수락</button>
                         <button class="request_btn">거절</button>
@@ -90,6 +89,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -109,6 +109,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -128,6 +129,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -147,6 +149,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -166,6 +169,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -185,6 +189,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -204,6 +209,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -223,6 +229,7 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
@@ -242,39 +249,10 @@
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
-    {% if user.is_authenticated %}
-    <h2 class="decorator decorator_indent-b_l">번더의 인물 추천</h2>
-    <div class="user_container">
-        <div class="all_profile_container">
-            <div class="member_box">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <span>추천 닉네임<span>
-            </div>
-            <div class="member_box">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <span>추천 닉네임<span>
-            </div>
-            <div class="member_box">
-                <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                <span>추천 닉네임<span>
-            </div>
-        </div>
-    </div>
-    {% else %}
-    <div class="margin">
-        <div class="bunder_reco">
-            <h3 class="decorator decorator_indent-b_l">번더의 인물 추천</h3>
-            <div class="book_club_container">
-                <a href={% url 'user:loginpage' %} style="text-decoration: none;color:red ">
-                    <h1 class="login">로그인이 필요한 서비스입니다</h1>
-                </a>
-            </div>
-        </div>
-    </div>
-    {% endif %}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

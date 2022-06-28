@@ -36,21 +36,7 @@ Add Vote
             {# TODO: JS로 동적 생성가능하게 만들어야 함 #}
             <div class="input_bar" id="vote-list">
                 <div class="text"><span>투표 항목</span></div>
-                <div class="all_vote_container">
-                    <div class="single_vote_item" id="">
-                        <input type="text" class="vote_item_input input_bar">
-                        <button class="vote_item_delete">
-                            <span class="iconify" data-icon="bi:x-lg"></span>
-                        </button>
-                    </div>
-                    <div class="single_vote_item" id="">
-                        <input type="text" class="vote_item_input input_bar">
-                        <button class="vote_item_delete">
-                            <span class="iconify" data-icon="bi:x-lg"></span>
-                        </button>
-                        
-                    </div>
-                </div>
+                <div class="all_vote_container"></div>
                
             </div>
 
@@ -67,17 +53,20 @@ Add Vote
 
 
 
-        const voteList = document.getElementById('vote-list');
-        const toDoForm = document.getElementById('todo-form');
+        const voteList = document.querySelector('.all_vote_container');
         const addButton = document.querySelector('.addItem_btn');
 
 
         let itemList = [];
 
         function deleteTodo(event) {
-            const div = event.target.parentElement;
-            div.remove();
-            itemList = itemList.filter((item) => item.id !== parseInt(div.id));
+            let removeTag = event.target.parentElement;
+            while (removeTag.tagName != "DIV") {
+                removeTag = removeTag.parentElement;
+            	console.log(removeTag);
+			}
+            removeTag.remove();
+            itemList = itemList.filter((item) => item.id !== parseInt(removeTag.id));
         }
 
         function renderItem(item) {
@@ -85,15 +74,22 @@ Add Vote
             div.id = item.id;
             const input = document.createElement('input');
             const button = document.createElement('button');
+            const span = document.createElement('span');
 
+            div.classList.add("single_vote_item");
             input.setAttribute('name', 'input[]')
             input.setAttribute('type', 'text')
+			input.classList.add('vote_item_input', 'input_bar');
 
-            button.innerText = '❌';
+            button.classList.add('vote_item_delete');
+            button.setAttribute('type', 'button');
             button.addEventListener('click', deleteTodo);
+            span.classList.add('iconify');
+            span.setAttribute('data-icon', 'bi:x-lg');
 
             div.appendChild(input);
             div.appendChild(button);
+            button.appendChild(span);
             voteList.appendChild(div);
         }
 

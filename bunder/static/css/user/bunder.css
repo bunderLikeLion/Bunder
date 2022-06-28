@@ -717,3 +717,7 @@ body {
 .bunder_reco .book_club_container .my_book_club {
     width: 20%;
 }
+
+.btn_image {
+    cursor: pointer;
+}

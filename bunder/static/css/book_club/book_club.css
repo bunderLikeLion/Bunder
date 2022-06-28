@@ -12,9 +12,6 @@ body {
     background-color: #33383D;
     border-radius: 2rem;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    color: #a6a7a9
-
-;
 }
 
 .container .profile_club {
@@ -27,8 +24,9 @@ body {
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-    /* left: 5%; */
-    /* top: 2rem; */
+    left: 5%; 
+    margin-top: 6rem;
+    /* top: 2rem;  */
 }
 
 .container .book_club_container {
@@ -43,6 +41,10 @@ body {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     left: 5%;
     top: 1%;
+}
+
+.container .book_club_container:last-child {
+    height: 13rem;
 }
 
 .container .book_club_container .book_cover {
@@ -111,8 +113,8 @@ body {
     width: 5%;
     position: relative;
     float: right;
-    /* left: 82%; */
-    /* top: -2%; */
+    left: -12%; 
+    top: -2.1rem; 
     place-items: center;
     text-align: center;
 }

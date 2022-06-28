@@ -1,21 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-}
-
-div,
-p,
-span,
-input {
-  color: #babecc;
 }
 
 .container {
@@ -80,10 +67,6 @@ button {
   outline: 0;
   border-radius: 320px;
   background-color: #33383d;
-}
-
-.container .inputBox:nth-child(5) {
-  width: 4rem;
 }
 
 .container .inputBox input {

@@ -356,3 +356,12 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
   width: 12rem;
   height: 10rem;
 }
+
+.container .report_detail_container .profile_container .utility span {
+  margin-left: 1rem;
+}
+
+#comment {
+  width: 90%;
+  margin-right: 1rem;
+}

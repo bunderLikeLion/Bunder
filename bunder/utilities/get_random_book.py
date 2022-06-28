@@ -12,12 +12,6 @@ zip_dict = zip(keys, values)
 
 book_category_dict = dict(zip_dict)
 
-literature = []
-for key in book_category_dict.keys():
-    if book_category_dict.get(key) == '문학':
-        literature.append(key)
-random_literature = random.choices(literature, k=3)
-
 
 def get_random_book_list(category):
     array = list(book_category_dict)

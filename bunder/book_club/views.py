@@ -313,7 +313,7 @@ class member_reject(View):
                                  }, json_dumps_params={'ensure_ascii': False}, status=400)
 
 
-def response_invite(request):
+def response_accept(request):
     if request.method == "PATCH":
         req = json.loads(request.body)
         type = req["type"]
@@ -335,6 +335,13 @@ def response_invite(request):
         return JsonResponse({'message': "멤버 상태 변경 성공", "member": member.type
                              }, json_dumps_params={'ensure_ascii': False}, status=200)
 
+
+class Invite(View):
+    def get(self, request):
+        return render(request, "book_club/club_invite.html")
+
+    def post(self, request):
+        pass
 
 
 @csrf_exempt

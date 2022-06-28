@@ -610,7 +610,8 @@ def recommend_member(request):
 def room(request, bookclub_id):
     initial_user = request.user
     user_nickname = json.dumps(initial_user.nickname)
-    return render(request, 'book_club/room.html', {'user_nickname': user_nickname})
+    app_id = json.dumps(os.environ.get('APP_ID'))
+    return render(request, 'book_club/room.html', {'user_nickname': user_nickname, 'app_id': app_id})
 
 
 def getToken(request):

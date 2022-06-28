@@ -13,6 +13,11 @@ import os
 from django.db import connection
 from .models import BookClub, BookClubVote, VoteDetail, BookClubMember, Book
 
+import random
+import time
+from agora_token_builder import RtcTokenBuilder
+from .models import RoomMember
+
 
 def getInvitedClub(user):
     club_member = BookClubMember.objects.prefetch_related('club').filter(user=user, type="INVITE")
@@ -558,3 +563,60 @@ def recommend_member(request):
     user = request.user
     recommend = User.objects.filter(categories=user.categories).exclude(id=user.id).order_by('?')[:3]
     return recommend
+
+# videochat
+
+def room(request, bookclub_id):
+    initial_user = request.user
+    user_nickname = json.dumps(initial_user.nickname)
+    return render(request, 'book_club/room.html', {'user_nickname': user_nickname})
+
+
+def getToken(request):
+    appId = "d4703ab33e584e8eb8e9db094e0745f0"
+    appCertificate = "61976e9ab7ee47d4b243401a35b5d898"
+    channelName = request.GET.get('channel')
+    uid = random.randint(1, 230)
+    expirationTimeInSeconds = 3600
+    currentTimeStamp = int(time.time())
+    privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
+    role = 1
+
+    token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
+
+    return JsonResponse({'token': token, 'uid': uid}, safe=False)
+
+
+@csrf_exempt
+def createMember(request):
+    data = json.loads(request.body)
+    member, created = RoomMember.objects.get_or_create(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+
+    return JsonResponse({'name':data['name']}, safe=False)
+
+
+def getMember(request):
+    uid = request.GET.get('UID')
+    room_name = request.GET.get('room_name')
+
+    member = RoomMember.objects.get(
+        uid=uid,
+        room_name=room_name,
+    )
+    name = member.name
+    return JsonResponse({'name':member.name}, safe=False)
+
+@csrf_exempt
+def deleteMember(request):
+    data = json.loads(request.body)
+    member = RoomMember.objects.get(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+    member.delete()
+    return JsonResponse('Member deleted', safe=False)

@@ -18,4 +18,10 @@ urlpatterns = [
     path('cover', views.get_book_club_image, name='get_book_club_image'),
     path('accept', views.response_accept, name='response_invite'),
     path('invite', views.Invite.as_view()),
+
+    path('room/<int:bookclub_id>', views.room),
+    path('get_token/', views.getToken),
+    path('create_member/', views.createMember),
+    path('get_member/', views.getMember),
+    path('delete_member/', views.deleteMember),
 ]

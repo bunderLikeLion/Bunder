@@ -24,12 +24,12 @@
                 {% endfor %}
             </div>
             <div class="player">
+                <div class="profile_img">
+                    <!-- 송경석 형님! 자바스크립트, 템플릿 문법...-->
+                    <img id="popular_report_profile_pic" class="img"
+                        src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
+                </div>
                 <div class="upper-part">
-                    <div class="profile_img">
-                        <!-- 송경석 형님! 자바스크립트, 템플릿 문법...-->
-                        <img id="popular_report_profile_pic" class="img"
-                            src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
-                    </div>
                     <div class="info-area" id="test">
                         {% for img in populate_reports%}
                         <label class="song-info" id="song-info-1">
@@ -37,8 +37,8 @@
                         </label>
                         {% endfor %}
                     </div>
-                    <button id="detail_trigger_btn">상세보기</button>
                 </div>
+                <button id="detail_trigger_btn" class="button">상세보기</button>
             </div>
 
         </div>
@@ -48,8 +48,8 @@
         <div class="inputBox">
             <div class="text"><span>책 제목</span></div>
             <input type="text" class="input_bar" required="required" name='search_name' id='search_name'>
-            <input class="button" type="submit" value="검색">
         </div>
+        <input class="button" type="submit" value="검색">
     </form>
     <div class="all_report_container">
         <div class="navbar_container big_container">
@@ -101,17 +101,20 @@
                             <p class="bookname">{{ singleReport.report_name }}</p>
                         </div>
                         <div class="report_info">
-                            <div class="profile_img">
-                                <img class="img"
-                                    src="https://avatars.dicebear.com/api/{{ singleReport.user.sex }}/{{ singleReport.user.nickname }}.svg">
+                            <div class="box">
+                                <div class="profile_img">
+                                    <img class="img"
+                                        src="https://avatars.dicebear.com/api/{{ singleReport.user.sex }}/{{ singleReport.user.nickname }}.svg">
+                                </div>
+                                <div class="profile_name">
+                                    <span class="name">{{ singleReport.user.nickname }}</span>
+                                </div>
                             </div>
-                            <div class="profile_name">
-                                <span class="name">{{ singleReport.user.nickname }}</span>
-                            </div>
-                            <div class="report_time">
+                            <div class="report_time box">
                                 <span class="time">{{ singleReport.created_at }}</span>
                             </div>
                         </div>
+                        
                     </div>
                 </a>
                 {% endfor %}

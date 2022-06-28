@@ -336,6 +336,11 @@ class Invite(View):
     def get(self, request):
         club_list = BookClub.objects.filter(owner=request.user)
 
+        if request.GET.get('userId'):
+            user_id = request.GET.get['userId']
+            target_user = get_object_or_404(pk=user_id)
+            return render(request, "book_club/club_invite.html", {"club_list": club_list, 'target_user': target_user})
+
         return render(request, "book_club/club_invite.html", {"club_list": club_list})
 
     def post(self, request):

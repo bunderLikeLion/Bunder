@@ -23,15 +23,15 @@
 		</div>
 		<div class="profile_container">
 			<div class="utility">
-				<a href="">
+				<a href="/user/bunder?id={{ user_info.id }}">
 					<h2>번더로 가기</h2>
 				</a>
 
-				<a href="">
+				<a href="/bookclub/invite?id={{ user_info.id }}">
 					<h2>소모임 초대하기</h2>
 				</a>
 
-				<a href="">
+				<a href="/mail/reply?id={{ user_info.id }}">
 					<h2>쪽지 보내기</h2>
 				</a>
 			</div>
@@ -170,152 +170,152 @@
 	axios.defaults.xsrfCookieName = 'csrftoken'
 	axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 
-		const requestButton = document.querySelector("#scrap");
-		const commentButton = document.querySelector(".comment_btn")
-		const content = document.querySelector("#comment")
-		const commentDiv = document.querySelector(".comment_content")
-		const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
-		let is_scrap = JSON.parse("{{ is_scrap|escapejs }}");
+	const requestButton = document.querySelector("#scrap");
+	const commentButton = document.querySelector(".comment_btn")
+	const content = document.querySelector("#comment")
+	const commentDiv = document.querySelector(".comment_content")
+	const bookReportId = JSON.parse("{{ book_report_id|escapejs }}");
+	let is_scrap = JSON.parse("{{ is_scrap|escapejs }}");
 
-		const commentCount = document.querySelector(".comment-count_h3");
-		console.log(commentCount.innerText);
+	const commentCount = document.querySelector(".comment-count_h3");
+	console.log(commentCount.innerText);
 
-		const deleteCommentButton = document.querySelectorAll(".delete-comment_btn");
+	const deleteCommentButton = document.querySelectorAll(".delete-comment_btn");
 
-		commentButton.addEventListener("click", () => {
-			sendComment(bookReportId, content.value);
-			content.value = "";
-		})
+	commentButton.addEventListener("click", () => {
+		sendComment(bookReportId, content.value);
+		content.value = "";
+	})
 
-		requestButton.addEventListener('click', () => {
-			scrapReport(bookReportId);
-		})
+	requestButton.addEventListener('click', () => {
+		scrapReport(bookReportId);
+	})
 
-		if (deleteCommentButton !== null) {
-			deleteCommentButton.forEach(el => {
-				el.addEventListener('click', (event) => {
-					const commentId = event.target.parentNode.lastElementChild.value;
-					deleteComment(bookReportId, commentId)
-				})
-			})
-
-		}
-
-		const deleteComment = async (bookReportId, commentId) => {
-			const url = "comment"
-			await axios.delete(url, {
-				data: {
-					bookReportId: bookReportId,
-					commentId: commentId
-				}
-			})
-			window.location.reload();
-		}
-
-		const scrapReport = async (id) => {
-			const url = "scrap";
-            console.log(is_scrap);
-
-            if (is_scrap == "True") {
-                const response = await axios.delete(url, {
-                    data: {bookClubId: id} })
-                is_scrap = 'False';
-                requestButton.innerText = "스크랩";
-			} else {
-                const response = await axios.post(url, { id });
-                is_scrap = "True";
-                requestButton.innerText = "스크랩 취소";
-			}
-
-		}
-
-		const sendComment = async (book_report_id, text) => {
-			const url = "comment"
-			const response = await axios.post(url, { book_report_id, text })
-
-			const singleComment = document.createElement('div');
-			const profileImg = document.createElement('div');
-			const img = document.createElement('img');
-			const commentInfo = document.createElement('div');
-
-			const div = document.createElement('div');
-
-			const comment = response.data.comment;
-			const nickname = document.createElement('p');
-			const content = document.createElement('p');
-			const created_at = document.createElement('p');
-
-			const deleteDiv = document.createElement('div');
-			const submitButton = document.createElement('input');
-			const valueField = document.createElement('input');
-
-			deleteDiv.classList.add("delete_btn");
-			submitButton.classList.add("button", "delete-comment_btn")
-			submitButton.setAttribute("type", "submit");
-			valueField.classList.add("comment_id")
-			valueField.setAttribute("type", "hidden");
-			submitButton.value = "삭제";
-			valueField.value = comment.id;
-
-			singleComment.classList.add("single_comment");
-			profileImg.classList.add("profile_img");
-			img.classList.add("img");
-			commentInfo.classList.add("comment_info");
-			created_at.id = "time";
-
-			singleComment.appendChild(profileImg);
-			profileImg.appendChild(img);
-			singleComment.appendChild(commentInfo)
-			commentInfo.appendChild(div);
-
-			singleComment.appendChild(deleteDiv)
-
-
-			div.appendChild(nickname);
-			div.appendChild(content);
-			commentInfo.appendChild(created_at);
-
-			deleteDiv.appendChild(submitButton);
-			deleteDiv.appendChild(valueField);
-
-			commentDiv.appendChild(singleComment);
-
-			img.src = "https://avatars.dicebear.com/api/" + comment.sex + "/" + comment.nickname + ".svg"
-
-
-			const date = comment.created_at.split("T")[0].split("-");
-			const time = comment.created_at.split("T")[1].split(":");
-
-			const year = date[0];
-			const month = date[1].replace(/(^0+)/, "");
-			const day = date[2];
-
-			let hour = time[0];
-			let datetime = "오전";
-			const minute = time[1];
-
-			if (Number(hour) > 12) {
-				hour -= 12;
-				datetime = "오후";
-			}
-			const reformat_date =
-				year + "년 " + month + "월 " + day + "일 "
-				+ hour + ":" + minute + " " + datetime;
-			nickname.innerText = "닉네임 : " + comment.nickname;
-			content.innerText = "내용 : " + comment.content;
-			created_at.innerText = reformat_date;
-
-
-			submitButton.addEventListener('click', (event) => {
+	if (deleteCommentButton !== null) {
+		deleteCommentButton.forEach(el => {
+			el.addEventListener('click', (event) => {
 				const commentId = event.target.parentNode.lastElementChild.value;
 				deleteComment(bookReportId, commentId)
 			})
+		})
 
-			commentCount.innerText = Number(commentCount.innerText) + 1;
+	}
 
-			window.scrollTo(0, document.body.scrollHeight);
+	const deleteComment = async (bookReportId, commentId) => {
+		const url = "comment"
+		await axios.delete(url, {
+			data: {
+				bookReportId: bookReportId,
+				commentId: commentId
+			}
+		})
+		window.location.reload();
+	}
 
+	const scrapReport = async (id) => {
+		const url = "scrap";
+		console.log(is_scrap);
+
+		if (is_scrap == "True") {
+			const response = await axios.delete(url, {
+				data: {bookClubId: id} })
+			is_scrap = 'False';
+			requestButton.innerText = "스크랩";
+		} else {
+			const response = await axios.post(url, { id });
+			is_scrap = "True";
+			requestButton.innerText = "스크랩 취소";
 		}
+
+	}
+
+	const sendComment = async (book_report_id, text) => {
+		const url = "comment"
+		const response = await axios.post(url, { book_report_id, text })
+
+		const singleComment = document.createElement('div');
+		const profileImg = document.createElement('div');
+		const img = document.createElement('img');
+		const commentInfo = document.createElement('div');
+
+		const div = document.createElement('div');
+
+		const comment = response.data.comment;
+		const nickname = document.createElement('p');
+		const content = document.createElement('p');
+		const created_at = document.createElement('p');
+
+		const deleteDiv = document.createElement('div');
+		const submitButton = document.createElement('input');
+		const valueField = document.createElement('input');
+
+		deleteDiv.classList.add("delete_btn");
+		submitButton.classList.add("button", "delete-comment_btn")
+		submitButton.setAttribute("type", "submit");
+		valueField.classList.add("comment_id")
+		valueField.setAttribute("type", "hidden");
+		submitButton.value = "삭제";
+		valueField.value = comment.id;
+
+		singleComment.classList.add("single_comment");
+		profileImg.classList.add("profile_img");
+		img.classList.add("img");
+		commentInfo.classList.add("comment_info");
+		created_at.id = "time";
+
+		singleComment.appendChild(profileImg);
+		profileImg.appendChild(img);
+		singleComment.appendChild(commentInfo)
+		commentInfo.appendChild(div);
+
+		singleComment.appendChild(deleteDiv)
+
+
+		div.appendChild(nickname);
+		div.appendChild(content);
+		commentInfo.appendChild(created_at);
+
+		deleteDiv.appendChild(submitButton);
+		deleteDiv.appendChild(valueField);
+
+		commentDiv.appendChild(singleComment);
+
+		img.src = "https://avatars.dicebear.com/api/" + comment.sex + "/" + comment.nickname + ".svg"
+
+
+		const date = comment.created_at.split("T")[0].split("-");
+		const time = comment.created_at.split("T")[1].split(":");
+
+		const year = date[0];
+		const month = date[1].replace(/(^0+)/, "");
+		const day = date[2];
+
+		let hour = time[0];
+		let datetime = "오전";
+		const minute = time[1];
+
+		if (Number(hour) > 12) {
+			hour -= 12;
+			datetime = "오후";
+		}
+		const reformat_date =
+			year + "년 " + month + "월 " + day + "일 "
+			+ hour + ":" + minute + " " + datetime;
+		nickname.innerText = "닉네임 : " + comment.nickname;
+		content.innerText = "내용 : " + comment.content;
+		created_at.innerText = reformat_date;
+
+
+		submitButton.addEventListener('click', (event) => {
+			const commentId = event.target.parentNode.lastElementChild.value;
+			deleteComment(bookReportId, commentId)
+		})
+
+		commentCount.innerText = Number(commentCount.innerText) + 1;
+
+		window.scrollTo(0, document.body.scrollHeight);
+
+	}
 
 	</script>
 

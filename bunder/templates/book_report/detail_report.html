@@ -147,7 +147,7 @@
 							<p>닉네임 : {{c.user.nickname}}</p>
 							<p>내용 : {{c.content}}</p>
 						</div>
-						<p id="time">{{c.created_at}}</p>
+						<p id="time">{{ c.created_at | date:"Y년 m월 d일 H시 m분" }}</p>
 					</div>
 					{% if user == c.user %}
 					<div class="delete_btn">

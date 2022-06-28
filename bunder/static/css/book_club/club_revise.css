@@ -176,9 +176,11 @@ button:active {
 }
 
 button.login{
-    width: 30%;
-    height: 3rem;
+    width: 25%;
+    height: 4rem;
     color: #813818;
+    font-size: large;
+    font-weight: 600;
 }
 
 .button_container{
@@ -189,8 +191,9 @@ button.login{
 
 .genre_container {
     display: flex;
-    width: 110%;
+    width: 105%;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .category_container {
@@ -203,7 +206,7 @@ button.login{
 }
 
 .club_category_container{
-    margin : 3rem 0;
+    margin: 3rem 0rem;
 }
 
 .container_all_requesters {
@@ -249,7 +252,7 @@ button.login{
     height: 24px;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: rgba(238,240,245,1);
+    /* background-color: rgba(238,240,245,1); */
     box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
 }
 
@@ -293,9 +296,11 @@ button.login{
     justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: column;
+    margin: 0 auto;
+    width: 90%;
 }
 
-textarea {   /* 독후감 본문 입력란 */
+textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
     font-size: 1.3rem;
     padding : 2rem;
     width: 100%;
@@ -306,7 +311,7 @@ textarea {   /* 독후감 본문 입력란 */
     box-shadow: 15px 15px 56px #26292d, -15px -15px 56px #40474d;
     background-color: transparent;
 
-    /* 기본 스타일 */
+    /* ê¸°ë³¸ ìŠ¤íƒ€ì¼ */
     /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent; */
@@ -407,7 +412,7 @@ textarea {   /* 독후감 본문 입력란 */
     height: 24px;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: rgba(238,240,245,1);
+    /* background-color: rgba(238,240,245,1); */
     box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6), inset -1px -1px 1px rgba(12,13,18, 0.06), -1px -1px 1px 0px rgba(255, 255, 255,0.6), -1px -1px 4px 0px rgba(255, 255, 255, 0.6), -2px -2px 8px 0px rgba(255, 255, 255, 0.6), 1px 1px 1px 0px rgba(12,13,18, 0.06), 1px 1px 4px 0px rgba(12,13,18, 0.06), 2px 2px 8px 0px rgba(12,13,18, 0.06);
 }
 
@@ -444,7 +449,7 @@ textarea {   /* 독후감 본문 입력란 */
     font-weight: 600;
     /* margin-top: 0; */
     height: 3.5rem;
-    padding : 0 3rem;
+    padding: 0 2rem;
     color: #813818;
     background-color: #ed591a;
     border: 0;
@@ -469,12 +474,25 @@ textarea {   /* 독후감 본문 입력란 */
 
 .temp {
     display: flex;
+    justify-content: space-between;
 }
 
 .box {
-    width: 50%;
+    width: 100%;
+    /* margin: 0 0.5rem; */
 }
 
 .requester_profile_container {
     margin : 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img.profile_img {
+    width: 3rem;
+}
+
+.container_single_requester {
+    margin: 0.5rem;
 }

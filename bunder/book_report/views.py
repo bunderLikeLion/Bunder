@@ -1,15 +1,15 @@
+import json
+import os
+
+from django.core.paginator import Paginator
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
-from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
 from utilities.get_random_book import get_random_book_list
 from .models import BookReport, Scrap, Comment
-from django.views import View
-import json
-import os
 
 # Create your views here.
 
@@ -25,7 +25,7 @@ def main(request):
     all = json.dumps('전체')
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populate_reports': populated_report, 'category': all })
+                   'populate_reports': populated_report, 'category': all})
 
 
 def category_search(request, category):
@@ -59,13 +59,13 @@ def category_search(request, category):
         category = json.dumps(category)
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populated_report': populated_report, 'category':category})
+                   'populated_report': populated_report, 'category': category})
 
 
 def write_report(request):
     key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'));
     random_book_list = json.dumps(get_random_book_list(request.user.categories))
-    return render(request, "book_report/write_report.html", {'bookSecret': key, 'random_book_list' : random_book_list})
+    return render(request, "book_report/write_report.html", {'bookSecret': key, 'random_book_list': random_book_list})
 
 
 def detail_report(request, id):
@@ -155,7 +155,6 @@ class ScrapRequest(View):
 
         return JsonResponse({'scrap': model_to_dict(scrap)})
 
-
     # 스크랩 취소
     def delete(self, request):
         req = json.loads(request.body)
@@ -164,9 +163,9 @@ class ScrapRequest(View):
         scrap = Scrap.objects.filter(user=request.user, book_report_id=book_report_id)
         scrap.delete()
 
-        return  JsonResponse({'message': "스크랩 취소 성공"}
-                             , json_dumps_params={'ensure_ascii': False}
-                             , status=200)
+        return JsonResponse({'message': "스크랩 취소 성공"}
+                            , json_dumps_params={'ensure_ascii': False}
+                            , status=200)
 
 
 # 내 스크랩 확인

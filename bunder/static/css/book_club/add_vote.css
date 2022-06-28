@@ -41,7 +41,7 @@ body {
     width: 7rem;
 }
 
-.input_bar {   /* ë…í›„ê° ì œëª©, ì±…ì œëª©, ì±…ì œëª© ê²€ìƒ‰ ìž…ë ¥ì°½ */
+.input_bar {   /* 독후감 제목, 책제목, 책제목 검색 입력창 */
     width: 100%;
     display: flex;
     flex-direction: column;

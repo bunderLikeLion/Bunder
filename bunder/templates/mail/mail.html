@@ -11,12 +11,12 @@ Mail
 <div class="btn">
     {{ error }}
     <div class="write_report">
-        <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기" onClick="location.href = 'new'">
-    </div>
-    <div class="write_report">
         <a href="reply?id={{ click_receiver }}">
             <input type="submit" class="button" id="write_report_btn" value="쪽지 답장하기" onClick="location.href = 'new'">
         </a>
+    </div>
+    <div class="write_report">
+        <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기" onClick="location.href = 'new'">
     </div>
 </div>
 <div class="container">

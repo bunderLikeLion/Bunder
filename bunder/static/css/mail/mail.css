@@ -1,5 +1,7 @@
 body {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -155,7 +157,7 @@ margin-right: 1rem;
 
 .time {font-size: small;color: #a6a7a9;}
 
-#book_name {width: 70%;height: 5rem;border-radius: 1rem;}
+#book_name {width: 90%;height: 5rem;border-radius: 1rem;margin-right: 1rem;}
 
 .bookname {text-align: left;color: #f7f7f7;/* width: 90%; */}
 
@@ -239,3 +241,13 @@ margin-right: 1rem;
   cursor: pointer;
 }
 
+ .btn {
+  display: flex;
+  position: relative;
+  top: 5rem;
+  left: 25rem;
+}
+
+.btn .button {
+  margin: 0 2rem; 
+}

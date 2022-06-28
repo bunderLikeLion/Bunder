@@ -5,7 +5,7 @@ from .models import ProfileBook, User
 from book_club.models import Book, BookClubMember
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import check_password
 from book_report.models import BookReport, Scrap
 from django.db.models import Q
@@ -232,6 +232,14 @@ class UserBook(View):
 
         return redirect('user:bunder')
 
+    def delete(self, request):
+        req = json.loads(request.body)
+        book_id = req['bookId']
+
+        book = get_object_or_404(Book, pk=book_id)
+        book.delete()
+        return JsonResponse({"message": "책 삭제 성공.",
+                             }, json_dumps_params={'ensure_ascii': False}, status=200)
 
 # 프로필 책 등록
 def profilebook(request, id):
@@ -261,7 +269,9 @@ def del_profilebook(request, id):
 # 책 디테일페이지로 가기
 def bookdetail(request, id):
     book = get_object_or_404(Book, pk=id)
-    return render(request, 'user/detail_book.html', {'book': book})
+    book_id_json = json.dumps(book.id)
+
+    return render(request, 'user/detail_book.html', {'book': book, 'bookId': book_id_json})
 
 
 def getBookClub(user):

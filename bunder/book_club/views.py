@@ -383,7 +383,7 @@ def response_accept(request):
 
 
 class Invite(View):
-    #TODO
+    #TODO 송경석
     def get(self, request):
         club_list = BookClub.objects.filter(owner=request.user)
 
@@ -395,8 +395,12 @@ class Invite(View):
         return render(request, "book_club/club_invite.html", {"club_list": club_list})
 
     def post(self, request):
-        value = request.POST["club"]
-        return render(request, "book_club/club_invite.html")
+        club_id = request.POST["clubId"]
+        user_id = request.POST["userId"]
+
+        member, flag = BookClubMember.objects.get_or_create(user_id=user_id, club_id=club_id)
+
+        return redirect('book_club:book_club_detail', club_id)
 
 
 @csrf_exempt

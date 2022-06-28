@@ -320,7 +320,8 @@ def user_search(request):
         nickname = request.GET.get("nickname")
         try:
             user = User.objects.get(nickname=nickname)
-            response = {"userId": user.id, "nickname": user.nickname, "message": "성공적으로 검색했습니다!"}
+            response = {"userId": user.id, "sex": user.sex,
+                        "nickname": user.nickname, "message": "성공적으로 검색했습니다!"}
 
             return JsonResponse(response, json_dumps_params={'ensure_ascii': False}, status=200)
         except User.DoesNotExist:

@@ -40,8 +40,7 @@ display : flex;
 
 .reports_container{
   box-shadow: none;
-  height: 100%;
-  margin-left: 15rem;
+  height: 30rem;
 }
 
 form {
@@ -100,7 +99,7 @@ box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }
 
-.navbar_container{width: 14rem;height: 40%;padding: 3rem 1rem;position: fixed;overflow: scroll;background-color: #33383D;}
+.navbar_container{width: 14rem;height: 30rem;padding: 3rem 1rem;overflow: scroll;background-color: #33383D;}
 
 .navbar > li {
 margin: 1rem 0;
@@ -139,7 +138,7 @@ border-radius: 50px;
 background: transparent;
 }
 
-.report_box{position: relative;padding: 1rem;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;border-radius: 50px;}
+.report_box{position: relative;padding: 1rem;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;border-radius: 50px; width: 100%; height: 30rem;overflow: scroll;}
 
 .report_info{display : flex;flex-direction: column;width: 25%;/* padding: 0 1rem; */}
 

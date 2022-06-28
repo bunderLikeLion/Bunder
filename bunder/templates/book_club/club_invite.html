@@ -11,6 +11,12 @@
 <div class="container">
   <h2>Invite My Club</h2>
   <form method="post">
+    <div class="img_container">
+      <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+    </div>
+    <div class="club_description">
+      <p>소모임 소개 : {{ book_club.description }}</p>
+    </div>
     {% csrf_token %}
     <h3 class="body">소모임 선택</h3>
     <section class="category_container">

@@ -83,12 +83,15 @@
 		<div class="content_container">
 			<div class="text">독후감 본문</div>
 			<div class="report_content_container">
-				<div class="report_content">{{book_report.content}}</div>
+				<div class="report_content">
+					{% if book_report.image_upload %}
+					<img src={{book_report.image_upload.url}} class="report_img">
+					{% endif %}
+					<p>{{book_report.content}}</p>
+				</div>
 			</div>
 		</div>
-		{% if book_report.image_upload %}
-		<img src={{book_report.image_upload.url}} alt="">
-		{% endif %}
+
 
 		<div class="button_container">
 			<div class="like_button">

@@ -343,3 +343,8 @@ textarea {   /* 독후감 본문 입력란 */
 .comment_info_container{
   width: 100%;
 }
+
+.report_img{
+  width: 12rem;
+  height: 10rem;
+}

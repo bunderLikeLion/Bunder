@@ -43,8 +43,8 @@ body {
   cursor: pointer;
   font-size: large;
   font-weight: 600;
-  margin: 1rem;
-  margin-left: 2.5rem;
+  margin: 1rem 0.5rem 0.2rem;
+  /* margin-left: 2.5rem; */
   height: 3.5rem;
   padding: 0 2rem;
   color: #813818;
@@ -308,6 +308,7 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
 
 .report_content {
   color: #f7f7f7;
+  padding: 1rem;
 }
 
 .utility {
@@ -353,8 +354,10 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
 }
 
 .report_img{
-  width: 12rem;
-  height: 10rem;
+  width: 25%;
+  float: left;
+  margin: 0 1rem;
+  /* height: 10rem; */
 }
 
 .container .report_detail_container .profile_container .utility span {
@@ -362,6 +365,6 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
 }
 
 #comment {
-  width: 90%;
+  width: 85%;
   margin-right: 1rem;
 }

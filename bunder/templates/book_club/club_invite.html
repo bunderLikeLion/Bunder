@@ -17,18 +17,16 @@
       </div>
       <div class="box">
         <div class="inputBox">
-          <input type="text" required="required" name='clubname' id='clubname' value=" {{ book_club.club_name }}">
+          <input type="text" required="required" name='clubname' class="nickname_input" value="{{ book_club.club_name }}">
           <span class="first">User Nickname</span>
         </div>
+		  <input type="hidden" class="userid_input" name="userId"/>
       </div>
-      <button class="search" type="submit" value="nickname">검색</button>
+      <button type="button" class="search" type="submit" value="nickname">검색</button>
     </div>
     <div class="alarm">
       <div class="green">
-        <h1>성공적으로 검색했습니다!</h1>
-      </div>
-      <div class="red">
-        <h1>존재하지 않는 유저입니다!</h1>
+        <h1 class="search-result_text"></h1>
       </div>
     </div>
     {% csrf_token %}
@@ -36,7 +34,7 @@
     <section class="category_container">
       {% for club in club_list %}
       <label class="category">
-        <input type="radio" value="{{ club.id }}" name="club" checked class="radio__input cover_input" />
+        <input type="radio" value="{{ club.id }}" name="clubId" checked class="radio__input cover_input" />
         <div class="category__box"></div>
         <span class="category__text">
           <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
@@ -52,6 +50,40 @@
     <button class="login" type="submit" value="Sign up">소모임 초대</button>
   </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	const searchButton = document.querySelector('.search');
+    const nickNameInput = document.querySelector('.nickname_input');
+    const userIdInput = document.querySelector('.userid_input');
+    const userImage = document.querySelector('.profile_img');
 
+    let userId, userSex;
+
+    const prefix = "https://avatars.dicebear.com/api/";
+    const suffix = ".svg";
+
+    axios.defaults.xsrfCookieName = 'csrftoken';
+    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+
+    const searchResult = document.querySelector('.search-result_text');
+
+    const searchUser = async (nickname) => {
+        const url = "/user/search?nickname=" + nickname;
+        const response = await axios.get(url);
+        const info = response.data;
+        searchResult.innerText = info.message;
+        userIdInput.setAttribute("value", info.userId);
+        if (info.message == "존재 하지 않는 유저 입니다.") {
+            userImage.src = "https://avatars.dicebear.com/api/male/바.svg";
+        } else {
+        	userImage.src = prefix + info.sex + "/" + info.nickname + suffix;
+		}
+	}
+
+    searchButton.addEventListener('click', () => {
+        searchUser(nickNameInput.value)
+	})
+
+</script>
 
 {% endblock content %}

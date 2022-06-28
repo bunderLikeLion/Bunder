@@ -24,14 +24,17 @@
 		<div class="profile_container">
 			<div class="utility">
 				<a href="/user/bunder?id={{ user_info.id }}">
+					<ion-icon name="person-outline"></ion-icon>
 					<h2>번더로 가기</h2>
 				</a>
 
 				<a href="/bookclub/invite?id={{ user_info.id }}">
+					<ion-icon name="book-outline"></ion-icon>
 					<h2>소모임 초대하기</h2>
 				</a>
 
 				<a href="/mail/reply?id={{ user_info.id }}">
+					<ion-icon name="mail-outline"></ion-icon>
 					<h2>쪽지 보내기</h2>
 				</a>
 			</div>
@@ -142,16 +145,18 @@
 			<div class="comment_content">
 				{% for c in comment %}
 				<div class="single_comment">
-					<div class="profile_img">
-						<img class="img"
-							src="https://avatars.dicebear.com/api/{{ c.user.sex }}/{{ c.user.nickname }}.svg">
-					</div>
-					<div class="comment_info">
-						<div>
-							<h2>{{c.user.nickname}}</h2>
-							<p class="comment_content">{{c.content}}</p>
+					<div class="box">
+						<div class="profile_img">
+							<img class="img"
+								src="https://avatars.dicebear.com/api/{{ c.user.sex }}/{{ c.user.nickname }}.svg">
 						</div>
-						<p id="time">{{ c.created_at | date:"m월 d일 H시 m분" }}</p>
+						<div class="comment_info_container">
+							<p id="time">{{ c.created_at | date:"Y년 m월 d일 H시 m분" }}</p>
+							<div class="comment_info">
+								<p id="comment_name">닉네임 : {{c.user.nickname}}</p>
+								<p id="comment_content">내용 : {{c.content}}</p>
+							</div>
+						</div>
 					</div>
 					{% if user == c.user %}
 					<div class="delete_btn">
@@ -168,7 +173,7 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
 <script>
 	//textarea 바이트 수 체크하는 함수
 	function fn_checkByte(obj) {
@@ -178,8 +183,7 @@
 
 		let totalByte = 0;
 		for (let i = 0; i < text_len; i++) {
-			const each_char = text_val.charAt(i);
-			const uni_char = escape(each_char); //유니코드 형식으로 변환
+			const each_char = text_val.charAt(i); const uni_char = escape(each_char); //유니코드 형식으로 변환
 			if (uni_char.length > 4) {
 				// 한글 : 2Byte
 				totalByte += 1;
@@ -198,7 +202,8 @@
 			document.getElementById("nowByte").style.color = "green";
 		}
 	}
-
+</script>
+<script>
 
 	axios.defaults.xsrfCookieName = 'csrftoken'
 	axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"

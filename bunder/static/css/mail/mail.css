@@ -41,6 +41,7 @@ display : flex;
 .reports_container{
   box-shadow: none;
   height: 100%;
+  min-height: 30rem;
   margin-left: 15rem;
 }
 
@@ -139,7 +140,7 @@ border-radius: 50px;
 background: transparent;
 }
 
-.report_box{position: relative;padding: 1rem;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;border-radius: 50px;}
+.report_box{position: relative;padding: 1rem;min-height: 20rem;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;border-radius: 50px;}
 
 .report_info{display : flex;flex-direction: column;width: 25%;/* padding: 0 1rem; */}
 

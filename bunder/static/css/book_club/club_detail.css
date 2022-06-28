@@ -58,7 +58,7 @@ h1 {
   align-items: center;
   border-radius: 1.5rem;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-  margin-right: 8rem;
+  margin-right: 3rem;
 }
 
 img {
@@ -305,7 +305,7 @@ button:active {
 }
 
 .club_description {
-  width: 70%;
+  width: 60%;
   padding: 2rem;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
   border-radius: 10px;
@@ -331,7 +331,8 @@ button:active {
 }
 
 .all_profile_container {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 .edit_container a {

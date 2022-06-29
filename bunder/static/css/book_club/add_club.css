@@ -180,7 +180,7 @@ button {
 }
 
 button:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f !important;
 }
 
 button:active {
@@ -441,9 +441,10 @@ textarea {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는거 */
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-transition: background-color 9999s ease-out;
-    box-shadow:  0 0 0px 1000px white 00.1s inset !important;
-    -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-transition: background-color 9999s ease-out;
+      box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+      -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+      -webkit-text-fill-color: #fff !important;
 }

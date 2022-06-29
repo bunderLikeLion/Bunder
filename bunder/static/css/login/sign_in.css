@@ -74,6 +74,7 @@ input:-webkit-autofill:active {
       -webkit-transition: background-color 9999s ease-out;
       box-shadow:  0 0 0px 1000px white 00.1s inset !important;
       -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+      -webkit-text-fill-color: #fff !important;
 }
 
 .container .inputBox span {

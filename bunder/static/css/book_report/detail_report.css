@@ -400,6 +400,7 @@ textarea {   /* Ã«Ââ€¦Ã­â€ºâ€žÃªÂ°Â Ã«Â³Â¸Ã«Â
 
 .utility > a:hover {
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+}
 .container .report_detail_container .profile_container .profile_img {
     transition: all 0.5s;
     cursor: pointer;

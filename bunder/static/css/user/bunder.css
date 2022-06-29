@@ -819,6 +819,7 @@ img {
 
 .add_bookshelf:hover {
     box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f !important;
+}
 .size {
     color: lightcoral !important;
     font-size: 1.8rem;

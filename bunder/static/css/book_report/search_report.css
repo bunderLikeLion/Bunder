@@ -187,3 +187,12 @@ form {
     padding: 0;
     margin-left: 11%;
 }
+
+.container .big_container .reports_container .report_list .report {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.container .big_container .reports_container .report_list .report:hover {
+    transform: scale(1.07);
+}

@@ -551,6 +551,20 @@ body {
     /* top: 2rem; */
 }
 
+.container .reco {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    border-left: 0.5rem #514a77 solid;
+    height: 2rem;
+    margin: 1rem;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
+    float: left;
+    width: 35rem !important;
+}
+
 .container .book_club_container {
     display: flex;
     align-items: center;
@@ -765,6 +779,10 @@ img {
 
 .text {
     left: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .temp {

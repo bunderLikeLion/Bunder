@@ -325,7 +325,7 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
 .utility {
   position:  absolute;
   top: 7rem;
-  left: 12rem;
+  left: 14rem;
   padding: 1rem;
   background-color: #33383D;
   box-shadow: 4px 4px 8px #25292d, -4px -4px 8px #41474d;
@@ -394,4 +394,13 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
   display: flex;
   /* margin-top: 1rem; */
   /* align-items: center; */
+}
+
+.container .report_detail_container .profile_container .profile_img {
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.container .report_detail_container .profile_container .profile_img:hover {
+    transform: scale(1.2);
 }

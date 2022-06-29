@@ -342,3 +342,19 @@ align-items: center;
   .reports_container {
     box-shadow: none;
 }
+
+.container .all_report_container .navbar_container .categories .navbar li{
+    transition: all 0.5s;
+}
+
+.container .all_report_container .navbar_container .categories .navbar li:hover {
+    transform: scale(1.2);
+}
+
+.container .all_report_container .reports_container .report_box .report {
+    transition: all 0.5s;
+}
+
+.container .all_report_container .reports_container .report_box .report:hover {
+    transform: translateY(-1.2em);
+}

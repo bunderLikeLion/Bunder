@@ -342,3 +342,7 @@ align-items: center;
   .reports_container {
     box-shadow: none;
 }
+
+#search_btn:hover, #write_report_btn:hover {
+  box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
+}

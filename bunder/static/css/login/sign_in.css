@@ -164,3 +164,7 @@ margin: 0 0.5rem;
     
 height: 3rem;
 }
+
+.signup:hover {
+    box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
+}

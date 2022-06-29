@@ -187,3 +187,11 @@ form {
     padding: 0;
     margin-left: 11%;
 }
+
+.button:hover {
+    box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
+}
+
+.back_btn:hover {
+    box-shadow: 5px 5px 8px #62646a, -9px -9px 9px #17191d;
+}

@@ -129,20 +129,20 @@ Club Detail
                 <div class="empty-vote empty_list">
                     <div class="vote_info">
                         <div>투표 제목: {{ end_vote.topic }}</div>
-                        <div>1등 결과</div>
+                        <span>1등 : </span>
                         {% for one in onset_list %}
-                        <div>
-                            <span>내용: {{ one.description }}</span>
-                        </div>
+                        
+                            <span>{{ one.description }}</span>
+                        
                         {% endfor %}
-                        <br />
+                        <br/><br>
                         {% for each_vote in end_vote_list %}
                         <div>
-                            <span>내용: {{ each_vote.description }}</span>
-                            <span>득표수: {{ each_vote.vote_cnt }}</span>
+                            <span>{{ each_vote.description }}</span>
+                            <span>{{ each_vote.vote_cnt }}</span>
                         </div>
                         {% endfor %}
-                        {# <div>기간: {{ end_vote.start_date }} ~ {{ end_vote.end_date }}</div>#}
+                        <!-- {# <div>기간: {{ end_vote.start_date }} ~ {{ end_vote.end_date }}</div>#} -->
                     </div>
                 </div>
                 {% endif %}

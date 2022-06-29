@@ -193,7 +193,6 @@ margin-right: 1rem;
 .pagination li:first-child a {
   width: 6rem;
 }
-
 .pagination li:nth-child(2) {
   margin: 0 1rem;
 }
@@ -261,4 +260,12 @@ margin-right: 1rem;
   display: flex;
   align-items: center;
   margin-right: 1rem;
+}
+
+.container .all_report_container .big_container .categories .navbar button{
+    transition: all 0.35s;
+}
+
+.container .all_report_container .big_container .categories .navbar button:hover {
+    transform: translateX(2em);
 }

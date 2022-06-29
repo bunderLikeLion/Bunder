@@ -37,9 +37,9 @@
                     </div>
                     {% else %}
                     {% for book in books %}
-                    <div class="report">
+                    <div class="report" onclick="location.href = '../bookreport/{{ book.id }}'">
                         <a href="../bookreport/{{ book.id }}">
-                        <div class="report_info">{{book.report_name}}</div>
+                            <div class="report_info">{{book.report_name}}</div>
                         </a>
                         <div class="report_info2">
                             {{book.book_name}}

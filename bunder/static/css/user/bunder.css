@@ -551,6 +551,20 @@ body {
     /* top: 2rem; */
 }
 
+.container .reco {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    border-left: 0.5rem #514a77 solid;
+    height: 2rem;
+    margin: 1rem;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
+    float: left;
+    width: 45rem !important;
+}
+
 .container .book_club_container {
     display: flex;
     align-items: center;
@@ -765,6 +779,10 @@ img {
 
 .text {
     left: 5%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .temp {
@@ -801,4 +819,7 @@ img {
 
 .add_bookshelf:hover {
     box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f !important;
+.size {
+    color: lightcoral !important;
+    font-size: 1.8rem;
 }

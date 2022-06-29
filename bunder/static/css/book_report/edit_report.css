@@ -283,6 +283,7 @@ label {
     color: white;
     box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
     background-color: #303a47;
+    cursor: pointer;
 }
 
 label:hover { /* */

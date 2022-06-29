@@ -104,14 +104,16 @@ Club Detail
                         <div>투표 제목: {{ vote.topic }}</div>
                         <div>기간: {{ vote.start_date }} ~ {{ vote.end_date }}</div>
                     </div>
+                    <div class="club_detail_header go_vote_btn">
+                        {% if is_member and not check %}
+                        <button class="button vote_btn ">투표 하러 가기</button>
+                        {% endif %}
+                    </div>
                 </div>
+
                 {% endif %}
             </div>
-            <div class="club_detail_header">
-                {% if is_member and not check %}
-                <button class="button vote_btn">투표 하러 가기</button>
-                {% endif %}
-            </div>
+
         </div>
         <div class="club_detail_containaer">
             <div class="club_detail_header">

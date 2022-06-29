@@ -48,25 +48,25 @@
     <div class="invite_request_container" style="height:10rem;">
         <h3 class="middle_text">북클럽 초대 요청</h3>
         <div class="invite_request">
-            <div>
-                {% if invited_club %}
-                {% for club in invited_club %}
-                <div class="single_request">
-                    <div class="club_info">
-                        북클럽명: {{ club.club_name }}
-                        <a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
-                    </div>
-                    <div class="button_container">
-                        <button class="request_btn">수락</button>
-                        <button class="request_btn">거절</button>
-                        <input type="hidden" value="{{ club.id }}" />
-                    </div>
+            
+            {% if invited_club %}
+            {% for club in invited_club %}
+            <div class="single_request">
+                <div class="club_info">
+                    북클럽명: {{ club.club_name }}
+                    <a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
                 </div>
-                {% endfor %}
-                {% else %}
-                <div>초대가 없습니다.</div>
-                {% endif %}
+                <div class="button_container">
+                    <button class="request_btn">수락</button>
+                    <button class="request_btn reject_btn">거절</button>
+                    <input type="hidden" value="{{ club.id }}" />
+                </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <div>초대가 없습니다.</div>
+            {% endif %}
+            
         </div>
 
     </div>

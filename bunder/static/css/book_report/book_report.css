@@ -199,16 +199,17 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-transition: background-color 9999s ease-out;
-  box-shadow:  0 0 0px 1000px white 00.1s inset !important;
-  -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-transition: background-color 9999s ease-out;
+      box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+      -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
+      -webkit-text-fill-color: #fff !important;
 }
 
 
 .button {font-weight: bold;box-shadow: 6px 7px 6px #1a1823, -7px -6px 11px #686a72;transition: all 0.2s ease-in-out;cursor: pointer;font-size: large;font-weight: 600;margin: 1rem;height: 3.5rem;padding : 0 3rem;color: #813818;background-color: #303a47;border: 0;outline: 0;border-radius: 320px;}
 
-.button:hover {box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;}
+.button:hover {box-shadow: 5px 5px 8px #62646a, -9px -9px 9px #17191d;}
 
 .button:active {
 box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
@@ -330,7 +331,7 @@ align-items: center;
   font-size: initial;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: 6px 7px 6px #1a1823, -7px -6px 11px #686a72;
+  /* box-shadow: 5px 5px 8px #62646a, -9px -9px 9px #17191d !important; */
 }
 
 #search_btn, #write_report_btn{

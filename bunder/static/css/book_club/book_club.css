@@ -1,7 +1,7 @@
 body {
     display: flex;
     justify-content: center;
-    min-height: 810vh !important;
+    min-height: 685vh !important;
 }
 
 .container {
@@ -149,18 +149,19 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 20%;
     height: 80%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .invite_request {
     /* display: flex; */
-    align-items: center;
     justify-content: center;
+    overflow: scroll;
     display: flex;
     position: relative;
     height: 19rem;
@@ -172,6 +173,8 @@ body {
     padding: 3%;
     height: 100%;
     margin: 0 auto;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .invite_request_container > h3 {
@@ -193,8 +196,14 @@ body {
 }
 
 .single_request {
+    width: 75%;
+    margin: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .container h2 {
@@ -242,8 +251,8 @@ body {
 }
 
 span {
-    position: absolute;
-    top: 15.5rem;
+    /* position: absolute; */
+    /* top: 15.5rem; */
 }
 
 .current_span {
@@ -289,3 +298,28 @@ span {
     box-shadow: none !important;
     justify-content: flex-start !important;
   }
+.single_request > * {
+    font-size: large;
+    justify-content: space-between;
+}
+
+.club_info {
+    display: flex;
+    width: 15rem;
+    flex-direction: column;
+}
+
+.request_btn {
+    margin-left: 0.5rem;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
+    font-size: large;
+    background-color: #514a77;
+    border: 0;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.reject_btn {
+  background-color: #774a4a;
+  box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}

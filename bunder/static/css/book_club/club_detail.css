@@ -29,7 +29,7 @@ body {
   font-weight: 600;
 }
 
-h1 {
+h1, h3 {
   border-left: 5px solid #514a77;
   padding-left: 10px;
 }
@@ -150,6 +150,7 @@ button:active {
 #request_btn,
 #exit_btn {
   float: right;
+  margin-top: 1rem;
 }
 
 .profile_container > * {
@@ -247,7 +248,7 @@ button:active {
 
 .margin .text {
   position: relative;
-  top: 0.7rem;
+  /* top: 0.7rem; */
 }
 
 

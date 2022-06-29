@@ -142,6 +142,10 @@ button:active {
     box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
 }
 
+.reject_btn:hover {
+    box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
+}
+
 h2 {
     margin-left: 1rem;
     padding-left: 1rem;

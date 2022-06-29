@@ -21,6 +21,8 @@ All My Scraps
         <div class="info_container" onclick="location.href='{% url 'book_report:detail' report.id %}';">
             <h3 class="report">{{report.report_name}}</h3>
             <h3>책 : {{ report.book_name }}</h3>
+            <h4>분야 : {{ report.book_category }}</h4>
+            <h4>작성날짜 : {{ report.created_at }}</h4>
         </div>
     </div>
     {% endfor %}

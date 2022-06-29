@@ -134,7 +134,11 @@ My Bunder
                 <div class="report_container">
                     <div class="inner_report_container">
                         <a href={% url 'book_report:detail' scrap.book_report.id %}
-                            class="reports_name">{{scrap.book_report.report_name}}</a>
+                            class="reports_name">
+                            <div>{{scrap.book_report.report_name}}</div>
+                            <div class="time">{{ scrap.created_at }}</div>
+                        </a>
+                            
                     </div>
                 </div>
                 {% endfor %}

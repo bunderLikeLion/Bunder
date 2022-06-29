@@ -7,11 +7,11 @@
 
 {% block content %}
 <div class="container">
-    <div class="profile_club">
-        <h3>나의 소모임</h3>
+    <div class="middle_text profile_club">
+        <h3>나의 북클럽</h3>
     </div>
     {% if user.is_authenticated %}
-    <div class="container_body_reports">
+    <div class="container_body_reports add_club_btn_container">
         <div class="pagination_container">
             <ul class="pagination ">
                 <li><a href='new/' class="all_my_reports add_club_btn">북클럽 생성</a></li>
@@ -24,21 +24,16 @@
             <a href="/bookclub/{{ club.id }}">
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
+            <span class="club_name">{{ club.club_name }}</span>
         </div>
         {% endfor %}
     </div>
     <div class="container_body_add">
         <div class="pagination_container">
             <ul class="pagination ">
-<<<<<<< HEAD
-                <li><a class="previous previous_btn">Previous</a></li>
-                <li class="num"><span class="current_span">1</span>/{{ total_cnt }}</li>
-                <li><a class="next next_btn">Next</a></li>
-=======
                 <li><a class="previous previous_btn">이전</a></li>
-                <li><span class="current_span">1</span>/{{ total_cnt }}</li>
+                <li><span class="current_span">1/{{ total_cnt }}</li></span>
                 <li><a class="next next_btn">다음</a></li>
->>>>>>> a40a4d1d327c2fb9567892d8478c02625d05c19f
             </ul>
         </div>
     </div>
@@ -51,14 +46,14 @@
     {% endif %}
 
     <div class="invite_request_container" style="height:10rem;">
-        <h3>북클럽 초대 요청</h3>
+        <h3 class="middle_text">북클럽 초대 요청</h3>
         <div class="invite_request">
             <div>
                 {% if invited_club %}
                 {% for club in invited_club %}
                 <div class="single_request">
                     <div class="club_info">
-                        소모임명: {{ club.club_name }}
+                        북클럽명: {{ club.club_name }}
                         <a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
                     </div>
                     <div class="button_container">
@@ -75,8 +70,6 @@
         </div>
 
     </div>
-
-
 
 
     <div class="profile_club">

@@ -42,7 +42,7 @@ body {
 
 .button {
     font-weight: bold;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -51,7 +51,7 @@ body {
     height: 3.5rem;
     padding : 0 3rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -87,15 +87,15 @@ form {
 .search_bar {
     width : 80%;
     margin : auto 0;
-    padding: 1rem;
-    padding-right: 0;
+    padding: 1rem 0;
+    padding-left: 4rem;
 }
 
 .inputBox {
     margin : auto 0;
 }
 
-.input_bar, .report_list {
+.input_bar {
     width: 90%;     /* 100% 하면 옆에 빠져나옴 */
     margin: 0 auto;
     padding : 0.7rem;
@@ -131,6 +131,7 @@ form {
 
     .text2 {
         width: 20rem;
+        margin-top: 0.5rem;
     }
 
     .report_list{
@@ -162,3 +163,26 @@ form {
         color : #f7f7f7;
         text-decoration: none;
     }
+
+    .search_container {
+        width: 80%;
+    }
+
+    .result_container {
+    min-height: 10rem;
+}
+
+    .empty-report {
+    text-align: center;
+    margin: 2rem;
+}
+
+    .back_btn {
+    background-color: #303a47;
+    box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
+    font-size: medium;
+    width: 8rem;
+    height: 3rem;
+    padding: 0;
+    margin-left: 11%;
+}

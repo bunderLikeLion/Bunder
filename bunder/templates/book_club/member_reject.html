@@ -27,9 +27,9 @@ Club Admit
 <body>
 	<div class="container">
 		<div>
-			<div><h2>소모임 명단</h2></div>
+			<div><h2>북클럽 명단</h2></div>
 			<div class="club_people_number">
-				소모임 현재 인원
+				북클럽 현재 인원
 				 <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
 			</div>
 		</div>
@@ -38,7 +38,7 @@ Club Admit
 		<div class="container_all_requesters">
 			{% if not members %}
 			<div class="container_single_requester empty_container">
-				<div>소모임에 참여중인 멤버가 없습니다.</div>
+				<div>북클럽에 참여중인 멤버가 없습니다.</div>
 			</div>
 			{% else %}
 			{% for member in members %}

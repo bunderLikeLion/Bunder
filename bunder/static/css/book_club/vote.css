@@ -16,7 +16,7 @@ body {
 
 .container {
     position: relative;
-    width: 80%;
+    width: 50rem;
     margin: 6rem;
     padding: 2rem;
     background-color: #33383D;
@@ -44,7 +44,7 @@ body {
 }
 
 .input_bar {   /* 독후감 제목, 책제목, 책제목 검색 입력창 */
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     /* margin: 0px 20px; */
@@ -85,7 +85,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 .button {   /* 책검색, 독후감 발행 버튼 두개 */
     font-weight: bold;
     float : right;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -94,7 +94,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
     height: 3.5rem;
     padding : 0 3rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -123,6 +123,10 @@ form > * {
 
 .vote_info > * {
     margin : 1rem;
+}
+
+#vote-list {
+    
 }
 
 /* .vote_item_info {

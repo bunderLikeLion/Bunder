@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 150vh;
 }
 
 div, p, span, input{
@@ -31,7 +31,7 @@ div, p, span, input{
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid #ed591a;
+    border-left: 5px solid #514a77;
 }
 
 .container h3 {
@@ -41,7 +41,7 @@ div, p, span, input{
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid #ed591a;
+    border-left: 5px solid #514a77;
 }
 
 input:-webkit-autofill,
@@ -129,14 +129,14 @@ input:-webkit-autofill:active {
 button {
     color: #61677C;
     font-weight: bold;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
 }
 
 button:hover {
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
 }
 
 button:active {
@@ -150,7 +150,7 @@ button.login{
     margin-top: 1%;
     width: 30%;
     height: 3rem;
-    background-color: #ed591a;
+    background-color: #514a77;
     color: #813818;
 }
 
@@ -267,8 +267,8 @@ button.login{
 }
 
 .radio__input:checked + .radio__box::before {
-    background-color: #ed591a;
-    box-shadow: inset 0 0 0px 1px #ed591a, inset 0 0 4px 1px #ed591a, inset 0 0 8px 1px #ed591a, inset -1px -1px 1px 0px rgb(255 255 255 / 60%), inset -2px -2px 2px 0px rgb(255 255 255 / 30%), inset 1px 1px 1px 0px rgb(12 13 18 / 60%), inset 2px 2px 2px 0px rgb(12 13 18 / 40%);
+    background-color: #514a77;
+    /* box-shadow: inset 0 0 0px 1px #514a77, inset 0 0 4px 1px #514a77, inset 0 0 8px 1px #514a77, inset -1px -1px 1px 0px rgb(255 255 255 / 60%), inset -2px -2px 2px 0px rgb(255 255 255 / 30%), inset 1px 1px 1px 0px rgb(12 13 18 / 60%), inset 2px 2px 2px 0px rgb(12 13 18 / 40%); */
 }
 
 .password_error {

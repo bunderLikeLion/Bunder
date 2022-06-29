@@ -20,13 +20,15 @@ Sign in
             <input type="password" required="required" name='password' id='password'>
             <span>PassWord</span>
         </div>
-        {{error}}
+        <div class="error">
+            {{error}}
+        </div>
         <div class="button">
             <button class="login" type="submit" value="Login" name="login">Sign in</button>
         </div>
     </form>
     <div class="signup">
-        <li><a href={% url 'user:register' %}>Sign Up</a></li>
+        <li><a href={% url 'user:register' %}>Sign up</a></li>
     </div>
 </div>
 {% endblock content %}

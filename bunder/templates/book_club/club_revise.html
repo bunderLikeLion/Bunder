@@ -13,7 +13,7 @@ Club Revise
 <div class="container">
     <div class="club-edit_header">
         <h2>Club Revise</h2>
-        <button class="login club_close_btn" type="submit" value="Club closure">소모임 폐쇄</button>
+        <button class="login club_close_btn" type="submit" value="Club closure">북클럽 폐쇄</button>
     </div>
     <form method="post" action="{% url 'book_club:book_club_edit' book_club.id %}">
         {% csrf_token %}
@@ -24,38 +24,38 @@ Club Revise
                         <div class="inputBox">
                             <input type="text" required="required" name='clubname' id='clubname'
                                 value=" {{ book_club.club_name }}">
-                            <span class="first">소모임 명</span>
+                            <span class="first">북클럽 명</span>
                         </div>
                     </div>
 
                     <div class="box">
                         <div class="inputBox">
                             <input type="text" name='kakao_link' id='link' value=" {{ book_club.kakao_link }}">
-                            <span class="second">소모임 KakaoTalk Link</span>
+                            <span class="second">북클럽 KakaoTalk Link</span>
                         </div>
                     </div>
                 </div>
                 <div class="link_box">
-                    <div class="inputBox">
+                    <div class="inputBox margin">
                         <input type="text" name='zoom_link' id='link' value="{{ book_club.zoom_link }}">
-                        <span class="second">소모임 Zoom Link</span>
+                        <span class="third">북클럽 Zoom Link</span>
                     </div>
                 </div>
             </div>
 
             <div class="report_content">
-                <textarea name="content" id="content" placeholder="소모임 소개">{{ book_club.description }}</textarea>
+                <textarea name="content" id="content" placeholder="북클럽 소개">{{ book_club.description }}</textarea>
             </div>
         </div>
 
         <div class="club_img_container">
-            <h3 class="body">소모임 이미지 선택</h3>
+            <h3 class="body">북클럽 이미지 선택</h3>
             <div class="container_body">
                 <div class="pagination_container">
                     <ul class="pagination">
-                        <li><button type="button" class="previous previous_btn">Previous</button></li>
+                        <li><button type="button" class="previous pagination_btn previous_btn">Previous</button></li>
                         <li><span class="current_span">1</span>/<span>3</span></li>
-                        <li><button type="button" href="#" class="next next_btn">Next</button></li>
+                        <li><button type="button" href="#" class="next pagination_btn next_btn">Next</button></li>
                     </ul>
                 </div>
             </div>
@@ -86,7 +86,7 @@ Club Revise
 
 
         <div class="club_category_container">
-            <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
+            <h3 class="decorator decorator_indent-b_l">북클럽 카테고리</h3>
             <section class="genre_container">
                 <label class="genre">
                     <input type="radio" value="문학" name="book_category" class="radio__input category_input">
@@ -134,16 +134,16 @@ Club Revise
         <div class="club_member_container">
             <div class="button_container">
                 <a href="/bookclub/reject?clubId={{ book_club.id }}">
-                    <input type="button" class="member-edit_btn" value="멤버 삭제">
+                    <input type="button" class="member-edit_btn member-delete_btn" value="멤버 삭제">
                 </a>
                 <a href="/bookclub/admit?clubId={{ book_club.id }}">
                     <input type="button" class="member-edit_btn" value="멤버 요청 확인">
                 </a>
             </div>
             <div>
-                <h3>소모임 멤버 리스트</h3>
+                <h3>북클럽 멤버 리스트</h3>
                 <div class="club_people_number">
-                    소모임 현재 인원
+                    북클럽 현재 인원
                     <span class="member-cnt_span">{{book_club.member_cnt}}/{{book_club.member_total}}</span>
                 </div>
             </div>
@@ -178,7 +178,7 @@ Club Revise
         {{error}}
 
         <div class="edit_button_container">
-            <button class="login" type="submit" value="Sign up">소모임 수정</button>
+            <button class="login" type="submit" value="Sign up">북클럽 수정</button>
         </div>
     </form>
 </div>

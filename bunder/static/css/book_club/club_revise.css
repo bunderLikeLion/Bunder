@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 210vh;
 }
 
 div, p, span, input{
@@ -33,7 +33,7 @@ div, p, span, input{
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid #ed591a;
+    border-left: 5px solid #514a77;
 }
 
 .container h3 {
@@ -42,7 +42,7 @@ div, p, span, input{
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid #ed591a;
+    border-left: 5px solid #514a77;
 }
 
 .club_info_container{
@@ -123,18 +123,20 @@ div, p, span, input{
 
 .container .inputBox .first {
     position: absolute;
-    top: 17%;
     left: 5%;
 }
 .container .inputBox .second {
     position: absolute;
-    top: 8%;
     left: 3%;
 }
+
+.margin {
+    margin-top: 1rem;
+}
+
 .container .inputBox .third {
     position: absolute;
-    top: 25%;
-    left: 10%;
+    top: -25%;
 }
 .container .inputBox h4 {
     position: absolute;
@@ -142,9 +144,23 @@ div, p, span, input{
     left: 3%;
 }
 
-.container .inputBox input:focus ~ span,
-.container .inputBox input:valid ~ span {
+.container .inputBox input:invalid ~ .first,
+.container .inputBox input:valid ~ .first {
     transform: translateX(-0.7rem);
+    transform: translateY(-2rem);
+    font-size: 0.85rem;
+}
+
+.container .inputBox input:invalid ~ .second,
+.container .inputBox input:valid ~ .second {
+    transform: translateX(-0.7rem);
+    transform: translateY(-2rem);
+    font-size: 0.85rem;
+}
+
+.container .inputBox input:invalid ~ .third,
+.container .inputBox input:valid ~ .third {
+    transform: translateX(-6.7rem);
     transform: translateY(-2rem);
     font-size: 0.85rem;
 }
@@ -160,11 +176,11 @@ div, p, span, input{
 button {
     color: #61677C;
     font-weight: bold;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
-    background-color: #ed591a;
+    background-color: #514a77;
 }
 
 button:hover {
@@ -181,6 +197,8 @@ button.login{
     color: #813818;
     font-size: large;
     font-weight: 600;
+    /* background-color: #774a4a; */
+    /* box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f; */
 }
 
 .button_container{
@@ -281,8 +299,8 @@ button.login{
 }
 
 .radio__input:checked + .radio__box::before {
-    background-color: #ed591a;
-    box-shadow: inset 0 0 0px 1px rgba(0,150,255, 0.3), inset 0 0 4px 1px rgba(0,150,255, 0.3), inset 0 0 8px 1px rgba(0,150,255, 0.3), inset -1px -1px 1px 0px rgba(255,255,255, 0.6), inset -2px -2px 2px 0px rgba(255,255,255, 0.3), inset 1px 1px 1px 0px rgba(12,13,18, 0.6), inset 2px 2px 2px 0px rgba(12,13,18, 0.4);
+    background-color: #514a77;
+    /* box-shadow: inset 0 0 0px 1px rgba(0,150,255, 0.3), inset 0 0 4px 1px rgba(0,150,255, 0.3), inset 0 0 8px 1px rgba(0,150,255, 0.3), inset -1px -1px 1px 0px rgba(255,255,255, 0.6), inset -2px -2px 2px 0px rgba(255,255,255, 0.3), inset 1px 1px 1px 0px rgba(12,13,18, 0.6), inset 2px 2px 2px 0px rgba(12,13,18, 0.4); */
 }
 
 .empty-member {
@@ -343,8 +361,8 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
     flex: 1;
     margin: 0 0.5rem;
     border-radius: 1rem;
-    background-color: #ed591a;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    background-color: #303a47;
+    box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
 }
 
 .pagination li a {
@@ -431,7 +449,7 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
 }
 
 .radio__input:checked + .category__box::before{
-    background-color: #ed591a;
+    background-color: #514a77;
     box-shadow: inset 0 0 0px 1px rgba(0,150,255, 0.3), inset 0 0 4px 1px rgba(0,150,255, 0.3), inset 0 0 8px 1px rgba(0,150,255, 0.3), inset -1px -1px 1px 0px rgba(255,255,255, 0.6), inset -2px -2px 2px 0px rgba(255,255,255, 0.3), inset 1px 1px 1px 0px rgba(12,13,18, 0.6), inset 2px 2px 2px 0px rgba(12,13,18, 0.4);
 }
 
@@ -442,16 +460,16 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
 
 .member-edit_btn {
     margin: 0 0.5rem;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    font-size: large;
+    /* font-size: large; */
     font-weight: 600;
     /* margin-top: 0; */
-    height: 3.5rem;
-    padding: 0 2rem;
+    height: 2.5rem;
+    padding: 0 1rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -495,4 +513,18 @@ img.profile_img {
 
 .container_single_requester {
     margin: 0.5rem;
+}
+
+.pagination_btn {
+    background-color: #303a47;
+    box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
+}
+
+.club_people_number {
+    margin: 0 1rem;
+}
+
+.member-delete_btn, .club_close_btn {
+    background-color: #774a4a;
+    box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
 }

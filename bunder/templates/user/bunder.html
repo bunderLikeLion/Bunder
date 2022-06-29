@@ -28,14 +28,14 @@ My Bunder
         </div>
         <div class="profile_book_cover">
             <a href="../user/bookdetail/{{ mainbook.book.id }}">
-            <img class="book_cover" src={{mainbook.book.book_img}}>
+                <img class="book_cover" src={{mainbook.book.book_img}}>
             </a>
         </div>
     </div>
 
     <div class="box">
-        <div class="profile_club">
-            <h3>참여중인 소모임</h3>
+        <div class="profile_club text">
+            <h3>참여중인 북클럽</h3>
         </div>
         <div class="container_body">
             <div class="pagination_container">
@@ -50,7 +50,7 @@ My Bunder
             {% for club in book_club %}
             <div class="my_book_club">
                 <a href={% url 'book_club:book_club_detail' club.id %}>
-                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+                    <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
                 </a>
             </div>
             {% endfor %}
@@ -59,13 +59,13 @@ My Bunder
 
 
     <div class="box">
-        <div class="profile_bookshelf">
+        <div class="profile_bookshelf text ">
             <h3>{{ user_info.nickname }}님의 책장</h3>
         </div>
         <div class="container_body_add">
             <div class="pagination_container">
                 <ul class="pagination ">
-                    <li><a href="{% url 'user:book' %}" class="add_bookshelf">Add</a></li>
+                    <li class="add_bookshelf"><a href="{% url 'user:book' %}" >책 추가</a></li>
                 </ul>
             </div>
         </div>
@@ -85,10 +85,10 @@ My Bunder
             <h3>{{ user_info.nickname }}님이 쓴 글</h3>
         </div>
         <div class="container_body_reports">
-            <div class="pagination_container">
+            <div class="pagination_container temp">
                 <ul class="pagination ">
-                    <li><a href="report?id={{ user_info.id }}" class="all_my_reports">전체보기</a></li>
-                </ul>
+                    <li class="all"><a href="report?id={{ user_info.id }}" class="all_my_reports">전체보기</a></li>
+                </ul> 
             </div>
         </div>
         <div class="reports_container">
@@ -115,9 +115,9 @@ My Bunder
                 <h3>{{ user_info.nickname }}님의 스크랩</h3>
             </div>
             <div class="container_body_reports">
-                <div class="pagination_container">
+                <div class="pagination_container temp">
                     <ul class="pagination ">
-                        <li><a href={% url 'book_report:all_scrap' %} class="all_my_reports">전체보기</a></li>
+                        <li class="all"><a href={% url 'book_report:all_scrap' %} class="all_my_reports">전체보기</a></li>
                     </ul>
                 </div>
             </div>
@@ -140,7 +140,7 @@ My Bunder
     </div>
 
     <div class="bunder_reco">
-        <div class="profile_club">
+        <div class="profile_club text">
             <h3>번더의 추천 책</h3>
         </div>
         <div class="book_club_container">

@@ -8,14 +8,14 @@
 
 body {
     display: flex;
-    justify-content: center;
     align-items: center;
     /* background-color: red; */
+    justify-content: center;
 }
 
 .container {
     position: relative;
-    width: 80%;
+    width: 50rem;
     margin: 6rem;
     padding: 2rem;
     background-color: #33383D;
@@ -24,6 +24,7 @@ body {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     color: #f7f7f7;
     font-weight: 600;
+    justify-content: center;
 }
 
 .inputBox {  
@@ -92,7 +93,7 @@ input:-webkit-autofill:active {  /* ìž…ë ¥ì°½ ìžë™ì™„ì�
 .button {   /* ì±…ê²€ìƒ‰, ë…í›„ê° ë°œí–‰ ë²„íŠ¼ ë‘ê°œ */
     font-weight: bold;
     float : right;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -101,7 +102,7 @@ input:-webkit-autofill:active {  /* ìž…ë ¥ì°½ ìžë™ì™„ì�
     height: 3.5rem;
     padding : 0 3rem;
     color: #AE1100;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;

@@ -1,18 +1,18 @@
-* {
+  * {
     /* color : red; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: #a6a7a9;
   }
-  
+
   body {
     display: flex;
     justify-content: center;
     align-items: center;
     /* background-color: red; */
   }
-  
+
   .container {
     position: relative;
     width: 80%;
@@ -25,20 +25,20 @@
     color: #111;
     font-weight: 600;
   }
-  
-  
+
+
   /* submit button */
-  
+
   .container button {
     border: 0;
     outline: 0;
     border-radius: 320px;
     background-color: #ed591a;
   }
-  
+
   .button {
     font-weight: bold;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -47,38 +47,38 @@
     height: 3.5rem;
     padding : 0 3rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
   }
-  
+
   button:hover {
     box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
   }
-  
+
   button:active {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
   }
   .button:hover {
   box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
   }
-  
+
   .button:active {
   box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
   }
-  
-  
+
+
   .button_container{
     display: flex;
     justify-content: center;
   }
-  
+
   .CRUD_button {
     display: flex;
     justify-content: right;
   }
-  
+
   .comment_btn {
     transition: all 0.2s ease-in-out;
     cursor: pointer;
@@ -92,7 +92,7 @@
     outline: 0;
     border-radius: 320px;
   }
-  
+
   button.edit, button.delete{
     text-align: center;
     display: inline;
@@ -103,12 +103,12 @@
     height: 3rem;
     color: hsla(220, 100%, 54%, 1);
   }
-  
+
   button.delete {
     margin-left: 2rem;
     color: #e71616;
   }
-  
+
   .title {
     width: 80%;     /* 100% 하면 옆에 빠져나옴 */
     /* margin: 0px 20px; */
@@ -123,25 +123,25 @@
     border-radius: 10px;
     background: transparent;
   }
-  
+
   .report_title_text {
     display : flex;
     align-items: center;
   }
-  
+
   .profile_container {
     margin-left: 2rem;
     display: flex;
     align-items: center;
   }
-  
+
   .report_title, .profile_container{
     /* background-color: pink; */
     width: 90%;
     padding: 0.3rem 4rem;
     
   }
-  
+
   .profile_img {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
@@ -149,44 +149,44 @@
     margin-right: 1rem;
     width: 3rem;
   }
-  
-  
+
+
   .book_cover {
     padding : 2rem;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
   }
-  
+
   .book_info_container > * {
     margin : 2rem;
   }
-  
+
   .book_info > * {
     margin-top: 1rem;
   }
-  
+
   .book_info {
     width: 50%;
   }
-  
+
   .book_info_container{
     justify-content: center;
     display : flex;
     width: 80%;
     margin: 0 auto;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     border-radius: 50px;
   }
-  
+
   .book_info_container {
-    width: 90%;
-    margin: 0 auto;
-    padding: 1rem;
+    width: 100%;
+    /* margin: 0 auto; */
+    /* padding: 1rem; */
     border-radius: 30px;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     align-items: center;
   }
-  
+
   .book_info_bar {
     width: 80%;
     /* margin: 0px 20px; */
@@ -201,24 +201,25 @@
     border-radius: 10px;
     background: transparent;
   }
-  
+
   #book_category {
     cursor: pointer;
+    font-weight: bold;
     width: 300px;
-    min-height: 60px;
-    max-height: 300px;
+    padding: 1rem;
+    /* min-height: 60px; */
+    /* max-height: 300px; */
     border-radius: 15px;
-    background-color: rgb(250, 250, 250);
-    box-shadow: 2px 4px 8px #c5c5c5;
+    background-color: #33383D;
+    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     transition: all 300ms;
-    
     border: none;
   }
-  
+
   .date {
     padding: 0 1rem;
   }
-  
+
   .text {
     width: 8rem;
     padding: 1rem;
@@ -227,12 +228,12 @@
     border-radius: 50px;
     background: transparent;
   }
-  
+
   .content_container {
     justify-content: center;
     margin: 0 auto;
   }
-  
+
   .report_content_container {   /* 독후감 본문 입력란 */
     font-size: 1.3rem;
     padding : 2rem;
@@ -244,41 +245,41 @@
     box-shadow: 15px 15px 56px #26292d, -15px -15px 56px #40474d;
     background-color: transparent;
   }
-  
+
   .comment_navbar {
     display: flex;
     justify-content: center;
   }
-  
+
   .comment_navbar, .comment_content_container {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 20px;
     padding: 1rem;
   }
-  
+
   .single_comment {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 20px;
     padding: 1rem;
     display: flex;
   }
-  
+
   .comment_info {
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
-  
+
   #time {
     font-size: 1rem;
     line-height: 1rem;
     color: #c6c5c6;
   }
-  
+
   .write_comment {
     width: 80%;
   }
-  
+
   textarea {   /* 독후감 본문 입력란 */
     padding : 1rem;
     width: 100%;
@@ -288,14 +289,23 @@
     border-radius: 10px;
     box-shadow: 15px 15px 56px #26292d, -15px -15px 56px #40474d;
     background-color: transparent;
-  
+
     /* 기본 스타일 */
     /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent; */
   }
-  
+
   .report_content {
     color: #f7f7f7;
   }
 
+
+  option {
+    background: #000;
+  }
+
+  .delete-book_btn {
+    background-color: #774a4a;
+    box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}

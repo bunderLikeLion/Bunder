@@ -34,7 +34,7 @@ input {
   line-height: 1em;
   font-weight: 600;
   padding-left: 10px;
-  border-left: 5px solid #ed591a;
+  border-left: 5px solid #514a77;
 }
 
 .container h3 {
@@ -44,7 +44,7 @@ input {
   line-height: 1em;
   font-weight: 600;
   padding-left: 10px;
-  border-left: 5px solid #ed591a;
+  border-left: 5px solid #514a77;
 }
 
 .container .body {
@@ -152,6 +152,13 @@ button {
   font-size: 0.85rem;
 }
 
+.container .inputBox .second:focus ~ span,
+.container .inputBox .secon:valid ~ span {
+  transform: translateX(-0.7rem);
+  transform: translateY(-2rem);
+  font-size: 0.85rem;
+}
+
 .container .inputBox input:focus ~ h4,
 .container .inputBox input:valid ~ h4 {
   transform: translateX(-0.7rem);
@@ -163,13 +170,13 @@ button {
 button {
   /* color: #61677C; */
   /* font-weight: bold; */
-  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-weight: 600;
   height: 100%;
   padding: 0.5rem;
-  background-color: #ed591a;
+  background-color: #303a47;
 }
 
 button:hover {
@@ -188,6 +195,8 @@ button.login {
   width: 25%;
   height: 3rem;
   color: #813818;
+  background-color: #514a77;
+  box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
 }
 
 .genre_container {
@@ -237,7 +246,7 @@ button.login {
   height: 24px;
   flex-shrink: 0;
   border-radius: 50%;
-  background-color: #ebecf0;
+  background-color: #96939b;
   box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6),
     inset -1px -1px 1px rgba(12, 13, 18, 0.06),
     -1px -1px 1px 0px rgba(255, 255, 255, 0.6),
@@ -258,7 +267,7 @@ button.login {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: rgba(238, 240, 245, 1);
+  background-color: transparent;
   transition: background-color 0.4s 0.1s, box-shadow 0.4s;
 }
 
@@ -273,14 +282,14 @@ button.login {
 }
 
 .radio__input:checked + .radio__box::before {
-  background-color: hsla(220, 100%, 54%, 1);
-  box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
+  background-color: #444157;
+  /* box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
     inset 0 0 4px 1px rgba(0, 150, 255, 0.3),
     inset 0 0 8px 1px rgba(0, 150, 255, 0.3),
     inset -1px -1px 1px 0px rgba(255, 255, 255, 0.6),
     inset -2px -2px 2px 0px rgba(255, 255, 255, 0.3),
     inset 1px 1px 1px 0px rgba(12, 13, 18, 0.6),
-    inset 2px 2px 2px 0px rgba(12, 13, 18, 0.4);
+    inset 2px 2px 2px 0px rgba(12, 13, 18, 0.4); */
 }
 
 .box_container {
@@ -331,8 +340,8 @@ textarea {
   flex: 1;
   margin: 0.5rem;
   border-radius: 1rem;
-  background-color: #ed591a;
-  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  background-color: #303a47;
+  box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
 }
 
 .pagination li a {
@@ -392,7 +401,7 @@ textarea {
   height: 24px;
   flex-shrink: 0;
   border-radius: 50%;
-  background-color: rgba(238, 240, 245, 1);
+  background-color: #96939b;
   box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6),
     inset -1px -1px 1px rgba(12, 13, 18, 0.06),
     -1px -1px 1px 0px rgba(255, 255, 255, 0.6),
@@ -413,17 +422,28 @@ textarea {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: rgba(238, 240, 245, 1);
+  background-color: transparent;
   transition: background-color 0.4s 0.1s, box-shadow 0.4s;
 }
 
 .radio__input:checked + .category__box::before {
-  background-color: hsla(220, 100%, 54%, 1);
-  box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
+  background-color: #444157;
+  /* box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
     inset 0 0 4px 1px rgba(0, 150, 255, 0.3),
     inset 0 0 8px 1px rgba(0, 150, 255, 0.3),
     inset -1px -1px 1px 0px rgba(255, 255, 255, 0.6),
     inset -2px -2px 2px 0px rgba(255, 255, 255, 0.3),
     inset 1px 1px 1px 0px rgba(12, 13, 18, 0.6),
-    inset 2px 2px 2px 0px rgba(12, 13, 18, 0.4);
+    inset 2px 2px 2px 0px rgba(12, 13, 18, 0.4); */
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는거 */
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
 }

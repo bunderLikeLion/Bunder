@@ -19,7 +19,7 @@ body {
   font-weight: 600;
 }
 
-.big_container, .write_mail_container {width: 90%;margin: 0 auto;padding: 1rem;border-radius: 30px;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;}
+.big_container, .write_mail_container {width: 90%;margin: 0 auto;/* padding: 1rem; *//* border-radius: 30px; *//* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */}
 
 .all_report_container {
 display : flex;
@@ -79,23 +79,7 @@ input:-webkit-autofill:active {
 }
 
 
-.button {
-font-weight: bold;
-box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
-transition: all 0.2s ease-in-out;
-cursor: pointer;
-font-size: large;
-font-weight: 600;
-margin: 1rem;
-margin-top: 0;
-height: 3.5rem;
-padding : 0 3rem;
-color: #AE1100;
-background-color: #ed591a;
-border: 0;
-outline: 0;
-border-radius: 320px;
-}
+.button {font-weight: bold;box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;transition: all 0.2s ease-in-out;cursor: pointer;font-size: large;font-weight: 600;/* margin: 1rem; */margin-top: 0;height: 3.5rem;padding : 0 3rem;color: #AE1100;background-color: #514a77;border: 0;outline: 0;border-radius: 320px;}
 
 .button:hover {
 box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
@@ -241,8 +225,8 @@ textarea {
 }
 
 .input_bar {
-  width: 25%;
-  /* margin: 0px 20px; */
+  width: 30%;
+  margin-bottom: 1rem;
   padding: 0.7rem 2rem;
   border-radius: 4px;
   outline: none;
@@ -262,7 +246,7 @@ textarea {
 .text {
   width: 8rem;
   font-size: 1.5rem;
-  border-left: 5px solid red;
+  border-left: 5px solid #514a77;
   margin-bottom: 1rem;
   display: flex;
   color: #a6a7a9;

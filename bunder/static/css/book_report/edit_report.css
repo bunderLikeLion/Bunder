@@ -70,10 +70,11 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 }
 
 #content {   /* 독후감 본문 컨테이너 */
-    padding : 1rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 #book_img {  /* 책 표지 이미지 사각형 둘레 */
@@ -85,7 +86,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 
 textarea {   /* 독후감 본문 입력란 */
     font-size: 1.3rem;
-    padding : 2rem;
+    padding: 2rem;
     width: 100%;
     height: 30em;
     border: none;
@@ -138,7 +139,7 @@ textarea {   /* 독후감 본문 입력란 */
 
 .button {   /* 책검색, 독후감 발행 버튼 두개 */
     font-weight: bold;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -147,7 +148,7 @@ textarea {   /* 독후감 본문 입력란 */
     height: 3.5rem;
     padding : 0 3rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -246,3 +247,53 @@ textarea {   /* 독후감 본문 입력란 */
 .image_upload {
     margin-left: 3rem;
 }
+
+.filebox label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  display: inline-block;
+  padding: .5em .75em;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: .25em;
+  margin-top: 1rem;
+  box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
+    background-color: #514a77;
+}
+
+.input-file-button {
+    color: white;
+    border-radius: 1rem;
+    width: 3rem;
+    height: 2rem;
+    margin-top: 5rem;
+    margin-left: 2rem;
+    padding: 0.5rem;
+}
+
+label {
+    color: white;
+    box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
+    background-color: #303a47;
+}
+
+label:hover { /* */
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+label:active {/* */
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.middle_text {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-left: 0.5rem #514a77 solid;
+    /* height: 2rem; */
+    display: flex;
+    /* margin-top: 1rem; */
+    /* align-items: center; */
+  }

@@ -13,7 +13,7 @@
     {% block content %}
     <div class="container">
         <div class="return_report_menu">
-            <input type="button" class="button" value="돌아가기" onclick="location.href='/bookreport/main'">
+            <input type="button" class="button back_btn" value="돌아가기" onclick="location.href='/bookreport/main'">
         </div>
         <div class="search_container big_container">
             <form action="{% url 'book_report:search' %}" method="get">

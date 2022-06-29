@@ -15,21 +15,21 @@
     <div class="box_container">
       <div class="inputBox">
         <input type="text" required="required" name="clubname" id="clubname" />
-        <span class="first">소모임 명</span>
+        <span class="first">북클럽 명</span>
       </div>
       <div class="inputBox">
         <input type="text" name="link" id="link" />
-        <span class="second">소모임 Zoom Link</span>
+        <span class="second">북클럽 Zoom Link</span>
       </div>
       <div class="inputBox">
         <input type="number" required="required" name="number_of_member" id="number_of_member" min="2" max="30" />
-        <span class="third">소모임 최대 인원</span>
+        <span class="third">북클럽 최대 인원</span>
       </div>
     </div>
     <div class="report_content" id="content">
-      <textarea name="content" id="content" placeholder="소모임 소개"></textarea>
+      <textarea name="content" id="content" placeholder="북클럽 소개"></textarea>
     </div>
-    <h3 class="body">소모임 이미지 선택</h3>
+    <h3 class="body">북클럽 이미지 선택</h3>
     <div class="container_body">
       <div class="pagination_container">
         <ul class="pagination">
@@ -101,7 +101,7 @@
                 </div>
             </label>
         </div> -->
-    <h3 class="decorator decorator_indent-b_l">소모임 카테고리</h3>
+    <h3 class="decorator decorator_indent-b_l">북클럽 카테고리</h3>
     <section class="genre_container">
       <label class="genre">
         <input checked type="radio" value="문학" name="book_category" class="radio__input" />
@@ -145,7 +145,7 @@
       </label>
     </section>
     {{error}}
-    <button class="login" type="submit" value="Sign up">소모임 발행</button>
+    <button class="login" type="submit" value="Sign up">북클럽 발행</button>
   </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -237,21 +237,21 @@
         </div>
 
         <div class="inputBox">
-            <span>소모임 최대 인원</span>
+            <span>북클럽 최대 인원</span>
             <input type="number" required="required" name='number_of_member' id='number_of_member' min="2" max="30">
         </div>
 
         <div class="inputBox">
-            <span>소모임 전용 ZOOM 링크</span>
+            <span>북클럽 전용 ZOOM 링크</span>
             <input type="url" name="zoom_url" id="zoom_url">
         </div>
 
         <div class="description_content">
-            <textarea name="description" id="description" placeholder="소모임 소개"></textarea>
+            <textarea name="description" id="description" placeholder="북클럽 소개"></textarea>
         </div>
 
         {{error}}
         <div class="inputBox">
-            <input type="submit" value="소모임 발행">
+            <input type="submit" value="북클럽 발행">
         </div>
     </form>  -->

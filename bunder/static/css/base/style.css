@@ -62,7 +62,7 @@ body {
 
 .navigation.active {
     width: 18rem;
-    height: 30rem;
+    height: 25rem;
     transition: width 0.5s, height 0.5s;
     transition-delay: 0s, 0.5s;
 }

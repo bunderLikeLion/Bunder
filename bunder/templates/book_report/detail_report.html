@@ -16,7 +16,7 @@
 	<div class="report_detail_container">
 		<div class="report_title">
 			<div class="report_title_text">
-				<div class="text">독후감 제목</div>
+				<div class="middle_text">독후감 제목</div>
 				<span class="date">{{book_report.created_at}} </span>
 			</div>
 			<div class="title">{{book_report.report_name}}</div>
@@ -30,7 +30,7 @@
 
 				<a href="/bookclub/invite?id={{ user_info.id }}">
 					<ion-icon name="book-outline"></ion-icon>
-					<span>소모임 초대하기</span>
+					<span>북클럽 초대하기</span>
 				</a>
 
 				<a href="/mail/reply?id={{ user_info.id }}">
@@ -118,7 +118,7 @@
 				<input class="button" type="submit" value="편집" onClick="">
 			</form>
 			<form action="{% url 'book_report:delete' book_report_id %}">
-				<input class="button" type="submit" value="삭제" onClick="">
+				<input class="button delete-comment_btn" type="submit" value="삭제" onClick="">
 			</form>
 		</div>
 		{% endif %}

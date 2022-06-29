@@ -8,18 +8,18 @@ Mail
 {% endblock title %}
 
 {% block content %}
-<div class="btn">
-    {{ error }}
-    <div class="write_report">
-        <a href="reply?id={{ click_receiver }}">
-            <input type="submit" class="button" id="write_report_btn" value="쪽지 답장하기" onClick="location.href = 'new'">
-        </a>
-    </div>
-    <div class="write_report">
-        <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기" onClick="location.href = 'new'">
-    </div>
-</div>
 <div class="container">
+    <div class="btn">
+        <div class="error">{{ error }}</div>
+        <div class="write_report">
+            <a href="reply?id={{ click_receiver }}">
+                <input type="submit" class="button" id="write_report_btn" value="쪽지 답장하기" onClick="location.href = 'new'">
+            </a>
+        </div>
+        <div class="write_report">
+            <input type="button" class="button" id="write_report_btn" value="쪽지 작성하기" onClick="location.href = 'new'">
+        </div>
+    </div>
     <div class="all_report_container">
         <div class="navbar_container big_container">
             <div class="categories">
@@ -72,21 +72,4 @@ Mail
         </div>
     </div>
 </div>
-<script>
-    function toggleBtn1() {
-
-        // 토글 할 버튼 선택 (btn1)
-        const btn1 = document.getElementById('btn1');
-
-        // btn1 숨기기 (display: none)
-        if (btn1.style.display !== 'none') {
-            btn1.style.display = 'none';
-        }
-        // btn` 보이기 (display: block)
-        else {
-            btn1.style.display = 'block';
-        }
-
-    }
-</script>
 {% endblock content %}

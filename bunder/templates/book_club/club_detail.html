@@ -26,7 +26,7 @@ Club Detail
             </div>
         </div>
         {% elif is_member %}
-        <button class="button" id="exit_btn">소모임 나가기</button>
+        <button class="button" id="exit_btn">북클럽 나가기</button>
         <div class="club_detail_containaer" id="link_container">
             <div class="kakao_link">
                 <a href="{{ book_club.kakao_link }}" class="link">Kakao Talk</a>
@@ -39,17 +39,17 @@ Club Detail
             </div>
         </div>
         {% else %}
-        <button class="button" id="request_btn">소모임 참여 요청</button>
+        <button class="button" id="request_btn">북클럽 참여 요청</button>
         {% endif %}
 
-        <h1>소모임 명 : {{ book_club.club_name }}</h1>
+        <h1>북클럽 명 : {{ book_club.club_name }}</h1>
         <div class="profile_container">
             <div class="club_info">
                 <div class="img_container">
                     <img class="club_img" src="../../static/img/club_img_{{ book_club.image }}.jpg">
                 </div>
                 <div class="club_description">
-                    <p>소모임 소개 : {{ book_club.description }}</p>
+                    <p>북클럽 소개 : {{ book_club.description }}</p>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@ Club Detail
         </div>
         {% endif %}
         <div class="club_detail_containaer">
-            <div class="text">소모임원&nbsp;&nbsp;&nbsp;{{ book_club.member_cnt }} / {{ book_club.member_total }}</div>
+            <div class="text">북클럽원&nbsp;&nbsp;&nbsp;{{ book_club.member_cnt }} / {{ book_club.member_total }}</div>
             <div class="all_profile_container">
                 {% for member in user_list %}
                 <div class="member_box">
@@ -100,21 +100,20 @@ Club Detail
                     <p>현재 진행중인 투표가 없습니다.</p>
                 </div>
                 <div class="vote_function">
-                    <div class="club_detail_header">
-                        <div class="text">투표</div>
-                        {% if is_member and not check %}
-                        <button class="button vote_btn">투표 하러 가기</button>
-                        {% endif %}
-                    </div>
                     <div class="vote_info">
                         <div>투표 제목: {{ vote.topic }}</div>
                         <div>기간: {{ vote.start_date }} ~ {{ vote.end_date }}</div>
                     </div>
-
+                    <div class="club_detail_header go_vote_btn">
+                        {% if is_member and not check %}
+                        <button class="button vote_btn ">투표 하러 가기</button>
+                        {% endif %}
+                    </div>
                 </div>
-                {% endif %}
 
+                {% endif %}
             </div>
+
         </div>
         <div class="club_detail_containaer">
             <div class="club_detail_header">
@@ -176,8 +175,9 @@ Club Detail
                     {% if book_info %}
                     <div class="book_info_box current-book_container ">
                         <div class="book_img">
-                            <!-- <img src="{{book_report.book_img}}" class="book_cover"> -->
-                            <img class="book_cover" src="{{ book_info.book_img }}">
+                            <a href="{% url 'user:bookdetail' book_info.id %}">
+                                <img class="book_cover" src="{{ book_info.book_img }}">
+                            </a>
                         </div>
                         <div class="book_info">
                             <div class="book_name">
@@ -207,16 +207,18 @@ Club Detail
 
             <div class="club_bookshelf">
                 <!--위의 책장으로 버튼 누르면 여기로 넘어옴-->
-                <div class="text">우리 소모임의 책장</div>
+                <div class="text">우리 북클럽의 책장</div>
                 <div class="all_book_cover book club_book_list" id="book_container">
                     {% if not book_list %}
                     <div class="empty-book_list empty_list">
-                        <p>현재 소모임 책장이 비어있습니다.</p>
+                        <p>현재 북클럽 책장이 비어있습니다.</p>
                     </div>
                     {% endif %}
                     {% for each_book in book_list %}
-                    <div class="book_cover">
-                        <img class="book_cover" src="{{ each_book.book_img }}">
+                    <div>
+                        <a href="{% url 'user:bookdetail' each_book.id %}">
+                            <img class="book_cover" src="{{ each_book.book_img }}">
+                        </a>
                     </div>
                     {% endfor %}
 

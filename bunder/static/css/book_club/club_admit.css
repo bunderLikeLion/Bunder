@@ -64,7 +64,7 @@ body {
 }
 
 .request_btn {
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -73,7 +73,7 @@ body {
     height: 5rem;
     padding : 0 2rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -104,7 +104,7 @@ body {
 }
 
 .button {
-  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-size: large;
@@ -113,7 +113,7 @@ body {
   height: 2.5rem;
   padding: 0 3rem;
   color: #813818;
-  background-color: #ed591a;
+  background-color: #514a77;
   border: 0;
   outline: 0;
   border-radius: 320px;
@@ -134,4 +134,9 @@ button:active {
 
 .button:active {
   box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.reject_btn{
+    background-color: #774a4a;
+    box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
 }

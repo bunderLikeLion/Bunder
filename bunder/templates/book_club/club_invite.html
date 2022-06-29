@@ -13,14 +13,15 @@
   <form method="post">
     <div class="info">
       <div class="img_container">
-        <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
+        <img class="profile_img" src="https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg">
       </div>
       <div class="box">
         <div class="inputBox">
-          <input type="text" required="required" name='clubname' class="nickname_input" value="{{ book_club.club_name }}">
+          <input type="text" required="required" name='clubname' class="nickname_input"
+            value="{{ book_club.club_name }}">
           <span class="first">User Nickname</span>
         </div>
-		  <input type="hidden" class="userid_input" name="userId"/>
+        <input type="hidden" class="userid_input" name="userId" />
       </div>
       <button type="button" class="search" type="submit" value="nickname">검색</button>
     </div>
@@ -52,37 +53,37 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-	const searchButton = document.querySelector('.search');
-    const nickNameInput = document.querySelector('.nickname_input');
-    const userIdInput = document.querySelector('.userid_input');
-    const userImage = document.querySelector('.profile_img');
+  const searchButton = document.querySelector('.search');
+  const nickNameInput = document.querySelector('.nickname_input');
+  const userIdInput = document.querySelector('.userid_input');
+  const userImage = document.querySelector('.profile_img');
 
-    let userId, userSex;
+  let userId, userSex;
 
-    const prefix = "https://avatars.dicebear.com/api/";
-    const suffix = ".svg";
+  const prefix = "https://avatars.dicebear.com/api/";
+  const suffix = ".svg";
 
-    axios.defaults.xsrfCookieName = 'csrftoken';
-    axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+  axios.defaults.xsrfCookieName = 'csrftoken';
+  axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
-    const searchResult = document.querySelector('.search-result_text');
+  const searchResult = document.querySelector('.search-result_text');
 
-    const searchUser = async (nickname) => {
-        const url = "/user/search?nickname=" + nickname;
-        const response = await axios.get(url);
-        const info = response.data;
-        searchResult.innerText = info.message;
-        userIdInput.setAttribute("value", info.userId);
-        if (info.message == "존재 하지 않는 유저 입니다.") {
-            userImage.src = "https://avatars.dicebear.com/api/male/바.svg";
-        } else {
-        	userImage.src = prefix + info.sex + "/" + info.nickname + suffix;
-		}
-	}
+  const searchUser = async (nickname) => {
+    const url = "/user/search?nickname=" + nickname;
+    const response = await axios.get(url);
+    const info = response.data;
+    searchResult.innerText = info.message;
+    userIdInput.setAttribute("value", info.userId);
+    if (info.message == "존재 하지 않는 유저 입니다.") {
+      userImage.src = "https://avatars.dicebear.com/api/{{ user.sex }}/{{ user.nickname }}.svg";
+    } else {
+      userImage.src = prefix + info.sex + "/" + info.nickname + suffix;
+    }
+  }
 
-    searchButton.addEventListener('click', () => {
-        searchUser(nickNameInput.value)
-	})
+  searchButton.addEventListener('click', () => {
+    searchUser(nickNameInput.value)
+  })
 
 </script>
 

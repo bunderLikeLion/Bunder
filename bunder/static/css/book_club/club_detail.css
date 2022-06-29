@@ -101,6 +101,7 @@ h1 {
   font-size: large;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  margin-right: 1rem;
   /* margin-top: 0; */
   height: 3.5rem;
   padding: 0 3rem;
@@ -114,18 +115,16 @@ h1 {
 button:hover {
   box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 }
-
+/* 
 button:active {
   box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-}
+} */
 
-.button:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
-}
+.button:hover {box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;}
 
-.button:active {
+/* .button:active {
   box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-}
+} */
 
 .vote_btn {
   margin: auto;
@@ -433,4 +432,8 @@ display: none;
 #vote-delete_btn {
   background-color: #774a4a;
   box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}
+
+#vote-delete_btn:hover {
+  box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
 }

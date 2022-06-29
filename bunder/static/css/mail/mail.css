@@ -92,7 +92,7 @@ input:-webkit-autofill:active {
 .button {font-weight: bold;box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;transition: all 0.2s ease-in-out;cursor: pointer;font-size: large;font-weight: 600;margin: 1rem;margin-top: 0;height: 3.5rem;padding : 0 3rem;color: #813818;background-color: #514a77;border: 0;outline: 0;border-radius: 320px;}
 
 .button:hover {
-box-shadow: -2px -2px 5px #1f0a31, 2px 2px 5px rgb(202, 181, 233);
+box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;;
 }
 
 .button:active {

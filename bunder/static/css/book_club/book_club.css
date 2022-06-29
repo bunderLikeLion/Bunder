@@ -108,7 +108,7 @@ body {
 }
 
 .pagination li:hover {
-    box-shadow: -2px -2px 5px #191919, 2px 2px 5px #BABECC;
+    box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
 }
 
 .container_body_reports{

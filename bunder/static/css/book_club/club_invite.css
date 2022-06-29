@@ -103,9 +103,7 @@ padding: 0.5rem;
 background-color: #514a77;
 }
 
-button:hover {
-box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
-}
+button:hover {box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;}
 
 button:active {
 box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
@@ -392,4 +390,8 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
 
 .temp {
     height: 9rem;
+}
+
+.search:hover {
+    box-shadow: 5px 5px 8px #62646a, -9px -9px 9px #17191d;
 }

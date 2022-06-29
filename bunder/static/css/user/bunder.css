@@ -90,6 +90,7 @@ body {
 .pagination {
     display: flex;
     list-style: none;
+    cursor: pointer;
 }
 
 .pagination li {

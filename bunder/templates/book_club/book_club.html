@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container">
     <div class="profile_club">
-        <h3>나의 소모임</h3>
+        <h3>나의 북클럽</h3>
     </div>
     {% if user.is_authenticated %}
     <div class="container_body_reports add_club_btn_container">
@@ -53,7 +53,7 @@
                 {% for club in invited_club %}
                 <div class="single_request">
                     <div class="club_info">
-                        소모임명: {{ club.club_name }}
+                        북클럽명: {{ club.club_name }}
                         <a href="/bookclub/{{ club.id }}"><span>더 알아 보기</span></a>
                     </div>
                     <div class="button_container">

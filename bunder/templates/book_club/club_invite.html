@@ -31,7 +31,7 @@
       </div>
     </div>
     {% csrf_token %}
-    <h3 class="body">소모임 선택</h3>
+    <h3 class="body">북클럽 선택</h3>
     <section class="category_container">
       {% for club in club_list %}
       <label class="category">
@@ -41,14 +41,14 @@
           <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
         </span>
         <div class="my_book_club_info">
-          <div>소모임명 : {{ club.club_name }}</div>
+          <div>북클럽명 : {{ club.club_name }}</div>
           <div>인원 : {{ club.member_cnt }}/{{ club.member_total }}</div>
         </div>
       </label>
       {% endfor %}
     </section>
 
-    <button class="login" type="submit" value="Sign up">소모임 초대</button>
+    <button class="login" type="submit" value="Sign up">북클럽 초대</button>
   </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

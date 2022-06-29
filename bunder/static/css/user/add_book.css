@@ -7,7 +7,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgb(0 0 0 / 25%);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(1.5px);
     -webkit-backdrop-filter: blur(1.5px);
@@ -15,25 +15,25 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
 #modal .modal-window {
-    background: BABECC;
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 13.5px );
+    background-color: #41484e;
+    /* box-shadow: 0 8px 32px 0 #eee; */
+    /* backdrop-filter: blur( 13.5px ); */
     -webkit-backdrop-filter: blur( 13.5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     width: 60%;
     height: 80%;
     position: relative;
-    padding: 10px;
+    padding: 4rem 3rem;
 }
 #modal .title {
     padding-left: 10px;
     display: inline;
     color: white;
-
 }
 #modal .title h2 {
     height: 10%;
+    margin: 1rem;
     display: inline;
 }
 #modal .close-area {
@@ -68,13 +68,14 @@
 }
 
 #modal .single-book.click {
-    border: solid 10px rgba(236, 231, 99, 0.7);
+    border: solid 8px #babad485;
 }
 
 
 .single-book .book-text-box {
-    background: rgba(22, 52, 78, 0.7);
+    /* background: rgb(164 164 164 / 45%); */
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -86,15 +87,14 @@
 }
 
 .single-book img {
-    width: 60%;
+    /* width: 60%; */
 }
 
 #modal .book-select-btn {
     width: 20%;
     height: 8%;
-    
     font-weight: bold;
-    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+    box-shadow: 8px 8px 10px #25292d, -8px -8px 10px #41474d;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: x-large;
@@ -102,7 +102,7 @@
     margin-left: 75%;
     height: 3.5rem;
     color: #AE1100;
-    background-color: transparent;
+    background-color: #33383D;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -265,7 +265,7 @@ option {
 
 img {
     display: flex;
-    margin : 0 auto;
+    margin: 0;
 }
 
 
@@ -314,4 +314,9 @@ img {
 
 .box {
     margin : 1rem 0;
+}
+
+.book_img {
+    display: flex;
+    align-items: center;
 }

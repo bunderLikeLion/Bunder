@@ -1,7 +1,7 @@
 body {
     display: flex;
     justify-content: center;
-    min-height: 770vh !important;
+    min-height: 810vh !important;
 }
 
 .container {
@@ -264,13 +264,16 @@ span {
 }
 
 .add_club_btn {
-    font-size: x-large !important;
+    font-size: large !important;
     width: 10rem !important;
     height: 3rem !important;
-    line-height: 3rem !important;
+    line-height: 3.3rem !important;
 }
 
 .add_club_btn_container {
-    top: -4rem;
-    width: 10%;
+    /* top: -4rem; */
+    /* right: 2rem; */
+    width: 9rem;
+    float: right;
+    margin: -2rem;
 }

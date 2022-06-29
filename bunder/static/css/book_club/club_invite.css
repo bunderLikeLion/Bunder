@@ -8,7 +8,7 @@ body {
   position: relative;
   height: 100%;
   top: 8rem;
-  width: 80%;
+  width: 60rem;
   padding: 3rem;
   background-color: #33383D;
   border-radius: 2rem;
@@ -16,37 +16,13 @@ body {
   color: #a6a7a9;
 }
 
-.container h2 {
-color: #d3d4d5;
-margin-bottom: 1rem;
-line-height: 1em;
-font-weight: 600;
-padding-left: 10px;
-border-left: 5px solid #514a77;
-}
+.container h2 {color: #d3d4d5;margin: 2rem 0 1rem;line-height: 1em;font-weight: 600;padding-left: 10px;border-left: 5px solid #514a77;}
 
-.container h3 {
-color: #a6a7a9;
-margin-top: 3rem;
-margin-bottom: 1rem;
-line-height: 1em;
-font-weight: 600;
-padding-left: 10px;
-border-left: 5px solid #514a77;
-}
+.container h3 {color: #a6a7a9;margin-top: 2rem;margin-bottom: 1rem;line-height: 1em;font-weight: 600;padding-left: 10px;border-left: 5px solid #514a77;}
 
-.container .body {
-margin-bottom: 1rem;
-}
+.container .body {margin-bottom: 1rem;}
 
-.container .inputBox {
-display: flex;
-position: relative;
-box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-width: 20rem;
-height: 3rem;
-/* margin-bottom: 1.8rem; */
-}
+.container .inputBox {display: flex;position: relative;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;width: 20rem;height: 4rem;margin: 3rem;/* margin-bottom: 1.8rem; */align-items: center;}
 
 
 .container .inputBox_radio {
@@ -70,20 +46,7 @@ border-radius: 320px;
 background-color: #33383d;
 }
 
-.container .inputBox input {
-position: absolute;
-top: 9%;
-left: 4%;
-width: 100%;
-background: transparent;
-padding: 10px;
-border-radius: 4px;
-outline: none;
-font-size: 1rem;
-color: #111;
-font-weight: 300;
-border: none;
-}
+.container .inputBox input {position: absolute;/* top: 9%; *//* left: 4%; */width: 90%;margin: 1rem;background: transparent;padding: 10px;border-radius: 4px;outline: none;font-size: 1rem;color: #111;font-weight: 300;border: none;}
 
 .container .inputBox span {
 padding: 3%;
@@ -148,16 +111,7 @@ button:active {
 box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
 }
 
-button.login {
-text-align: center;
-display: inline;
-margin: 1.5rem;
-margin-left: 72%;
-width: 25%;
-height: 4rem;
-font-size: 1.5rem;
-color: #813818;
-}
+button.login {text-align: center;display: inline;margin: 1.5rem;margin-left: 72%;width: 25%;height: 4rem;font-size: 1.2rem;color: #813818;}
 
 .genre_container {
 display: flex;
@@ -165,14 +119,7 @@ width: 110%;
 flex-wrap: wrap;
 }
 
-.category_container {
-display: flex;
-width: 100%;
-height: 100%;
-flex-wrap: wrap;
-border-radius: 30px;
-box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-}
+.category_container {display: flex;width: 100%;height: 15rem;overflow: scroll;flex-wrap: wrap;border-radius: 30px;box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;justify-content: center;}
 
 .genre {
 width: 24%;
@@ -183,15 +130,7 @@ color: #9baacf;
 cursor: pointer;
 }
 
-.category {
-width: 25%;
-cursor: pointer;
-align-items: center;
-font-size: 1.3rem;
-color: #9baacf;
-cursor: pointer;
-margin-bottom: 10rem;
-}
+.category {width: 25%;cursor: pointer;font-size: 1.3rem;color: #9baacf;cursor: pointer;/* display: flex; */margin: 1rem;align-items: center;}
 
 .radio__input {
 -webkit-appearance: none;
@@ -258,11 +197,7 @@ box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
 width: 20%;
 }
 
-.category__text {
-position: absolute;
-margin-left: 60px;
-align-items: center;
-}
+.category__text {position: absolute;margin-left: 8%;align-items: center;}
 
 .category__text img {
 height: 7rem;
@@ -273,16 +208,16 @@ box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
 
 .category__box {
-position: relative;
-top: 4.5rem;
-left: 1.2rem;
-box-sizing: border-box;
-width: 24px;
-height: 24px;
-flex-shrink: 0;
-border-radius: 50%;
-background-color: rgba(238, 240, 245, 1);
-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6),
+  position: relative;
+  top: 4.5rem;
+  left: 1.2rem;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: #8b859b;
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6),
   inset -1px -1px 1px rgba(12, 13, 18, 0.06),
   -1px -1px 1px 0px rgba(255, 255, 255, 0.6),
   -1px -1px 4px 0px rgba(255, 255, 255, 0.6),
@@ -290,32 +225,20 @@ box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.6),
   1px 1px 1px 0px rgba(12, 13, 18, 0.06),
   1px 1px 4px 0px rgba(12, 13, 18, 0.06),
   2px 2px 8px 0px rgba(12, 13, 18, 0.06);
-}
+  }
 
-.category__box::before {
-content: '';
-position: absolute;
-z-index: 1;
-top: 7px;
-left: 7px;
-box-sizing: border-box;
-width: 10px;
-height: 10px;
-border-radius: 50%;
-background-color: rgba(238, 240, 245, 1);
-transition: background-color 0.4s 0.1s, box-shadow 0.4s;
-}
+.category__box::before {content: '';position: absolute;z-index: 1;top: 7px;left: 7px;box-sizing: border-box;width: 10px;height: 10px;border-radius: 50%;/* background-color: rgba(238, 240, 245, 1); */transition: background-color 0.4s 0.1s, box-shadow 0.4s;}
 
 .radio__input:checked + .category__box::before {
-background-color: hsla(220, 100%, 54%, 1);
-box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
+  background-color: #444157;
+  /* box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
   inset 0 0 4px 1px rgba(0, 150, 255, 0.3),
   inset 0 0 8px 1px rgba(0, 150, 255, 0.3),
   inset -1px -1px 1px 0px rgba(255, 255, 255, 0.6),
   inset -2px -2px 2px 0px rgba(255, 255, 255, 0.3),
   inset 1px 1px 1px 0px rgba(12, 13, 18, 0.6),
-  inset 2px 2px 2px 0px rgba(12, 13, 18, 0.4);
-}
+  inset 2px 2px 2px 0px rgba(12, 13, 18, 0.4); */
+  }
 
 .container .profile_club {
   display: flex;
@@ -397,8 +320,8 @@ box-shadow: inset 0 0 0px 1px rgba(0, 150, 255, 0.3),
   border-radius: 1rem;
   background-color: #33383D;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
-  width: 80%;
-  margin: 0 auto;
+  width: 75%;
+  margin: 0 3rem;
   font-size: medium;
   padding: 0.5rem;
 }
@@ -440,20 +363,18 @@ border-radius: 10px;
 background: transparent;
 }
 
-.info {
-display: flex;
-justify-content: space-around;
-align-items: center;
-}
+.info {display: flex;align-items: center;justify-content: center;}
 
-.img_container {
-width: 10rem;
-}
+.img_container {width: 7rem;}
 
 .container .alarm {
-position: absolute;
-top: 13rem;
-left: 26rem;
+  /* position: absolute; */
+  /* top: 13rem; */
+  /* left: 26rem; */
+  /* float: right; */
+  width: 15rem;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .search {
@@ -462,4 +383,14 @@ font-size: 1rem;
 height: 4rem;
 background-color: #303a47;
 box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는거 */
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    box-shadow:  0 0 0px 1000px white 00.1s inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white 00.1s inset !important;
 }

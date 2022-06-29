@@ -596,12 +596,15 @@ body {
     align-items: center;
     position: relative;
     /* width: 90%; */
-    height: 25rem;
+    padding: 1rem;
+    height: 32rem;
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     /* left: 5%; */
     /* top: -4%; */
+    overflow: scroll;
+    justify-content: space-evenly;
 }
 
 .container_body_add{
@@ -617,7 +620,9 @@ body {
 
 .container .my_books {
     display: flex;
+    width: fit-content;
     align-items: center;
+    margin: 1rem;
     padding: 1rem;
     justify-content: center;
     border-radius: 1rem;

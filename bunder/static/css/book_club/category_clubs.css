@@ -48,16 +48,24 @@ body {
 }
 
 .container .book_club_container .book_cover {
+    cursor: pointer;
     padding: 10%;
     height: 100%;
     width: 20rem;
+
 }
 
-.container .book_club_container .book_cover:hover {
-    height: 100%;
-    width: 20rem;
-    transition: 0.3s;
+.container .book_club_container .con{
+    transition: all 0.35s;
 }
+
+
+
+.container .book_club_container .con:hover {
+    transform: translateY(-0.85em);
+}
+
+
 
 .container .number_club {
     display: flex;

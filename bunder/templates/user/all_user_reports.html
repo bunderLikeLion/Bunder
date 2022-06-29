@@ -11,18 +11,22 @@ All My Reports
 {% block content %}
 <div class="container">
     <div class="profile_reports">
-        <h1>{{ user_info.nickname }}님의 독후감</h1>
+        <h3>{{ user_info.nickname }}님의 독후감</h3>
     </div>
-    {% for report in user_reports %}
-    <div class="reports_container">
-        <div class="img_container" onclick="location.href='{% url 'book_report:detail' report.id %}';">
-            <img src="{{report.book_img}}">
+    <div class="box">
+        {% for report in user_reports %}
+        <div class="reports_container">
+            <div class="img_container" onclick="location.href='{% url 'book_report:detail' report.id %}';">
+                <img src="{{report.book_img}}">
+            </div>
+            <div class="info_container" onclick="location.href='{% url 'book_report:detail' report.id %}';">
+                <h3 class="report">{{report.report_name}}</h3>
+                <h4>책 : {{ report.book_name }}</h4>
+                <h4>분야 : {{ report.book_category }}</h4>
+                <h4>작성날짜 : {{ report.created_at }}</h4>
+            </div>
         </div>
-        <div class="info_container" onclick="location.href='{% url 'book_report:detail' report.id %}';">
-            <h3 class="report">{{report.report_name}}</h3>
-            <h3>책 : {{ report.book_name }}</h3>
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock content %}

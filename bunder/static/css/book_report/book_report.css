@@ -343,6 +343,10 @@ align-items: center;
     box-shadow: none;
 }
 
+#search_btn:hover, #write_report_btn:hover {
+  box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
+}
+
 .container .all_report_container .navbar_container .categories .navbar li{
     transition: all 0.5s;
 }

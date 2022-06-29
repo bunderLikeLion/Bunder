@@ -231,5 +231,30 @@ My Bunder
         }
     })
 
+	// 책 추천
+
+    const key = JSON.parse("{{ bookSecret|escapejs }}");
+    let bookInfo = [];
+
+    const fetchFunc = (bookName) => {
+        return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&key=${key}`)
+            .then(res => res.json())
+            .then(res => {
+                bookInfo = [];
+                for (let book of res.items) {
+                    if (bookInfo.length >= 6) break;
+                    const singleBook = book?.volumeInfo;
+                    const tmp = {};
+                    if (singleBook?.authors && singleBook?.categories) {
+                        tmp.title = singleBook.title;
+                        tmp.author = singleBook.authors[0];
+                        tmp.imageLink = singleBook?.imageLinks;
+                        tmp.category = categoryConverter(singleBook?.categories[0]);
+                        bookInfo.push(tmp)
+                    }
+                }
+            })
+    }
+
 </script>
 {% endblock content %}

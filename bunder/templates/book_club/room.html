@@ -71,7 +71,8 @@
             try{
                 UID = await client.join(APP_ID, CHANNEL, TOKEN, UID);
             }catch(error){
-                location.reload();
+                {#location.reload();#}
+                console.log(error);
             }
 
             localTracks = await AgoraRTC.createMicrophoneAndCameraTracks();

@@ -53,6 +53,12 @@ body {
     width: 20rem;
 }
 
+.container .book_club_container .book_cover:hover {
+    height: 100%;
+    width: 20rem;
+    transition: 0.3s;
+}
+
 .container .number_club {
     display: flex;
     align-items: center;

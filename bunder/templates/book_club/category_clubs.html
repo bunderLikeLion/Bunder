@@ -22,7 +22,8 @@ Category Clubs
 			{% for club in club_list %}
 			<div class="con">
 				<div class="my_book_club">
-					<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+					<img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg"
+						onclick="location.href = '{% url 'book_club:book_club_detail' club.id %}'">
 				</div>
 				<div class="my_book_club_info">
 					<div>북클럽명: {{ club.club_name }}</div>

@@ -15,10 +15,12 @@ def main(request):
         check_receiver = check_i_send_receiver.union(check_you_send_receiver, all=True)
         if request.GET.get("id"):
             click_receiver = request.GET.get("id")
-            each_content = Mail.objects.filter(Q(user=request.user) | Q(user=click_receiver), Q(receiver=click_receiver) | Q(receiver=request.user)).order_by('-created_at')
+            each_content = Mail.objects.filter(Q(user=request.user) | Q(user=click_receiver),
+                                               Q(receiver=click_receiver) | Q(receiver=request.user)).order_by(
+                '-created_at')
             receiver = User.objects.filter(id__in=[id for id in check_receiver])
-            return render(request, "mail/mail.html", {'receiver': receiver, 'each_content' : each_content, 'click_receiver' : click_receiver})
-
+            return render(request, "mail/mail.html",
+                          {'receiver': receiver, 'each_content': each_content, 'click_receiver': click_receiver})
         else:
             receiver = User.objects.filter(id__in=[id for id in check_receiver])
             return render(request, "mail/mail.html", {'receiver': receiver})
@@ -30,13 +32,15 @@ def send_mail(request):
 
 def reply(request):
     try:
-        id= request.GET.get("id")
+        id = request.GET.get("id")
         receiver = get_object_or_404(User, pk=id)
         return render(request, "mail/mail_to.html", {'receiver': receiver})
     except ValueError:
-        check_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True).distinct()
+        check_i_send_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True)
+        check_you_send_receiver = Mail.objects.filter(receiver_id=request.user.id).values_list('user', flat=True)
+        check_receiver = check_i_send_receiver.union(check_you_send_receiver, all=True)
         receiver = User.objects.filter(id__in=[id for id in check_receiver])
-        return render(request, "mail/mail.html", {'error': '상대방을 먼저 선택 하세요.', 'receiver' : receiver})
+        return render(request, "mail/mail.html", {'error': '상대방을 먼저 선택 하세요.', 'receiver': receiver})
 
 
 @csrf_exempt
@@ -52,7 +56,7 @@ def create(request):
             return render(request, 'mail/mail_to.html', res_data)
         else:
             try:
-                userob = User.objects.get(nickname= receiver)
+                userob = User.objects.get(nickname=receiver)
                 newmail.receiver = userob
                 newmail.save()
             except User.DoesNotExist:

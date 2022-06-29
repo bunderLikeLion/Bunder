@@ -110,3 +110,11 @@ body {
     width: 90%;
     padding: 0.5rem;
 }
+
+.container .book_club_container .con{
+    transition: all 0.5s;
+}
+
+.container .book_club_container .con:hover {
+    transform: translateY(-1em);
+}

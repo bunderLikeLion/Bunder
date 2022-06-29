@@ -325,13 +325,12 @@ button:active {
 .member_box {
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
+  margin: 0 1rem;
   align-items: center;
 }
 
 .all_profile_container {
   display: flex;
-  justify-content: center;
 }
 
 .edit_container a {

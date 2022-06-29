@@ -115,7 +115,6 @@ def update(request, id):
     update_book.book_name = request.POST.get('book_name')
     update_book.category = request.POST.get('category')
     update_book.content = request.POST.get('content')
-    update_book.image_upload = None
     update_book.image_upload = request.FILES.get('image_upload')
     update_book.save()
     return redirect('book_report:detail', update_book.id)
@@ -245,7 +244,5 @@ class CommentRequest(View):
 # 내 독후감 좋아요 순 3개 확인 함수
 def populated_reports(request):
     my_reports = BookReport.objects.all()
-    user = request.user
-    if user:
-        my_reports = my_reports.order_by('-likes')[:3]
+    my_reports = my_reports.order_by('-likes')[:3]
     return my_reports

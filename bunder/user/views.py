@@ -179,26 +179,29 @@ def get_book_club_json(request):
 def profile_revise(request):
     user = request.user
     res_data = {'user': user}
-    if request.method == "POST":
-        nickname = request.POST.get('nickname')
-        if user.nickname != nickname:
-            if User.objects.filter(nickname=nickname).exists():
-                res_data["error"] = "이미 존재하는 닉네임 입니다."
-                return render(request, "user/profile_revise.html", res_data)
+    try:
+        if request.method == "POST":
+            nickname = request.POST.get('nickname')
+            if user.nickname != nickname:
+                if User.objects.filter(nickname=nickname).exists():
+                    res_data["error"] = "이미 존재하는 닉네임 입니다."
+                    return render(request, "user/profile_revise.html", res_data)
+                else:
+                    user.nickname = request.POST.get('nickname')
+                    user.age = request.POST.get('age')
+                    user.categories = request.POST.get('book_category')
+                    user.save()
+                    return redirect('user:profile')
             else:
-                user.nickname = request.POST.get('nickname')
                 user.age = request.POST.get('age')
                 user.categories = request.POST.get('book_category')
                 user.save()
                 return redirect('user:profile')
         else:
-            user.age = request.POST.get('age')
-            user.categories = request.POST.get('book_category')
-            user.save()
-            return redirect('user:profile')
-    else:
+            return render(request, "user/profile_revise.html", res_data)
+    except ValueError:
+        res_data['error'] = "입력되지 않은 칸이 있습니다."
         return render(request, "user/profile_revise.html", res_data)
-
 
 # 독후감 확인 (reports)
 def reports(request):

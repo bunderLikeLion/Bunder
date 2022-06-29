@@ -188,6 +188,7 @@ input:-webkit-autofill:active {  /* 입력창 자동완성 배경색 없애는�
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.2rem;
 }
 
 #book_img {  /* 책 표지 이미지 사각형 둘레 */
@@ -300,7 +301,7 @@ img {
 
 .button {   /* 책검색, 독후감 발행 버튼 두개 */
     font-weight: bold;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-size: large;
@@ -309,7 +310,7 @@ img {
     height: 3.5rem;
     padding : 0 3rem;
     color: #813818;
-    background-color: #ed591a;
+    background-color: #514a77;
     border: 0;
     outline: 0;
     border-radius: 320px;
@@ -446,8 +447,8 @@ select {
   cursor: pointer;
   border-radius: .25em;
   margin-top: 1rem;
-  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
-    background-color: #ed591a;
+  box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
+    background-color: #514a77;
 }
 
 .input-file-button {
@@ -455,14 +456,15 @@ select {
     border-radius: 1rem;
     width: 3rem;
     height: 2rem;
-    margin-top: 5rem;
+    padding: 0.5rem;
+    /* margin-top: 28rem; */
     margin-left: 2rem;
 }
 
 label {
     color: white;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
-    background-color: #ed591a;
+    box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
+    background-color: #303a47;
 }
 
 label:hover { /* */

@@ -24,7 +24,7 @@ h3 {
     line-height: 1em;
     font-weight: 700;
     padding-left: 10px;
-    border-left: 5px solid #ed591a;
+    border-left: 5px solid #514a77;
 }
 
 .container .all_container {
@@ -93,8 +93,8 @@ h3 {
     /* flex: 1; */
     margin: 0 1rem;
     border-radius: 1rem;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
-    background-color: #ed591a;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
+    background-color: #514a77;
 }
 
 .pagination li a {

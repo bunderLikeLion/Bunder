@@ -562,7 +562,7 @@ body {
     /* border-radius: 1rem; */
     /* background-color: #33383D; */
     float: left;
-    width: 35rem !important;
+    width: 45rem !important;
 }
 
 .container .book_club_container {
@@ -815,4 +815,9 @@ img {
 
 .container .bunder_reco .book_club_container .my_book_club:hover {
     transform: translateY(-1em);
+}
+
+.size {
+    color: lightcoral !important;
+    font-size: 1.8rem;
 }

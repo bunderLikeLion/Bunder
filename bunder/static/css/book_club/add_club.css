@@ -34,7 +34,7 @@ input {
   line-height: 1em;
   font-weight: 600;
   padding-left: 10px;
-  border-left: 5px solid #ed591a;
+  border-left: 5px solid #514a77;
 }
 
 .container h3 {
@@ -44,7 +44,7 @@ input {
   line-height: 1em;
   font-weight: 600;
   padding-left: 10px;
-  border-left: 5px solid #ed591a;
+  border-left: 5px solid #514a77;
 }
 
 .container .body {
@@ -170,13 +170,13 @@ button {
 button {
   /* color: #61677C; */
   /* font-weight: bold; */
-  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   font-weight: 600;
   height: 100%;
   padding: 0.5rem;
-  background-color: #ed591a;
+  background-color: #303a47;
 }
 
 button:hover {
@@ -195,6 +195,8 @@ button.login {
   width: 25%;
   height: 3rem;
   color: #813818;
+  background-color: #514a77;
+  box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
 }
 
 .genre_container {
@@ -338,8 +340,8 @@ textarea {
   flex: 1;
   margin: 0.5rem;
   border-radius: 1rem;
-  background-color: #ed591a;
-  box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+  background-color: #303a47;
+  box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
 }
 
 .pagination li a {

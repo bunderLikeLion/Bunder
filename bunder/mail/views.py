@@ -10,19 +10,16 @@ from django.http import HttpResponse, JsonResponse
 
 def main(request):
     if request.method == 'GET':
+        check_i_send_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True)
+        check_you_send_receiver = Mail.objects.filter(receiver_id=request.user.id).values_list('user', flat=True)
+        check_receiver = check_i_send_receiver.union(check_you_send_receiver, all=True)
         if request.GET.get("id"):
             click_receiver = request.GET.get("id")
             each_content = Mail.objects.filter(Q(user=request.user) | Q(user=click_receiver), Q(receiver=click_receiver) | Q(receiver=request.user)).order_by('-created_at')
-            check_i_send_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True)
-            check_you_send_receiver = Mail.objects.filter(receiver_id=request.user.id).values_list('user', flat=True)
-            check_receiver = check_i_send_receiver.union(check_you_send_receiver, all=True)
             receiver = User.objects.filter(id__in=[id for id in check_receiver])
             return render(request, "mail/mail.html", {'receiver': receiver, 'each_content' : each_content, 'click_receiver' : click_receiver})
 
         else:
-            check_i_send_receiver = Mail.objects.filter(user=request.user).values_list('receiver', flat=True)
-            check_you_send_receiver = Mail.objects.filter(receiver_id=request.user.id).values_list('user', flat=True)
-            check_receiver = check_i_send_receiver.union(check_you_send_receiver, all=True)
             receiver = User.objects.filter(id__in=[id for id in check_receiver])
             return render(request, "mail/mail.html", {'receiver': receiver})
 

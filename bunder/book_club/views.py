@@ -383,7 +383,6 @@ def response_accept(request):
 
 
 class Invite(View):
-    #TODO 송경석
     def get(self, request):
         club_list = BookClub.objects.filter(owner=request.user)
 
@@ -399,6 +398,9 @@ class Invite(View):
         user_id = request.POST["userId"]
 
         member, flag = BookClubMember.objects.get_or_create(user_id=user_id, club_id=club_id)
+        if flag:
+            member.type = "INVITE"
+            member.save()
 
         return redirect('book_club:book_club_detail', club_id)
 

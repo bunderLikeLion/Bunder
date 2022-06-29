@@ -288,3 +288,12 @@ label:active {/* */
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }
 
+.middle_text {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-left: 0.5rem #514a77 solid;
+    /* height: 2rem; */
+    display: flex;
+    /* margin-top: 1rem; */
+    /* align-items: center; */
+  }

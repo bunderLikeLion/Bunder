@@ -61,8 +61,8 @@ h1 {
   margin-right: 3rem;
 }
 
-img {
-  box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+.profile_img, .club_img, .book_cover {
+  /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
   width: 3rem;
   border-radius: 10px;
   background: transparent;
@@ -79,6 +79,7 @@ img {
 
 .book_cover {
   width: 10rem;
+  padding: 1rem;
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
   border-radius: 10px;
 }
@@ -425,4 +426,10 @@ display: flex;
 
 .request-done {
 display: none;
+}
+
+
+#vote-delete_btn {
+  background-color: #774a4a;
+  box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
 }

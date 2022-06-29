@@ -167,9 +167,9 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     /* left: 5%; */
     /* top: 2rem; */
 }
@@ -206,9 +206,9 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     /* left: 5%; */
     /* top: 2rem; */
 }
@@ -263,9 +263,9 @@ body {
     position: relative;
     width: 20%;
     height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     left: 5%;
     top: 2rem;
 }
@@ -351,15 +351,14 @@ body {
 .bunder_reco .book_club_container .my_book_club {
     width: 20%;
 }
-/* Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡ */
+/* ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ÃƒÂ£Ã¢â‚¬Â¦Ã‚Â¡ */
 body {
     display: flex;
-    min-height: 450vh;
+    min-height: 490vh;
     justify-content: center;
 }
 .container {
     position: relative;
-    height: 100%;
     top: 8rem;
     width: 80%;
     padding: 3rem;
@@ -541,11 +540,13 @@ body {
     justify-content: center;
     position: relative;
     /* width: 30%; */
-    height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
+    border-left: 0.5rem #514a77 solid;
+    height: 2rem;
+    margin: 1rem;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
     float: left;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     /* left: 5%; */
     /* top: 2rem; */
 }
@@ -582,10 +583,11 @@ body {
     position: relative;
     /* width: 30%; */
     float: left;
-    height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    height: 2rem;
+    /* border-radius: 1rem; */
+    border-left: 0.5rem #514a77 solid;
+    /* background-color: #33383D; */
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     /* left: 5%; */
     /* top: 2rem; */
 }
@@ -641,13 +643,15 @@ body {
 .container .profile_reports {
     display: flex;
     align-items: center;
+    margin: 1rem;
     justify-content: center;
     /* position: relative; */
-    width: 30%;
-    height: 3rem;
-    border-radius: 1rem;
-    background-color: #33383D;
-    box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
+    width: 24%;
+    height: 2rem;
+    border-left: 0.5rem #514a77 solid;
+    /* border-radius: 1rem; */
+    /* background-color: #33383D; */
+    /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
     /* left: 5%; */
     /* top: 2rem; */
 }
@@ -764,7 +768,7 @@ img {
 }
 
 .temp {
-    width: 80%;
+    width: 95%;
 }
 
 .all {

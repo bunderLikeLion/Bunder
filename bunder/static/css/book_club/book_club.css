@@ -189,6 +189,7 @@ body {
 .invite_request_container{
     width: 90%;
     margin: 4rem auto;
+    margin-bottom: 10rem;
 }
 
 .single_request {
@@ -277,3 +278,14 @@ span {
     float: right;
     margin: -2rem;
 }
+
+.middle_text {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-left: 0.5rem #514a77 solid;
+    /* height: 2rem; */
+    display: flex !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    justify-content: flex-start !important;
+  }

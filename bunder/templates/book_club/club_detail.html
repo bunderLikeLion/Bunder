@@ -215,7 +215,7 @@ Club Detail
                     </div>
                     {% endif %}
                     {% for each_book in book_list %}
-                    <div class="book_cover">
+                    <div>
                         <a href="{% url 'user:bookdetail' each_book.id %}">
                             <img class="book_cover" src="{{ each_book.book_img }}">
                         </a>

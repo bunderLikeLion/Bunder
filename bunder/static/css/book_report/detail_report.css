@@ -377,3 +377,13 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
   background-color: #774a4a;
   box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
 }
+
+.middle_text {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-left: 0.5rem #514a77 solid;
+  /* height: 2rem; */
+  display: flex;
+  /* margin-top: 1rem; */
+  /* align-items: center; */
+}

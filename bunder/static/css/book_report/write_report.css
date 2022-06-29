@@ -474,3 +474,12 @@ label:hover { /* */
 label:active {/* */
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
 }
+
+.middle_text {
+    padding: 1rem 0 0.5rem 1rem;
+    border-left: 0.5rem #514a77 solid;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}

@@ -194,6 +194,8 @@ form {
 
 .back_btn:hover {
     box-shadow: 5px 5px 8px #62646a, -9px -9px 9px #17191d;
+}
+
 .container .big_container .reports_container .report_list .report {
     cursor: pointer;
     transition: all 0.5s;

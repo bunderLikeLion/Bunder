@@ -61,7 +61,7 @@
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
   }
   .button:hover {
-  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+  box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
   }
 
   .button:active {
@@ -110,7 +110,7 @@
   }
 
   .title {
-    width: 80%;     /* 100% 하면 옆에 빠져나옴 */
+    width: 80%;     /* 100% í•˜ë©´ ì˜†ì— ë¹ ì ¸ë‚˜ì˜´ */
     /* margin: 0px 20px; */
     padding : 0.7rem;
     border-radius: 4px;
@@ -234,7 +234,7 @@
     margin: 0 auto;
   }
 
-  .report_content_container {   /* 독후감 본문 입력란 */
+  .report_content_container {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
     font-size: 1.3rem;
     padding : 2rem;
     width: 100%;
@@ -280,7 +280,7 @@
     width: 80%;
   }
 
-  textarea {   /* 독후감 본문 입력란 */
+  textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
     padding : 1rem;
     width: 100%;
     border: none;
@@ -294,7 +294,7 @@
     inset 3px 3px 3px rgba(82, 82, 82, 0.2),
     inset 3px 3px 3px rgba(0, 0, 0, 0.4);
 
-    /* 기본 스타일 */
+    /* ê¸°ë³¸ ìŠ¤íƒ€ì¼ */
     /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent; */
@@ -317,4 +317,8 @@
   .delete-book_btn {
     background-color: #774a4a;
     box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}
+
+.delete-book_btn:hover {
+    box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
 }

@@ -24,7 +24,7 @@ My Bunder
             </div>
         </div>
         <div class="profile_book_container">
-            <h3>프로필 북</h3>
+            <h2>프로필 북</h2>
         </div>
         <div class="profile_book_cover">
             <a href="../user/bookdetail/{{ mainbook.book.id }}">
@@ -35,7 +35,7 @@ My Bunder
 
     <div class="box">
         <div class="profile_club text">
-            <h3>참여중인 북클럽</h3>
+            <h2>참여중인 북클럽</h2>
         </div>
         <div class="container_body">
             <div class="pagination_container">
@@ -60,7 +60,7 @@ My Bunder
 
     <div class="box">
         <div class="profile_bookshelf text ">
-            <h3>{{ user_info.nickname }}님의 책장</h3>
+            <h2>{{ user_info.nickname }}님의 책장</h2>
         </div>
         <div class="container_body_add">
             <div class="pagination_container">
@@ -82,7 +82,7 @@ My Bunder
 
     <div class="box">
         <div class="profile_reports">
-            <h3>{{ user_info.nickname }}님이 쓴 글</h3>
+            <h2>{{ user_info.nickname }}님이 쓴 글</h2>
         </div>
         <div class="container_body_reports">
             <div class="pagination_container temp">
@@ -100,7 +100,10 @@ My Bunder
             {% for report in my_recent_reports%}
             <div class="report_container">
                 <div class="inner_report_container">
-                    <a href={% url 'book_report:detail' report.id %} class="reports_name">{{ report.report_name }}</a>
+                    <a href={% url 'book_report:detail' report.id %} class="reports_name">
+                        <div>{{ report.report_name }}</div>
+                        <div class="time">{{ report.created_at }}</div>
+                    </a>
                 </div>
             </div>
             {% endfor %}
@@ -112,7 +115,7 @@ My Bunder
     <div class="box">
         <div class="margin">
             <div class="profile_reports">
-                <h3>{{ user_info.nickname }}님의 스크랩</h3>
+                <h2>{{ user_info.nickname }}님의 스크랩</h2>
             </div>
             <div class="container_body_reports">
                 <div class="pagination_container temp">
@@ -141,7 +144,7 @@ My Bunder
 
     <div class="bunder_reco">
         <div class="profile_club text reco">
-            <h3 class="recobook">번더의 추천 책</h3>
+            <h2 class="recobook">번더의 추천 책</h2>
             <h4>현재 번더의 알고리즘이 판단한 <span class="size">{{ user_info.nickname }}</span> 님의 선호 카테고리는<span class="size">
                     {{ user_info.categories}}
                 </span> 입니다.

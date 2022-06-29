@@ -774,3 +774,27 @@ img {
 .all {
     width: 5rem;
 }
+
+.container .box .my_book_club_container .my_book_club{
+    transition: all 0.35s;
+}
+
+.container .box .my_book_club_container .my_book_club:hover {
+    transform: translateY(-1em);
+}
+
+.container .box .bookshelf_container .my_books{
+    transition: all 0.35s;
+}
+
+.container .box .bookshelf_container .my_books:hover {
+    transform: translateY(-1em);
+}
+
+.container .bunder_reco .book_club_container .my_book_club{
+    transition: all 0.35s;
+}
+
+.container .bunder_reco .book_club_container .my_book_club:hover {
+    transform: translateY(-1em);
+}

@@ -62,7 +62,7 @@ body {
 
 
 .container .book_club_container .con:hover {
-    transform: translateY(-0.85em);
+    transform: translateY(-em);
 }
 
 
@@ -93,6 +93,7 @@ body {
     height: 80%;
 }
 
+
 .con {
     width: 14rem;
     margin: 2rem 0.5rem;
@@ -108,5 +109,4 @@ body {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 90%;
     padding: 0.5rem;
-
 }

@@ -21,10 +21,12 @@
     <div class="book_club_container my_book_club_container">
         {% for club in my_club%}
         <div class="my_book_club">
-            <a href="/bookclub/{{ club.id }}">
+            <div class="book_img_container">
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
-            </a>
-            <span class="club_name">{{ club.club_name }}</span>
+            </div>
+            <div class="my_book_club_info">
+                {{ club.club_name }}
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -79,12 +81,24 @@
     <div class="book_club_container">
         {% for club in book_club.popular %}
         <div class="my_book_club">
+            <div class="book_img_container" onclick="location.href = '{% url 'book_club:book_club_detail' club.id %}'">
+                <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
+            </div>
+            <div class="my_book_club_info">
+                {{ club.club_name }}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- {% for club in book_club.popular %}
+        <div class="my_book_club">
             <a href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
             <span class="club_name">{{ club.club_name }}</span>
         </div>
-        {% endfor %}
+        {% endfor %} -->
+
     </div>
     <div class="profile_club">
         <h3>문학 북클럽</h3>

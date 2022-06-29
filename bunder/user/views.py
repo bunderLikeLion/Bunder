@@ -142,14 +142,18 @@ def bunder(request):
         result = get_book_club(request, user_info)
         # book_club = getBookClub(user_info)
         total_json = json.dumps(result['total_cnt'])
-
+        random_book_list = get_random_book_list(request.user.categories)
+        key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
         mainbook = ProfileBook.objects.filter(user_id=user_info.id).last()
+
         return render(request, 'user/bunder.html', {'user_info': user_info, 'my_recent_reports': my_recent_reports,
                                                     'scrap': scrap, 'book': book,
                                                     'book_club': result['club_list'],
                                                     'mainbook': mainbook,
                                                     'total_cnt': result['total_cnt'],
-                                                    'total_json': total_json})
+                                                    'total_json': total_json,
+                                                    'bookSecret': key,
+                                                    'book_list': random_book_list})
 
 def get_book_club(request, user):
     if request.method == 'GET':

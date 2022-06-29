@@ -5,7 +5,7 @@ body {
 }
 .container {
     position: relative;
-    height: 100%;
+    min-height: 100%;
     top: 10rem;
     width: 65%;
     padding: 3rem;
@@ -97,4 +97,12 @@ body {
 
 .report {
     font-size: 1.5rem;
+}
+
+.container .reports_container{
+    transition: all 0.35s;
+}
+
+.container .reports_container:hover {
+    transform: translateX(2.5em);
 }

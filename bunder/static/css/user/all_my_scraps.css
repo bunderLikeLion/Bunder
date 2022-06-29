@@ -91,3 +91,11 @@ body {
 .report {
     font-size: 1.5rem;
 }
+
+.container .reports_container{
+    transition: all 0.35s;
+}
+
+.container .reports_container:hover {
+    transform: translateX(2.5em);
+}

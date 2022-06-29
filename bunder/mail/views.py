@@ -47,11 +47,15 @@ def create(request):
         receiver = request.POST.get('receiver')
         newmail.content = request.POST.get('content')
         res_data = {}
-        try:
-            userob = User.objects.get(nickname= receiver)
-            newmail.receiver = userob
-            newmail.save()
-        except User.DoesNotExist:
-            res_data['error'] = '존재하지 않는 닉네임 입니다.'
+        if newmail.content == '':
+            res_data['error'] = '내용을 입력해 주세요.'
             return render(request, 'mail/mail_to.html', res_data)
+        else:
+            try:
+                userob = User.objects.get(nickname= receiver)
+                newmail.receiver = userob
+                newmail.save()
+            except User.DoesNotExist:
+                res_data['error'] = '존재하지 않는 닉네임 입니다.'
+                return render(request, 'mail/mail_to.html', res_data)
         return redirect("/mail/receiver?id=" + str(newmail.receiver.id))

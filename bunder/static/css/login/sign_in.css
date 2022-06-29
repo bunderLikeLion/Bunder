@@ -104,11 +104,11 @@ button {
 }
 
 button:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    box-shadow: -2px -2px 5px #8a7ea0, 2px 2px 5px #8a7ea0;
 }
 
 button:active {
-    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+    box-shadow: inset 1px 1px 2px #c8c4de, inset -1px -1px 2px rgb(30, 22, 34);
 }
 
 
@@ -154,7 +154,7 @@ button.login{
 }
 
 .signup li a:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    box-shadow: -2px -2px 5px rgb(59, 40, 57), 2px 2px 5px #231e39;
 }
 
 .error {

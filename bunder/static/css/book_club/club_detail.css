@@ -309,6 +309,7 @@ button:active {
   box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
   border-radius: 10px;
   background: transparent;
+  word-break: break-all;
 }
 
 .empty_list {

@@ -35,14 +35,18 @@
     <section class="category_container">
       {% for club in club_list %}
       <label class="category">
-        <input type="radio" value="{{ club.id }}" name="clubId" checked class="radio__input cover_input" />
-        <div class="category__box"></div>
-        <span class="category__text">
-          <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
-        </span>
-        <div class="my_book_club_info">
-          <div>북클럽명 : {{ club.club_name }}</div>
-          <div>인원 : {{ club.member_cnt }}/{{ club.member_total }}</div>
+        
+        <div class="category__box">
+          <input type="radio" value="{{ club.id }}" name="clubId" checked class="radio__input cover_input" />
+        </div>
+        <div class="temp">
+          <div class="category__text">
+            <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
+          </div>
+          <div class="my_book_club_info">
+            <div>북클럽명 : {{ club.club_name }}</div>
+            <div>인원 : {{ club.member_cnt }}/{{ club.member_total }}</div>
+          </div>
         </div>
       </label>
       {% endfor %}

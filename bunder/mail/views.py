@@ -40,7 +40,7 @@ def reply(request):
         check_you_send_receiver = Mail.objects.filter(receiver_id=request.user.id).values_list('user', flat=True)
         check_receiver = check_i_send_receiver.union(check_you_send_receiver, all=True)
         receiver = User.objects.filter(id__in=[id for id in check_receiver])
-        return render(request, "mail/mail.html", {'error': '상대방을 먼저 선택 하세요.', 'receiver': receiver})
+        return render(request, "mail/mail_to.html", {'error': '상대방을 먼저 선택 하세요.', 'receiver': receiver})
 
 
 @csrf_exempt

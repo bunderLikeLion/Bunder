@@ -31,7 +31,7 @@ div, p, span, input{
     line-height: 1em;
     font-weight: 600;
     padding-left: 10px;
-    border-left: 5px solid #ed591a;
+    border-left: 5px solid #514a77;
 }
 
 .container .inputBox {
@@ -96,10 +96,10 @@ input:-webkit-autofill:active {
 
 button {
     color: #61677C;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    background-color: #ed591a;
+    background-color: #514a77;
     font-weight: 100;
 }
 
@@ -116,11 +116,12 @@ button.login{
     text-align: center;
     display: inline;
     position: relative;
-    top: 1.3rem;
-    left: 70%;
+    /* top: 1.3rem; */
+    /* left: 70%; */
     width: 30%;
     height: 3.1rem;
     color: #813818;
+    float: right;
 }
 
 .signup {
@@ -130,11 +131,11 @@ button.login{
     height: 3rem;
     overflow: hidden;
     border: none;
-    background: #ed591a;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
+    background: #514a77;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
     border-radius: 50px;
-    top: 19.5rem;
-    left: 2.6rem;
+    /* top: 19.5rem; */
+    /* left: 2.6rem; */
 }
 
 
@@ -146,7 +147,7 @@ button.login{
     display: flex;
     justify-content: center;
     height: 3rem;
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-decoration: none;
     color: #AE1100;
     align-items: center;
@@ -156,3 +157,9 @@ button.login{
     box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
 
+.error {
+    
+margin: 0 0.5rem;
+    
+height: 3rem;
+}

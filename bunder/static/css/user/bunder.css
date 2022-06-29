@@ -96,7 +96,7 @@ body {
     flex: 1;
     border-radius: 1rem;
     box-shadow: 9px 9px 18px #b94514, -9px -9px 18px #ff6d20;
-    background-color: #ed591a;
+    background-color: #303a47;
 }
 
 .pagination li a {
@@ -132,7 +132,7 @@ body {
 .container .profile_book_cover {
     display: flex;
     /* position: relative; */
-    width: 30%;
+    width: fit-content;
     padding: 1rem;
     margin: 0 auto;
     border-radius: 1rem;
@@ -351,7 +351,7 @@ body {
 .bunder_reco .book_club_container .my_book_club {
     width: 20%;
 }
-/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+/* ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ */
 body {
     display: flex;
     min-height: 450vh;
@@ -396,7 +396,7 @@ body {
     position: relative;
     width: 40%;
     height: 7rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     margin: 0 1rem;
     display: flex;
     border-radius: 1rem;
@@ -468,8 +468,8 @@ body {
     /* width: 100%; */
     text-align: center;
     border-radius: 1rem;
-    box-shadow: 4px 4px 8px #b94514, -4px -4px 8px #ff6d20;
-    background-color: #ed591a;
+    box-shadow: 6px 7px 6px #24232b, -7px -6px 11px #686a72;
+    background-color: #303a47;
 }
 
 .pagination li a {
@@ -504,9 +504,9 @@ body {
 .container .profile_book_cover {
     display: flex;
     /* position: relative; */
-    width: 30%;
+    /* width: 30%; */
     padding: 1rem;
-    margin: 0 auto;
+    margin: 0.5rem auto;
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -515,9 +515,9 @@ body {
 }
 
 .container .profile_book_cover .book_cover {
-    padding: 3%;
+    /* padding: 3%; */
     /* height: 100%; */
-    width: 100%;
+    width: 14rem;
 }
 
 .container .book_club_container .book_cover {
@@ -739,4 +739,10 @@ button.btn_image {
 
 img {
     cursor: pointer;
+}
+
+.add_bookshelf {
+    background-color: #514a77 !important;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1 !important;
+    padding: 0.5rem;
 }

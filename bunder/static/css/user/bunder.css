@@ -351,7 +351,7 @@ body {
 .bunder_reco .book_club_container .my_book_club {
     width: 20%;
 }
-/* ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ã…¡ */
+/* Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡Ã£â€¦Â¡ */
 body {
     display: flex;
     min-height: 450vh;
@@ -363,6 +363,7 @@ body {
     top: 8rem;
     width: 80%;
     padding: 3rem;
+    padding-bottom: 5rem;
     background-color: #33383D;
     border-radius: 2rem;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -478,7 +479,7 @@ body {
     text-decoration: none;
     color: #ffffff;
     height: 2rem;
-    width: 5rem;
+    width: 100%;
     display: block;
     line-height: 2rem;
 }
@@ -505,6 +506,8 @@ body {
     display: flex;
     /* position: relative; */
     /* width: 30%; */
+    min-width: 13rem;
+    min-height: 15rem;
     padding: 1rem;
     margin: 0.5rem auto;
     border-radius: 1rem;
@@ -607,6 +610,7 @@ body {
     /* position: relative; */
     /* left: 82%; */
     /* top: 5%; */
+    width: 95%;
     /* place-items: center; */
     /* text-align: center; */
 }
@@ -644,11 +648,11 @@ body {
 }
 .container_body_reports{
     /* height: 10%; */
-    /* width: 5%; */
     position: relative;
     /* float: right; */
     /* left: 82%; */
     /* top: -2%; */
+    width: 17%;
     place-items: center;
     text-align: center;
 }
@@ -712,6 +716,7 @@ body {
 
 .container .margin .container_body_reports {
     position: relative;
+    width: 17%;
 }
 
 .bunder_reco {
@@ -742,7 +747,21 @@ img {
 }
 
 .add_bookshelf {
+    width: 10rem;
     background-color: #514a77 !important;
     box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1 !important;
-    padding: 0.5rem;
+    border-radius: 2rem !important;
+    padding: 0.5rem 1rem;
+}
+
+.text {
+    left: 5%;
+}
+
+.temp {
+    width: 80%;
+}
+
+.all {
+    width: 5rem;
 }

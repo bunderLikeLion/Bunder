@@ -197,6 +197,8 @@ button.login{
     color: #813818;
     font-size: large;
     font-weight: 600;
+    /* background-color: #774a4a; */
+    /* box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f; */
 }
 
 .button_container{
@@ -520,4 +522,9 @@ img.profile_img {
 
 .club_people_number {
     margin: 0 1rem;
+}
+
+.member-delete_btn, .club_close_btn {
+    background-color: #774a4a;
+    box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
 }

@@ -372,3 +372,8 @@ textarea {   /* ë…í›„ê° ë³¸ë¬¸ ìž…ë ¥ëž€ */
   width: 85%;
   margin-right: 1rem;
 }
+
+.delete-comment_btn {
+  background-color: #774a4a;
+  box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}

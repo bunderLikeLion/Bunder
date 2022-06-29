@@ -65,6 +65,7 @@ input {
 }
 .container .inputBox:nth-child(2) {
   width: 50%;
+  display: none;
 }
 
 .container .inputBox:nth-child(4) {
@@ -75,6 +76,7 @@ input {
 
 .container .inputBox:nth-child(3) {
   width: 18%;
+  margin-left: 1rem;
 }
 
 .container .inputBox_radio {
@@ -295,7 +297,8 @@ button.login {
 .box_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: left;
+
 }
 
 textarea {
@@ -307,13 +310,20 @@ textarea {
   border: none;
   resize: none;
   border-radius: 0.5rem;
-  box-shadow: 15px 15px 56px #26292d, -15px -15px 56px #40474d;
   background-color: transparent;
-
+    border: 1rem;
+    box-shadow: -5px -5px 5px rgba(92, 92, 92, 0.1),
+    3px 3px 3px rgba(0, 0, 0, 0.3), 
+    inset 3px 3px 3px rgba(82, 82, 82, 0.2),
+    inset 3px 3px 3px rgba(0, 0, 0, 0.4);
   /* 기본 스타일 */
   /* box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     border-radius: 10px;
     background: transparent; */
+}
+
+textarea:focus {
+  outline: 0;
 }
 
 .container_body {

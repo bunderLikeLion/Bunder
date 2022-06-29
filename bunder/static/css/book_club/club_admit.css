@@ -33,7 +33,7 @@ body {
 
 .club_people_number{
     float: right;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
 }
 
 .requester_profile_container {
@@ -70,6 +70,7 @@ body {
     font-size: large;
     font-weight: 600;
     margin-top: 0;
+    margin-left: 1rem;
     height: 5rem;
     padding : 0 2rem;
     color: #813818;
@@ -139,4 +140,10 @@ button:active {
 .reject_btn{
     background-color: #774a4a;
     box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}
+
+h2 {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 0.5rem solid #514a77;
 }

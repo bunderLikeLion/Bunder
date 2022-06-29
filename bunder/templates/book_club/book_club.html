@@ -75,13 +75,7 @@
     <div class="profile_club">
         <h3>인기 북클럽</h3>
     </div>
-    <div class="container_body_reports">
-        <div class="pagination_container">
-            <ul class="pagination ">
-                <li><a href='list?category=인기&page=1' class="all_my_reports">전체보기</a></li>
-            </ul>
-        </div>
-    </div>
+
     <div class="book_club_container">
         {% for club in book_club.popular %}
         <div class="my_book_club">
@@ -105,7 +99,7 @@
     <div class="book_club_container">
         {% for club in book_club.literature %}
         <div class="my_book_club">
-            <a href={% url 'book_club:book_club_detail' club.id %}>
+            <a class="img_box" href={% url 'book_club:book_club_detail' club.id %}>
                 <img class="book_cover" src="../../static/img/club_img_{{ club.image }}.jpg">
             </a>
             <span class="club_name">{{ club.club_name }}</span>

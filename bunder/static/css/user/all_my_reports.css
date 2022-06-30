@@ -21,6 +21,10 @@ body {
     justify-content: center;
 }
 
+.container::-webkit-scrollbar {
+    display: none;
+}
+
 .container .profile_reports {
     display: flex;
     align-items: center;

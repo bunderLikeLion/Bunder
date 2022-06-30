@@ -624,6 +624,10 @@ body {
     justify-content: space-evenly;
 }
 
+.container .bookshelf_container::-webkit-scrollbar {
+    display: none;
+}
+
 .container_body_add{
     /* height: 100%; */
     /* width: 100%; */

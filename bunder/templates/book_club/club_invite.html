@@ -35,7 +35,7 @@
     <section class="category_container">
       {% for club in club_list %}
       <label class="genre">
-        <input checked type="radio" value="{{ club.id }}" name="book_category" class="radio__input cover_input" />
+        <input checked type="radio" value="{{ club.id }}" name="clubId" class="radio__input cover_input" />
         <div class="radio__box"></div>
         <div class="category__text">
           <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />

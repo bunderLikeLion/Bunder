@@ -64,8 +64,7 @@ def category_search(request, category):
 
 def write_report(request):
     key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'));
-    random_book_list = json.dumps(get_random_book_list(request.user.categories))
-    return render(request, "book_report/write_report.html", {'bookSecret': key, 'random_book_list': random_book_list})
+    return render(request, "book_report/write_report.html", {'bookSecret': key})
 
 
 def detail_report(request, id):

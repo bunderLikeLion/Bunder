@@ -121,7 +121,7 @@ def book_club_detail(request, bookclub_id):
     bookclub_id_json = json.dumps(book_club.id)
     user_id_json = json.dumps(request.user.id)
     is_owner = True if request.user == book_club.owner else False
-    recommend = recommend_member(request.user)
+    recommend = recommend_member(request.user, book_club)
 
     query = Q()
     query.add(Q(club=book_club), query.AND)
@@ -607,8 +607,8 @@ def getMember(book_club):
 
 
 # 유저추천기능
-def recommend_member(user):
-    recommend = User.objects.filter(categories=user.categories).exclude(id=user.id).order_by('?')[:3]
+def recommend_member(user, book_club):
+    recommend = User.objects.filter(categories=book_club.category).exclude(id=user.id).order_by('?')[:3]
     return recommend
 
 

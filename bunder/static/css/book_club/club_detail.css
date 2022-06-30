@@ -390,12 +390,13 @@ a {
   align-items: center;
 }
 
-.roce_box {
+.reco_box {
   padding: 4rem;
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .reco_box img {
@@ -436,4 +437,28 @@ display: none;
 
 #vote-delete_btn:hover {
   box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
+}
+
+.utility {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 1rem;
+  background-color: #33383D;
+  box-shadow: 4px 4px 8px #25292d, -4px -4px 8px #41474d;
+  width: 15rem;
+  height: 14rem;
+  display: flex;
+  font-weight: 700;
+  border-radius: 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.utility a {
+  text-decoration: none;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.8rem;
+  box-shadow: 6px 6px 8px #25292d, -6px -6px 8px #41474d;
+  border-radius: 5rem;
 }

@@ -43,7 +43,9 @@ Club Detail
             </div>
         </div>
         {% else %}
+            {% if user.is_authenticated %}
         <button class="button" id="request_btn">북클럽 참여 요청</button>
+                {% endif %}
         {% endif %}
 
         <h1>북클럽 명 : {{ book_club.club_name }}</h1>

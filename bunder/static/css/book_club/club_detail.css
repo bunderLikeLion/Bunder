@@ -437,3 +437,11 @@ display: none;
 #vote-delete_btn:hover {
   box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
 }
+
+.container .club_detail_container .book_info_container .my_book_club{
+    transition: all 0.35s;
+}
+
+.container .bunder_reco .book_club_container .my_book_club:hover {
+    transform: translateY(-1em);
+}

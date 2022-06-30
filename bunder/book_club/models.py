@@ -104,7 +104,7 @@ class Book(models.Model):
         ('예술', '예술'),
         ('과학', '과학'),
         ('기술/IT', '기술/IT'),
-        ('기타', '기타')
+        ('자율', '자율')
     ]
     category = models.CharField(max_length=64, choices=category_tuple)
     active = models.BooleanField(default=False)

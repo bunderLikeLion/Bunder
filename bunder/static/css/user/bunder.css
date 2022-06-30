@@ -526,13 +526,13 @@ body {
 .container .book_club_container .book_cover {
     padding: 3%;
     height: 100%;
-    width: 100%;
+    width: 80%;
 }
 
 .container .bunder_reco .book_club_container .book_cover {
     padding: 3%;
     height: 100%;
-    width: 100%;
+    width: 80%;
 }
 
 .container .profile_club {

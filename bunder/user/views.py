@@ -144,7 +144,7 @@ def bunder(request):
         random_book_list = get_random_book_list(request.user.categories)
         key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
         mainbook = ProfileBook.objects.filter(user_id=user_info.id).last()
-        preference = preferred_category(user_info)
+        prefer = preferred_category(user_info)
 
         return render(request, 'user/bunder.html', {'user_info': user_info, 'my_recent_reports': my_recent_reports,
                                                     'scrap': scrap, 'book': book,
@@ -154,7 +154,7 @@ def bunder(request):
                                                     'total_json': total_json,
                                                     'bookSecret': key,
                                                     'book_list': random_book_list,
-                                                    'preference' : preference})
+                                                    'prefer' : prefer})
 
 
 def get_book_club(request, user):
@@ -354,6 +354,4 @@ def preferred_category(user):
     h = BookReport.objects.filter(user_id=user, book_category__exact='자율').count()
     categories = {'문학': a, '예술': b, '자기계발': c, '정치/사회': d, '과학': e, '기술/IT': f, '인문': g, '자율': h}
     max_category = max(categories, key=categories.get)
-    user.categories = max_category
-    user.save()
     return max_category

@@ -154,7 +154,6 @@ body {
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
     width: 20%;
     height: 80%;
-    flex-direction: column;
     justify-content: center;
 }
 
@@ -327,6 +326,8 @@ span {
 .container .book_club_container .my_book_club{
     cursor: pointer;
     transition: all 0.35s;
+    padding: 1rem 0;
+    height: fit-content;
 }
 
 .container .book_club_container .my_book_club .club_name{
@@ -340,7 +341,8 @@ span {
 .my_book_club_info {
     text-align: center;
     width: 100%;
-    height: 5%;
+    /* height: 5%; */
+    /* padding: 1rem 0; */
 }
 
 .container .book_club_container .my_book_club .book_img_container {

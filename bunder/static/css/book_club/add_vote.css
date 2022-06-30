@@ -38,9 +38,7 @@ body {
     /* background-color: pink; */
 }
 
-.input_bar {
-    width: 7rem;
-}
+#vote-list {padding: 0 3rem;}
 
 .input_bar {   /* ë…í›„ê° ì œëª©, ì±…ì œëª©, ì±…ì œëª© ê²€ìƒ‰ ìž…ë ¥ì°½ */
     width: 100%;
@@ -81,7 +79,7 @@ input:-webkit-autofill:active {
 .upper_setting, .input_bar {
     margin-bottom: 0.5rem;
     clear : both;
-    padding : 0.5rem 2rem;
+    padding: 0.5rem 2rem;
     border-radius: 30px;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
 }
@@ -146,6 +144,7 @@ input[type="date"]:valid:before{
 
 .text {
     width: 8rem;
+    margin: 0.5rem 0;
     padding: 1rem;
     text-align: center;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -156,8 +155,8 @@ input[type="date"]:valid:before{
   .single_vote_item {
     /* margin: 1rem; */
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
 }
 
 .vote_item_input {

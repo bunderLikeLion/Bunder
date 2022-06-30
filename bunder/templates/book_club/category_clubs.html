@@ -19,6 +19,11 @@ Category Clubs
 			<span>총 {{ total }}개</span>
 		</div>
 		<div class="book_club_container">
+			{% if not club_list %}
+			<div class="empty_club">해당 카테고리의 북클럽이 없습니다.</div>
+
+			{% else %}
+
 			{% for club in club_list %}
 			<div class="con">
 				<div class="my_book_club">
@@ -31,6 +36,7 @@ Category Clubs
 				</div>
 			</div>
 			{% endfor %}
+			{% endif %}
 		</div>
 	</div>
 	<!-- <div class="container">

@@ -15,12 +15,16 @@ Club Detail
 
         {% if is_owner %}
         <div class="club_detail_containaer" id="link_container">
+			{% if book_club.kakao_link != "" %}
             <div class="kakao_link">
                 <a href="{{ book_club.kakao_link }}" class="link" target="_blank">Kakao Talk</a>
             </div>
+			{% endif %}
+			{% if book_club.zoom_link != "" %}
             <div class="zoom_link">
                 <a href="{{ book_club.zoom_link }}" class="link" target="_blank">Zoom</a>
             </div>
+			{% endif %}
             <div class="chat_link">
                 <a href="../bookclub/room/{{ book_club.id }}" class="link">Boom</a>
             </div>
@@ -232,9 +236,27 @@ Club Detail
             <div class="reco_profile_container">
                 {% for person in recommend %}
                 <div class="reco_box">
-                    <img class="profile_img"
-                        src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
-                    <span>{{ person.nickname }}<span>
+					<div class="user_profile_container">
+                    	<img class="profile_img" src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
+                    	<span>{{ person.nickname }}</span>
+					</div>
+{#					<div class="utility deactivate">#}
+					<div class="utility deactivate">
+						<a href="/user/bunder?id={{ person.id }}">
+							<ion-icon name="person-outline"></ion-icon>
+							<span>번더로 가기</span>
+						</a>
+						{% if user != user_info %}
+							<a href="/bookclub/invite?id={{ person.id }}">
+								<ion-icon name="book-outline"></ion-icon>
+								<span>북클럽 초대하기</span>
+							</a>
+						{% endif %}
+						<a href="/mail/reply?id={{ person.id }}">
+							<ion-icon name="mail-outline"></ion-icon>
+							<span>쪽지 보내기</span>
+						</a>
+					</div>
                 </div>
                 {% endfor %}
             </div>
@@ -268,6 +290,18 @@ Club Detail
 
         const voteContainer = document.querySelector(".vote_function");
         const voteEndButton = document.querySelector("#vote-end_btn")
+
+        const userProfiles = document.querySelectorAll(".user_profile_container");
+
+        userProfiles.forEach((el) => {
+            el.addEventListener('click', (event) => {
+				let deactiveTarget = event.target.parentNode
+				while (deactiveTarget.className != "reco_box") {
+                    deactiveTarget = deactiveTarget.parentElement;
+				}
+                deactiveTarget.lastElementChild.classList.toggle("deactivate")
+			})
+		})
 
         const bookClubId = JSON.parse("{{ bookclub_id|escapejs }}");
         const userId = JSON.parse("{{ user_id|escapejs }}");

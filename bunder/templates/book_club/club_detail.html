@@ -131,11 +131,11 @@ Club Detail
                         <div>투표 제목: {{ end_vote.topic }}</div>
                         <span>1등 : </span>
                         {% for one in onset_list %}
-                        
-                            <span>{{ one.description }}</span>
-                        
+
+                        <span>{{ one.description }}</span>
+
                         {% endfor %}
-                        <br/><br>
+                        <br /><br>
                         {% for each_vote in end_vote_list %}
                         <div>
                             <span>{{ each_vote.description }}</span>
@@ -226,18 +226,17 @@ Club Detail
                 </div>
             </div>
         </div>
-
         {% if is_owner %}
         <h1 class="decorator decorator_indent-b_l">번더의 인물 추천</h1>
         <div class="reco_container">
             <div class="reco_profile_container">
                 {% for person in recommend %}
                 <div class="reco_box">
-                    <img class="profile_img" src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
+                    <img class="profile_img"
+                        src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
                     <span>{{ person.nickname }}<span>
                 </div>
                 {% endfor %}
-                </div>
             </div>
         </div>
         <div class="edit_container">

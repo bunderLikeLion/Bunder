@@ -13,6 +13,10 @@ body {
   /* background-color: red; */
 }
 
+.deactivate {
+  display: none !important;
+}
+
 .container {
   position: relative;
   width: 80%;

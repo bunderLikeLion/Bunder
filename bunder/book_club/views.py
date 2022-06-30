@@ -325,7 +325,7 @@ class member_reject(View):
         clubId = request.GET.get('clubId', None)
         book_club = get_object_or_404(BookClub, id=clubId)
 
-        members = getMember(book_club)
+        members = getEditMember(book_club)
         return render(request, 'book_club/member_reject.html',
                       {'members': members, 'book_club': book_club})
 
@@ -600,7 +600,7 @@ def getBookClub():
     return book_club
 
 
-def getMember(book_club):
+def getEditMember(book_club):
     query = Q()
     query.add(Q(club=book_club), query.AND)
     query.add(Q(type="MEMBER"), query.AND)

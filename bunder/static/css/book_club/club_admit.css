@@ -81,7 +81,7 @@ body {
   }
 
 .request_btn:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;;
 }
 
 .request_btn:active {
@@ -122,7 +122,7 @@ body {
 }
 
 button:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;;
 }
 
 button:active {
@@ -130,7 +130,7 @@ button:active {
 }
 
 .button:hover {
-  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
 }
 
 .button:active {
@@ -140,6 +140,10 @@ button:active {
 .reject_btn{
     background-color: #774a4a;
     box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}
+
+.reject_btn:hover {
+    box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
 }
 
 h2 {

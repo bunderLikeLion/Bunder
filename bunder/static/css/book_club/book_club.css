@@ -148,7 +148,7 @@ body {
 .container .my_book_club {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -250,6 +250,11 @@ body {
     height: 11rem;
 }
 
+span {
+    /* position: absolute; */
+    /* top: 15.5rem; */
+}
+
 .current_span {
     position: unset;
     width: 3rem;
@@ -293,8 +298,31 @@ body {
     box-shadow: none !important;
     justify-content: flex-start !important;
   }
+.single_request > * {
+    font-size: large;
+    justify-content: space-between;
+}
 
+.club_info {
+    display: flex;
+    width: 15rem;
+    flex-direction: column;
+}
 
+.request_btn {
+    margin-left: 0.5rem;
+    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
+    font-size: large;
+    background-color: #514a77;
+    border: 0;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.reject_btn {
+  background-color: #774a4a;
+  box-shadow: 4px 4px 8px #441f1f, -4px -4px 8px #a16f6f;
+}
 
 .container .book_club_container .my_book_club{
     cursor: pointer;

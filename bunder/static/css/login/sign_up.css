@@ -136,7 +136,7 @@ button {
 }
 
 button:hover {
-    box-shadow: 4px 4px 8px #261f44, -4px -4px 8px #786fa1;
+    box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;
 }
 
 button:active {

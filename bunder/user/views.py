@@ -9,6 +9,7 @@ from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.hashers import check_password
+from django.db.models import Count
 from book_report.models import BookReport, Scrap
 from django.db.models import Q
 import json
@@ -128,7 +129,7 @@ def profile(request):
 # bunder 정보 - 모든 책, 최근 독후감 2개, 최근 스크랩 2개, 프로필 북, 북클럽
 def bunder(request):
     if request.method == 'GET':
-        user_info = None
+        user_info = request.user
         try:
             user_id = request.GET.get('id')
             user_info = get_object_or_404(User, pk=user_id)
@@ -155,6 +156,7 @@ def bunder(request):
                                                     'bookSecret': key,
                                                     'book_list': random_book_list})
 
+
 def get_book_club(request, user):
     if request.method == 'GET':
         page = int(request.GET.get("page", 1) or 1)
@@ -177,6 +179,7 @@ def get_book_club_json(request):
     result = get_book_club(request)
     return JsonResponse({'club_list': result['club_list'], 'total_cnt': result['total_cnt']},
                         json_dumps_params={'ensure_ascii': False}, status=200)
+
 
 # 프로필 수정
 @csrf_exempt
@@ -206,6 +209,7 @@ def profile_revise(request):
     except ValueError:
         res_data['error'] = "입력되지 않은 칸이 있습니다."
         return render(request, "user/profile_revise.html", res_data)
+
 
 # 독후감 확인 (reports)
 def reports(request):
@@ -279,6 +283,7 @@ class UserBook(View):
         return JsonResponse({"message": "책 삭제 성공.",
                              }, json_dumps_params={'ensure_ascii': False}, status=200)
 
+
 # 프로필 책 등록
 def profilebook(request, id):
     user = request.user
@@ -287,6 +292,7 @@ def profilebook(request, id):
         mainbook = ProfileBook.objects.get(user_id=user.id)
         mainbook.book = book
         mainbook.save()
+        # if reports.book_category == ''
     except ProfileBook.DoesNotExist:
         mainbook = ProfileBook()
         mainbook.user = user
@@ -322,6 +328,7 @@ def getBookClub(user):
 
     return club_list
 
+
 def user_search(request):
     if request.method == "GET":
         nickname = request.GET.get("nickname")
@@ -333,3 +340,19 @@ def user_search(request):
             return JsonResponse(response, json_dumps_params={'ensure_ascii': False}, status=200)
         except User.DoesNotExist:
             return JsonResponse({"message": "존재 하지 않는 유저 입니다."}, )
+
+
+# 독후감 목록을 보고 선호 카테고리 뽑기
+def preferred_catgory(request):
+    user = request.user
+    a= BookReport.objects.filter(user_id = user, book_category__exact='문학').count()
+    b= BookReport.objects.filter(user_id = user, book_category__exact='예술').count()
+    c= BookReport.objects.filter(user_id = user, book_category__exact='자기계발').count()
+    d= BookReport.objects.filter(user_id = user, book_category__exact='정치/사회').count()
+    e= BookReport.objects.filter(user_id = user, book_category__exact='과학').count()
+    f= BookReport.objects.filter(user_id = user, book_category__exact='기술/IT').count()
+    g= BookReport.objects.filter(user_id = user, book_category__exact='인문').count()
+    h= BookReport.objects.filter(user_id = user, book_category__exact='경제/경영').count()
+    categories = {'문학' : a, '예술' : b, '자기계발' : c, '정치/사회' : d, '과학' : e, '기술/IT' : f, '인문': g, '경제/경영' : h}
+    max_category = max(categories, key = categories.get)
+    return max_category

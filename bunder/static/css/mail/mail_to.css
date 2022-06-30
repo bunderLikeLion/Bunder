@@ -270,5 +270,5 @@ textarea:focus {
   width: 20rem;
   margin: 0.5rem;
   float: left;
-  color: #e65656 !important;
+  /* color: #e65656 !important; */
 }

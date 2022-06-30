@@ -16,60 +16,35 @@ Categories Revise
             <div class="inner_container">
                 <h3 class="name">User ID : {{user.username}}</h3>
                 <form method="post">
-                <h3 class="nickname">User Nickname 
-                     <input type="text" class="input_bar" name="nickname" value="{{user.nickname}}">
-                </h3>
-                <h3 class="nickname">User Age 
-                    <input type="text" class="input_bar" name="age" value="{{user.age}}">
-                </h3>
-                <div>
-                    <h3 class="category">Favorite Category</h3>
+                    <h3 class="nickname">User Nickname
+                        <input type="text" class="input_bar" name="nickname" value="{{user.nickname}}">
+                    </h3>
+                    <h3 class="nickname">User Age
+                        <input type="text" class="input_bar" name="age" value="{{user.age}}">
+                    </h3>
+                    <div>
+                        <h3 class="category">Favorite Category</h3>
                         <div class="inputBox">
                             <select name="book_category" id="book_category">
                                 <option value="{{user.categories}}" selected> {{user.categories}}</option>
                                 <option value="문학">문학</option>
-                                <option value="경제/경영">경제/경영</option>
+                                <option value="인문">인문</option>
                                 <option value="예술">예술</option>
                                 <option value="자기계발">자기계발</option>
                                 <option value="정치/사회">정치/사회</option>
                                 <option value="과학">과학</option>
                                 <option value="기술IT">기술/IT</option>
+                                <option value="자율">자율</option>
                             </select>
                         </div>
                         <div class="button_container">
                             {{error}}
                             <input type="submit" value="개인정보 수정" class="button">
                         </div>
-                    </form>
-                </div>
-                
+                </form>
             </div>
+
         </div>
     </div>
 </div>
-<!-- <div class="container">
-    <div class="profile_container">
-        <img src="" alt="">
-        <p>User ID : {{user.username}}</p>
-        <p>User Nickname : {{user.nickname}}</p>
-        <p>User Age : {{user.age}}</p>
-    </div>
-    <form method="post">
-        <div class="inputBox">
-            <select name="book_category" id="book_category">
-                <option value="default" selected>{{user.categories}}</option>
-                <option value="문학">문학</option>
-                <option value="경제/경영">경제/경영</option>
-                <option value="예술">예술</option>
-                <option value="자기계발">자기계발</option>
-                <option value="정치/사회">정치/사회</option>
-                <option value="과학">과학</option>
-                <option value="기술IT">기술/IT</option>
-            </select>
-        </div>
-        <div class="inputBox">
-            <input type="submit" value="선호 책 장르 수정">
-        </div>
-    </form>
-</div> -->
 {% endblock content %}

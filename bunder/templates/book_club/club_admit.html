@@ -74,6 +74,7 @@ Club Admit
 			const response = await axios.patch(url, { memberId, clubId, type })
 			const club = response.data.club;
 			memberSpan.innerText = club.memberCnt + "/" + club.maxCnt;
+            window.location.reload();
 
 		}
 

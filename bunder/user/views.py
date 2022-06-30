@@ -351,8 +351,8 @@ def preferred_category(user):
     e = BookReport.objects.filter(user_id=user, book_category__exact='과학').count()
     f = BookReport.objects.filter(user_id=user, book_category__exact='기술/IT').count()
     g = BookReport.objects.filter(user_id=user, book_category__exact='인문').count()
-    h = BookReport.objects.filter(user_id=user, book_category__exact='경제/경영').count()
-    categories = {'문학': a, '예술': b, '자기계발': c, '정치/사회': d, '과학': e, '기술/IT': f, '인문': g, '경제/경영': h}
+    h = BookReport.objects.filter(user_id=user, book_category__exact='자율').count()
+    categories = {'문학': a, '예술': b, '자기계발': c, '정치/사회': d, '과학': e, '기술/IT': f, '인문': g, '자율': h}
     max_category = max(categories, key=categories.get)
     user.categories = max_category
     user.save()

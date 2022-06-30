@@ -341,14 +341,14 @@ def user_search(request):
 # 독후감 목록을 보고 선호 카테고리 뽑기
 def preferred_catgory(request):
     user = request.user
-    a= BookReport.objects.filter(user_id = user, book_category__exact='문학').count()
-    b= BookReport.objects.filter(user_id = user, book_category__exact='예술').count()
-    c= BookReport.objects.filter(user_id = user, book_category__exact='자기계발').count()
-    d= BookReport.objects.filter(user_id = user, book_category__exact='정치/사회').count()
-    e= BookReport.objects.filter(user_id = user, book_category__exact='과학').count()
-    f= BookReport.objects.filter(user_id = user, book_category__exact='기술/IT').count()
-    g= BookReport.objects.filter(user_id = user, book_category__exact='인문').count()
-    h= BookReport.objects.filter(user_id = user, book_category__exact='경제/경영').count()
-    categories = {'문학' : a, '예술' : b, '자기계발' : c, '정치/사회' : d, '과학' : e, '기술/IT' : f, '인문': g, '경제/경영' : h}
-    max_category = max(categories, key = categories.get)
+    a = BookReport.objects.filter(user_id=user, book_category__exact='문학').count()
+    b = BookReport.objects.filter(user_id=user, book_category__exact='예술').count()
+    c = BookReport.objects.filter(user_id=user, book_category__exact='자기계발').count()
+    d = BookReport.objects.filter(user_id=user, book_category__exact='정치/사회').count()
+    e = BookReport.objects.filter(user_id=user, book_category__exact='과학').count()
+    f = BookReport.objects.filter(user_id=user, book_category__exact='기술/IT').count()
+    g = BookReport.objects.filter(user_id=user, book_category__exact='인문').count()
+    h = BookReport.objects.filter(user_id=user, book_category__exact='경제/경영').count()
+    categories = {'문학': a, '예술': b, '자기계발': c, '정치/사회': d, '과학': e, '기술/IT': f, '인문': g, '경제/경영': h}
+    max_category = max(categories, key=categories.get)
     return max_category

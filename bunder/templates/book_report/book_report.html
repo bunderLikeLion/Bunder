@@ -16,7 +16,7 @@
             <input type="radio" name="slider" id="item-2">
             <input type="radio" name="slider" id="item-3">
             <div class="cards">
-                {% for img in populate_reports%}
+                {% for img in populate_report%}
                 <label class="card" for="item-{{ forloop.counter }}" id="song-{{ forloop.counter }}">
                     <img src="{{ img.book_img }}">
                     <input type="hidden" id='selected_style' style="display: none;" value={{ img.id }}></input>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="upper-part">
                     <div class="info-area" id="test">
-                        {% for img in populate_reports%}
+                        {% for img in populate_report%}
                         <label class="song-info" id="song-info-1">
                             <div class="title">작성자: {{ img.user.nickname }} / 글제목: {{ img.report_name }}</div>
                         </label>

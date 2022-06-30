@@ -173,7 +173,7 @@ button:active {
 
 .kakao_link, .zoom_link, .chat_link {
   /* width: 80%; */
-  margin: 0 0.5rem;
+  margin: 0 1rem;
   /* margin : 0.2rem auto; */
   color: #f7f7f7;
 }
@@ -391,7 +391,7 @@ a {
 }
 
 .reco_box {
-  padding: 4rem;
+  padding: 1rem;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -403,6 +403,7 @@ a {
     width: 10rem;
     height: 13rem;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .reco_box span {
@@ -439,10 +440,16 @@ display: none;
   box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
 }
 
+.kakao_link:hover, .zoom_link:hover, .chat_link:hover {
+  box-shadow: 5px 5px 10px #8d8f9a, -9px -9px 10px #0e1013;
+  /* inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
+}
+
 .utility {
+  z-index: 3;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 1.7rem;
+  left: 16rem;
   padding: 1rem;
   background-color: #33383D;
   box-shadow: 4px 4px 8px #25292d, -4px -4px 8px #41474d;
@@ -469,4 +476,14 @@ display: none;
 
 .book_cover:hover {
     transform: translateY(-1em);
+}
+
+.profile_img {
+    transition: all 0.5s;
+}
+
+.profile_img:hover  {
+  -webkit-transform:scale(1.3);
+  scale: (1.3);
+    /* transform: translateY(-1.2em); */
 }

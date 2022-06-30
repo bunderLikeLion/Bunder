@@ -6,6 +6,7 @@ body {
 .container {
     position: relative;
     height: 100%;
+    min-height: 30rem;
     top: 8rem;
     width: 80%;
     padding: 3rem;
@@ -36,6 +37,7 @@ body {
     position: relative;
     width: 90%;
     height: 100%;
+    min-height: 20rem;
     border-radius: 1rem;
     background-color: #33383D;
     box-shadow: inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e;
@@ -117,4 +119,8 @@ body {
 
 .container .book_club_container .con:hover {
     transform: translateY(-1em);
+}
+
+.empty_club {
+    padding: 1rem 0;
 }

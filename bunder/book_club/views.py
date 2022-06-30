@@ -32,14 +32,16 @@ def main(request):
     query = Q()
     query.add(Q(user=request.user), query.AND)
     query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
-
-    result = get_my_book_club(request)
-    invited_club = getInvitedClub(request.user)
-    total_json = json.dumps(result['total_cnt'])
-    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': result['club_list'],
+    if request.user.is_authenticated:
+        result = get_my_book_club(request)
+        invited_club = getInvitedClub(request.user)
+        total_json = json.dumps(result['total_cnt'])
+        return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': result['club_list'],
                                                         'total_cnt': result['total_cnt'],
                                                         'invited_club': invited_club,
                                                         'total_json': total_json})
+    else:
+        return render(request, "book_club/book_club.html", {'book_club': book_club})
 
 
 def get_my_book_club(request):

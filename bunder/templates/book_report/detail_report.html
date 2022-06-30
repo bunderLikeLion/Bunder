@@ -127,6 +127,7 @@
 	<hr>
 	<h3>댓글 <span class="comment-count_h3">{{ comment_len }}</span>개</h3>
 	<div class="comment_container">
+    {% if user.is_authenticated %}
 		<div class="comment_navbar">
 			{% csrf_token %}
 			<div class="profile_img">
@@ -143,6 +144,18 @@
 				<input class="comment_btn button" type="submit" value='작성' name="comment_submit">
 			</div>
 		</div>
+        {% else %}
+        <div class="comment_navbar">
+            {% csrf_token %}
+            <div class="profile_img">
+                <img class="img" src="https://avatars.dicebear.com/api/male/랜덤.svg">
+            </div>
+            <div class="write_comment">
+				<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="로그인 후 이용해주세요" maxlength="100"
+                          readonly></textarea>
+            </div>
+        </div>
+    {% endif %}
 
 		<div class="comment_content_container">
 			<div class="comment_content">

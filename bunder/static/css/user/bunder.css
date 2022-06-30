@@ -841,3 +841,11 @@ img {
 .time {
     font-size: medium;
 }
+
+.report_container{
+    transition: all 0.35s;
+}
+
+.report_container:hover {
+    transform: translateX(2em);
+}

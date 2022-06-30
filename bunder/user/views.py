@@ -25,12 +25,12 @@ def register(request):
     if request.method == "GET":
         return render(request, 'login/sign_up.html')
     elif request.method == "POST":
-        username = request.POST["username"]
+        username = request.POST["username"].strip()
         password = request.POST["password"]
         re_password = request.POST["re_password"]
         age = request.POST["age"]
         categories = request.POST["book_category"]
-        nickname = request.POST["nickname"]
+        nickname = request.POST["nickname"].strip()
         sex = request.POST["sex"]
         res_data = {'username': username, 'password': password, 're_password': re_password,
                     'age': age, 'categories': categories, 'nickname': nickname, 'sex': sex}

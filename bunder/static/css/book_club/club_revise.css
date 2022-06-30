@@ -183,7 +183,7 @@ button {
     background-color: #514a77;
 }
 
-button:hover {box-shadow: 5px 5px 8px #766f96, -9px -9px 9px #221f2f;}
+button:hover {box-shadow: 5px 5px 8px #62646a, -9px -9px 9px #17191d;}
 
 button:active {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
@@ -282,7 +282,7 @@ button.login{
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(238,240,245,1);
+    /* background-color: rgba(238,240,245,1); */
     transition: background-color 0.4s 0.1s, box-shadow 0.4s;
 }
 
@@ -449,7 +449,7 @@ textarea:focus {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(238,240,245,1);
+    /* background-color: rgba(238,240,245,1); */
     transition: background-color 0.4s 0.1s, box-shadow 0.4s;
 }
 

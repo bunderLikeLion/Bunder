@@ -64,9 +64,11 @@ My Bunder
         </div>
         <div class="container_body_add">
             <div class="pagination_container">
+				{% if user_info == user %}
                 <ul class="pagination ">
                     <li class="add_bookshelf"><a href="{% url 'user:book' %}">책 추가</a></li>
                 </ul>
+				{% endif %}
             </div>
         </div>
         <div class="bookshelf_container">

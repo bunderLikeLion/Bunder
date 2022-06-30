@@ -34,6 +34,18 @@
     <h3 class="body">북클럽 선택</h3>
     <section class="category_container">
       {% for club in club_list %}
+      <label class="genre">
+        <input checked type="radio" value="{{ club.id }}" name="book_category" class="radio__input cover_input" />
+        <div class="radio__box"></div>
+        <div class="category__text">
+          <img class="cover_image" src="../../static/img/club_img_{{ club.image }}.jpg" />
+        </div>
+        <div><span class="radio__text">북클럽명 : {{ club.club_name }}</span></div>
+        <div><span class="radio__text"> 인원 : {{ club.member_cnt }}/{{ club.member_total }}</div></span>
+      </label>
+      {% endfor %}
+
+      <!-- {% for club in club_list %}
       <label class="category">
         <div class="category__box">
           <input type="radio" value="{{ club.id }}" name="clubId" class="radio__input cover_input" />
@@ -48,7 +60,51 @@
           </div>
         </div>
       </label>
-      {% endfor %}
+      {% endfor %} -->
+
+
+      <!-- <section class="genre_container">
+        <label class="genre">
+          <input checked type="radio" value="문학" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">문학</span>
+        </label>
+        <label class="genre">
+          <input type="radio" value="예술" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">예술</span>
+        </label>
+        <label class="genre">
+          <input checked type="radio" value="자기계발" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">자기계발</span>
+        </label>
+        <label class="genre">
+          <input checked type="radio" value="정치/사회" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">정치/사회</span>
+        </label>
+        <label class="genre">
+          <input checked type="radio" value="과학" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">과학</span>
+        </label>
+        <label class="genre">
+          <input checked type="radio" value="기술/IT" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">기술/IT</span>
+        </label>
+        <label class="genre">
+          <input checked type="radio" value="인문" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">인문</span>
+        </label>
+        <label class="genre">
+          <input checked type="radio" value="자율" name="book_category" class="radio__input" />
+          <div class="radio__box"></div>
+          <span class="radio__text">자율</span>
+        </label>
+      </section> -->
     </section>
 
     <button class="login" type="submit" value="Sign up">북클럽 초대</button>

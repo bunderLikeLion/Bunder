@@ -176,6 +176,12 @@ body {
     flex-wrap: wrap;
 }
 
+.invite_request::-webkit-scrollbar {
+    display: none;
+}
+
+
+
 .invite_request_container > h3 {
     display: flex;
     align-items: center;

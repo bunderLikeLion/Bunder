@@ -29,13 +29,13 @@ def main(request):
 
 
 def category_search(request, category):
-    if category == '경제':
-        book_report_list = BookReport.objects.filter(book_category='경제/경영').order_by('-created_at')
+    if category == '자율':
+        book_report_list = BookReport.objects.filter(book_category='자율').order_by('-created_at')
         page = request.GET.get('page')
         paginator = Paginator(book_report_list, CONTENT_COUNT)
         book_report = paginator.get_page(page)
         populated_report = populated_reports(request)
-        category = json.dumps('경제')
+        category = json.dumps('자율')
     elif category == '정치':
         book_report_list = BookReport.objects.filter(book_category='정치/사회').order_by('-created_at')
         page = request.GET.get('page')

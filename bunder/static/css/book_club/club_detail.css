@@ -462,3 +462,11 @@ display: none;
   box-shadow: 6px 6px 8px #25292d, -6px -6px 8px #41474d;
   border-radius: 5rem;
 }
+
+.book_cover {
+    transition: all 0.35s;
+}
+
+.book_cover:hover {
+    transform: translateY(-1em);
+}

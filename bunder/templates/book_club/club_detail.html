@@ -135,11 +135,11 @@ Club Detail
                         <div>투표 제목: {{ end_vote.topic }}</div>
                         <span>1등 : </span>
                         {% for one in onset_list %}
-                        
-                            <span>{{ one.description }}</span>
-                        
+
+                        <span>{{ one.description }}</span>
+
                         {% endfor %}
-                        <br/><br>
+                        <br /><br>
                         {% for each_vote in end_vote_list %}
                         <div>
                             <span>{{ each_vote.description }}</span>
@@ -230,7 +230,6 @@ Club Detail
                 </div>
             </div>
         </div>
-
         {% if is_owner %}
         <h1 class="decorator decorator_indent-b_l">번더의 인물 추천</h1>
         <div class="reco_container">

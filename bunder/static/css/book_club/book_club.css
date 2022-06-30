@@ -1,7 +1,7 @@
 body {
     display: flex;
     justify-content: center;
-    min-height: 685vh !important;
+    min-height: 720vh !important;
 }
 
 .container {

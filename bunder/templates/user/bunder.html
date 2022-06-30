@@ -133,12 +133,11 @@ My Bunder
                 {% for scrap in scrap%}
                 <div class="report_container">
                     <div class="inner_report_container">
-                        <a href={% url 'book_report:detail' scrap.book_report.id %}
-                            class="reports_name">
+                        <a href={% url 'book_report:detail' scrap.book_report.id %} class="reports_name">
                             <div>{{scrap.book_report.report_name}}</div>
                             <div class="time">{{ scrap.created_at }}</div>
                         </a>
-                            
+
                     </div>
                 </div>
                 {% endfor %}
@@ -149,18 +148,15 @@ My Bunder
     <div class="bunder_reco">
         <div class="profile_club text reco">
             <h2 class="recobook">번더의 추천 책</h2>
-            <h4>현재 번더의 알고리즘이 판단한 <span class="size">{{ user_info.nickname }}</span> 님의 선호 카테고리는<span class="size">
-                    {{ prefer}}
-                </span> 입니다.
-            </h4>
+            <h4>현재 번더가 <span class="size">{{ user_info.nickname }}</span> 님께 추천하는 책입니다. </h4>
         </div>
         <div class="book_club_container">
-			{% for book in book_list %}
+            {% for book in book_list %}
             <div class="my_book_club book-cover_containder">
                 <img class="book_cover book-cover_img" src="">
-				<input type="hidden" value="{{ book }}"/>
+                <input type="hidden" value="{{ book }}" />
             </div>
-			{% endfor %}
+            {% endfor %}
         </div>
     </div>
     {% endif %}
@@ -181,7 +177,7 @@ My Bunder
     const currentPage = document.querySelector('.current_span')
 
     const clubContainer = document.querySelector(".my_book_club_container");
-    const bookContainer= document.querySelectorAll(".book-cover_containder");
+    const bookContainer = document.querySelectorAll(".book-cover_containder");
 
 
     const requestClub = async (page, flag) => {
@@ -242,7 +238,6 @@ My Bunder
 
     const key = JSON.parse("{{ bookSecret|escapejs }}").replace(/"/gi, "");
 
-    {#let bookInfo = [];#}
     const getBook = (bookName, image) => {
         return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&key=${key}`)
             .then(res => res.json())
@@ -255,23 +250,16 @@ My Bunder
                         console.log(singleBook);
 
                         const title = singleBook.title;
-                        {#console.log(singleBook.imageLinks);#}
                         image.src = singleBook?.imageLinks.thumbnail;
                         break;
                     }
                 }
-                {#const book = res.items[0].volumeInfo;#}
-                {#console.log(book);#}
-                {#imageLink = book?.imageLinks;#}
-                {#console.log(imageLink);#}
-                {#image.src = imageLink;#}
             })
     }
 
     bookContainer.forEach((el) => {
-        {#console.log(el.lastElementChild.value);#}
         getBook(el.lastElementChild.value, el.firstElementChild);
-	})
+    })
 
 
 

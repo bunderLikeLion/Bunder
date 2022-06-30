@@ -173,7 +173,7 @@ button:active {
 
 .kakao_link, .zoom_link, .chat_link {
   /* width: 80%; */
-  margin: 0 0.5rem;
+  margin: 0 1rem;
   /* margin : 0.2rem auto; */
   color: #f7f7f7;
 }
@@ -438,6 +438,11 @@ display: none;
 
 #vote-delete_btn:hover {
   box-shadow: 5px 5px 8px #a16f6f, -9px -9px 9px #282121;
+}
+
+.kakao_link:hover, .zoom_link:hover, .chat_link:hover {
+  box-shadow: 5px 5px 10px #8d8f9a, -9px -9px 10px #0e1013;
+  /* inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
 }
 
 .utility {

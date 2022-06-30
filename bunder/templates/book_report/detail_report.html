@@ -127,6 +127,7 @@
 	<hr>
 	<h3>댓글 <span class="comment-count_h3">{{ comment_len }}</span>개</h3>
 	<div class="comment_container">
+    {% if user.is_authenticated %}
 		<div class="comment_navbar">
 			{% csrf_token %}
 			<div class="profile_img">
@@ -143,6 +144,18 @@
 				<input class="comment_btn button" type="submit" value='작성' name="comment_submit">
 			</div>
 		</div>
+        {% else %}
+        <div class="comment_navbar">
+            {% csrf_token %}
+            <div class="profile_img">
+                <img class="img" src="https://avatars.dicebear.com/api/male/랜덤.svg">
+            </div>
+            <div class="write_comment">
+				<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="로그인 후 이용해주세요" maxlength="100"
+                          readonly></textarea>
+            </div>
+        </div>
+    {% endif %}
 
 		<div class="comment_content_container">
 			<div class="comment_content">
@@ -255,7 +268,6 @@
 
 	const scrapReport = async (id) => {
 		const url = "scrap";
-		console.log(is_scrap);
 
 		if (is_scrap == "True") {
 			const response = await axios.delete(url, {
@@ -272,10 +284,13 @@
 	}
 
 	const sendComment = async (book_report_id, text) => {
-		const url = "comment"
-		const response = await axios.post(url, { book_report_id, text })
+        const url = "comment";
+        const response = await axios.post(url, {book_report_id, text});
 
 		const singleComment = document.createElement('div');
+
+        const box = document.createElement('div')
+
 		const profileImg = document.createElement('div');
 		const img = document.createElement('img');
 		const commentInfo = document.createElement('div');
@@ -287,9 +302,14 @@
 		const content = document.createElement('p');
 		const created_at = document.createElement('p');
 
+        const commentInfoContainer = document.createElement('div');
+
 		const deleteDiv = document.createElement('div');
 		const submitButton = document.createElement('input');
 		const valueField = document.createElement('input');
+
+        box.classList.add("box");
+        commentInfoContainer.classList.add("comment_info_container");
 
 		deleteDiv.classList.add("delete_btn");
 		submitButton.classList.add("button", "delete-comment_btn")
@@ -305,9 +325,14 @@
 		commentInfo.classList.add("comment_info");
 		created_at.id = "time";
 
-		singleComment.appendChild(profileImg);
+		singleComment.appendChild(box);
+        box.appendChild(profileImg);
+        box.appendChild(commentInfoContainer);
+
+        commentInfoContainer.appendChild(created_at);
+
 		profileImg.appendChild(img);
-		singleComment.appendChild(commentInfo)
+        commentInfoContainer.appendChild(commentInfo)
 		commentInfo.appendChild(div);
 
 		singleComment.appendChild(deleteDiv)
@@ -315,7 +340,6 @@
 
 		div.appendChild(nickname);
 		div.appendChild(content);
-		commentInfo.appendChild(created_at);
 
 		deleteDiv.appendChild(submitButton);
 		deleteDiv.appendChild(valueField);
@@ -329,20 +353,15 @@
 		const time = comment.created_at.split("T")[1].split(":");
 
 		const year = date[0];
-		const month = date[1].replace(/(^0+)/, "");
+		const month = date[1];
 		const day = date[2];
 
 		let hour = time[0];
-		let datetime = "오전";
 		const minute = time[1];
 
-		if (Number(hour) > 12) {
-			hour -= 12;
-			datetime = "오후";
-		}
 		const reformat_date =
 			year + "년 " + month + "월 " + day + "일 "
-			+ hour + ":" + minute + " " + datetime;
+			+ hour + "시" + minute + "분"
 		nickname.innerText = "닉네임 : " + comment.nickname;
 		content.innerText = "내용 : " + comment.content;
 		created_at.innerText = reformat_date;

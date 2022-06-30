@@ -197,10 +197,10 @@ html, body {
     margin: 0.7rem;
 }
 
-/* body::-webkit-scrollbar {
-    width: 0.5rem;  
+body::-webkit-scrollbar {
+    display: none;
 }
-
+/* 
 body::-webkit-scrollbar-thumb {
     height: 1%;
     border-radius: 2rem;
@@ -210,5 +210,4 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
 background: linear-gradient(180deg, rgba(53,57,62,1) 0%, rgba(25,26,30,1) 100%);
 } */
-
 

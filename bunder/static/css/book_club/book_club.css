@@ -260,7 +260,9 @@ span {
     /* top: 15.5rem; */
 }
 
-.current_span {
+
+
+.total {
     position: unset;
     width: 3rem;
     height: 2rem;

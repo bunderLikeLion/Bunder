@@ -38,7 +38,9 @@ Book Club
         <div class="pagination_container">
             <ul class="pagination ">
                 <li><a class="previous previous_btn">이전</a></li>
-                <li><span class="current_span">1/{{ total_cnt }}</li></span>
+                <span class="total">
+                    <span class="current_span">1</span>/{{ total_cnt }}
+                </span>
                 <li><a class="next next_btn">다음</a></li>
             </ul>
         </div>
@@ -54,7 +56,7 @@ Book Club
     <div class="invite_request_container" style="height:10rem;">
         <h3 class="middle_text">북클럽 초대 요청</h3>
         <div class="invite_request">
-            
+
             {% if invited_club %}
             {% for club in invited_club %}
             <div class="single_request">
@@ -72,7 +74,7 @@ Book Club
             {% else %}
             <div>초대가 없습니다.</div>
             {% endif %}
-            
+
         </div>
 
     </div>

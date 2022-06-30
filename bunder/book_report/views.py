@@ -111,8 +111,6 @@ def edit(request, id):
 def update(request, id):
     update_book = get_object_or_404(BookReport, pk=id)
     update_book.report_name = request.POST.get('report_name')
-    update_book.book_name = request.POST.get('book_name')
-    update_book.category = request.POST.get('category')
     update_book.content = request.POST.get('content')
     update_book.image_upload = request.FILES.get('image_upload')
     update_book.save()

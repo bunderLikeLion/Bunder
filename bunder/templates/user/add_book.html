@@ -203,7 +203,7 @@ Add Book
             const contentEl = document.querySelector('.content');
             const selectBtn = document.querySelector('.book-select-btn');
             const bookImgSrcInput = document.querySelector('#img_input');
-            const key = JSON.parse("{{ bookSecret|escapejs }}");
+            const key = JSON.parse("{{ bookSecret|escapejs }}").replace(/"/gi, "");;
             let bookInfo = [];
 
             const fetchFunc = (bookName) => {

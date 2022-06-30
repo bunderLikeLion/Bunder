@@ -240,20 +240,31 @@ My Bunder
 
     // 책 추천
 
-    const key = JSON.parse("{{ bookSecret|escapejs }}");
+    const key = JSON.parse("{{ bookSecret|escapejs }}").replace(/"/gi, "");
 
     {#let bookInfo = [];#}
-
     const getBook = (bookName, image) => {
-        console.log(bookName)
         return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&key=${key}`)
             .then(res => res.json())
             .then(res => {
                 bookInfo = [];
-                const book = res.items?.volumeInfo;
-                title = book.title;
-                imageLink = book?.imageLinks;
-                image.src = imageLink;
+                for (let book of res.items) {
+                    if (bookInfo.length >= 6) break;
+                    const singleBook = book?.volumeInfo;
+                    if (singleBook?.imageLinks) {
+                        console.log(singleBook);
+
+                        const title = singleBook.title;
+                        {#console.log(singleBook.imageLinks);#}
+                        image.src = singleBook?.imageLinks.thumbnail;
+                        break;
+                    }
+                }
+                {#const book = res.items[0].volumeInfo;#}
+                {#console.log(book);#}
+                {#imageLink = book?.imageLinks;#}
+                {#console.log(imageLink);#}
+                {#image.src = imageLink;#}
             })
     }
 

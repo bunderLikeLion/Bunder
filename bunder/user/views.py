@@ -141,7 +141,6 @@ def bunder(request):
         scrap = check_two_scraps(user_info)
 
         result = get_book_club(request, user_info)
-        # book_club = getBookClub(user_info)
         total_json = json.dumps(result['total_cnt'])
         random_book_list = get_random_book_list(request.user.categories)
         key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))

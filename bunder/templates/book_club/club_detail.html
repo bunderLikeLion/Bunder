@@ -231,17 +231,12 @@ Club Detail
         <h1 class="decorator decorator_indent-b_l">번더의 인물 추천</h1>
         <div class="reco_container">
             <div class="reco_profile_container">
+                {% for person in recommend %}
                 <div class="reco_box">
-                    <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                    <span>추천 닉네임<span>
+                    <img class="profile_img" src="https://avatars.dicebear.com/api/{{ person.sex }}/{{ person.nickname }}.svg">
+                    <span>{{ person.nickname }}<span>
                 </div>
-                <div class="reco_box">
-                    <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                    <span>추천 닉네임<span>
-                </div>
-                <div class="reco_box">
-                    <img class="profile_img" src="https://avatars.dicebear.com/api/male/바.svg">
-                    <span>추천 닉네임<span>
+                {% endfor %}
                 </div>
             </div>
         </div>

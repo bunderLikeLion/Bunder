@@ -25,12 +25,12 @@ def register(request):
     if request.method == "GET":
         return render(request, 'login/sign_up.html')
     elif request.method == "POST":
-        username = request.POST["username"]
+        username = request.POST["username"].strip()
         password = request.POST["password"]
         re_password = request.POST["re_password"]
         age = request.POST["age"]
         categories = request.POST["book_category"]
-        nickname = request.POST["nickname"]
+        nickname = request.POST["nickname"].strip()
         sex = request.POST["sex"]
         res_data = {'username': username, 'password': password, 're_password': re_password,
                     'age': age, 'categories': categories, 'nickname': nickname, 'sex': sex}
@@ -139,18 +139,22 @@ def bunder(request):
         book = Book.objects.filter(user_id=user_info.id)
         my_recent_reports = check_two_reports(user_info)
         scrap = check_two_scraps(user_info)
-
         result = get_book_club(request, user_info)
-        # book_club = getBookClub(user_info)
         total_json = json.dumps(result['total_cnt'])
-
+        random_book_list = get_random_book_list(request.user.categories)
+        key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'))
         mainbook = ProfileBook.objects.filter(user_id=user_info.id).last()
+        preference = preferred_category(user_info)
+
         return render(request, 'user/bunder.html', {'user_info': user_info, 'my_recent_reports': my_recent_reports,
                                                     'scrap': scrap, 'book': book,
                                                     'book_club': result['club_list'],
                                                     'mainbook': mainbook,
                                                     'total_cnt': result['total_cnt'],
-                                                    'total_json': total_json})
+                                                    'total_json': total_json,
+                                                    'bookSecret': key,
+                                                    'book_list': random_book_list,
+                                                    'preference' : preference})
 
 
 def get_book_club(request, user):
@@ -339,16 +343,17 @@ def user_search(request):
 
 
 # 독후감 목록을 보고 선호 카테고리 뽑기
-def preferred_catgory(request):
-    user = request.user
-    a= BookReport.objects.filter(user_id = user, book_category__exact='문학').count()
-    b= BookReport.objects.filter(user_id = user, book_category__exact='예술').count()
-    c= BookReport.objects.filter(user_id = user, book_category__exact='자기계발').count()
-    d= BookReport.objects.filter(user_id = user, book_category__exact='정치/사회').count()
-    e= BookReport.objects.filter(user_id = user, book_category__exact='과학').count()
-    f= BookReport.objects.filter(user_id = user, book_category__exact='기술/IT').count()
-    g= BookReport.objects.filter(user_id = user, book_category__exact='인문').count()
-    h= BookReport.objects.filter(user_id = user, book_category__exact='경제/경영').count()
-    categories = {'문학' : a, '예술' : b, '자기계발' : c, '정치/사회' : d, '과학' : e, '기술/IT' : f, '인문': g, '경제/경영' : h}
-    max_category = max(categories, key = categories.get)
+def preferred_category(user):
+    a = BookReport.objects.filter(user_id=user, book_category__exact='문학').count()
+    b = BookReport.objects.filter(user_id=user, book_category__exact='예술').count()
+    c = BookReport.objects.filter(user_id=user, book_category__exact='자기계발').count()
+    d = BookReport.objects.filter(user_id=user, book_category__exact='정치/사회').count()
+    e = BookReport.objects.filter(user_id=user, book_category__exact='과학').count()
+    f = BookReport.objects.filter(user_id=user, book_category__exact='기술/IT').count()
+    g = BookReport.objects.filter(user_id=user, book_category__exact='인문').count()
+    h = BookReport.objects.filter(user_id=user, book_category__exact='자율').count()
+    categories = {'문학': a, '예술': b, '자기계발': c, '정치/사회': d, '과학': e, '기술/IT': f, '인문': g, '자율': h}
+    max_category = max(categories, key=categories.get)
+    user.categories = max_category
+    user.save()
     return max_category

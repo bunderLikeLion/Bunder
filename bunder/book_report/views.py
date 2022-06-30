@@ -25,17 +25,17 @@ def main(request):
     all = json.dumps('전체')
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populate_reports': populated_report, 'category': all})
+                   'populate_report': populated_report, 'category': all})
 
 
 def category_search(request, category):
-    if category == '경제':
-        book_report_list = BookReport.objects.filter(book_category='경제/경영').order_by('-created_at')
+    if category == '자율':
+        book_report_list = BookReport.objects.filter(book_category='자율').order_by('-created_at')
         page = request.GET.get('page')
         paginator = Paginator(book_report_list, CONTENT_COUNT)
         book_report = paginator.get_page(page)
         populated_report = populated_reports(request)
-        category = json.dumps('경제')
+        category = json.dumps('자율')
     elif category == '정치':
         book_report_list = BookReport.objects.filter(book_category='정치/사회').order_by('-created_at')
         page = request.GET.get('page')
@@ -59,13 +59,12 @@ def category_search(request, category):
         category = json.dumps(category)
     return render(request, "book_report/book_report.html",
                   {'bookReport': book_report, 'page_count': paginator.num_pages, 'page': page,
-                   'populated_report': populated_report, 'category': category})
+                   'populate_report': populated_report, 'category': category})
 
 
 def write_report(request):
     key = json.dumps(os.environ.get('GOOGLE_BOOK_KEY'));
-    random_book_list = json.dumps(get_random_book_list(request.user.categories))
-    return render(request, "book_report/write_report.html", {'bookSecret': key, 'random_book_list': random_book_list})
+    return render(request, "book_report/write_report.html", {'bookSecret': key})
 
 
 def detail_report(request, id):

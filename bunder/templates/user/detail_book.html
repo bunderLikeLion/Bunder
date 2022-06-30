@@ -41,12 +41,13 @@
 					<select name="book_category" id="book_category">
 						<option value="default" selected>{{book.category}}</option>
 						<option value="문학">문학</option>
-						<option value="경제/경영">경제/경영</option>
+						<option value="인문">인문</option>
 						<option value="예술">예술</option>
 						<option value="자기계발">자기계발</option>
 						<option value="정치/사회">정치/사회</option>
 						<option value="과학">과학</option>
 						<option value="기술IT">기술/IT</option>
+						<option value="자율">자율</option>
 					</select>
 					</p>
 				</div>
@@ -64,25 +65,25 @@
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
-        axios.defaults.xsrfCookieName = "csrftoken";
-        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+		axios.defaults.xsrfCookieName = "csrftoken";
+		axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
-        const deleteButton = document.querySelector(".delete-book_btn");
-        const bookId = JSON.parse("{{ bookId|escapejs }}");
+		const deleteButton = document.querySelector(".delete-book_btn");
+		const bookId = JSON.parse("{{ bookId|escapejs }}");
 
-        deleteButton.addEventListener("click", () => {
-           deleteBook(bookId)
+		deleteButton.addEventListener("click", () => {
+			deleteBook(bookId)
 		});
 
-        const deleteBook = async (bookId) => {
-            const url = "/user/book"
-            await axios.delete(url, {
-                data: {
-                    bookId: bookId,
-                }
-            })
-            window.location.href = "/user/bunder";
-        }
+		const deleteBook = async (bookId) => {
+			const url = "/user/book"
+			await axios.delete(url, {
+				data: {
+					bookId: bookId,
+				}
+			})
+			window.location.href = "/user/bunder";
+		}
 	</script>
 	{% endblock content %}
 </div>

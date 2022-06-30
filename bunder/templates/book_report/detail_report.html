@@ -22,23 +22,23 @@
 			<div class="title">{{book_report.report_name}}</div>
 		</div>
 		<div class="profile_container">
-			<div class="utility">
+			<div class="utility deactivate">
 				<a href="/user/bunder?id={{ user_info.id }}">
 					<ion-icon name="person-outline"></ion-icon>
 					<span>번더로 가기</span>
 				</a>
-
+				{% if user != user_info %}
 				<a href="/bookclub/invite?id={{ user_info.id }}">
 					<ion-icon name="book-outline"></ion-icon>
 					<span>북클럽 초대하기</span>
 				</a>
-
+				{% endif %}
 				<a href="/mail/reply?id={{ user_info.id }}">
 					<ion-icon name="mail-outline"></ion-icon>
 					<span>쪽지 보내기</span>
 				</a>
 			</div>
-			<div class="profile_img">
+			<div class="profile_img main_profile_img">
 				<img class="img"
 					src="https://avatars.dicebear.com/api/{{ user_info.sex }}/{{ user_info.nickname }}.svg">
 			</div>
@@ -127,6 +127,7 @@
 	<hr>
 	<h3>댓글 <span class="comment-count_h3">{{ comment_len }}</span>개</h3>
 	<div class="comment_container">
+    {% if user.is_authenticated %}
 		<div class="comment_navbar">
 			{% csrf_token %}
 			<div class="profile_img">
@@ -143,6 +144,18 @@
 				<input class="comment_btn button" type="submit" value='작성' name="comment_submit">
 			</div>
 		</div>
+        {% else %}
+        <div class="comment_navbar">
+            {% csrf_token %}
+            <div class="profile_img">
+                <img class="img" src="https://avatars.dicebear.com/api/male/랜덤.svg">
+            </div>
+            <div class="write_comment">
+				<textarea name="comment_content" id="comment" cols="30" rows="2" placeholder="로그인 후 이용해주세요" maxlength="100"
+                          readonly></textarea>
+            </div>
+        </div>
+    {% endif %}
 
 		<div class="comment_content_container">
 			<div class="comment_content">
@@ -377,6 +390,13 @@
 			},
 		})
 	}
+
+    const profileId = document.querySelector(".main_profile_img");
+    const toggleMenu = document.querySelector(".utility");
+
+    profileId.addEventListener("click", () => {
+        toggleMenu.classList.toggle("deactivate");
+	})
 </script>
 
 {% endblock content %}

@@ -131,7 +131,7 @@ new_category = {"문학" :
         'ARCHITECTURE',
         'TECHNOLOGY & ENGINEERING'
     ],
-    "기타" : []
+    "자율" : []
     }
 
 def category_converter(category):
@@ -150,5 +150,5 @@ def category_converter(category):
     elif category in new_category['인문']:
         return '인문'
     else:
-        return '기타'
+        return '자율'
     

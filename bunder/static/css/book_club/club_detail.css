@@ -390,18 +390,20 @@ a {
   align-items: center;
 }
 
-.roce_box {
-  padding: 4rem;
+.reco_box {
+  padding: 1rem;
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .reco_box img {
     width: 10rem;
     height: 13rem;
     box-shadow: none;
+    cursor: pointer;
 }
 
 .reco_box span {
@@ -441,5 +443,47 @@ display: none;
 .kakao_link:hover, .zoom_link:hover, .chat_link:hover {
   box-shadow: 5px 5px 10px #8d8f9a, -9px -9px 10px #0e1013;
   /* inset 9px 9px 18px #25282c, inset -9px -9px 18px #41484e; */
+}
 
+.utility {
+  z-index: 3;
+  position: absolute;
+  top: 1.7rem;
+  left: 16rem;
+  padding: 1rem;
+  background-color: #33383D;
+  box-shadow: 4px 4px 8px #25292d, -4px -4px 8px #41474d;
+  width: 15rem;
+  height: 14rem;
+  display: flex;
+  font-weight: 700;
+  border-radius: 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.utility a {
+  text-decoration: none;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.8rem;
+  box-shadow: 6px 6px 8px #25292d, -6px -6px 8px #41474d;
+  border-radius: 5rem;
+}
+
+.book_cover {
+    transition: all 0.35s;
+}
+
+.book_cover:hover {
+    transform: translateY(-1em);
+}
+
+.profile_img {
+    transition: all 0.5s;
+}
+
+.profile_img:hover  {
+  -webkit-transform:scale(1.3);
+  scale: (1.3);
+    /* transform: translateY(-1.2em); */
 }

@@ -13,6 +13,10 @@ body {
   /* background-color: red; */
 }
 
+.deactivate {
+  display: none !important;
+}
+
 .container {
   position: relative;
   width: 80%;
@@ -322,7 +326,7 @@ textarea {   /* Ã«Ââ€¦Ã­â€ºâ€žÃªÂ°Â Ã«Â³Â¸Ã«Â
 
 .utility {
   position:  absolute;
-  top: 7rem;
+  top: 1rem;
   left: 14rem;
   padding: 1rem;
   background-color: #33383D;

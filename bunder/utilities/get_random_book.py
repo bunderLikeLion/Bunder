@@ -15,12 +15,12 @@ book_category_dict = dict(zip_dict)
 
 def get_random_book_list(category):
     array = list(book_category_dict)
-    if category == "기타":
-        random_list = random.choices(array, k=3)
+    if category == "자율":
+        random_list = random.sample(array, k=4)
     else:
         for key in book_category_dict.keys():
             if book_category_dict.get(key) == category:
                 array.append(key)
-        random_list = random.choices(array, k=3)
+        random_list = random.sample(array, k=4)
 
     return random_list

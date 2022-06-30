@@ -11,13 +11,13 @@ class User(AbstractUser):
     age = models.IntegerField(verbose_name="나이", blank=False, default=0)
     new_category_tuple = [
         ('문학', '문학'),
-        ('경제/경영', '경제/경영'),
         ('자기계발', '자기계발'),
         ('인문', '인문'),
         ('정치/사회', '정치/사회'),
         ('예술', '예술'),
         ('과학', '과학'),
         ('기술/IT', '기술/IT'),
+        ('자율', '자율')
     ]
     categories = models.CharField(max_length=64, choices=new_category_tuple)
     avatar = models.CharField(max_length=50, verbose_name="유저 프로필", blank=False)

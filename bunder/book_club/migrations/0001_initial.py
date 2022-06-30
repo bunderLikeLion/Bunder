@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('book_name', models.CharField(max_length=200, verbose_name='책 제목')),
                 ('book_author', models.CharField(max_length=200, verbose_name='책 글쓴이')),
                 ('book_img', models.CharField(blank=True, max_length=200, verbose_name='책 이미지')),
-                ('category', models.CharField(choices=[('문학', '문학'), ('경제/경영', '경제/경영'), ('자기계발', '자기계발'), ('인문', '인문'), ('정치/사회', '정치/사회'), ('예술', '예술'), ('과학', '과학'), ('기술/IT', '기술/IT'), ('기타', '기타')], max_length=64)),
+                ('category', models.CharField(choices=[('문학', '문학'), ('경제/경영', '경제/경영'), ('자기계발', '자기계발'), ('인문', '인문'), ('정치/사회', '정치/사회'), ('예술', '예술'), ('과학', '과학'), ('기술/IT', '기술/IT'), ('자율', '자율')], max_length=64)),
                 ('active', models.BooleanField(default=False)),
                 ('created_at', models.DateTimeField(auto_now_add=True, null=True)),
             ],

@@ -150,23 +150,17 @@ My Bunder
         <div class="profile_club text reco">
             <h2 class="recobook">번더의 추천 책</h2>
             <h4>현재 번더의 알고리즘이 판단한 <span class="size">{{ user_info.nickname }}</span> 님의 선호 카테고리는<span class="size">
-                    {{ user_info.categories}}
+                    {{ preference}}
                 </span> 입니다.
             </h4>
         </div>
         <div class="book_club_container">
-            <div class="my_book_club">
-                <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
+			{% for book in book_list %}
+            <div class="my_book_club book-cover_containder">
+                <img class="book_cover book-cover_img" src="">
+				<input type="hidden" value="{{ book }}"/>
             </div>
-            <div class="my_book_club">
-                <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-            </div>
-            <div class="my_book_club">
-                <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-            </div>
-            <div class="my_book_club">
-                <img class="book_cover" src="https://avatars.dicebear.com/api/male/바.svg">
-            </div>
+			{% endfor %}
         </div>
     </div>
     {% endif %}
@@ -187,6 +181,8 @@ My Bunder
     const currentPage = document.querySelector('.current_span')
 
     const clubContainer = document.querySelector(".my_book_club_container");
+    const bookContainer= document.querySelectorAll(".book-cover_containder");
+
 
     const requestClub = async (page, flag) => {
         const url = '/bookclub/myclub?page=' + page
@@ -236,7 +232,7 @@ My Bunder
     })
 
     nextButton.addEventListener('click', () => {
-        const pageNum = Number(currentPage.innerText)
+        const pageNum = Number(currentPage.innerText);
         if (pageNum < totalCnt) {
             requestClub(pageNum + 1, 'next')
         }
@@ -244,10 +240,10 @@ My Bunder
 
     // 책 추천
 
-    const key = JSON.parse("{{ bookSecret|escapejs }}");
-    let bookInfo = [];
+    const key = JSON.parse("{{ bookSecret|escapejs }}").replace(/"/gi, "");
 
-    const fetchFunc = (bookName) => {
+    {#let bookInfo = [];#}
+    const getBook = (bookName, image) => {
         return fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&key=${key}`)
             .then(res => res.json())
             .then(res => {
@@ -255,17 +251,30 @@ My Bunder
                 for (let book of res.items) {
                     if (bookInfo.length >= 6) break;
                     const singleBook = book?.volumeInfo;
-                    const tmp = {};
-                    if (singleBook?.authors && singleBook?.categories) {
-                        tmp.title = singleBook.title;
-                        tmp.author = singleBook.authors[0];
-                        tmp.imageLink = singleBook?.imageLinks;
-                        tmp.category = categoryConverter(singleBook?.categories[0]);
-                        bookInfo.push(tmp)
+                    if (singleBook?.imageLinks) {
+                        console.log(singleBook);
+
+                        const title = singleBook.title;
+                        {#console.log(singleBook.imageLinks);#}
+                        image.src = singleBook?.imageLinks.thumbnail;
+                        break;
                     }
                 }
+                {#const book = res.items[0].volumeInfo;#}
+                {#console.log(book);#}
+                {#imageLink = book?.imageLinks;#}
+                {#console.log(imageLink);#}
+                {#image.src = imageLink;#}
             })
     }
+
+    bookContainer.forEach((el) => {
+        {#console.log(el.lastElementChild.value);#}
+        getBook(el.lastElementChild.value, el.firstElementChild);
+	})
+
+
+
 
 </script>
 {% endblock content %}

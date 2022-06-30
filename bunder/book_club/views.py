@@ -32,14 +32,16 @@ def main(request):
     query = Q()
     query.add(Q(user=request.user), query.AND)
     query.add(Q(type="OWNER") | Q(type="MEMBER"), query.AND)
-
-    result = get_my_book_club(request)
-    invited_club = getInvitedClub(request.user)
-    total_json = json.dumps(result['total_cnt'])
-    return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': result['club_list'],
+    if request.user.is_authenticated:
+        result = get_my_book_club(request)
+        invited_club = getInvitedClub(request.user)
+        total_json = json.dumps(result['total_cnt'])
+        return render(request, "book_club/book_club.html", {'book_club': book_club, 'my_club': result['club_list'],
                                                         'total_cnt': result['total_cnt'],
                                                         'invited_club': invited_club,
                                                         'total_json': total_json})
+    else:
+        return render(request, "book_club/book_club.html", {'book_club': book_club})
 
 
 def get_my_book_club(request):
@@ -121,6 +123,7 @@ def book_club_detail(request, bookclub_id):
     bookclub_id_json = json.dumps(book_club.id)
     user_id_json = json.dumps(request.user.id)
     is_owner = True if request.user == book_club.owner else False
+    recommend = recommend_member(request.user, book_club)
 
     query = Q()
     query.add(Q(club=book_club), query.AND)
@@ -130,7 +133,6 @@ def book_club_detail(request, bookclub_id):
     user_list = [member.user for member in member_list]
 
     is_member = True if request.user in user_list else False
-
 
     try:
         book = Book.objects.filter(club_id=bookclub_id, active=True).first()
@@ -162,7 +164,6 @@ def book_club_detail(request, bookclub_id):
             except:
                 pass
 
-
         if BookClubVote.objects.filter(club=book_club, active=False).exists():
             end_vote = BookClubVote.objects.filter(club=book_club, active=False).order_by('-created_at')[0]
             end_vote_list = VoteDetail.objects.filter(vote=end_vote).order_by('-vote_cnt')
@@ -187,7 +188,8 @@ def book_club_detail(request, bookclub_id):
                        'end_vote': end_vote,
                        'end_vote_list': end_vote_list,
                        'onset_list': onset_list,
-                       'check': check})
+                       'check': check,
+                       'recommend' : recommend})
 
     except BookClubVote.DoesNotExist:
         return render(request, 'book_club/club_detail.html',
@@ -606,9 +608,9 @@ def getMember(book_club):
     return BookClubMember.objects.filter(query)
 
 
-def recommend_member(request):
-    user = request.user
-    recommend = User.objects.filter(categories=user.categories).exclude(id=user.id).order_by('?')[:3]
+# 유저추천기능
+def recommend_member(user, book_club):
+    recommend = User.objects.filter(categories=book_club.category).exclude(id=user.id).order_by('?')[:3]
     return recommend
 
 
